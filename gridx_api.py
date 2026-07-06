@@ -57,6 +57,7 @@ class GridXAPI:
         customer: str | None = None,
         notes: str | None = None,
         scheduled_at: str | None = None,
+        meta: dict | None = None,
     ) -> dict:
         """Create a transport order. pickup/dropoff accept a place public_id
         (place_xxx) or a free-form address string; driver takes driver_xxx."""
@@ -74,6 +75,8 @@ class GridXAPI:
             payload["notes"] = notes
         if scheduled_at:
             payload["scheduled_at"] = scheduled_at
+        if meta:
+            payload["meta"] = meta
         return self._post("orders", payload)
 
 

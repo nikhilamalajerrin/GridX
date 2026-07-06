@@ -180,18 +180,6 @@ def _tool_find_best_driver(pickup_lat: float, pickup_lng: float) -> str:
 _current_sender = "unknown"  # set per-request by dispatch_message
 
 
-def create_order_now(payload: dict) -> dict:
-    """Actually create the order in GridX (called directly on approval)."""
-    return api.create_order(
-        pickup=payload["pickup"],
-        dropoff=payload["dropoff"],
-        driver=payload["driver"],
-        customer=payload.get("customer") or None,
-        notes=payload.get("notes") or None,
-        scheduled_at=payload.get("scheduled_at") or None,
-    )
-
-
 def _tool_create_order(
     pickup: str,
     dropoff: str,
@@ -200,33 +188,29 @@ def _tool_create_order(
     notes: str = "",
     scheduled_at: str = "",
 ) -> str:
-    payload = {
-        "pickup": pickup,
-        "dropoff": dropoff,
-        "driver": driver,
-        "customer": customer,
-        "notes": notes,
-        "scheduled_at": scheduled_at,
-    }
+    order = api.create_order(
+        pickup=pickup,
+        dropoff=dropoff,
+        driver=driver,
+        customer=customer or None,
+        notes=notes or None,
+        scheduled_at=scheduled_at or None,
+        # Tag the order with the requester so the dispatch webhook can
+        # notify them on WhatsApp when a dispatcher confirms.
+        meta={"whatsapp_sender": _current_sender, "source": "gridx-agent"},
+    )
     if config.HUMAN_IN_THE_LOOP:
-        import drafts
-
-        summary = f"{pickup} → {dropoff} | driver {driver} | {notes or 'no notes'}"
-        draft_id = drafts.add(payload, sender=_current_sender, summary=summary)
-        log.info("draft %s stored for approval (%s)", draft_id, summary)
-        return json.dumps(
-            {
-                "draft_id": draft_id,
-                "status": "pending_dispatcher_approval",
-                "note": (
-                    "Order NOT created yet. A dispatcher must approve it. "
-                    "Tell the customer their request is confirmed as received "
-                    "and a dispatcher will finalize it shortly. Do not promise "
-                    "a tracking number yet."
-                ),
-            }
-        )
-    order = create_order_now(payload)
+        slim = {
+            "id": order.get("id") or order.get("public_id"),
+            "status": "pending_dispatcher_confirmation",
+            "note": (
+                "Order recorded but NOT yet confirmed — a dispatcher must "
+                "review and dispatch it in Fleet-Ops. Tell the customer the "
+                "request is received and a dispatcher will confirm shortly "
+                "with tracking details. Do not state a tracking number."
+            ),
+        }
+        return json.dumps(slim, ensure_ascii=False)
     tracking = order.get("tracking_number")
     slim = {
         "id": order.get("id") or order.get("public_id"),
