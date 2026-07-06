@@ -1,6 +1,6 @@
 # GridX Auto-Dispatch Agent
 
-Parses inbound WhatsApp/email freight requests with Claude, picks the nearest
+Parses inbound WhatsApp/email freight requests with an LLM via OpenRouter, picks the nearest
 online driver, and creates the assigned order in GridX automatically.
 
 ```
@@ -20,7 +20,7 @@ online driver, and creates the assigned order in GridX automatically.
 cd gridx-agent
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env   # fill in GRIDX_API_KEY and ANTHROPIC_API_KEY
+cp .env.example .env   # fill in GRIDX_API_KEY and OPENROUTER_API_KEY
 uvicorn main:app --port 9000
 ```
 
