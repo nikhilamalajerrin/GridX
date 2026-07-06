@@ -4,6 +4,8 @@ assigned order in GridX. Runs on any OpenRouter model with tool calling."""
 
 import json
 import logging
+import time
+from datetime import datetime, timedelta, timezone
 
 from openai import OpenAI
 
@@ -203,27 +205,67 @@ TOOL_IMPLS = {
 
 MAX_TURNS = 12
 
+# Free-tier providers hit capacity limits; try these in order.
+MODEL_CHAIN = [
+    config.AGENT_MODEL,
+    "nvidia/nemotron-3-super-120b-a12b:free",
+    "poolside/laguna-m.1:free",
+]
+
+
+def _chat_with_fallback(messages: list, tools: list):
+    """Call OpenRouter, retrying transient failures and walking the model
+    chain when a free-tier provider is exhausted."""
+    last_err: Exception | None = None
+    for model in MODEL_CHAIN:
+        for attempt in range(3):
+            response = get_client().chat.completions.create(
+                model=model, messages=messages, tools=tools
+            )
+            if response.choices:
+                return response
+            err = getattr(response, "error", None) or response.model_extra
+            last_err = RuntimeError(f"{model}: {err}")
+            log.warning("attempt %d on %s failed: %s", attempt + 1, model, err)
+            time.sleep(2**attempt)
+        log.warning("model %s exhausted, falling back", model)
+    raise last_err or RuntimeError("all models in chain failed")
+
 
 def dispatch_message(message: str, channel: str, sender: str) -> dict:
     """Run the agent on one inbound message. Returns the reply text and status."""
+    now = datetime.now(timezone(timedelta(hours=3)))  # Asia/Riyadh
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
         {
             "role": "user",
-            "content": f"Channel: {channel}\nSender: {sender}\nMessage:\n{message}",
+            "content": (
+                f"Current date/time (Asia/Riyadh): {now.strftime('%A %Y-%m-%d %H:%M')}\n"
+                f"Channel: {channel}\nSender: {sender}\nMessage:\n{message}"
+            ),
         },
     ]
 
     final_text = ""
     for _ in range(MAX_TURNS):
-        response = get_client().chat.completions.create(
-            model=config.AGENT_MODEL,
-            messages=messages,
-            tools=TOOLS,
-        )
-        choice = response.choices[0]
-        msg = choice.message
-        messages.append(msg.model_dump(exclude_none=True))
+        response = _chat_with_fallback(messages, TOOLS)
+        msg = response.choices[0].message
+        # Echo back only standard fields — OpenRouter models attach extras
+        # like `reasoning` that break the next request if resent.
+        assistant_msg: dict = {"role": "assistant", "content": msg.content or ""}
+        if msg.tool_calls:
+            assistant_msg["tool_calls"] = [
+                {
+                    "id": c.id,
+                    "type": "function",
+                    "function": {
+                        "name": c.function.name,
+                        "arguments": c.function.arguments,
+                    },
+                }
+                for c in msg.tool_calls
+            ]
+        messages.append(assistant_msg)
 
         if not msg.tool_calls:
             final_text = msg.content or ""
