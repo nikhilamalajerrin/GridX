@@ -9,10 +9,17 @@ Endpoints:
 import logging
 from xml.sax.saxutils import escape
 
-from fastapi import FastAPI, Request
+import httpx
+from fastapi import BackgroundTasks, FastAPI, Request
 from fastapi.responses import Response
 
+import config
 from agent import dispatch_message
+
+# Twilio retries webhooks that don't answer within ~15s; remember handled
+# MessageSids so retries never double-process. In-memory is fine for a
+# single-process dev deployment.
+_seen_message_sids: set[str] = set()
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("gridx-agent")
@@ -35,18 +42,24 @@ async def simulate(body: dict):
     return result
 
 
-@app.post("/webhook/whatsapp")
-async def whatsapp(request: Request):
-    ctype = request.headers.get("content-type", "")
-    is_twilio = "form" in ctype
-    if is_twilio:
-        form = await request.form()
-        message, sender = form.get("Body", ""), form.get("From", "")
+def _send_whatsapp(to: str, body: str) -> None:
+    """Send a WhatsApp message via the Twilio REST API."""
+    if not (config.TWILIO_ACCOUNT_SID and config.TWILIO_AUTH_TOKEN):
+        log.error("Twilio credentials not set — cannot send reply to %s", to)
+        return
+    r = httpx.post(
+        f"https://api.twilio.com/2010-04-01/Accounts/{config.TWILIO_ACCOUNT_SID}/Messages.json",
+        data={"To": to, "From": config.TWILIO_WHATSAPP_FROM, "Body": body},
+        auth=(config.TWILIO_ACCOUNT_SID, config.TWILIO_AUTH_TOKEN),
+        timeout=30,
+    )
+    if r.status_code >= 300:
+        log.error("Twilio send failed %s: %s", r.status_code, r.text[:300])
     else:
-        body = await request.json()
-        message = body.get("message") or body.get("Body", "")
-        sender = body.get("sender") or body.get("From", "")
-    log.info("whatsapp from %s: %s", sender, message[:120])
+        log.info("reply sent to %s", to)
+
+
+def _process_and_reply(message: str, sender: str) -> None:
     try:
         result = dispatch_message(message, channel="whatsapp", sender=sender)
         reply = result["reply"]
@@ -56,12 +69,38 @@ async def whatsapp(request: Request):
             "Sorry, something went wrong handling your request. "
             "A dispatcher will follow up shortly."
         )
-        result = {"reply": reply, "status": "error"}
+    _send_whatsapp(sender, reply)
+
+
+@app.post("/webhook/whatsapp")
+async def whatsapp(request: Request, background: BackgroundTasks):
+    ctype = request.headers.get("content-type", "")
+    is_twilio = "form" in ctype
     if is_twilio:
-        # Twilio delivers the TwiML <Message> body back to the sender on WhatsApp.
-        twiml = f"<?xml version='1.0' encoding='UTF-8'?><Response><Message>{escape(reply)}</Message></Response>"
-        return Response(content=twiml, media_type="application/xml")
-    return result
+        form = await request.form()
+        message, sender = form.get("Body", ""), form.get("From", "")
+        sid = form.get("MessageSid", "")
+        if sid and sid in _seen_message_sids:
+            log.info("duplicate delivery %s ignored", sid)
+            return Response(
+                content="<?xml version='1.0' encoding='UTF-8'?><Response/>",
+                media_type="application/xml",
+            )
+        if sid:
+            _seen_message_sids.add(sid)
+        log.info("whatsapp from %s: %s", sender, message[:120])
+        # Ack Twilio immediately; the agent replies via the REST API when done.
+        background.add_task(_process_and_reply, message, sender)
+        return Response(
+            content="<?xml version='1.0' encoding='UTF-8'?><Response/>",
+            media_type="application/xml",
+        )
+    # JSON path (tests/other providers): process synchronously.
+    body = await request.json()
+    message = body.get("message") or body.get("Body", "")
+    sender = body.get("sender") or body.get("From", "")
+    log.info("whatsapp from %s: %s", sender, message[:120])
+    return dispatch_message(message, channel="whatsapp", sender=sender)
 
 
 @app.post("/webhook/email")
