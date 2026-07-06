@@ -14,7 +14,8 @@ from fastapi import BackgroundTasks, FastAPI, Request
 from fastapi.responses import Response
 
 import config
-from agent import dispatch_message
+import drafts
+from agent import create_order_now, dispatch_message
 
 # Twilio retries webhooks that don't answer within ~15s; remember handled
 # MessageSids so retries never double-process. In-memory is fine for a
@@ -101,6 +102,83 @@ async def whatsapp(request: Request, background: BackgroundTasks):
     sender = body.get("sender") or body.get("From", "")
     log.info("whatsapp from %s: %s", sender, message[:120])
     return dispatch_message(message, channel="whatsapp", sender=sender)
+
+
+@app.get("/drafts")
+def list_drafts():
+    """Minimal dispatcher dashboard: pending drafts with approve/reject."""
+    rows = ""
+    for d in drafts.pending():
+        rows += f"""
+        <tr>
+          <td><code>{d["id"]}</code></td>
+          <td>{escape(d["summary"])}</td>
+          <td>{escape(d["sender"])}</td>
+          <td>{d["created_at"]}</td>
+          <td>
+            <form method="post" action="/drafts/{d["id"]}/approve" style="display:inline">
+              <button style="background:#1B4F8A;color:#fff;border:0;padding:6px 14px;border-radius:6px;cursor:pointer">Approve</button>
+            </form>
+            <form method="post" action="/drafts/{d["id"]}/reject" style="display:inline">
+              <button style="background:#999;color:#fff;border:0;padding:6px 14px;border-radius:6px;cursor:pointer">Reject</button>
+            </form>
+          </td>
+        </tr>"""
+    if not rows:
+        rows = "<tr><td colspan=5 style='color:#888'>No pending drafts</td></tr>"
+    html = f"""<!DOCTYPE html><html><head><title>GridX — Pending Dispatches</title>
+    <meta http-equiv="refresh" content="15">
+    <style>body{{font-family:system-ui;margin:40px;background:#F7F9FC}}
+    h1{{color:#1B4F8A}} table{{border-collapse:collapse;width:100%;background:#fff;border-radius:8px;overflow:hidden}}
+    th,td{{padding:10px 14px;text-align:left;border-bottom:1px solid #eee}} th{{background:#0F2D52;color:#fff}}</style>
+    </head><body><h1>GridX — Pending Dispatches</h1>
+    <table><tr><th>ID</th><th>Job</th><th>Customer</th><th>Received</th><th>Action</th></tr>{rows}</table>
+    </body></html>"""
+    return Response(content=html, media_type="text/html")
+
+
+@app.post("/drafts/{draft_id}/approve")
+def approve_draft(draft_id: str, background: BackgroundTasks):
+    draft = drafts.resolve(draft_id, "approved")
+    if not draft:
+        return Response(content="Draft not found or already handled", status_code=404)
+    order = create_order_now(draft["payload"])
+    tracking = order.get("tracking_number")
+    tracking = (
+        tracking.get("tracking_number") if isinstance(tracking, dict) else tracking
+    )
+    log.info("draft %s approved → order %s (%s)", draft_id, order.get("id"), tracking)
+    if draft["sender"].startswith("whatsapp:"):
+        background.add_task(
+            _send_whatsapp,
+            draft["sender"],
+            f"✅ Your shipment is confirmed!\n\nTracking number: {tracking}\n"
+            f"{draft['summary']}\n\nYou can expect driver contact before pickup. "
+            "— GridX",
+        )
+    return Response(
+        content=f"Approved. Order {order.get('id')} created, tracking {tracking}. "
+        '<a href="/drafts">Back</a>',
+        media_type="text/html",
+    )
+
+
+@app.post("/drafts/{draft_id}/reject")
+def reject_draft(draft_id: str, background: BackgroundTasks):
+    draft = drafts.resolve(draft_id, "rejected")
+    if not draft:
+        return Response(content="Draft not found or already handled", status_code=404)
+    log.info("draft %s rejected", draft_id)
+    if draft["sender"].startswith("whatsapp:"):
+        background.add_task(
+            _send_whatsapp,
+            draft["sender"],
+            "We're sorry — we can't take this shipment as requested. "
+            "A dispatcher will contact you to discuss alternatives. — GridX",
+        )
+    return Response(
+        content='Rejected. <a href="/drafts">Back</a>', media_type="text/html"
+    )
 
 
 @app.post("/webhook/email")

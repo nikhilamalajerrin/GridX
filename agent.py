@@ -62,6 +62,15 @@ Rules:
 End your final message with a line: STATUS: created | needs_clarification | not_a_request
 """
 
+HITL_NOTE = """
+NOTE: Dispatcher approval mode is ON. The create_order tool only submits a
+draft for human review — no order exists until a dispatcher approves it.
+When the tool returns pending_dispatcher_approval, confirm receipt to the
+customer, summarize the job, and say a dispatcher will confirm shortly with
+the tracking details. Do not state or invent a tracking number. Use
+STATUS: created for successfully submitted drafts as well.
+"""
+
 TOOLS = [
     {
         "type": "function",
@@ -168,6 +177,21 @@ def _tool_find_best_driver(pickup_lat: float, pickup_lng: float) -> str:
     return json.dumps(ranked[:5], ensure_ascii=False)
 
 
+_current_sender = "unknown"  # set per-request by dispatch_message
+
+
+def create_order_now(payload: dict) -> dict:
+    """Actually create the order in GridX (called directly on approval)."""
+    return api.create_order(
+        pickup=payload["pickup"],
+        dropoff=payload["dropoff"],
+        driver=payload["driver"],
+        customer=payload.get("customer") or None,
+        notes=payload.get("notes") or None,
+        scheduled_at=payload.get("scheduled_at") or None,
+    )
+
+
 def _tool_create_order(
     pickup: str,
     dropoff: str,
@@ -176,14 +200,33 @@ def _tool_create_order(
     notes: str = "",
     scheduled_at: str = "",
 ) -> str:
-    order = api.create_order(
-        pickup=pickup,
-        dropoff=dropoff,
-        driver=driver,
-        customer=customer or None,
-        notes=notes or None,
-        scheduled_at=scheduled_at or None,
-    )
+    payload = {
+        "pickup": pickup,
+        "dropoff": dropoff,
+        "driver": driver,
+        "customer": customer,
+        "notes": notes,
+        "scheduled_at": scheduled_at,
+    }
+    if config.HUMAN_IN_THE_LOOP:
+        import drafts
+
+        summary = f"{pickup} → {dropoff} | driver {driver} | {notes or 'no notes'}"
+        draft_id = drafts.add(payload, sender=_current_sender, summary=summary)
+        log.info("draft %s stored for approval (%s)", draft_id, summary)
+        return json.dumps(
+            {
+                "draft_id": draft_id,
+                "status": "pending_dispatcher_approval",
+                "note": (
+                    "Order NOT created yet. A dispatcher must approve it. "
+                    "Tell the customer their request is confirmed as received "
+                    "and a dispatcher will finalize it shortly. Do not promise "
+                    "a tracking number yet."
+                ),
+            }
+        )
+    order = create_order_now(payload)
     tracking = order.get("tracking_number")
     slim = {
         "id": order.get("id") or order.get("public_id"),
@@ -234,9 +277,12 @@ def _chat_with_fallback(messages: list, tools: list):
 
 def dispatch_message(message: str, channel: str, sender: str) -> dict:
     """Run the agent on one inbound message. Returns the reply text and status."""
+    global _current_sender
+    _current_sender = sender
     now = datetime.now(timezone(timedelta(hours=3)))  # Asia/Riyadh
+    system = SYSTEM_PROMPT + (HITL_NOTE if config.HUMAN_IN_THE_LOOP else "")
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": system},
         {
             "role": "user",
             "content": (
