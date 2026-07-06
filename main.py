@@ -122,14 +122,18 @@ async def gridx_events(request: Request, background: BackgroundTasks):
         log.info("order %s has no whatsapp sender tag — nothing to notify", data.get("id"))
         return {"ok": True}
 
+    def _name(value, key="name"):
+        return value.get(key, "") if isinstance(value, dict) else ""
+
     tracking = data.get("tracking_number")
     tracking = (
         tracking.get("tracking_number") if isinstance(tracking, dict) else
-        (tracking or data.get("tracking") or "will follow")
+        (data.get("tracking") or "will follow")
     )
-    pickup = ((data.get("payload") or {}).get("pickup") or {}).get("name", "")
-    dropoff = ((data.get("payload") or {}).get("dropoff") or {}).get("name", "")
-    driver = (data.get("driver_assigned") or {}).get("name", "")
+    payload_obj = data.get("payload") if isinstance(data.get("payload"), dict) else {}
+    pickup = _name(payload_obj.get("pickup"))
+    dropoff = _name(payload_obj.get("dropoff"))
+    driver = _name(data.get("driver_assigned"))
     body = (
         "✅ Your shipment is confirmed and dispatched!\n\n"
         f"Tracking number: {tracking}\n"
