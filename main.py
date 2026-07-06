@@ -7,8 +7,10 @@ Endpoints:
 """
 
 import logging
+from xml.sax.saxutils import escape
 
 from fastapi import FastAPI, Request
+from fastapi.responses import Response
 
 from agent import dispatch_message
 
@@ -36,7 +38,8 @@ async def simulate(body: dict):
 @app.post("/webhook/whatsapp")
 async def whatsapp(request: Request):
     ctype = request.headers.get("content-type", "")
-    if "form" in ctype:
+    is_twilio = "form" in ctype
+    if is_twilio:
         form = await request.form()
         message, sender = form.get("Body", ""), form.get("From", "")
     else:
@@ -44,9 +47,20 @@ async def whatsapp(request: Request):
         message = body.get("message") or body.get("Body", "")
         sender = body.get("sender") or body.get("From", "")
     log.info("whatsapp from %s: %s", sender, message[:120])
-    result = dispatch_message(message, channel="whatsapp", sender=sender)
-    # Twilio expects TwiML; Meta Cloud API expects a 200 + separate send call.
-    # Wire the actual reply transport when you connect a provider.
+    try:
+        result = dispatch_message(message, channel="whatsapp", sender=sender)
+        reply = result["reply"]
+    except Exception:
+        log.exception("dispatch failed")
+        reply = (
+            "Sorry, something went wrong handling your request. "
+            "A dispatcher will follow up shortly."
+        )
+        result = {"reply": reply, "status": "error"}
+    if is_twilio:
+        # Twilio delivers the TwiML <Message> body back to the sender on WhatsApp.
+        twiml = f"<?xml version='1.0' encoding='UTF-8'?><Response><Message>{escape(reply)}</Message></Response>"
+        return Response(content=twiml, media_type="application/xml")
     return result
 
 
