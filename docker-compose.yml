@@ -46,6 +46,8 @@ services:
     container_name: gridx-scheduler
     command: ["go-crond", "--verbose", "root:./crontab"]
     restart: unless-stopped
+    volumes:
+      - ./api/.env:/fleetbase/api/.env
     environment:
       DATABASE_URL: "mysql://root@database/gridx"
       QUEUE_CONNECTION: redis
@@ -62,6 +64,8 @@ services:
     container_name: gridx-queue
     command: ["php", "artisan", "queue:work"]
     restart: unless-stopped
+    volumes:
+      - ./api/.env:/fleetbase/api/.env
     healthcheck:
       test: ["CMD", "php", "artisan", "queue:status"]
       interval: 30s
