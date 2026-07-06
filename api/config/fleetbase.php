@@ -7,6 +7,6 @@
 return [
     'branding' => [
         'logo_url' => '/images/gridx.svg',
-        'icon_url' => '/images/gridx-icon.png',
+        'icon_url' => '/images/gridx.svg',
     ],
 ];
