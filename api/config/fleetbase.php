@@ -6,7 +6,7 @@
  */
 return [
     'branding' => [
-        'logo_url' => '/images/gridx-logo-svg.svg',
+        'logo_url' => '/images/gridx.svg',
         'icon_url' => '/images/gridx-icon.png',
     ],
 ];
