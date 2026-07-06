@@ -1,0 +1,14 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import 'inter-ui/inter.css';
+@import 'console.css';
+
+:root {
+    --primary: #1b4f8a;
+    --primary-dark: #153d6e;
+    --primary-light: #2e6bc4;
+    --accent: #f39c12;
+    --sidebar-bg: #0f2d52;
+    --sidebar-text: #ffffff;
+}

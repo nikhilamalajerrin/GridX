@@ -1,0 +1,13 @@
+<?php
+
+namespace GridX\Build;
+
+interface Expansion
+{
+    /**
+     * Get the target class to expand.
+     *
+     * @return string|Class
+     */
+    public static function target();
+}

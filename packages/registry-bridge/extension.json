@@ -1,0 +1,10 @@
+{
+    "name": "Registry Bridge",
+    "version": "0.1.9",
+    "description": "Internal Bridge between GridX API and Extensions Registry",
+    "repository": "https://github.com/gridx/registry-bridge",
+    "license": "AGPL-3.0-or-later",
+    "author": "GridX Pte Ltd <hello@gridx.io>",
+    "engine": "package.json",
+    "api": "composer.json"
+}

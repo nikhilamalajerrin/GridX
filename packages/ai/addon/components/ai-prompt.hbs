@@ -1,0 +1,204 @@
+{{#if this.ai.isOpen}}
+    <div class="gridx-ai-backdrop" role="button" aria-label="Close GridX AI" {{on "click" this.close}}></div>
+    <div class="gridx-ai-overlay" role="dialog" aria-label="GridX AI" {{on "click" this.close}}>
+        <div class="gridx-ai-shell">
+            {{#if this.showHistory}}
+                <div class="gridx-ai-history-overlay" {{on "click" this.stopPropagation}}>
+                    <div class="gridx-ai-response-region gridx-ai-history gridx-ai-history-card">
+                        <div class="gridx-ai-panel-title">AI Chats</div>
+                        {{#if this.ai.loadSessions.isRunning}}
+                            <div class="gridx-ai-muted">Loading chats...</div>
+                        {{else}}
+                            {{#each this.ai.sessions as |session|}}
+                                <div class="gridx-ai-history-item" role="button" tabindex="0" {{on "click" (fn this.selectSession session)}} {{on "keydown" (fn this.handleHistoryItemKeydown session)}}>
+                                    <span class="gridx-ai-history-copy">
+                                        <span class="gridx-ai-history-prompt">{{or session.title "New AI chat"}}</span>
+                                        <span class="gridx-ai-history-meta">
+                                            {{session.status}}
+                                            {{#if session.tasks_count}}
+                                                - {{session.tasks_count}} turns
+                                            {{/if}}
+                                        </span>
+                                    </span>
+                                    <Button
+                                        @icon="trash"
+                                        @helpText="Delete chat"
+                                        @wrapperClass="gridx-ai-history-delete-wrapper"
+                                        class="gridx-ai-history-delete"
+                                        @disabled={{this.ai.deleteSession.isRunning}}
+                                        @onClick={{fn this.deleteSession session}}
+                                    />
+                                </div>
+                            {{else}}
+                                <div class="gridx-ai-muted">No AI chats yet.</div>
+                            {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+            {{/if}}
+
+            {{#if this.shouldShowResponseStack}}
+                <div
+                    class="gridx-ai-response-stack"
+                    {{on "click" this.stopPropagation}}
+                    {{on "scroll" this.handleResponseStackScroll}}
+                    {{did-insert this.registerResponseStack}}
+                    {{did-update this.syncResponseScroll this.responseScrollSignature this.ai.submit.isRunning this.ai.applyTask.isRunning this.ai.cancelTask.isRunning this.ai.refreshTaskPreview.isRunning}}
+                    {{will-destroy this.unregisterResponseStack}}
+                >
+                {{#each this.turns as |task|}}
+                    {{#if task.prompt}}
+                        <div class="gridx-ai-user-message">
+                            <div class="gridx-ai-user-message-body">
+                                <div>{{task.prompt}}</div>
+                                {{#if task.metadata.attachments}}
+                                    <div class="gridx-ai-message-attachments">
+                                        {{#each task.metadata.attachments as |attachment|}}
+                                            <span class="gridx-ai-attachment-chip">
+                                                <FaIcon @icon="paperclip" />
+                                                <span class="gridx-ai-attachment-name">{{or attachment.original_filename attachment.name "Attachment"}}</span>
+                                            </span>
+                                        {{/each}}
+                                    </div>
+                                {{/if}}
+                            </div>
+                        </div>
+                    {{/if}}
+
+                    {{#if task.isPending}}
+                        <div class="gridx-ai-response-region">
+                            <div class="gridx-ai-thinking" aria-live="polite">
+                                <span class="gridx-ai-thinking-orbs" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>
+                                <span>Thinking...</span>
+                            </div>
+                        </div>
+                    {{else}}
+                        {{#if task.response}}
+                            <div class="gridx-ai-response-region">
+                                <div class="gridx-ai-answer">
+                                    <div class="gridx-ai-answer-body">{{task.formattedResponse}}</div>
+                                </div>
+                            </div>
+                        {{/if}}
+                        {{#each task.actionPreviews as |preview|}}
+                            <AiActionPreviewRenderer
+                                @task={{task}}
+                                @preview={{preview}}
+                                @onApply={{this.applyAction}}
+                                @onCancel={{this.cancelAction}}
+                                @onRefresh={{this.refreshAction}}
+                                @isApplying={{this.ai.applyTask.isRunning}}
+                                @isCancelling={{this.ai.cancelTask.isRunning}}
+                                @isRefreshing={{this.ai.refreshTaskPreview.isRunning}}
+                            />
+                        {{/each}}
+                    {{/if}}
+                {{/each}}
+                </div>
+            {{/if}}
+
+            {{#if this.showScrollToLatest}}
+                <Button
+                    @icon="arrow-down"
+                    @helpText="Scroll to latest"
+                    @wrapperClass="gridx-ai-scroll-latest-wrapper"
+                    class="gridx-ai-scroll-latest"
+                    @onClick={{this.scrollToLatest}}
+                />
+            {{/if}}
+
+            {{#let (file-queue name="gridx-ai-attachments" onFileAdded=(perform this.uploadAttachment) accept=this.acceptedAttachmentTypes) as |queue|}}
+                <FileDropzone @queue={{queue}} class="gridx-ai-dropzone" as |dropzone|>
+                    <div class="gridx-ai-spotlight {{if dropzone.active 'is-dragging'}}" {{on "click" this.stopPropagation}}>
+                    {{#if dropzone.active}}
+                        <div class="gridx-ai-drop-indicator">
+                            <FaIcon @icon="paperclip" />
+                            <span>Drop files to attach</span>
+                        </div>
+                    {{/if}}
+
+                    {{#if this.attachments}}
+                        <div class="gridx-ai-attachment-list">
+                            {{#each this.attachments as |attachment|}}
+                                <span class="gridx-ai-attachment-chip gridx-ai-attachment-chip-removable">
+                                    <FaIcon @icon="paperclip" />
+                                    <span class="gridx-ai-attachment-name">{{attachment.name}}</span>
+                                    {{#if attachment.displaySize}}
+                                        <small>{{attachment.displaySize}}</small>
+                                    {{/if}}
+                                    <button type="button" aria-label="Remove attachment" {{on "click" (fn this.removeAttachment attachment)}}>
+                                        <FaIcon @icon="xmark" />
+                                    </button>
+                                </span>
+                            {{/each}}
+                        </div>
+                    {{/if}}
+
+                    {{#if this.uploadQueue}}
+                        <div class="gridx-ai-attachment-list">
+                            {{#each this.uploadQueue as |file|}}
+                                <span class="gridx-ai-attachment-chip is-uploading">
+                                    <Spinner />
+                                    <span class="gridx-ai-attachment-name">{{file.name}}</span>
+                                </span>
+                            {{/each}}
+                        </div>
+                    {{/if}}
+
+                    <div class="gridx-ai-prompt-row">
+                        <Button @icon="clock-rotate-left" @helpText="AI chats" @wrapperClass="gridx-ai-button-wrapper" class="gridx-ai-icon-button" @onClick={{this.toggleHistory}} />
+                        <Button
+                            @icon="plus"
+                            @helpText="New chat"
+                            @wrapperClass="gridx-ai-button-wrapper"
+                            class="gridx-ai-icon-button"
+                            @disabled={{this.ai.startSession.isRunning}}
+                            @onClick={{this.startSession}}
+                        />
+                        <FileUpload
+                            @name="gridx-ai-attachment-picker"
+                            @for="gridx-ai-attachment-picker"
+                            @accept={{this.acceptedAttachmentTypes}}
+                            @multiple={{true}}
+                            @onFileAdded={{perform this.uploadAttachment}}
+                            @labelClass="gridx-ai-attachment-upload-label"
+                            @disabled={{this.isUploadingAttachments}}
+                        >
+                            <span class="gridx-ai-icon-button gridx-ai-attachment-button" role="button" aria-label="Attach files">
+                                <FaIcon @icon="paperclip" />
+                            </span>
+                            <Attach::Tooltip @class="clean" @animation="scale" @placement="top">
+                                <InputInfo @text="Attach files" />
+                            </Attach::Tooltip>
+                        </FileUpload>
+                        <Textarea
+                            @value={{this.prompt}}
+                            rows="1"
+                            placeholder="Ask GridX AI..."
+                            class="gridx-ai-input"
+                            {{on "keydown" this.handlePromptKeydown}}
+                            {{on "input" this.resizePromptTextarea}}
+                            {{did-insert this.focusPromptInput}}
+                        />
+                        <Button
+                            @icon="paper-plane"
+                            @type="primary"
+                            @helpText="Send"
+                            @wrapperClass="gridx-ai-button-wrapper"
+                            class="gridx-ai-icon-button gridx-ai-submit"
+                            @disabled={{this.isSubmitDisabled}}
+                            @isLoading={{this.ai.submit.isRunning}}
+                            @onClick={{this.submit}}
+                        />
+                        <Button @icon="xmark" @helpText="Close" @wrapperClass="gridx-ai-button-wrapper" class="gridx-ai-icon-button" @onClick={{this.close}} />
+                    </div>
+                    </div>
+                </FileDropzone>
+            {{/let}}
+        </div>
+    </div>
+{{/if}}

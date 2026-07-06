@@ -1,0 +1,10 @@
+{
+    "name": "AI",
+    "version": "0.0.2",
+    "description": "GridX AI operations copilot and task automation module",
+    "repository": "https://github.com/gridx/ai",
+    "license": "AGPL-3.0-or-later",
+    "author": "GridX <hello@gridx.io>",
+    "engine": "package.json",
+    "api": "composer.json"
+}

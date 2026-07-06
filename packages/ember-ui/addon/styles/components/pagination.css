@@ -1,0 +1,86 @@
+.gridx-pagination {
+    @apply flex flex-1 items-center justify-between py-3;
+}
+
+.gridx-pagination .direction-button {
+    @apply relative inline-flex items-center px-3 py-1 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md;
+}
+
+.gridx-pagination .direction-button:focus {
+    @apply border-blue-300 outline-none outline-offset-0 outline-blue-500;
+}
+
+.gridx-pagination .direction-button:hover {
+    @apply text-gray-500;
+}
+
+.gridx-pagination .direction-button:active,
+.gridx-pagination .direction-button.active {
+    @apply text-gray-700 bg-gray-100;
+}
+
+.gridx-pagination .page-item {
+    @apply relative inline-flex items-center px-3 py-1 -ml-px text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300;
+}
+
+.gridx-pagination .page-item:focus {
+    @apply z-10 border-blue-300 outline-none outline-offset-0 outline-blue-500;
+}
+
+.gridx-pagination .page-item:hover {
+    @apply text-gray-500;
+}
+
+.gridx-pagination .page-item:active,
+.gridx-pagination .page-item.active {
+    @apply text-gray-800 bg-gray-100 shadow-inner;
+}
+
+.gridx-pagination .page-item-arrow {
+    @apply relative inline-flex items-center px-2 py-1 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300;
+}
+
+.gridx-pagination .page-item-arrow:focus {
+    @apply z-10 border-blue-300 outline-none outline-offset-0 outline-blue-500;
+}
+
+.gridx-pagination .page-item-arrow:hover {
+    @apply text-gray-400;
+}
+
+.gridx-pagination .page-item-arrow:active {
+    @apply text-gray-500 bg-gray-100;
+}
+
+.gridx-pagination .page-item-arrow:first-child {
+    @apply rounded-l-md;
+}
+
+.gridx-pagination .page-item-arrow:last-child {
+    @apply -ml-px rounded-r-md;
+}
+
+[data-theme='dark'] .gridx-pagination .page-item,
+[data-theme='dark'] .gridx-pagination .page-item-arrow,
+[data-theme='dark'] .gridx-pagination .direction-button {
+    @apply text-gray-100 bg-gray-800 border-gray-700 shadow;
+}
+
+[data-theme='dark'] .gridx-pagination .page-item:hover,
+[data-theme='dark'] .gridx-pagination .page-item-arrow:hover,
+[data-theme='dark'] .gridx-pagination .direction-button:hover {
+    @apply text-white;
+}
+
+[data-theme='dark'] .gridx-pagination .page-item:active,
+[data-theme='dark'] .gridx-pagination .page-item-arrow:active,
+[data-theme='dark'] .gridx-pagination .direction-button:active,
+[data-theme='dark'] .gridx-pagination .page-item.active,
+[data-theme='dark'] .gridx-pagination .page-item-arrow.active,
+[data-theme='dark'] .gridx-pagination .direction-button.active {
+    @apply text-gray-100 bg-gray-700;
+}
+
+[data-theme='dark'] .gridx-pagination .pagination-showing {
+    @apply text-gray-100;
+}

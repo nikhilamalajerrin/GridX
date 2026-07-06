@@ -1,0 +1,61 @@
+<Modal::Default @modalIsOpened={{@modalIsOpened}} @options={{@options}} @confirm={{@onConfirm}} @decline={{@onDecline}} @modalClass="flb-resource-modal">
+    <div class="modal-body-container gridx-legal-notice-content">
+        <div class="gridx-legal-notice-hero">
+            <div class="gridx-legal-notice-hero-main">
+                <img
+                    src="https://gridx.io/images/filled-icon.png"
+                    alt="GridX"
+                    width="40"
+                    height="40"
+                    class="gridx-legal-notice-logo rounded-lg shadow-md"
+                />
+                <div>
+                    <h3>GridX</h3>
+                    <p>Open source and commercial licensing</p>
+                </div>
+            </div>
+            <span>Copyright © {{format-date-fns (now) "yyyy"}} GridX Pte. Ltd.</span>
+        </div>
+
+        <div class="gridx-legal-notice-section">
+            <h4>Open Source License</h4>
+            <p>
+                GridX is licensed under the GNU Affero General Public License v3.0 or later, unless you have a separate commercial license from GridX.
+            </p>
+        </div>
+
+        <div class="gridx-legal-notice-section">
+            <h4>No Warranty</h4>
+            <p>
+                This program is distributed without warranty. You may convey and modify it under the terms of the AGPL-3.0-or-later.
+            </p>
+        </div>
+
+        <div class="gridx-legal-notice-section">
+            <h4>Commercial License</h4>
+            <p>
+                Need to keep proprietary modifications private, build a SaaS product, or white-label GridX? A GridX Commercial License removes AGPL copyleft obligations for covered
+                commercial use.
+            </p>
+        </div>
+
+        <div class="gridx-legal-notice-links">
+            <a href="https://www.gridx.io/licensing" target="_blank" rel="noopener noreferrer">
+                <FaIcon @icon="arrow-up-right-from-square" class="gridx-legal-notice-link-icon" />
+                <span>View licensing options</span>
+            </a>
+            <a href="https://www.gridx.io/licensing/commercial" target="_blank" rel="noopener noreferrer">
+                <FaIcon @icon="arrow-up-right-from-square" class="gridx-legal-notice-link-icon" />
+                <span>View commercial license</span>
+            </a>
+            <a href="https://github.com/gridx/gridx" target="_blank" rel="noopener noreferrer">
+                <FaIcon @icon="arrow-up-right-from-square" class="gridx-legal-notice-link-icon" />
+                <span>View source code</span>
+            </a>
+            <a href="https://github.com/gridx/gridx/blob/main/LICENSE.md" target="_blank" rel="noopener noreferrer">
+                <FaIcon @icon="arrow-up-right-from-square" class="gridx-legal-notice-link-icon" />
+                <span>View AGPL license</span>
+            </a>
+        </div>
+    </div>
+</Modal::Default>

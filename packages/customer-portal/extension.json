@@ -1,0 +1,10 @@
+{
+    "name": "Customer Portal",
+    "version": "0.0.12",
+    "description": "Extendable Customer Portal for GridX",
+    "repository": "https://github.com/gridx/customer-portal",
+    "license": "AGPL-3.0-or-later",
+    "author": "GridX Pte Ltd. <hello@gridx.io>",
+    "engine": "package.json",
+    "api": "composer.json"
+}

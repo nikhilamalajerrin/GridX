@@ -1,0 +1,10 @@
+{
+    "name": "Ledger",
+    "version": "0.0.7",
+    "description": "Accounting & Invoicing Extension for GridX",
+    "repository": "https://github.com/gridx/ledger",
+    "license": "AGPL-3.0-or-later",
+    "author": "GridX Pte Ltd <hello@gridx.io>",
+    "engine": "package.json",
+    "api": "composer.json"
+}

@@ -1,0 +1,31 @@
+<?php
+
+namespace GridX\FleetOps\Imports;
+
+use GridX\FleetOps\Models\Vehicle;
+use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+
+class VehicleImport implements ToCollection, WithHeadingRow
+{
+    /**
+     * Counter for successfully imported rows.
+     */
+    public int $imported = 0;
+
+    /**
+     * @return Collection
+     */
+    public function collection(Collection $rows)
+    {
+        foreach ($rows as $row) {
+            if ($row instanceof Collection) {
+                $row = array_filter($row->toArray());
+            }
+
+            Vehicle::createFromImport($row, true);
+            $this->imported++;
+        }
+    }
+}

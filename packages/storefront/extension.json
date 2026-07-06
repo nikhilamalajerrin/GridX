@@ -1,0 +1,10 @@
+{
+    "name": "Storefront",
+    "version": "0.4.16",
+    "description": "Headless Commerce & Marketplace Extension for GridX",
+    "repository": "https://github.com/gridx/storefront",
+    "license": "AGPL-3.0-or-later",
+    "author": "GridX Pte Ltd <hello@gridx.io>",
+    "engine": "package.json",
+    "api": "composer.json"
+}

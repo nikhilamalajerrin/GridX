@@ -1,0 +1,22 @@
+{
+    "name": "gridx-extensions-indexer",
+    "version": "0.0.5",
+    "description": "Indexes installed extensions for GridX Console.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "publish:npm": "npm config set registry https://registry.npmjs.org/ && npm publish",
+        "publish:github": "npm config set '@gridx:registry' https://npm.pkg.github.com/ && npm publish"
+    },
+    "keywords": [
+        "gridx-extension-indexer",
+        "gridx"
+    ],
+    "repository": "https://github.com/gridx/gridx-extension-indexer",
+    "license": "AGPL-3.0-or-later",
+    "author": "GridX Pte Ltd <hello@gridx.io>",
+    "dependencies": {
+        "broccoli-plugin": "^4.0.7",
+        "fast-glob": "^3.2.11"
+    }
+}

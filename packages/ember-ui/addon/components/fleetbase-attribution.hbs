@@ -1,0 +1,14 @@
+{{#unless this.disabled}}
+    <div class="gridx-attribution-notice gridx-attribution-notice--{{or @placement 'standalone'}}" ...attributes>
+        <a href={{this.licensingUrl}} target="_blank" rel="noopener noreferrer" class="gridx-attribution-link">
+            {{#if @showPoweredBy}}Powered by {{/if}}GridX
+        </a>
+        {{#if this.appVersion}}
+            <span class="gridx-attribution-version">{{this.appVersion}}</span>
+        {{/if}}
+        <span class="gridx-attribution-separator" aria-hidden="true">·</span>
+        <button type="button" class="gridx-attribution-legal-link" {{on "click" this.openLegalNotice}}>
+            Legal
+        </button>
+    </div>
+{{/unless}}

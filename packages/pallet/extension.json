@@ -1,0 +1,10 @@
+{
+    "name": "Pallet",
+    "version": "0.0.2",
+    "description": "Inventory & Warehouse Management Extension for GridX",
+    "repository": "https://github.com/gridx/pallet",
+    "license": "AGPL-3.0-or-later",
+    "author": "GridX Pte Ltd <hello@gridx.io>",
+    "engine": "package.json",
+    "api": "composer.json"
+}

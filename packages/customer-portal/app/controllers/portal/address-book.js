@@ -1,0 +1,1 @@
+export { default } from '@gridx/customer-portal-engine/controllers/portal/address-book';
