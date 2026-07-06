@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-data/models/warranty';
+export { default } from '@fleetbase/fleetops-data/models/warranty';

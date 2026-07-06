@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/utils/create-flow-activity';
+export { default } from '@fleetbase/fleetops-engine/utils/create-flow-activity';

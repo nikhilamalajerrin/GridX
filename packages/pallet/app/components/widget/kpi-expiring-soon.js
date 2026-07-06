@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/components/widget/kpi-expiring-soon';
+export { default } from '@fleetbase/pallet-engine/components/widget/kpi-expiring-soon';

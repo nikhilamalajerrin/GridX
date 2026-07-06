@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/extensions-list';
+export { default } from '@fleetbase/ember-ui/components/extensions-list';

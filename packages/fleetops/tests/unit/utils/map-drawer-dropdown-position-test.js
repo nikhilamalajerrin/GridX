@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import calculateMapDrawerDropdownPosition from '@gridx/fleetops-engine/utils/map-drawer-dropdown-position';
+import calculateMapDrawerDropdownPosition from '@fleetbase/fleetops-engine/utils/map-drawer-dropdown-position';
 
 module('Unit | Utility | map-drawer-dropdown-position', function () {
     test('positions the dropdown to the left of the trigger', function (assert) {

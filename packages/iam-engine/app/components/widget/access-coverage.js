@@ -1,1 +1,1 @@
-export { default } from '@gridx/iam-engine/components/widget/access-coverage';
+export { default } from '@fleetbase/iam-engine/components/widget/access-coverage';

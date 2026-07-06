@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/attach/popover';
+export { default } from '@fleetbase/ember-ui/components/attach/popover';

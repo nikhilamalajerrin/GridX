@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/modifiers/increase-height-by';
+export { default } from '@fleetbase/ember-ui/modifiers/increase-height-by';

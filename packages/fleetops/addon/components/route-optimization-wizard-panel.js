@@ -2,8 +2,8 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import contextComponentCallback from '@gridx/ember-core/utils/context-component-callback';
-import applyContextComponentArguments from '@gridx/ember-core/utils/apply-context-component-arguments';
+import contextComponentCallback from '@fleetbase/ember-core/utils/context-component-callback';
+import applyContextComponentArguments from '@fleetbase/ember-core/utils/apply-context-component-arguments';
 
 export default class RouteOptimizationWizardPanelComponent extends Component {
     @service sidebar;

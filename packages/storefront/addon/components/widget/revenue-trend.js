@@ -2,9 +2,9 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { task } from 'ember-concurrency';
-import formatCurrency from '@gridx/ember-ui/utils/format-currency';
-import getCurrency from '@gridx/ember-ui/utils/get-currency';
-import formatMoney from '@gridx/ember-accounting/utils/format-money';
+import formatCurrency from '@fleetbase/ember-ui/utils/format-currency';
+import getCurrency from '@fleetbase/ember-ui/utils/get-currency';
+import formatMoney from '@fleetbase/ember-accounting/utils/format-money';
 
 export default class WidgetRevenueTrendComponent extends Component {
     static widgetId = 'storefront-revenue-trend-widget';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/is-valid-coordinates';
+export { default } from '@fleetbase/ember-core/utils/is-valid-coordinates';

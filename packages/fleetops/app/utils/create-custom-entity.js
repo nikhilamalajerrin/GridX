@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/utils/create-custom-entity';
+export { default } from '@fleetbase/fleetops-engine/utils/create-custom-entity';

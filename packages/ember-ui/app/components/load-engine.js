@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/load-engine';
+export { default } from '@fleetbase/ember-ui/components/load-engine';

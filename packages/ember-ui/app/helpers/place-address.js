@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/place-address';
+export { default } from '@fleetbase/ember-ui/helpers/place-address';

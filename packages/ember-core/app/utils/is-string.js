@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/is-string';
+export { default } from '@fleetbase/ember-core/utils/is-string';

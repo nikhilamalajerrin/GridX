@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/button';
+export { default } from '@fleetbase/ember-ui/components/button';

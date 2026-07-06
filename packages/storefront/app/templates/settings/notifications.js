@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/templates/settings/notifications';
+export { default } from '@fleetbase/storefront-engine/templates/settings/notifications';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/visible-column-picker';
+export { default } from '@fleetbase/ember-ui/components/visible-column-picker';

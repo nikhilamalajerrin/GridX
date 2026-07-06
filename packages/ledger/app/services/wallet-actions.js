@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/services/wallet-actions';
+export { default } from '@fleetbase/ledger-engine/services/wallet-actions';

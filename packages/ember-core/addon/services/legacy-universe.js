@@ -111,8 +111,8 @@ export default class LegacyUniverseService extends Service.extend(Evented) {
      * @returns {Promise} A Promise that resolves with the result of the router's transitionTo method.
      *
      * @example
-     * // Transitions to the 'management.fleets.index.new' route within the '@gridx/fleet-ops' engine.
-     * this.transitionToEngineRoute('@gridx/fleet-ops', 'management.fleets.index.new');
+     * // Transitions to the 'management.fleets.index.new' route within the '@fleetbase/fleet-ops' engine.
+     * this.transitionToEngineRoute('@fleetbase/fleet-ops', 'management.fleets.index.new');
      */
     @action transitionToEngineRoute(engineName, route, ...args) {
         const engineInstance = this.getEngineInstance(engineName);
@@ -219,7 +219,7 @@ export default class LegacyUniverseService extends Service.extend(Evented) {
      * @returns {string} A string representing the console path derived from the engine name.
      * @example
      * // returns 'console.some'
-     * _mountPathFromEngineName('@gridx/some-engine');
+     * _mountPathFromEngineName('@fleetbase/some-engine');
      */
     _mountPathFromEngineName(engineName) {
         let engineNameSegments = engineName.split('/');

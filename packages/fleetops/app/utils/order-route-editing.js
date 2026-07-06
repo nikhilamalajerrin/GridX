@@ -1,2 +1,2 @@
-export { default } from '@gridx/fleetops/utils/order-route-editing';
-export * from '@gridx/fleetops/utils/order-route-editing';
+export { default } from '@fleetbase/fleetops/utils/order-route-editing';
+export * from '@fleetbase/fleetops/utils/order-route-editing';

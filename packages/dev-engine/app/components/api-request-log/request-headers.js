@@ -1,1 +1,1 @@
-export { default } from '@gridx/dev-engine/components/api-request-log/request-headers';
+export { default } from '@fleetbase/dev-engine/components/api-request-log/request-headers';

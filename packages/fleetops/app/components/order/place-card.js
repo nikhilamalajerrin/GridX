@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/order/place-card';
+export { default } from '@fleetbase/fleetops-engine/components/order/place-card';

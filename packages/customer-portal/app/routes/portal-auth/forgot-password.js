@@ -1,1 +1,1 @@
-export { default } from '@gridx/customer-portal-engine/routes/portal-auth/forgot-password';
+export { default } from '@fleetbase/customer-portal-engine/routes/portal-auth/forgot-password';

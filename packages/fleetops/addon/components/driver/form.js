@@ -18,7 +18,7 @@ export default class DriverFormComponent extends Component {
                 permission: 'iam create user',
                 onClick: async () => {
                     // Load IAM engine for user-form modal component
-                    await this.extensionManager.ensureEngineLoaded('@gridx/iam-engine');
+                    await this.extensionManager.ensureEngineLoaded('@fleetbase/iam-engine');
 
                     const user = this.store.createRecord('user', {
                         status: 'pending',

@@ -1,5 +1,5 @@
 import { helper } from '@ember/component/helper';
-import Point from '@gridx/fleetops-data/utils/geojson/point';
+import Point from '@fleetbase/fleetops-data/utils/geojson/point';
 
 export default helper(function pointCoordinates([point]) {
     if (point instanceof Point) {

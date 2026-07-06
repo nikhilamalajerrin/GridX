@@ -1,1 +1,1 @@
-export { default } from '@gridx/dev-engine/routes/sockets/index';
+export { default } from '@fleetbase/dev-engine/routes/sockets/index';

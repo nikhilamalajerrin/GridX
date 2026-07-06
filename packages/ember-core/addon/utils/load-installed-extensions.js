@@ -4,17 +4,17 @@ import isAuthenticated from './is-authenticated';
 
 export default async function loadInstalledExtensions(additionalCoreEngines = []) {
     const CORE_ENGINES = [
-        '@gridx/fleetops-engine',
-        '@gridx/storefront-engine',
-        '@gridx/registry-bridge-engine',
-        '@gridx/dev-engine',
-        '@gridx/iam-engine',
-        '@gridx/ledger-engine',
-        '@gridx/pallet-engine',
-        '@gridx/ai-engine',
-        '@gridx/customer-portal-engine',
-        '@gridx/vroom-engine',
-        '@gridx/valhalla-engine',
+        '@fleetbase/fleetops-engine',
+        '@fleetbase/storefront-engine',
+        '@fleetbase/registry-bridge-engine',
+        '@fleetbase/dev-engine',
+        '@fleetbase/iam-engine',
+        '@fleetbase/ledger-engine',
+        '@fleetbase/pallet-engine',
+        '@fleetbase/ai-engine',
+        '@fleetbase/customer-portal-engine',
+        '@fleetbase/vroom-engine',
+        '@fleetbase/valhalla-engine',
         ...additionalCoreEngines,
     ];
     const INDEXED_ENGINES = await loadExtensions();

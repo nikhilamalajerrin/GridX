@@ -1,4 +1,4 @@
-import routerRefreshPatch from '@gridx/console/utils/router-refresh-patch';
+import routerRefreshPatch from '@fleetbase/console/utils/router-refresh-patch';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | router-refresh-patch', function () {

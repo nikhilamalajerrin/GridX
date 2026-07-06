@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/components/widget/kpi-customers';
+export { default } from '@fleetbase/storefront-engine/components/widget/kpi-customers';

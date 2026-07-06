@@ -1,4 +1,4 @@
-import { Polygon, Circle, MultiPolygon, Feature } from '@gridx/fleetops-data/utils/geojson';
+import { Polygon, Circle, MultiPolygon, Feature } from '@fleetbase/fleetops-data/utils/geojson';
 
 /** unwrap input to { geom, props, id, bbox, wasFeature } */
 function unwrap(input) {

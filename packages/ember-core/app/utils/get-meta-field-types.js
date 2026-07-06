@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/get-meta-field-types';
+export { default } from '@fleetbase/ember-core/utils/get-meta-field-types';

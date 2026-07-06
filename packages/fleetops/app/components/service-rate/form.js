@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/service-rate/form';
+export { default } from '@fleetbase/fleetops-engine/components/service-rate/form';

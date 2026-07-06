@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/utils/extract-coordinates';
+export { default } from '@fleetbase/pallet-engine/utils/extract-coordinates';

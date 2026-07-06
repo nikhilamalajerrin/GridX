@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/services/context-panel';
+export { default } from '@fleetbase/pallet-engine/services/context-panel';

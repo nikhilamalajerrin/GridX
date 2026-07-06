@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/services/legacy-universe';
+export { default } from '@fleetbase/ember-core/services/legacy-universe';

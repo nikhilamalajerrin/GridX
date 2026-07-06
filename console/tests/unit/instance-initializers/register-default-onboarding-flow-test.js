@@ -1,7 +1,7 @@
 import Application from '@ember/application';
 
-import config from '@gridx/console/config/environment';
-import { initialize } from '@gridx/console/instance-initializers/register-default-onboarding-flow';
+import config from '@fleetbase/console/config/environment';
+import { initialize } from '@fleetbase/console/instance-initializers/register-default-onboarding-flow';
 import { module, test } from 'qunit';
 import Resolver from 'ember-resolver';
 import { run } from '@ember/runloop';

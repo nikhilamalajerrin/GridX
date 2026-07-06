@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/driver/pill';
+export { default } from '@fleetbase/fleetops-engine/components/driver/pill';

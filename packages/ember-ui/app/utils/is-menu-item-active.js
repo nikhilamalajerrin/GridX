@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/utils/is-menu-item-active';
+export { default } from '@fleetbase/ember-ui/utils/is-menu-item-active';

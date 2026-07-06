@@ -4,10 +4,10 @@ import { tracked } from '@glimmer/tracking';
 import { getOwner } from '@ember/application';
 import { assert, debug, warn } from '@ember/debug';
 import { next } from '@ember/runloop';
-import loadInstalledExtensions from '@gridx/ember-core/utils/load-installed-extensions';
-import mapEngines from '@gridx/ember-core/utils/map-engines';
+import loadInstalledExtensions from '@fleetbase/ember-core/utils/load-installed-extensions';
+import mapEngines from '@fleetbase/ember-core/utils/map-engines';
 import config from 'ember-get-config';
-import { getExtensionLoader } from '@gridx/console/extensions';
+import { getExtensionLoader } from '@fleetbase/console/extensions';
 import { isArray } from '@ember/array';
 import RSVP from 'rsvp';
 import ExtensionBootState from '../../contracts/extension-boot-state';
@@ -276,7 +276,7 @@ export default class ExtensionManagerService extends Service.extend(Evented) {
      *
      * @private
      * @method #mountPathFromEngineName
-     * @param {String} engineName Engine name (e.g., '@gridx/fleetops-engine')
+     * @param {String} engineName Engine name (e.g., '@fleetbase/fleetops-engine')
      * @returns {String} Mount path (e.g., 'console.fleetops')
      */
     #mountPathFromEngineName(engineName) {
@@ -628,13 +628,13 @@ export default class ExtensionManagerService extends Service.extend(Evented) {
      * @param {Function} callback The callback to execute, receives (engineInstance, universe, appInstance)
      * @example
      * // Simple usage
-     * extensionManager.whenEngineLoaded('@gridx/fleetops-engine', (fleetopsEngine) => {
+     * extensionManager.whenEngineLoaded('@fleetbase/fleetops-engine', (fleetopsEngine) => {
      *     console.log('FleetOps loaded!', fleetopsEngine);
      * });
      *
      * @example
      * // With all parameters
-     * extensionManager.whenEngineLoaded('@gridx/customer-portal-engine', (portalEngine, universe, app) => {
+     * extensionManager.whenEngineLoaded('@fleetbase/customer-portal-engine', (portalEngine, universe, app) => {
      *     setupIntegration(portalEngine, universe);
      * });
      */

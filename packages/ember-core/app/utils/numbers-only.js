@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/numbers-only';
+export { default } from '@fleetbase/ember-core/utils/numbers-only';

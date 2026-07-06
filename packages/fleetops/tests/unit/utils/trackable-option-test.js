@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import EmberObject from '@ember/object';
 import ObjectProxy from '@ember/object/proxy';
-import { buildTrackableOption, trackableDeviceLabel } from '@gridx/fleetops-engine/utils/trackable-option';
+import { buildTrackableOption, trackableDeviceLabel } from '@fleetbase/fleetops-engine/utils/trackable-option';
 
 module('Unit | Utility | trackable-option', function () {
     test('builds searchable text for vehicle trackables including attached devices', function (assert) {

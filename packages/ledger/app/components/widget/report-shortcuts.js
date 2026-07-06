@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/components/widget/report-shortcuts';
+export { default } from '@fleetbase/ledger-engine/components/widget/report-shortcuts';

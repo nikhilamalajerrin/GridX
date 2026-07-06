@@ -3,10 +3,10 @@ import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { action, set } from '@ember/object';
 import { isArray } from '@ember/array';
-import { renderCompleted, waitForInsertedAndSized } from '@gridx/ember-ui/utils/dom';
-import { Control as RoutingControl } from '@gridx/leaflet-routing-machine';
+import { renderCompleted, waitForInsertedAndSized } from '@fleetbase/ember-ui/utils/dom';
+import { Control as RoutingControl } from '@fleetbase/leaflet-routing-machine';
 import { getLayerById, findLayer, flyToLayer } from '../utils/leaflet';
-import isUuid from '@gridx/ember-core/utils/is-uuid';
+import isUuid from '@fleetbase/ember-core/utils/is-uuid';
 import ensureLeafletPluginsReady from '../utils/leaflet-plugin-loader';
 
 export default class LeafletMapManagerService extends Service {

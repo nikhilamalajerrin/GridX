@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-data/models/tracking-status';
+export { default } from '@fleetbase/fleetops-data/models/tracking-status';

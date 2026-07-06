@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/utils/decorators/arg';
+export { default } from '@fleetbase/ember-ui/utils/decorators/arg';

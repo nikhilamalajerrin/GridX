@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/layout/header/loading-indicator';
+export { default } from '@fleetbase/ember-ui/components/layout/header/loading-indicator';

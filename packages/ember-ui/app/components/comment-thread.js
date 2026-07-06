@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/comment-thread';
+export { default } from '@fleetbase/ember-ui/components/comment-thread';

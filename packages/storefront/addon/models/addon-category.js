@@ -1,4 +1,4 @@
-import CategoryModel from '@gridx/console/models/category';
+import CategoryModel from '@fleetbase/console/models/category';
 import { hasMany } from '@ember-data/model';
 
 export default class AddonCategoryModel extends CategoryModel {

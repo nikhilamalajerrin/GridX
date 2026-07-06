@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/input-label';
+export { default } from '@fleetbase/ember-ui/components/input-label';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/registry-yield';
+export { default } from '@fleetbase/ember-ui/components/registry-yield';

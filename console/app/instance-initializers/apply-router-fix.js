@@ -1,4 +1,4 @@
-import applyRouterFix from '@gridx/console/utils/router-refresh-patch';
+import applyRouterFix from '@fleetbase/console/utils/router-refresh-patch';
 import { debug } from '@ember/debug';
 
 /**

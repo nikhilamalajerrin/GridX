@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/gridx-api-fetch';
+export { default } from '@fleetbase/ember-core/utils/gridx-api-fetch';

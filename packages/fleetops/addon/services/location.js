@@ -4,7 +4,7 @@ import { isBlank } from '@ember/utils';
 import { isArray } from '@ember/array';
 import { later } from '@ember/runloop';
 import { debug } from '@ember/debug';
-import getWithDefault from '@gridx/ember-core/utils/get-with-default';
+import getWithDefault from '@fleetbase/ember-core/utils/get-with-default';
 
 /**
  * Service for managing and retrieving user location data.

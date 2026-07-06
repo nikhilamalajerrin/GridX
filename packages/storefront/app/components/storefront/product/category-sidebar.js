@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/components/storefront/product/category-sidebar';
+export { default } from '@fleetbase/storefront-engine/components/storefront/product/category-sidebar';

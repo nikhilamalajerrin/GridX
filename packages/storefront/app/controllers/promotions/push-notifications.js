@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/controllers/promotions/push-notifications';
+export { default } from '@fleetbase/storefront-engine/controllers/promotions/push-notifications';

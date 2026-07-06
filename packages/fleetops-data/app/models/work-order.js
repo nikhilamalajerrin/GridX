@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-data/models/work-order';
+export { default } from '@fleetbase/fleetops-data/models/work-order';

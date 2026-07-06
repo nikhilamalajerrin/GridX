@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/resource-context-panel';
+export { default } from '@fleetbase/ember-ui/components/resource-context-panel';

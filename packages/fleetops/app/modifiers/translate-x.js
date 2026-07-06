@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/modifiers/translate-x';
+export { default } from '@fleetbase/fleetops-engine/modifiers/translate-x';

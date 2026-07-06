@@ -4,7 +4,7 @@ import { computed, get } from '@ember/object';
 import { not } from '@ember/object/computed';
 import { Point } from '../utils/geojson';
 import { format as formatDate, isValid as isValidDate, formatDistanceToNow } from 'date-fns';
-import isValidCoordinates from '@gridx/ember-core/utils/is-valid-coordinates';
+import isValidCoordinates from '@fleetbase/ember-core/utils/is-valid-coordinates';
 import config from 'ember-get-config';
 
 export default class PlaceModel extends Model {

@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 import { dasherize } from '@ember/string';
 import { debug } from '@ember/debug';
 import { task } from 'ember-concurrency';
-import isUuid from '@gridx/ember-core/utils/is-uuid';
+import isUuid from '@fleetbase/ember-core/utils/is-uuid';
 
 export default class WithRecordComponent extends Component {
     @service store;

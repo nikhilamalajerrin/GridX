@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/order/card';
+export { default } from '@fleetbase/fleetops-engine/components/order/card';

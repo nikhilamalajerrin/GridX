@@ -1,1 +1,1 @@
-export { default } from '@gridx/registry-bridge-engine/components/modals/select-extension-bundle';
+export { default } from '@fleetbase/registry-bridge-engine/components/modals/select-extension-bundle';

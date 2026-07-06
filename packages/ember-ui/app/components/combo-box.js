@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/combo-box';
+export { default } from '@fleetbase/ember-ui/components/combo-box';

@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import extension from '@gridx/fleetops-engine/extension';
+import extension from '@fleetbase/fleetops-engine/extension';
 
 module('Unit | FleetOps extension', function () {
     test('it registers the FleetOps analytics dashboard', function (assert) {

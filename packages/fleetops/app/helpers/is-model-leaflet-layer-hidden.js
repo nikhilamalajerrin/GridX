@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/helpers/is-model-leaflet-layer-hidden';
+export { default } from '@fleetbase/fleetops-engine/helpers/is-model-leaflet-layer-hidden';

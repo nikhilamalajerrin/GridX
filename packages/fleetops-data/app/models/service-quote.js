@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-data/models/service-quote';
+export { default } from '@fleetbase/fleetops-data/models/service-quote';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/routes/settings/api';
+export { default } from '@fleetbase/storefront-engine/routes/settings/api';

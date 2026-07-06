@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/services/report-actions';
+export { default } from '@fleetbase/ember-core/services/report-actions';

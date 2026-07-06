@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/services/maintenance-schedule-actions';
+export { default } from '@fleetbase/fleetops-engine/services/maintenance-schedule-actions';

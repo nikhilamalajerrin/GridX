@@ -1,1 +1,1 @@
-export { default, ensureLeafletDrawEditNamespace } from '@gridx/fleetops-engine/utils/leaflet-draw-namespace-guard';
+export { default, ensureLeafletDrawEditNamespace } from '@fleetbase/fleetops-engine/utils/leaflet-draw-namespace-guard';

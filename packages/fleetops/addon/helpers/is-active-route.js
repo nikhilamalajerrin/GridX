@@ -1,1 +1,1 @@
-export { default, isActiveRoute } from '@gridx/console/helpers/is-active-route';
+export { default, isActiveRoute } from '@fleetbase/console/helpers/is-active-route';

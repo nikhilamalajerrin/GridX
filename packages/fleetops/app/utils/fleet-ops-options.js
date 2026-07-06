@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/utils/fleet-ops-options';
+export { default } from '@fleetbase/fleetops-engine/utils/fleet-ops-options';

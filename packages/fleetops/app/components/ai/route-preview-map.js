@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/ai/route-preview-map';
+export { default } from '@fleetbase/fleetops-engine/components/ai/route-preview-map';

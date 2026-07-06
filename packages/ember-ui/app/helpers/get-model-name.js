@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/get-model-name';
+export { default } from '@fleetbase/ember-ui/helpers/get-model-name';

@@ -4,7 +4,7 @@
     "description": "Inventory & Warehouse Management Extension for GridX",
     "keywords": [
         "gridx",
-        "gridx-extension",
+        "fleetbase-extension",
         "inventory",
         "inventory management",
         "stock management",
@@ -56,7 +56,7 @@
                 "GridX\\Pallet\\Providers\\PalletServiceProvider"
             ]
         },
-        "gridx": {
+        "fleetbase": {
             "sandbox-migrations": false
         }
     },

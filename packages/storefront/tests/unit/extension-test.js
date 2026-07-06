@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { registerWidgets } from '@gridx/storefront-engine/extension';
+import { registerWidgets } from '@fleetbase/storefront-engine/extension';
 
 module('Unit | Extension', function () {
     test('registers storefront dashboard widgets', function (assert) {

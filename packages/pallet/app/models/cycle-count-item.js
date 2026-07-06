@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/models/cycle-count-item';
+export { default } from '@fleetbase/pallet-engine/models/cycle-count-item';

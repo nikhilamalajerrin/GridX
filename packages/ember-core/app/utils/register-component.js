@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/register-component';
+export { default } from '@fleetbase/ember-core/utils/register-component';

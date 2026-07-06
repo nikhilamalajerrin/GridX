@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/utils/map-drawer-dropdown-position';
+export { default } from '@fleetbase/fleetops-engine/utils/map-drawer-dropdown-position';

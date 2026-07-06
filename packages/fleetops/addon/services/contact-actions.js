@@ -1,4 +1,4 @@
-import ResourceActionService from '@gridx/ember-core/services/resource-action';
+import ResourceActionService from '@fleetbase/ember-core/services/resource-action';
 import { inject as service } from '@ember/service';
 import { action, get } from '@ember/object';
 
@@ -134,7 +134,7 @@ export default class ContactActionsService extends ResourceActionService {
     }
 
     isCustomerPortalInstalled() {
-        return this.extensionManager.isInstalled('@gridx/customer-portal-engine');
+        return this.extensionManager.isInstalled('@fleetbase/customer-portal-engine');
     }
 
     accountActionButton(contact, options = {}) {

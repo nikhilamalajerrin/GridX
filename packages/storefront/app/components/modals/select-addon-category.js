@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/components/modals/select-addon-category';
+export { default } from '@fleetbase/storefront-engine/components/modals/select-addon-category';

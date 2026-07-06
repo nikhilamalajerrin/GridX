@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/utils/get-vendor-categories';
+export { default } from '@fleetbase/fleetops-engine/utils/get-vendor-categories';

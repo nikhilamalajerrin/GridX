@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/fuel-integration/form';
+export { default } from '@fleetbase/fleetops-engine/components/fuel-integration/form';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/path-to-route';
+export { default } from '@fleetbase/ember-core/utils/path-to-route';

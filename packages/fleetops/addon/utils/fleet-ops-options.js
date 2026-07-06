@@ -1,4 +1,4 @@
-import toPowerSelectGroups from '@gridx/ember-ui/utils/to-power-select-groups';
+import toPowerSelectGroups from '@fleetbase/ember-ui/utils/to-power-select-groups';
 
 export const driverTypes = [
     { label: 'Full-time', value: 'full_time', description: 'Permanent employee driver' },

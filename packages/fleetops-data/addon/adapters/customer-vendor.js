@@ -1,4 +1,4 @@
-import ApplicationAdapter from '@gridx/ember-core/adapters/application';
+import ApplicationAdapter from '@fleetbase/ember-core/adapters/application';
 
 export default class CustomerVendorAdapter extends ApplicationAdapter {
     /**

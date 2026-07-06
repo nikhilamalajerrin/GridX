@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/utils/create-shareable-link';
+export { default } from '@fleetbase/storefront-engine/utils/create-shareable-link';

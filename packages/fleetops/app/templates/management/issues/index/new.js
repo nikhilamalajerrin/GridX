@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/templates/management/issues/index/new';
+export { default } from '@fleetbase/fleetops-engine/templates/management/issues/index/new';

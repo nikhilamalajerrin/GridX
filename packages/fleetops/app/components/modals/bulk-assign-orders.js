@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/modals/bulk-assign-orders';
+export { default } from '@fleetbase/fleetops-engine/components/modals/bulk-assign-orders';

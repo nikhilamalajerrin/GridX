@@ -1,4 +1,4 @@
-import runtimeConfig from '@gridx/console/utils/runtime-config';
+import runtimeConfig from '@fleetbase/console/utils/runtime-config';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | runtime-config', function () {

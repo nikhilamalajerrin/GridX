@@ -5,7 +5,7 @@
  * These classes provide a fluent, type-safe API for registering menus, widgets, hooks,
  * and other extension points.
  *
- * @module @gridx/ember-core/contracts
+ * @module @fleetbase/ember-core/contracts
  */
 
 export { default as BaseContract } from './base-contract';

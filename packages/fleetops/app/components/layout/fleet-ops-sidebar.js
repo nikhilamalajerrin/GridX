@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/layout/fleet-ops-sidebar';
+export { default } from '@fleetbase/fleetops-engine/components/layout/fleet-ops-sidebar';

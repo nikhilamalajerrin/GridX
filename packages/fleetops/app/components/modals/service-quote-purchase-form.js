@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/modals/service-quote-purchase-form';
+export { default } from '@fleetbase/fleetops-engine/components/modals/service-quote-purchase-form';

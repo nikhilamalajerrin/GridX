@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/format-json';
+export { default } from '@fleetbase/ember-ui/helpers/format-json';

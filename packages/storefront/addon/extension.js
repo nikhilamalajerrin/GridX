@@ -1,4 +1,4 @@
-import { Widget, ExtensionComponent } from '@gridx/ember-core/contracts';
+import { Widget, ExtensionComponent } from '@fleetbase/ember-core/contracts';
 
 function createStorefrontKeyMetricsWidget() {
     return new Widget({
@@ -6,7 +6,7 @@ function createStorefrontKeyMetricsWidget() {
         name: 'Storefront Metrics (Legacy)',
         description: 'Legacy grouped Storefront metrics.',
         icon: 'store',
-        component: new ExtensionComponent('@gridx/storefront-engine', 'widget/storefront-key-metrics'),
+        component: new ExtensionComponent('@fleetbase/storefront-engine', 'widget/storefront-key-metrics'),
         grid_options: { w: 12, h: 7, minW: 8, minH: 7 },
         options: { title: 'Storefront Metrics' },
         category: 'Legacy',
@@ -23,7 +23,7 @@ export function registerWidgets(widgetService) {
             name: 'Revenue',
             description: 'Storefront revenue for the current period with trend.',
             icon: 'sack-dollar',
-            component: new ExtensionComponent('@gridx/storefront-engine', 'widget/kpi-revenue'),
+            component: new ExtensionComponent('@fleetbase/storefront-engine', 'widget/kpi-revenue'),
             grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
             category: 'KPI Tiles',
             default: true,
@@ -33,7 +33,7 @@ export function registerWidgets(widgetService) {
             name: 'Orders',
             description: 'Order volume for the current period with trend.',
             icon: 'bag-shopping',
-            component: new ExtensionComponent('@gridx/storefront-engine', 'widget/kpi-orders'),
+            component: new ExtensionComponent('@fleetbase/storefront-engine', 'widget/kpi-orders'),
             grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
             category: 'KPI Tiles',
             default: true,
@@ -43,7 +43,7 @@ export function registerWidgets(widgetService) {
             name: 'Average Order Value',
             description: 'Average order value for non-canceled Storefront orders.',
             icon: 'receipt',
-            component: new ExtensionComponent('@gridx/storefront-engine', 'widget/kpi-aov'),
+            component: new ExtensionComponent('@fleetbase/storefront-engine', 'widget/kpi-aov'),
             grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
             category: 'KPI Tiles',
             default: true,
@@ -53,7 +53,7 @@ export function registerWidgets(widgetService) {
             name: 'Active Orders',
             description: 'Orders currently moving through fulfillment.',
             icon: 'bolt',
-            component: new ExtensionComponent('@gridx/storefront-engine', 'widget/kpi-active-orders'),
+            component: new ExtensionComponent('@fleetbase/storefront-engine', 'widget/kpi-active-orders'),
             grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
             category: 'KPI Tiles',
             default: true,
@@ -63,7 +63,7 @@ export function registerWidgets(widgetService) {
             name: 'Completed Orders',
             description: 'Completed orders for the current period.',
             icon: 'circle-check',
-            component: new ExtensionComponent('@gridx/storefront-engine', 'widget/kpi-completed-orders'),
+            component: new ExtensionComponent('@fleetbase/storefront-engine', 'widget/kpi-completed-orders'),
             grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
             category: 'KPI Tiles',
             default: true,
@@ -73,7 +73,7 @@ export function registerWidgets(widgetService) {
             name: 'Customers',
             description: 'Unique customers ordering during the current period.',
             icon: 'users',
-            component: new ExtensionComponent('@gridx/storefront-engine', 'widget/kpi-customers'),
+            component: new ExtensionComponent('@fleetbase/storefront-engine', 'widget/kpi-customers'),
             grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
             category: 'KPI Tiles',
             default: true,
@@ -83,7 +83,7 @@ export function registerWidgets(widgetService) {
             name: 'Cart Conversion',
             description: 'Orders as a percentage of carts created in the current period.',
             icon: 'cart-shopping',
-            component: new ExtensionComponent('@gridx/storefront-engine', 'widget/kpi-cart-conversion'),
+            component: new ExtensionComponent('@fleetbase/storefront-engine', 'widget/kpi-cart-conversion'),
             grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
             category: 'KPI Tiles',
             default: true,
@@ -93,7 +93,7 @@ export function registerWidgets(widgetService) {
             name: 'Cancellation Rate',
             description: 'Canceled orders as a percentage of current period order volume.',
             icon: 'ban',
-            component: new ExtensionComponent('@gridx/storefront-engine', 'widget/kpi-cancellation-rate'),
+            component: new ExtensionComponent('@fleetbase/storefront-engine', 'widget/kpi-cancellation-rate'),
             grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
             category: 'KPI Tiles',
             default: true,
@@ -103,7 +103,7 @@ export function registerWidgets(widgetService) {
             name: 'Revenue Trend',
             description: 'Revenue and order volume over time.',
             icon: 'chart-line',
-            component: new ExtensionComponent('@gridx/storefront-engine', 'widget/revenue-trend'),
+            component: new ExtensionComponent('@fleetbase/storefront-engine', 'widget/revenue-trend'),
             grid_options: { w: 6, h: 10, minW: 5, minH: 9 },
             category: 'Analytics',
             default: true,
@@ -113,7 +113,7 @@ export function registerWidgets(widgetService) {
             name: 'Top Products',
             description: 'Best-selling products by revenue.',
             icon: 'ranking-star',
-            component: new ExtensionComponent('@gridx/storefront-engine', 'widget/top-products'),
+            component: new ExtensionComponent('@fleetbase/storefront-engine', 'widget/top-products'),
             grid_options: { w: 6, h: 10, minW: 5, minH: 9 },
             category: 'Analytics',
             default: true,
@@ -123,7 +123,7 @@ export function registerWidgets(widgetService) {
             name: 'Storefront Orders',
             description: 'Recent Storefront orders.',
             icon: 'bag-shopping',
-            component: new ExtensionComponent('@gridx/storefront-engine', 'widget/orders'),
+            component: new ExtensionComponent('@fleetbase/storefront-engine', 'widget/orders'),
             grid_options: { w: 12, h: 11, minW: 8, minH: 8 },
             options: { wrapperClass: 'bordered-classic' },
             category: 'Operations',
@@ -134,7 +134,7 @@ export function registerWidgets(widgetService) {
             name: 'Customer Insights',
             description: 'New and returning customer mix.',
             icon: 'chart-pie',
-            component: new ExtensionComponent('@gridx/storefront-engine', 'widget/customer-insights'),
+            component: new ExtensionComponent('@fleetbase/storefront-engine', 'widget/customer-insights'),
             grid_options: { w: 6, h: 9, minW: 5, minH: 8 },
             category: 'Analytics',
             default: true,
@@ -144,7 +144,7 @@ export function registerWidgets(widgetService) {
             name: 'Order Status Mix',
             description: 'Distribution of Storefront orders by status.',
             icon: 'chart-column',
-            component: new ExtensionComponent('@gridx/storefront-engine', 'widget/orders-by-status'),
+            component: new ExtensionComponent('@fleetbase/storefront-engine', 'widget/orders-by-status'),
             grid_options: { w: 6, h: 9, minW: 5, minH: 8 },
             category: 'Analytics',
             default: true,
@@ -154,7 +154,7 @@ export function registerWidgets(widgetService) {
             name: 'Storefront Metrics (Legacy)',
             description: 'Legacy Storefront order, customer, store, and earnings metrics.',
             icon: 'chart-line',
-            component: new ExtensionComponent('@gridx/storefront-engine', 'widget/storefront-metrics'),
+            component: new ExtensionComponent('@fleetbase/storefront-engine', 'widget/storefront-metrics'),
             grid_options: { w: 12, h: 4, minW: 8, minH: 4 },
             category: 'Legacy',
             default: false,
@@ -164,7 +164,7 @@ export function registerWidgets(widgetService) {
             name: 'Storefront Customers',
             description: 'Recent Storefront customers.',
             icon: 'users',
-            component: new ExtensionComponent('@gridx/storefront-engine', 'widget/customers'),
+            component: new ExtensionComponent('@fleetbase/storefront-engine', 'widget/customers'),
             grid_options: { w: 12, h: 11, minW: 8, minH: 8 },
             options: { wrapperClass: 'bordered-classic' },
             category: 'Operations',
@@ -229,10 +229,10 @@ export default {
         registerWidgets(widgetService);
 
         // register component to views
-        registryService.registerRenderableComponent('fleet-ops:component:order:details', new ExtensionComponent('@gridx/storefront-engine', 'storefront-order-summary'));
+        registryService.registerRenderableComponent('fleet-ops:component:order:details', new ExtensionComponent('@fleetbase/storefront-engine', 'storefront-order-summary'));
         registryService.registerRenderableComponent(
             'fleet-ops:template:operations:orders:new:entities-input',
-            new ExtensionComponent('@gridx/storefront-engine', 'add-product-as-entity-button')
+            new ExtensionComponent('@fleetbase/storefront-engine', 'add-product-as-entity-button')
         );
     },
 };

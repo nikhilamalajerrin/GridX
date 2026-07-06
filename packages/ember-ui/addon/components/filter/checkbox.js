@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import toBoolean from '@gridx/ember-core/utils/to-boolean';
+import toBoolean from '@fleetbase/ember-core/utils/to-boolean';
 
 export default class FilterCheckboxComponent extends Component {
     @tracked value = false;

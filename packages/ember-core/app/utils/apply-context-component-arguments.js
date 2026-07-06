@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/apply-context-component-arguments';
+export { default } from '@fleetbase/ember-core/utils/apply-context-component-arguments';

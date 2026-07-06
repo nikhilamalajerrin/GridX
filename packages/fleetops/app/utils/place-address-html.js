@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/utils/place-address-html';
+export { default } from '@fleetbase/fleetops-engine/utils/place-address-html';

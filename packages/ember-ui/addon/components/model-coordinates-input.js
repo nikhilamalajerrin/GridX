@@ -5,7 +5,7 @@ import { action } from '@ember/object';
 import { later } from '@ember/runloop';
 import { debug } from '@ember/debug';
 import { task } from 'ember-concurrency';
-import { Point } from '@gridx/fleetops-data/utils/geojson';
+import { Point } from '@fleetbase/fleetops-data/utils/geojson';
 
 export default class ModelCoordinatesInputComponent extends Component {
     @service fetch;

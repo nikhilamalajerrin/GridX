@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/template-builder/properties-panel/field';
+export { default } from '@fleetbase/ember-ui/components/template-builder/properties-panel/field';

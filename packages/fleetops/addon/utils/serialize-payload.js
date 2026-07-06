@@ -1,5 +1,5 @@
-import serializeModel from '@gridx/ember-core/utils/serialize-model';
-import serializeArray from '@gridx/ember-core/utils/serialize-model-array';
+import serializeModel from '@fleetbase/ember-core/utils/serialize-model';
+import serializeArray from '@fleetbase/ember-core/utils/serialize-model-array';
 
 export default function serializePayload(payload) {
     const serialized = {

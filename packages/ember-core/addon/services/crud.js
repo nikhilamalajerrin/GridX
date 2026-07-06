@@ -6,7 +6,7 @@ import { dasherize } from '@ember/string';
 import { later } from '@ember/runloop';
 import { pluralize } from 'ember-inflector';
 import { format as formatDate } from 'date-fns';
-import smartHumanize from '@gridx/ember-ui/utils/smart-humanize';
+import smartHumanize from '@fleetbase/ember-ui/utils/smart-humanize';
 import getModelName from '../utils/get-model-name';
 import getWithDefault from '../utils/get-with-default';
 import first from '../utils/first';

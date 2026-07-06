@@ -63,7 +63,7 @@ composer require gridx/pallet-api
 Install the Ember.js Engine/Addon:
 
 ```bash
-pnpm install @gridx/pallet-engine
+pnpm install @fleetbase/pallet-engine
 ```
 
 ## Storefront Inventory Integration

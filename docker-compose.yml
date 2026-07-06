@@ -98,6 +98,7 @@ services:
     volumes:
       - ./api/.env:/fleetbase/api/.env
       - ./api/storage/app:/fleetbase/api/storage/app
+      - ./api/config/fleetbase.php:/fleetbase/api/config/fleetbase.php
     environment:
       ENVIRONMENT: development
       DATABASE_URL: "mysql://root@database/gridx"

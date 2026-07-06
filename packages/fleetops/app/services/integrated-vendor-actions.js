@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/services/integrated-vendor-actions';
+export { default } from '@fleetbase/fleetops-engine/services/integrated-vendor-actions';

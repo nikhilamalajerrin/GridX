@@ -3,8 +3,8 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { task } from 'ember-concurrency';
-import getCurrency from '@gridx/ember-ui/utils/get-currency';
-import formatMoney from '@gridx/ember-accounting/utils/format-money';
+import getCurrency from '@fleetbase/ember-ui/utils/get-currency';
+import formatMoney from '@fleetbase/ember-accounting/utils/format-money';
 
 const PERIODS = ['7d', '30d', '90d'];
 

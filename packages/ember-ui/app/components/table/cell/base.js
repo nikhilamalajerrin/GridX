@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/table/cell/base';
+export { default } from '@fleetbase/ember-ui/components/table/cell/base';

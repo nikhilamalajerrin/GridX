@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/services/language';
+export { default } from '@fleetbase/ember-core/services/language';

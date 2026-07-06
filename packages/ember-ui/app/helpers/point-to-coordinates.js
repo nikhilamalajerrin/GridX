@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/point-to-coordinates';
+export { default } from '@fleetbase/ember-ui/helpers/point-to-coordinates';

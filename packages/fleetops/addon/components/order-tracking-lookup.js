@@ -7,9 +7,9 @@ import { getOwner } from '@ember/application';
 import { later } from '@ember/runloop';
 import { debug } from '@ember/debug';
 import { task } from 'ember-concurrency';
-import { OSRMv1, Control as RoutingControl } from '@gridx/leaflet-routing-machine';
-import getRoutingHost from '@gridx/ember-core/utils/get-routing-host';
-import engineService from '@gridx/ember-core/decorators/engine-service';
+import { OSRMv1, Control as RoutingControl } from '@fleetbase/leaflet-routing-machine';
+import getRoutingHost from '@fleetbase/ember-core/utils/get-routing-host';
+import engineService from '@fleetbase/ember-core/decorators/engine-service';
 
 export default class OrderTrackingLookupComponent extends Component {
     @service urlSearchParams;
@@ -18,8 +18,8 @@ export default class OrderTrackingLookupComponent extends Component {
     @service socket;
     @service currentUser;
     @service universe;
-    @engineService('@gridx/fleetops-engine') location;
-    @engineService('@gridx/fleetops-engine') movementTracker;
+    @engineService('@fleetbase/fleetops-engine') location;
+    @engineService('@fleetbase/fleetops-engine') movementTracker;
     @tracked trackingNumber;
     @tracked order;
     @tracked zoom = 12;

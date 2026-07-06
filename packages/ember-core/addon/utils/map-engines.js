@@ -16,8 +16,8 @@ export function routeNameFromExtension(extension) {
     const mountPath = getExtensionMountPath(extension.name);
     let route = mountPath;
 
-    if (extension.gridx && extension.gridx.route) {
-        route = extension.gridx.route;
+    if (extension.fleetbase && extension.fleetbase.route) {
+        route = extension.fleetbase.route;
     }
 
     return dasherize(route);

@@ -1,1 +1,1 @@
-export { default } from '@gridx/iam-engine/controllers/roles/index';
+export { default } from '@fleetbase/iam-engine/controllers/roles/index';

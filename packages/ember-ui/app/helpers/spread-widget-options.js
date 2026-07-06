@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/spread-widget-options';
+export { default } from '@fleetbase/ember-ui/helpers/spread-widget-options';

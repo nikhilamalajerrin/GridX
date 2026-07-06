@@ -1,1 +1,1 @@
-export { default } from '@gridx/registry-bridge-engine/components/extension-pending-publish-viewer';
+export { default } from '@fleetbase/registry-bridge-engine/components/extension-pending-publish-viewer';

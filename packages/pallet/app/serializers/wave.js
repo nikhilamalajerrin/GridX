@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/serializers/wave';
+export { default } from '@fleetbase/pallet-engine/serializers/wave';

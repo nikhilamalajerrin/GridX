@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/bulk-search-dropdown';
+export { default } from '@fleetbase/ember-ui/components/bulk-search-dropdown';

@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 import { isBlank } from '@ember/utils';
 import { action, set } from '@ember/object';
 import { timeout, task } from 'ember-concurrency';
-import contextComponentCallback from '@gridx/ember-core/utils/context-component-callback';
+import contextComponentCallback from '@fleetbase/ember-core/utils/context-component-callback';
 
 export default class FleetPanelDriverListingComponent extends Component {
     @service store;

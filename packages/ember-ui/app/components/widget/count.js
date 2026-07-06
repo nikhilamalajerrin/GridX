@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/widget/count';
+export { default } from '@fleetbase/ember-ui/components/widget/count';

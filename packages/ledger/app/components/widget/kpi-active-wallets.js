@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/components/widget/kpi-active-wallets';
+export { default } from '@fleetbase/ledger-engine/components/widget/kpi-active-wallets';

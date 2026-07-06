@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/components/widget/so-status';
+export { default } from '@fleetbase/pallet-engine/components/widget/so-status';

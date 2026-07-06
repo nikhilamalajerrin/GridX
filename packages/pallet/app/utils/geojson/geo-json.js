@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/utils/geojson/geo-json';
+export { default } from '@fleetbase/pallet-engine/utils/geojson/geo-json';

@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { task } from 'ember-concurrency';
-import formatCurrency from '@gridx/ember-ui/utils/format-currency';
+import formatCurrency from '@fleetbase/ember-ui/utils/format-currency';
 
 export default class WidgetCashFlowSummaryComponent extends Component {
     @service fetch;

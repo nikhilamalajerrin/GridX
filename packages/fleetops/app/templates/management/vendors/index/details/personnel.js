@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/templates/management/vendors/index/details/personnel';
+export { default } from '@fleetbase/fleetops-engine/templates/management/vendors/index/details/personnel';

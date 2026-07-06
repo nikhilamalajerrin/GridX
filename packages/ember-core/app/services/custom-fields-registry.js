@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/services/custom-fields-registry';
+export { default } from '@fleetbase/ember-core/services/custom-fields-registry';

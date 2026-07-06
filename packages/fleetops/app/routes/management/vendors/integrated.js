@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/routes/management/vendors/integrated';
+export { default } from '@fleetbase/fleetops-engine/routes/management/vendors/integrated';

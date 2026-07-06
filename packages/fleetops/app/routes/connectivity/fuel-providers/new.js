@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/routes/connectivity/fuel-providers/new';
+export { default } from '@fleetbase/fleetops-engine/routes/connectivity/fuel-providers/new';

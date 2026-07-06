@@ -1,1 +1,1 @@
-export * from '@gridx/fleetops-engine/utils/live-map-card-content';
+export * from '@fleetbase/fleetops-engine/utils/live-map-card-content';

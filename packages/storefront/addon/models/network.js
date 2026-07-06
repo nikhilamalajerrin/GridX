@@ -1,7 +1,7 @@
 import Model, { attr, hasMany, belongsTo } from '@ember-data/model';
 import { format, formatDistanceToNow } from 'date-fns';
 import { getOwner } from '@ember/application';
-import isEmail from '@gridx/console/utils/is-email';
+import isEmail from '@fleetbase/console/utils/is-email';
 import Store from './store';
 
 export default class NetworkModel extends Model {

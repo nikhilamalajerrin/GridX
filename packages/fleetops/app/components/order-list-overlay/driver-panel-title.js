@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/order-list-overlay/driver-panel-title';
+export { default } from '@fleetbase/fleetops-engine/components/order-list-overlay/driver-panel-title';

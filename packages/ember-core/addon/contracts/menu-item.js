@@ -26,13 +26,13 @@ import isObject from '../utils/is-object';
  *   route: 'console.fleet-ops',
  *   icon: 'route',
  *   priority: 0,
- *   component: { engine: '@gridx/fleetops-engine', path: 'components/admin/navigator-app' }
+ *   component: { engine: '@fleetbase/fleetops-engine', path: 'components/admin/navigator-app' }
  * })
  *
  * @example
  * // Menu item with component
  * new MenuItem('Settings')
- *   .withComponent(new ExtensionComponent('@gridx/my-engine', 'components/settings'))
+ *   .withComponent(new ExtensionComponent('@fleetbase/my-engine', 'components/settings'))
  *   .onClick((menuItem, router) => {
  *     router.transitionTo('virtual', menuItem.slug);
  *   })

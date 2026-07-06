@@ -3,9 +3,9 @@ import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { underscore } from '@ember/string';
-import isObject from '@gridx/ember-core/utils/is-object';
-import isModel from '@gridx/ember-core/utils/is-model';
-import getModelName from '@gridx/ember-core/utils/get-model-name';
+import isObject from '@fleetbase/ember-core/utils/is-object';
+import isModel from '@fleetbase/ember-core/utils/is-model';
+import getModelName from '@fleetbase/ember-core/utils/get-model-name';
 import getCustomFieldTypeMap from '../../utils/get-custom-field-type-map';
 
 export default class CustomFieldInputComponent extends Component {

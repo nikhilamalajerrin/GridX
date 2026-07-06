@@ -2,7 +2,7 @@ import BaseLayer from 'ember-leaflet/components/base-layer';
 import { computed } from '@ember/object';
 import { scheduleOnce } from '@ember/runloop';
 import { classify, camelize } from '@ember/string';
-import getWithDefault from '@gridx/ember-core/utils/get-with-default';
+import getWithDefault from '@fleetbase/ember-core/utils/get-with-default';
 
 const L = window.leaflet || window.L;
 export default class LeafletDrawControl extends BaseLayer {

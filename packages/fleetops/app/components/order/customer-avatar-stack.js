@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/order/customer-avatar-stack';
+export { default } from '@fleetbase/fleetops-engine/components/order/customer-avatar-stack';

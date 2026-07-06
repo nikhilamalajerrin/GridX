@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/is-uuid';
+export { default } from '@fleetbase/ember-core/utils/is-uuid';

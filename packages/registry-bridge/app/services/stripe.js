@@ -1,1 +1,1 @@
-export { default } from '@gridx/registry-bridge-engine/services/stripe';
+export { default } from '@fleetbase/registry-bridge-engine/services/stripe';

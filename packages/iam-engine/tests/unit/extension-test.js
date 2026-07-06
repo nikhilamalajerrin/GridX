@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { registerWidgets } from '@gridx/iam-engine/extension';
+import { registerWidgets } from '@fleetbase/iam-engine/extension';
 
 module('Unit | Extension', function () {
     test('registers the dedicated IAM dashboard widget suite', function (assert) {

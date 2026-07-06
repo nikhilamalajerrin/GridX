@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/components/modals/add-store-to-category';
+export { default } from '@fleetbase/storefront-engine/components/modals/add-store-to-category';

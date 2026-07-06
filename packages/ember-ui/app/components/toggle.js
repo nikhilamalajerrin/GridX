@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/toggle';
+export { default } from '@fleetbase/ember-ui/components/toggle';

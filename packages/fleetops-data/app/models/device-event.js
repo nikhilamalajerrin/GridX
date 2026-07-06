@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-data/models/device-event';
+export { default } from '@fleetbase/fleetops-data/models/device-event';

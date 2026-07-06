@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { isArray } from '@ember/array';
 import { isNone } from '@ember/utils';
-import getWithDefault from '@gridx/ember-core/utils/get-with-default';
+import getWithDefault from '@fleetbase/ember-core/utils/get-with-default';
 
 export default class ActivityLogicBuilderComponent extends Component {
     @service intl;

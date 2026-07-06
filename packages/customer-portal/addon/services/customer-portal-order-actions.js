@@ -1,4 +1,4 @@
-import ResourceActionService, { service } from '@gridx/ember-core/services/resource-action';
+import ResourceActionService, { service } from '@fleetbase/ember-core/services/resource-action';
 import { restartableTask, task, timeout } from 'ember-concurrency';
 import { valueFor } from '../utils/model-access';
 

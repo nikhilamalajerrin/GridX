@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/route-optimization-wizard-panel';
+export { default } from '@fleetbase/fleetops-engine/components/route-optimization-wizard-panel';

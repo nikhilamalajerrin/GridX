@@ -8,10 +8,10 @@ import { isArray } from '@ember/array';
 import { next } from '@ember/runloop';
 import { task } from 'ember-concurrency';
 import lowercase from 'ember-cli-string-helpers/utils/lowercase';
-import generateUUID from '@gridx/ember-core/utils/generate-uuid';
-import inlineTask from '@gridx/ember-core/utils/inline-task';
+import generateUUID from '@fleetbase/ember-core/utils/generate-uuid';
+import inlineTask from '@fleetbase/ember-core/utils/inline-task';
 import createFlowActivity from '../../utils/create-flow-activity';
-import contextComponentCallback from '@gridx/ember-core/utils/context-component-callback';
+import contextComponentCallback from '@fleetbase/ember-core/utils/context-component-callback';
 import normalizeOrderConfigFlow, { getOrderConfigFlowRootCode } from '../../utils/normalize-order-config-flow';
 
 /**

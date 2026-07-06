@@ -1,1 +1,1 @@
-export { default } from '@gridx/dev-engine/routes/webhooks/index';
+export { default } from '@fleetbase/dev-engine/routes/webhooks/index';

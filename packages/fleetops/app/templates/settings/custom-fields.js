@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/templates/settings/custom-fields';
+export { default } from '@fleetbase/fleetops-engine/templates/settings/custom-fields';

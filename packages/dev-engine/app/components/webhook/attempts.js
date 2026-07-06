@@ -1,1 +1,1 @@
-export { default } from '@gridx/dev-engine/components/webhook/attempts';
+export { default } from '@fleetbase/dev-engine/components/webhook/attempts';

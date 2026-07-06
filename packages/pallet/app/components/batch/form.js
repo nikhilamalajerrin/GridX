@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/components/batch/form';
+export { default } from '@fleetbase/pallet-engine/components/batch/form';

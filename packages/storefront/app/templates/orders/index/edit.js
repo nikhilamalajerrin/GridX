@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/templates/orders/index/edit';
+export { default } from '@fleetbase/storefront-engine/templates/orders/index/edit';

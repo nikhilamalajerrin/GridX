@@ -1,5 +1,5 @@
-import config from '@gridx/console/config/environment';
-import toBoolean from '@gridx/ember-core/utils/to-boolean';
+import config from '@fleetbase/console/config/environment';
+import toBoolean from '@fleetbase/ember-core/utils/to-boolean';
 import { set } from '@ember/object';
 import { debug } from '@ember/debug';
 
@@ -166,12 +166,12 @@ export default async function loadRuntimeConfig() {
     // Cache miss - fetch from server
     try {
         const startTime = performance.now();
-        const response = await fetch('/gridx.config.json', {
+        const response = await fetch('/fleetbase.config.json', {
             cache: 'default', // Use browser cache if available
         });
 
         if (!response.ok) {
-            debug('[Runtime Config] No gridx.config.json found, using built-in config defaults');
+            debug('[Runtime Config] No fleetbase.config.json found, using built-in config defaults');
             return;
         }
 

@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/routes/operations/reservations';
+export { default } from '@fleetbase/pallet-engine/routes/operations/reservations';

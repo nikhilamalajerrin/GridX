@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/routes/management/fleets/index/details/vehicles';
+export { default } from '@fleetbase/fleetops-engine/routes/management/fleets/index/details/vehicles';

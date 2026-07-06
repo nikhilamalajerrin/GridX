@@ -7,7 +7,7 @@ import { isArray } from '@ember/array';
 import { guidFor } from '@ember/object/internals';
 import { htmlSafe } from '@ember/template';
 import { startOfWeek, endOfWeek, format } from 'date-fns';
-import getModelName from '@gridx/ember-core/utils/get-model-name';
+import getModelName from '@fleetbase/ember-core/utils/get-model-name';
 
 export default class PositionsReplayComponent extends Component {
     @service store;

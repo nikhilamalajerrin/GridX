@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/templates/catalog/suppliers/index/new';
+export { default } from '@fleetbase/pallet-engine/templates/catalog/suppliers/index/new';

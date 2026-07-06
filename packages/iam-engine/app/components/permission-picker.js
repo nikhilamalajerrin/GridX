@@ -1,1 +1,1 @@
-export { default } from '@gridx/iam-engine/components/permission-picker';
+export { default } from '@fleetbase/iam-engine/components/permission-picker';

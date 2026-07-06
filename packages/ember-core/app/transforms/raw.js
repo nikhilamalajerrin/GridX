@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/transforms/raw';
+export { default } from '@fleetbase/ember-core/transforms/raw';

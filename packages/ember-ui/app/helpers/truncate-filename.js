@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/truncate-filename';
+export { default } from '@fleetbase/ember-ui/helpers/truncate-filename';

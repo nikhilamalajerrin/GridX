@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/modals/entity-meta-field-prompt';
+export { default } from '@fleetbase/fleetops-engine/components/modals/entity-meta-field-prompt';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/dev-engine/components/modals/webhook-form';
+export { default } from '@fleetbase/dev-engine/components/modals/webhook-form';

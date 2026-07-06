@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/decorators/legacy-fetch-from';
+export { default } from '@fleetbase/ember-core/decorators/legacy-fetch-from';

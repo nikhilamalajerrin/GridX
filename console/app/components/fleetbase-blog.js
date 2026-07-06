@@ -52,7 +52,7 @@ export default class GridXBlogComponent extends Component {
         } else {
             // Fetch new data
             try {
-                const data = yield this.fetch.get('lookup/gridx-blog');
+                const data = yield this.fetch.get('lookup/fleetbase-blog');
                 this.posts = isArray(data) ? data : [];
                 if (data) {
                     this.localCache.set('gridx-blog-data', data);

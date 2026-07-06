@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/services/ledger-dashboard';
+export { default } from '@fleetbase/ledger-engine/services/ledger-dashboard';

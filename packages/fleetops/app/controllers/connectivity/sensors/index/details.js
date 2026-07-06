@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/controllers/connectivity/sensors/index/details';
+export { default } from '@fleetbase/fleetops-engine/controllers/connectivity/sensors/index/details';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/utils/get-url-param';
+export { default } from '@fleetbase/ember-ui/utils/get-url-param';

@@ -3,9 +3,9 @@ import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { later, cancel } from '@ember/runloop';
 
-const NOT_CONFIGURED_ERROR = 'gridx_not_configured';
-const INSTALL_CHANNEL = 'gridx.install';
-const INSTALLED_EVENT = 'gridx.installed';
+const NOT_CONFIGURED_ERROR = 'fleetbase_not_configured';
+const INSTALL_CHANNEL = 'fleetbase.install';
+const INSTALLED_EVENT = 'fleetbase.installed';
 
 export default class InstallationService extends Service {
     @service fetch;

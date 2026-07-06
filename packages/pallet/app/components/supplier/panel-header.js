@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/components/supplier/panel-header';
+export { default } from '@fleetbase/pallet-engine/components/supplier/panel-header';

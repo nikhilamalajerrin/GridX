@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/services/session';
+export { default } from '@fleetbase/ember-core/services/session';

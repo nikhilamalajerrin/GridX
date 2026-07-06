@@ -3,7 +3,7 @@
     "version": "0.4.16",
     "description": "Headless Commerce & Marketplace Extension for GridX",
     "keywords": [
-        "gridx-extension",
+        "fleetbase-extension",
         "storefront",
         "headless commerce",
         "marketplace",
@@ -61,7 +61,7 @@
                 "GridX\\Storefront\\Providers\\EventServiceProvider"
             ]
         },
-        "gridx": {
+        "fleetbase": {
             "create-database": "storefront",
             "order-config": "GridX\\Storefront\\Support\\OrderConfig",
             "sandbox-migrations": false

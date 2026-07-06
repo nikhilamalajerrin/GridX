@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/routes/promotions';
+export { default } from '@fleetbase/storefront-engine/routes/promotions';

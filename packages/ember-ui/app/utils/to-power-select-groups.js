@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/utils/to-power-select-groups';
+export { default } from '@fleetbase/ember-ui/utils/to-power-select-groups';

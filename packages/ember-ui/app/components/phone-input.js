@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/phone-input';
+export { default } from '@fleetbase/ember-ui/components/phone-input';

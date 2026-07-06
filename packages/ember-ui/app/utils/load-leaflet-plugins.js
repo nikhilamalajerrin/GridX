@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/utils/load-leaflet-plugins';
+export { default } from '@fleetbase/ember-ui/utils/load-leaflet-plugins';

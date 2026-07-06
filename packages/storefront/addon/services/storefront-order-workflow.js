@@ -1,5 +1,5 @@
 import Service from '@ember/service';
-import toBoolean from '@gridx/ember-core/utils/to-boolean';
+import toBoolean from '@fleetbase/ember-core/utils/to-boolean';
 
 const DEFAULT_STOREFRONT_CONFIG_NAMESPACE = 'system:order-config:storefront';
 const TERMINAL_STATUSES = ['canceled', 'cancel', 'order_canceled', 'completed', 'picked_up'];

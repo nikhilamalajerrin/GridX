@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { debug } from '@ember/debug';
 import intlTelInput from 'intl-tel-input';
-import lookupUserIp from '@gridx/ember-core/utils/lookup-user-ip';
+import lookupUserIp from '@fleetbase/ember-core/utils/lookup-user-ip';
 
 export default class PhoneInputComponent extends Component {
     @service fetch;

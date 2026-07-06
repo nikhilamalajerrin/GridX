@@ -6,7 +6,7 @@ import { isArray } from '@ember/array';
 import { isBlank } from '@ember/utils';
 import { getOwner } from '@ember/application';
 import { format as formatDate, formatDistanceToNow, isValid as isValidDate } from 'date-fns';
-import isNotModel from '@gridx/ember-core/utils/is-not-model';
+import isNotModel from '@fleetbase/ember-core/utils/is-not-model';
 import shouldNotLoadRelation from '../utils/should-not-load-relation';
 
 export default class OrderModel extends Model {

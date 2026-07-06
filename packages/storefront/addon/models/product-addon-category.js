@@ -1,6 +1,6 @@
 import Model, { attr, belongsTo } from '@ember-data/model';
 import { format, formatDistanceToNow } from 'date-fns';
-import getWithDefault from '@gridx/ember-core/utils/get-with-default';
+import getWithDefault from '@fleetbase/ember-core/utils/get-with-default';
 
 export default class ProductAddonCategoryModel extends Model {
     /** @ids */

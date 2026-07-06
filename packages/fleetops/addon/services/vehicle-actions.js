@@ -1,5 +1,5 @@
-import ResourceActionService, { inject as service } from '@gridx/ember-core/services/resource-action';
-import leafletIcon from '@gridx/ember-core/utils/leaflet-icon';
+import ResourceActionService, { inject as service } from '@fleetbase/ember-core/services/resource-action';
+import leafletIcon from '@fleetbase/ember-core/utils/leaflet-icon';
 import config from 'ember-get-config';
 import { action } from '@ember/object';
 import { isArray } from '@ember/array';

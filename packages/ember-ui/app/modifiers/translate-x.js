@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/modifiers/translate-x';
+export { default } from '@fleetbase/ember-ui/modifiers/translate-x';

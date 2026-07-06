@@ -1,5 +1,5 @@
 import EmberRouter from '@ember/routing/router';
-import config from '@gridx/console/config/environment';
+import config from '@fleetbase/console/config/environment';
 
 export default class Router extends EmberRouter {
     location = config.locationType;

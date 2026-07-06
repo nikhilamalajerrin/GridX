@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { task } from 'ember-concurrency';
-import { issueCategories, issuePriorities } from '@gridx/fleetops-engine/utils/fleet-ops-options';
+import { issueCategories, issuePriorities } from '@fleetbase/fleetops-engine/utils/fleet-ops-options';
 
 export default class PortalSupportNewController extends Controller {
     @service fetch;

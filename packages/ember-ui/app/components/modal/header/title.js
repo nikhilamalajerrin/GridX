@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/modal/header/title';
+export { default } from '@fleetbase/ember-ui/components/modal/header/title';

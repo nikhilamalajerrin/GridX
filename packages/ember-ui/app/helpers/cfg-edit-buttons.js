@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/cfg-edit-buttons';
+export { default } from '@fleetbase/ember-ui/helpers/cfg-edit-buttons';

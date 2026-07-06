@@ -1,4 +1,4 @@
-import removeBootLoader from '@gridx/console/utils/remove-boot-loader';
+import removeBootLoader from '@fleetbase/console/utils/remove-boot-loader';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | remove-boot-loader', function () {

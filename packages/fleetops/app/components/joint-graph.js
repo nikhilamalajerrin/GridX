@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/joint-graph';
+export { default } from '@fleetbase/fleetops-engine/components/joint-graph';

@@ -1,5 +1,5 @@
 import { action } from '@ember/object';
-import BaseController from '@gridx/storefront-engine/controllers/base-controller';
+import BaseController from '@fleetbase/storefront-engine/controllers/base-controller';
 import { tracked } from '@glimmer/tracking';
 
 export default class CustomersIndexViewController extends BaseController {

@@ -1,5 +1,5 @@
 import Model, { attr, belongsTo } from '@ember-data/model';
-import numbersOnly from '@gridx/ember-core/utils/numbers-only';
+import numbersOnly from '@fleetbase/ember-core/utils/numbers-only';
 
 /**
  * LedgerInvoiceItem model.

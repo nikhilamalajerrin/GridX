@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/utils/setup-customer-portal';
+export { default } from '@fleetbase/fleetops-engine/utils/setup-customer-portal';

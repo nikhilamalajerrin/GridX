@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import isEmptyObject from '@gridx/ember-core/utils/is-empty-object';
+import isEmptyObject from '@fleetbase/ember-core/utils/is-empty-object';
 
 export default class MetadataViewerComponent extends Component {
     @tracked displayRaw = false;

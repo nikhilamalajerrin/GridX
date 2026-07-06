@@ -3,9 +3,9 @@ import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { task } from 'ember-concurrency';
-import getWithDefault from '@gridx/ember-core/utils/get-with-default';
-import contextComponentCallback from '@gridx/ember-core/utils/context-component-callback';
-import applyContextComponentArguments from '@gridx/ember-core/utils/apply-context-component-arguments';
+import getWithDefault from '@fleetbase/ember-core/utils/get-with-default';
+import contextComponentCallback from '@fleetbase/ember-core/utils/context-component-callback';
+import applyContextComponentArguments from '@fleetbase/ember-core/utils/apply-context-component-arguments';
 
 export default class ProductFormPanelComponent extends Component {
     /**

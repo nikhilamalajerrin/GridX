@@ -1,4 +1,4 @@
-import { Widget } from '@gridx/ember-core/contracts';
+import { Widget } from '@fleetbase/ember-core/contracts';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { debug } from '@ember/debug';
 
@@ -31,7 +31,7 @@ export function initialize(appInstance) {
                 name: 'GridX Blog',
                 description: 'Lists latest news and events from the GridX official team.',
                 icon: 'newspaper',
-                component: 'gridx-blog',
+                component: 'fleetbase-blog',
                 grid_options: { w: 7, h: 9, minW: 7, minH: 9 },
                 default: true,
             }),

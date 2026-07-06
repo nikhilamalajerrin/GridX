@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/services/template-builder';
+export { default } from '@fleetbase/ember-ui/services/template-builder';

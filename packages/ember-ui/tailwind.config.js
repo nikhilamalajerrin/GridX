@@ -7,10 +7,10 @@ module.exports = {
         './addon/**/*.css',
         // All GridX packages (both pnpm symlinked and normal installs)
         './node_modules/@gridx+*/**/addon/**/*.{hbs,js}',
-        './node_modules/@gridx/**/addon/**/*.{hbs,js}',
+        './node_modules/@fleetbase/**/addon/**/*.{hbs,js}',
         // Explicit ember-ui paths
-        './node_modules/@gridx/ember-ui/addon/templates/**/*.{hbs,js}',
-        './node_modules/@gridx/ember-ui/addon/components/**/*.{hbs,js}',
+        './node_modules/@fleetbase/ember-ui/addon/templates/**/*.{hbs,js}',
+        './node_modules/@fleetbase/ember-ui/addon/components/**/*.{hbs,js}',
         // Explicit support for .pnpm paths (for unhoisted deps)
         './node_modules/.pnpm/@gridx+*/**/addon/**/*.{hbs,js}',
         // Engine packages

@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import isModel from '@gridx/ember-core/utils/is-model';
+import isModel from '@fleetbase/ember-core/utils/is-model';
 
 export default class OperationsOrderConfigController extends Controller {
     @tracked tab = 'details';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/apply-column-filters';
+export { default } from '@fleetbase/ember-core/utils/apply-column-filters';

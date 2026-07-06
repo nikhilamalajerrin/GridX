@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/aside-item-scroller';
+export { default } from '@fleetbase/ember-ui/components/aside-item-scroller';

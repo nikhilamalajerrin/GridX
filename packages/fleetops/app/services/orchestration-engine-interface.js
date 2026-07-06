@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/services/orchestration-engine-interface';
+export { default } from '@fleetbase/fleetops-engine/services/orchestration-engine-interface';

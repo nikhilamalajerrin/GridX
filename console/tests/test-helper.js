@@ -1,5 +1,5 @@
-import Application from '@gridx/console/app';
-import config from '@gridx/console/config/environment';
+import Application from '@fleetbase/console/app';
+import config from '@fleetbase/console/config/environment';
 import * as QUnit from 'qunit';
 import { setApplication } from '@ember/test-helpers';
 import { setup } from 'qunit-dom';

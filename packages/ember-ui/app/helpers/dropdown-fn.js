@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/dropdown-fn';
+export { default } from '@fleetbase/ember-ui/helpers/dropdown-fn';

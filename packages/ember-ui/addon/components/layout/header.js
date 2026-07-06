@@ -100,7 +100,7 @@ export default class LayoutHeaderComponent extends Component {
         ];
 
         // If registry bridge is booted add to static items
-        if (this.hasExtension('@gridx/registry-bridge-engine')) {
+        if (this.hasExtension('@fleetbase/registry-bridge-engine')) {
             staticMenuItems.pushObject({
                 id: 'explore-extensions',
                 route: 'console.extensions',
@@ -214,7 +214,7 @@ export default class LayoutHeaderComponent extends Component {
         ];
 
         // Add developer menu item if booted
-        if (this.hasExtension('@gridx/dev-engine')) {
+        if (this.hasExtension('@fleetbase/dev-engine')) {
             menuItems.pushObject({
                 id: 'developers-user-nav-item',
                 wrapperClass: 'developers-user-nav-item',

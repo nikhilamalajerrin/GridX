@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'dummy/tests/helpers';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import EquipmentFormComponent from '@gridx/fleetops-engine/components/equipment/form';
+import EquipmentFormComponent from '@fleetbase/fleetops-engine/components/equipment/form';
 
 module('Integration | Component | equipment/form', function (hooks) {
     setupRenderingTest(hooks);

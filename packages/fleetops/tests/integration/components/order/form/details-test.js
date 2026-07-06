@@ -3,7 +3,7 @@ import Service from '@ember/service';
 import { setupRenderingTest } from 'dummy/tests/helpers';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import OrderFormDetailsComponent from '@gridx/fleetops-engine/components/order/form/details';
+import OrderFormDetailsComponent from '@fleetbase/fleetops-engine/components/order/form/details';
 
 module('Integration | Component | order/form/details', function (hooks) {
     setupRenderingTest(hooks);

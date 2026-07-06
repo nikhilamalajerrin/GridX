@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/auto-serialize';
+export { default } from '@fleetbase/ember-core/utils/auto-serialize';

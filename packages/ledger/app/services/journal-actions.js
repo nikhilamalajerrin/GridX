@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/services/journal-actions';
+export { default } from '@fleetbase/ledger-engine/services/journal-actions';

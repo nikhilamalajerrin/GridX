@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/controllers/settings/map';
+export { default } from '@fleetbase/fleetops-engine/controllers/settings/map';

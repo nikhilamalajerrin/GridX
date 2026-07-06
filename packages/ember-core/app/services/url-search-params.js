@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/services/url-search-params';
+export { default } from '@fleetbase/ember-core/services/url-search-params';

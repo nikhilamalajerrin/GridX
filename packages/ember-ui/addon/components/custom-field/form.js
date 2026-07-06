@@ -5,7 +5,7 @@ import { action } from '@ember/object';
 import { dasherize, camelize } from '@ember/string';
 import { next } from '@ember/runloop';
 import { task } from 'ember-concurrency';
-import isObject from '@gridx/ember-core/utils/is-object';
+import isObject from '@fleetbase/ember-core/utils/is-object';
 import getCustomFieldTypeMap from '../../utils/get-custom-field-type-map';
 
 export default class CustomFieldFormComponent extends Component {

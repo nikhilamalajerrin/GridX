@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/services/location';
+export { default } from '@fleetbase/fleetops-engine/services/location';

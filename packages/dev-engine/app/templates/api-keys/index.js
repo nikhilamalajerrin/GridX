@@ -1,1 +1,1 @@
-export { default } from '@gridx/dev-engine/templates/api-keys/index';
+export { default } from '@fleetbase/dev-engine/templates/api-keys/index';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/templates/food-trucks/index';
+export { default } from '@fleetbase/storefront-engine/templates/food-trucks/index';

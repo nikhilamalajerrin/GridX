@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/services/getting-started';
+export { default } from '@fleetbase/fleetops-engine/services/getting-started';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/dev-engine/models/api-credential';
+export { default } from '@fleetbase/dev-engine/models/api-credential';

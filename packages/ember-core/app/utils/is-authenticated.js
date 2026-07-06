@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/is-authenticated';
+export { default } from '@fleetbase/ember-core/utils/is-authenticated';

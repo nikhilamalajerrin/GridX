@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/components/stock-adjustment-form-panel';
+export { default } from '@fleetbase/pallet-engine/components/stock-adjustment-form-panel';

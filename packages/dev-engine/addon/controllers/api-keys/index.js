@@ -8,7 +8,7 @@ import { timeout } from 'ember-concurrency';
 import { later } from '@ember/runloop';
 import { task } from 'ember-concurrency-decorators';
 import { format as formatDate } from 'date-fns';
-import getWithDefault from '@gridx/ember-core/utils/get-with-default';
+import getWithDefault from '@fleetbase/ember-core/utils/get-with-default';
 
 export default class ApiKeysIndexController extends Controller {
     @service currentUser;

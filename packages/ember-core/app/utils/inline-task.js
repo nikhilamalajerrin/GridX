@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/inline-task';
+export { default } from '@fleetbase/ember-core/utils/inline-task';

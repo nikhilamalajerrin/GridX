@@ -1,1 +1,1 @@
-export { default } from '@gridx/iam-engine/controllers/application';
+export { default } from '@fleetbase/iam-engine/controllers/application';

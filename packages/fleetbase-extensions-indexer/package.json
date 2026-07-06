@@ -1,18 +1,18 @@
 {
-    "name": "gridx-extensions-indexer",
+    "name": "fleetbase-extensions-indexer",
     "version": "0.0.5",
     "description": "Indexes installed extensions for GridX Console.",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "publish:npm": "npm config set registry https://registry.npmjs.org/ && npm publish",
-        "publish:github": "npm config set '@gridx:registry' https://npm.pkg.github.com/ && npm publish"
+        "publish:github": "npm config set '@fleetbase:registry' https://npm.pkg.github.com/ && npm publish"
     },
     "keywords": [
-        "gridx-extension-indexer",
+        "fleetbase-extension-indexer",
         "gridx"
     ],
-    "repository": "https://github.com/gridx/gridx-extension-indexer",
+    "repository": "https://github.com/gridx/fleetbase-extension-indexer",
     "license": "AGPL-3.0-or-later",
     "author": "GridX Pte Ltd <hello@gridx.io>",
     "dependencies": {

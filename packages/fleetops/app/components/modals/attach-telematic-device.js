@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/modals/attach-telematic-device';
+export { default } from '@fleetbase/fleetops-engine/components/modals/attach-telematic-device';

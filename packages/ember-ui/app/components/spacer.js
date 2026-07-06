@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/spacer';
+export { default } from '@fleetbase/ember-ui/components/spacer';

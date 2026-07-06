@@ -1,6 +1,6 @@
 import Service, { inject as service } from '@ember/service';
 import { action } from '@ember/object';
-import getModelName from '@gridx/ember-core/utils/get-model-name';
+import getModelName from '@fleetbase/ember-core/utils/get-model-name';
 
 export default class ResourceMetadataService extends Service {
     @service modalsManager;

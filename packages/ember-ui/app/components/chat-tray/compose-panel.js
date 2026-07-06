@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/chat-tray/compose-panel';
+export { default } from '@fleetbase/ember-ui/components/chat-tray/compose-panel';

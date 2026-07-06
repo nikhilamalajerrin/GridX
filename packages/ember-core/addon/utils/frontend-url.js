@@ -1,4 +1,4 @@
-import config from '@gridx/console/config/environment';
+import config from '@fleetbase/console/config/environment';
 import { isBlank } from '@ember/utils';
 
 const queryString = (params) =>

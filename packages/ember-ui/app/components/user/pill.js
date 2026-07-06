@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/user/pill';
+export { default } from '@fleetbase/ember-ui/components/user/pill';

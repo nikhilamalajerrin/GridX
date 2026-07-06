@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/generate-slug';
+export { default } from '@fleetbase/ember-core/utils/generate-slug';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/unwrap-coordinates';
+export { default } from '@fleetbase/ember-ui/helpers/unwrap-coordinates';

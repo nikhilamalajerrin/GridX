@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/utils/floating';
+export { default } from '@fleetbase/ember-ui/utils/floating';

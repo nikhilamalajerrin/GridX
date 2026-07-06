@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/timeout';
+export { default } from '@fleetbase/ember-core/utils/timeout';

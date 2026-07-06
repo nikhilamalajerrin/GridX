@@ -3,7 +3,7 @@ import { get, computed } from '@ember/object';
 import { not } from '@ember/object/computed';
 import { format as formatDate, isValid as isValidDate, formatDistanceToNow } from 'date-fns';
 import { getOwner } from '@ember/application';
-import isValidCoordinates from '@gridx/ember-core/utils/is-valid-coordinates';
+import isValidCoordinates from '@fleetbase/ember-core/utils/is-valid-coordinates';
 import config from 'ember-get-config';
 
 export default class VehicleModel extends Model {

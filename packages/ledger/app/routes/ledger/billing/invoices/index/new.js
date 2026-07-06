@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/routes/billing/invoices/index/new';
+export { default } from '@fleetbase/ledger-engine/routes/billing/invoices/index/new';

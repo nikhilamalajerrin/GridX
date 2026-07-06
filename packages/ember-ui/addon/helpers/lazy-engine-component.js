@@ -1,7 +1,7 @@
 import Helper from '@ember/component/helper';
 import { inject as service } from '@ember/service';
 import { assert } from '@ember/debug';
-import { ExtensionComponent } from '@gridx/ember-core/contracts';
+import { ExtensionComponent } from '@fleetbase/ember-core/contracts';
 
 /**
  * Helper that resolves a lazy-loaded engine component for use with {{component}}
@@ -17,7 +17,7 @@ import { ExtensionComponent } from '@gridx/ember-core/contracts';
  * {{component (lazy-engine-component @componentDef) prop1=value1}}
  *
  * @example
- * {{component (lazy-engine-component "#extension-component:@gridx/fleetops-engine:order-panel")}}
+ * {{component (lazy-engine-component "#extension-component:@fleetbase/fleetops-engine:order-panel")}}
  *
  * @example
  * {{#let (lazy-engine-component @menuItem.component) as |Component|}}

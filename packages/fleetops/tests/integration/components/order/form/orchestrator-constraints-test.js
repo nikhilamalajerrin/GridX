@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'dummy/tests/helpers';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import OrderFormOrchestratorConstraintsComponent from '@gridx/fleetops-engine/components/order/form/orchestrator-constraints';
+import OrderFormOrchestratorConstraintsComponent from '@fleetbase/fleetops-engine/components/order/form/orchestrator-constraints';
 
 module('Integration | Component | order/form/orchestrator-constraints', function (hooks) {
     setupRenderingTest(hooks);

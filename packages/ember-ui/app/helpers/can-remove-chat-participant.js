@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/can-remove-chat-participant';
+export { default } from '@fleetbase/ember-ui/helpers/can-remove-chat-participant';

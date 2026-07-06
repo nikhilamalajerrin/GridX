@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
-import { services } from '@gridx/ember-core/exports/services';
-import { hostServices } from '@gridx/ember-core/exports/host-services';
+import { services } from '@fleetbase/ember-core/exports/services';
+import { hostServices } from '@fleetbase/ember-core/exports/host-services';
 
 module('Unit | Exports | services', function () {
     test('it exposes docs-panel to engines', function (assert) {

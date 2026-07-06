@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/routes/accounting/general-ledger';
+export { default } from '@fleetbase/ledger-engine/routes/accounting/general-ledger';

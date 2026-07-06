@@ -1,1 +1,1 @@
-export { default, initialize } from '@gridx/ember-core/initializers/local-storage-adapter';
+export { default, initialize } from '@fleetbase/ember-core/initializers/local-storage-adapter';

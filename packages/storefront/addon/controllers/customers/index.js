@@ -1,6 +1,6 @@
 import { inject as service } from '@ember/service';
 import { isBlank } from '@ember/utils';
-import BaseController from '@gridx/storefront-engine/controllers/base-controller';
+import BaseController from '@fleetbase/storefront-engine/controllers/base-controller';
 import { tracked } from '@glimmer/tracking';
 import { timeout, task } from 'ember-concurrency';
 import { action } from '@ember/object';

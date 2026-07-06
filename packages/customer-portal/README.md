@@ -6,7 +6,7 @@
 
 <p align="center">
     <a href="https://github.com/gridx/customer-portal/blob/main/LICENSE.md"><img src="https://img.shields.io/badge/license-AGPL--3.0--or--later-blue.svg" alt="License"></a>
-    <a href="https://www.npmjs.com/package/@gridx/customer-portal-engine"><img src="https://img.shields.io/npm/v/@gridx/customer-portal-engine.svg" alt="npm package"></a>
+    <a href="https://www.npmjs.com/package/@fleetbase/customer-portal-engine"><img src="https://img.shields.io/npm/v/@fleetbase/customer-portal-engine.svg" alt="npm package"></a>
     <a href="https://packagist.org/packages/gridx/customer-portal-api"><img src="https://img.shields.io/packagist/v/gridx/customer-portal-api.svg" alt="Packagist package"></a>
     <img src="https://img.shields.io/badge/node-%3E%3D22-339933.svg" alt="Node.js >= 22">
     <img src="https://img.shields.io/badge/ember-5.4-E04E39.svg" alt="Ember 5.4">
@@ -50,14 +50,14 @@ tests/      Ember/QUnit tests and dummy app support
 ### Frontend package
 
 ```bash
-@gridx/customer-portal-engine
+@fleetbase/customer-portal-engine
 ```
 
 The Ember engine mounts at the GridX route configured in `package.json`:
 
 ```json
 {
-    "gridx": {
+    "fleetbase": {
         "route": "customer-portal",
         "mount": "root"
     }
@@ -91,7 +91,7 @@ composer require gridx/customer-portal-api
 Install the Ember engine in GridX Console:
 
 ```bash
-pnpm install @gridx/customer-portal-engine
+pnpm install @fleetbase/customer-portal-engine
 ```
 
 The package also depends on GridX shared frontend packages and first-party backend packages, including Core API, FleetOps, and Ledger.

@@ -1,1 +1,1 @@
-export { default } from '@gridx/registry-bridge-engine/components/modals/extension-purchase-form';
+export { default } from '@fleetbase/registry-bridge-engine/components/modals/extension-purchase-form';

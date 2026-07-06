@@ -1,10 +1,10 @@
-import loadRuntimeConfig from '@gridx/console/utils/runtime-config';
+import loadRuntimeConfig from '@fleetbase/console/utils/runtime-config';
 import { debug } from '@ember/debug';
 
 /**
  * Load Runtime Config Initializer
  *
- * Loads runtime configuration from gridx.config.json before the application boots.
+ * Loads runtime configuration from fleetbase.config.json before the application boots.
  * This must run first to ensure all config is available for other initializers.
  *
  * Uses `before` to ensure it runs before any other initializers.

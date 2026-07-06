@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/haversine';
+export { default } from '@fleetbase/ember-core/utils/haversine';

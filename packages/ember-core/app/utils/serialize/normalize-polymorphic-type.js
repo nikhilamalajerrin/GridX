@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/serialize/normalize-polymorphic-type';
+export { default } from '@fleetbase/ember-core/utils/serialize/normalize-polymorphic-type';

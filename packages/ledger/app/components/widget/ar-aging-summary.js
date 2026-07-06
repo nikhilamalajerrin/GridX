@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/components/widget/ar-aging-summary';
+export { default } from '@fleetbase/ledger-engine/components/widget/ar-aging-summary';

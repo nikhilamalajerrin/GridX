@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/safe-humanize';
+export { default } from '@fleetbase/ember-ui/helpers/safe-humanize';

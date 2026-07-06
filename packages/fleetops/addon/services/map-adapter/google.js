@@ -27,7 +27,7 @@ import { getOwner } from '@ember/application';
 import { isArray } from '@ember/array';
 import { debug } from '@ember/debug';
 import { waypointIconHtml } from '../../utils/route-colors';
-import { Circle, Feature, Polygon } from '@gridx/fleetops-data/utils/geojson';
+import { Circle, Feature, Polygon } from '@fleetbase/fleetops-data/utils/geojson';
 
 const DEFAULT_GOOGLE_MAP_STYLES = [
     {
@@ -739,7 +739,7 @@ export default class GoogleMapsAdapter extends MapAdapterInterface {
         try {
             const owner = getOwner(this);
             const config = owner?.resolveRegistration('config:environment');
-            return config?.['@gridx/fleetops-engine'] ?? config ?? null;
+            return config?.['@fleetbase/fleetops-engine'] ?? config ?? null;
         } catch {
             return null;
         }

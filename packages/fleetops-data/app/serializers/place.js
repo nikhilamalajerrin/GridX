@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-data/serializers/place';
+export { default } from '@fleetbase/fleetops-data/serializers/place';

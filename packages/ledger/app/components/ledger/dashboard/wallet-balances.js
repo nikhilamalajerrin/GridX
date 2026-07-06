@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/components/widget/wallet-balances';
+export { default } from '@fleetbase/ledger-engine/components/widget/wallet-balances';

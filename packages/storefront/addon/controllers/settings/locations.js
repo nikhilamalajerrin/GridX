@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { alias } from '@ember/object/computed';
 import { action } from '@ember/object';
-import Point from '@gridx/fleetops-data/utils/geojson/point';
+import Point from '@fleetbase/fleetops-data/utils/geojson/point';
 
 export default class SettingsLocationsController extends Controller {
     /**

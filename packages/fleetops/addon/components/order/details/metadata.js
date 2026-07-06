@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
-import isEmptyObject from '@gridx/ember-core/utils/is-empty-object';
+import isEmptyObject from '@fleetbase/ember-core/utils/is-empty-object';
 
 export default class OrderDetailsMetadataComponent extends Component {
     @service orderActions;

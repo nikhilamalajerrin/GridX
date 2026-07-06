@@ -1,1 +1,1 @@
-export { default } from '@gridx/registry-bridge-engine/components/modals/self-managed-install-instructions';
+export { default } from '@fleetbase/registry-bridge-engine/components/modals/self-managed-install-instructions';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/iam-engine/templates/groups';
+export { default } from '@fleetbase/iam-engine/templates/groups';

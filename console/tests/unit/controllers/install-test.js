@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import Service from '@ember/service';
-import { setupTest } from '@gridx/console/tests/helpers';
+import { setupTest } from '@fleetbase/console/tests/helpers';
 
 module('Unit | Controller | install', function (hooks) {
     setupTest(hooks);

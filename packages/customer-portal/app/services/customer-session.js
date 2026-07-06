@@ -1,1 +1,1 @@
-export { default } from '@gridx/customer-portal-engine/services/customer-session';
+export { default } from '@fleetbase/customer-portal-engine/services/customer-session';

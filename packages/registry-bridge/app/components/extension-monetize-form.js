@@ -1,1 +1,1 @@
-export { default } from '@gridx/registry-bridge-engine/components/extension-monetize-form';
+export { default } from '@fleetbase/registry-bridge-engine/components/extension-monetize-form';

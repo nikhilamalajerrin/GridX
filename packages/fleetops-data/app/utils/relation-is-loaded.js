@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-data/utils/relation-is-loaded';
+export { default } from '@fleetbase/fleetops-data/utils/relation-is-loaded';

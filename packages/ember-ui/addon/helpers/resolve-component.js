@@ -1,7 +1,7 @@
 import Helper from '@ember/component/helper';
 import { getOwner } from '@ember/application';
 import { ensureSafeComponent } from '@embroider/util';
-import { ExtensionComponent } from '@gridx/ember-core/contracts';
+import { ExtensionComponent } from '@fleetbase/ember-core/contracts';
 
 export default class ResolveComponentHelper extends Helper {
     compute([value]) {

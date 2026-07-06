@@ -2,8 +2,8 @@ import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { alias } from '@ember/object/computed';
-import isVideo from '@gridx/ember-core/utils/is-video-file';
-import isImage from '@gridx/ember-core/utils/is-image-file';
+import isVideo from '@fleetbase/ember-core/utils/is-video-file';
+import isImage from '@fleetbase/ember-core/utils/is-image-file';
 
 export default class FileRecordComponent extends Component {
     @service modalsManager;

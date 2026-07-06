@@ -62,7 +62,7 @@ This repository contains both sides of the Storefront extension:
 | Laravel API | `server/src/`, `server/config/`, `server/migrations/` | Storefront API controllers, models, resources, middleware, providers, observers, notifications, jobs, and database migrations. |
 | Tests | `tests/`, `server/tests/` | Ember integration tests and backend test scaffolding. |
 
-The Ember package is published as `@gridx/storefront-engine`. The Laravel package is published as `gridx/storefront-api`.
+The Ember package is published as `@fleetbase/storefront-engine`. The Laravel package is published as `gridx/storefront-api`.
 
 ## Console Modules
 
@@ -135,7 +135,7 @@ composer require gridx/storefront-api
 ### Frontend Package
 
 ```bash
-pnpm install @gridx/storefront-engine
+pnpm install @fleetbase/storefront-engine
 ```
 
 ## Development

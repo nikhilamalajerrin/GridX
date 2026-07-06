@@ -3,8 +3,8 @@ import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { later } from '@ember/runloop';
-import formatCurrency from '@gridx/ember-ui/utils/format-currency';
-import isModel from '@gridx/ember-core/utils/is-model';
+import formatCurrency from '@fleetbase/ember-ui/utils/format-currency';
+import isModel from '@fleetbase/ember-core/utils/is-model';
 
 function removeParamFromCurrentUrl(paramToRemove) {
     const url = new URL(window.location.href);

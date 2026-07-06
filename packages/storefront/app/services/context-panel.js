@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/services/context-panel';
+export { default } from '@fleetbase/storefront-engine/services/context-panel';

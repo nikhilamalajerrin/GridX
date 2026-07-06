@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { task } from 'ember-concurrency';
-import getCurrency from '@gridx/ember-ui/utils/get-currency';
+import getCurrency from '@fleetbase/ember-ui/utils/get-currency';
 
 export default class WidgetRevenueTrendComponent extends Component {
     @service fetch;

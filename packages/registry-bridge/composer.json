@@ -3,7 +3,7 @@
     "version": "0.1.9",
     "description": "Internal Bridge between GridX API and Extensions Registry",
     "keywords": [
-        "gridx-extension",
+        "fleetbase-extension",
         "gridx-registry-bridge",
         "gridx"
     ],
@@ -52,7 +52,7 @@
                 "GridX\\RegistryBridge\\Providers\\RegistryBridgeServiceProvider"
             ]
         },
-        "gridx": {
+        "fleetbase": {
             "sandbox-migrations": false
         },
         "gridx/registry-bridge": {

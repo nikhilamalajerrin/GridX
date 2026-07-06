@@ -11,7 +11,7 @@ export function initialize(appInstance) {
 
     // Create console-specific registries
     registryService.createRegistries([
-        '@gridx/console',
+        '@fleetbase/console',
         'auth:login',
         'console:home:before-dashboard',
         'console:home:after-dashboard',

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/is-object';
+export { default } from '@fleetbase/ember-ui/helpers/is-object';

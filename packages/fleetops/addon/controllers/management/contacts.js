@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { getOwner } from '@ember/application';
-import getCurrentNestedController from '@gridx/ember-core/utils/get-current-nested-controller';
+import getCurrentNestedController from '@fleetbase/ember-core/utils/get-current-nested-controller';
 
 export default class ManagementContactsController extends Controller {
     @service hostRouter;

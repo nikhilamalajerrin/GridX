@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/components/widget/ledger-kpi-tile';
+export { default } from '@fleetbase/ledger-engine/components/widget/ledger-kpi-tile';

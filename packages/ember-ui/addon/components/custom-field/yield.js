@@ -6,9 +6,9 @@ import { next } from '@ember/runloop';
 import { action } from '@ember/object';
 import { task } from 'ember-concurrency';
 import { underscore } from '@ember/string';
-import getModelName from '@gridx/ember-core/utils/get-model-name';
-import isObject from '@gridx/ember-core/utils/is-object';
-import isThenable from '@gridx/ember-core/utils/is-thenable';
+import getModelName from '@fleetbase/ember-core/utils/get-model-name';
+import isObject from '@fleetbase/ember-core/utils/is-object';
+import isThenable from '@fleetbase/ember-core/utils/is-thenable';
 
 export default class CustomFieldYieldComponent extends Component {
     @service store;

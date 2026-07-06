@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/utils/register-helper';
+export { default } from '@fleetbase/fleetops-engine/utils/register-helper';

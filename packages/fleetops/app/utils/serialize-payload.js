@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/utils/serialize-payload';
+export { default } from '@fleetbase/fleetops-engine/utils/serialize-payload';

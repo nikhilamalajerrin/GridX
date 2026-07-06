@@ -2045,7 +2045,7 @@ class Utils
      *
      * @throws Exception If the composer.lock file does not exist or if packages are not defined in it.
      */
-    public static function findComposerPackagesWithKeyword($keyword = 'gridx-extension')
+    public static function findComposerPackagesWithKeyword($keyword = 'fleetbase-extension')
     {
         // Path to composer.lock file.
         $filePath = base_path('composer.lock');
@@ -2086,7 +2086,7 @@ class Utils
      */
     public static function getInstalledGridXExtensions()
     {
-        return static::findComposerPackagesWithKeyword('gridx-extension');
+        return static::findComposerPackagesWithKeyword('fleetbase-extension');
     }
 
     /**

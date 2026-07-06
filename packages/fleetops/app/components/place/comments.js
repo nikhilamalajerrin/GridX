@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/place/comments';
+export { default } from '@fleetbase/fleetops-engine/components/place/comments';

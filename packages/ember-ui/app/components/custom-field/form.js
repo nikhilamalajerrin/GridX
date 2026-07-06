@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/custom-field/form';
+export { default } from '@fleetbase/ember-ui/components/custom-field/form';

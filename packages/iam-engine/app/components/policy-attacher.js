@@ -1,1 +1,1 @@
-export { default } from '@gridx/iam-engine/components/policy-attacher';
+export { default } from '@fleetbase/iam-engine/components/policy-attacher';

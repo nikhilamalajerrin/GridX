@@ -4,7 +4,7 @@ import { action, get } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { debug } from '@ember/debug';
 import { task } from 'ember-concurrency';
-import getModelName from '@gridx/ember-core/utils/get-model-name';
+import getModelName from '@fleetbase/ember-core/utils/get-model-name';
 
 export default class DeviceManagerComponent extends Component {
     @service store;

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ai-engine/components/admin/ai-usage-analytics';
+export { default } from '@fleetbase/ai-engine/components/admin/ai-usage-analytics';

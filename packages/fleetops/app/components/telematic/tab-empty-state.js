@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/telematic/tab-empty-state';
+export { default } from '@fleetbase/fleetops-engine/components/telematic/tab-empty-state';

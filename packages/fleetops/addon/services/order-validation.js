@@ -1,5 +1,5 @@
 import Service, { inject as service } from '@ember/service';
-import isNotEmpty from '@gridx/ember-core/utils/is-not-empty';
+import isNotEmpty from '@fleetbase/ember-core/utils/is-not-empty';
 
 export default class OrderValidationService extends Service {
     @service orderCreation;

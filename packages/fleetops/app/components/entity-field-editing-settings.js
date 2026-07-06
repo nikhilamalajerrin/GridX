@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/entity-field-editing-settings';
+export { default } from '@fleetbase/fleetops-engine/components/entity-field-editing-settings';

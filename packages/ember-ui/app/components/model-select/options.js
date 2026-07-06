@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/model-select/options';
+export { default } from '@fleetbase/ember-ui/components/model-select/options';

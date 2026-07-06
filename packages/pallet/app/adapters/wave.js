@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/adapters/wave';
+export { default } from '@fleetbase/pallet-engine/adapters/wave';

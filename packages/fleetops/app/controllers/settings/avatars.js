@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/controllers/settings/avatars';
+export { default } from '@fleetbase/fleetops-engine/controllers/settings/avatars';

@@ -1,8 +1,8 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { OSRMv1, Control as RoutingControl } from '@gridx/leaflet-routing-machine';
-import getRoutingHost from '@gridx/ember-core/utils/get-routing-host';
+import { OSRMv1, Control as RoutingControl } from '@fleetbase/leaflet-routing-machine';
+import getRoutingHost from '@fleetbase/ember-core/utils/get-routing-host';
 
 const DEFAULT_FIT_PADDING_BOTTOM_RIGHT = [520, 0];
 const SINGLE_POINT_PAN_BY = [260, 0];

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/is-object-empty';
+export { default } from '@fleetbase/ember-ui/helpers/is-object-empty';

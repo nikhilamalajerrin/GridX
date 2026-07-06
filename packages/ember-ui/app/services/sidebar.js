@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/services/sidebar';
+export { default } from '@fleetbase/ember-ui/services/sidebar';

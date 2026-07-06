@@ -162,7 +162,7 @@ export default class UniverseService extends Service.extend(Evented) {
      * @param {String} engineName The engine name to listen for
      * @param {Function} callback Function to call when the engine loads, receives engineInstance as parameter
      * @example
-     * universe.onEngineLoaded('@gridx/fleetops-engine', (engineInstance) => {
+     * universe.onEngineLoaded('@fleetbase/fleetops-engine', (engineInstance) => {
      *     console.log('FleetOps engine loaded!', engineInstance);
      * });
      */
@@ -186,17 +186,17 @@ export default class UniverseService extends Service.extend(Evented) {
      * @param {Function} callback Function to call, receives (engineInstance, universe, appInstance)
      * @example
      * // Replaces this pattern:
-     * if (universe.extensionManager.isEngineLoaded('@gridx/fleetops-engine')) {
-     *     const engine = universe.extensionManager.getEngineInstance('@gridx/fleetops-engine');
+     * if (universe.extensionManager.isEngineLoaded('@fleetbase/fleetops-engine')) {
+     *     const engine = universe.extensionManager.getEngineInstance('@fleetbase/fleetops-engine');
      *     doSomething(engine);
      * } else {
-     *     universe.onEngineLoaded('@gridx/fleetops-engine', (engine) => {
+     *     universe.onEngineLoaded('@fleetbase/fleetops-engine', (engine) => {
      *         doSomething(engine);
      *     });
      * }
      *
      * // With this simpler pattern:
-     * universe.whenEngineLoaded('@gridx/fleetops-engine', (engine) => {
+     * universe.whenEngineLoaded('@fleetbase/fleetops-engine', (engine) => {
      *     doSomething(engine);
      * });
      */
@@ -800,7 +800,7 @@ export default class UniverseService extends Service.extend(Evented) {
      * // ExtensionComponent definition with path (lazy loading)
      * universe.registerRenderableComponent(
      *     'fleet-ops:component:order:details',
-     *     new ExtensionComponent('@gridx/storefront-engine', 'storefront-order-summary')
+     *     new ExtensionComponent('@fleetbase/storefront-engine', 'storefront-order-summary')
      * );
      */
     registerRenderableComponent(registryName, component, options = {}) {
@@ -836,10 +836,10 @@ export default class UniverseService extends Service.extend(Evented) {
      *
      * @example
      * // Lazy loading from engine (ensures engine is loaded first)
-     * import TemplateHelper from '@gridx/ember-core/contracts/template-helper';
+     * import TemplateHelper from '@fleetbase/ember-core/contracts/template-helper';
      * await universe.registerHelper(
      *     'calculate-delivery-fee',
-     *     new TemplateHelper('@gridx/storefront-engine', 'helpers/calculate-delivery-fee')
+     *     new TemplateHelper('@fleetbase/storefront-engine', 'helpers/calculate-delivery-fee')
      * );
      */
     async registerHelper(helperName, helperClassOrTemplateHelper, options = {}) {

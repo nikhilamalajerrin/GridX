@@ -1,5 +1,5 @@
 import ObjectProxy from '@ember/object/proxy';
-import generateUUID from '@gridx/ember-core/utils/generate-uuid';
+import generateUUID from '@fleetbase/ember-core/utils/generate-uuid';
 import { underscore } from '@ember/string';
 
 export default function createFlowActivity(name = '', status = '', details = '', sequence = 0, color = '#1f2937', props = {}) {

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/lazy-engine-component';
+export { default } from '@fleetbase/ember-ui/helpers/lazy-engine-component';

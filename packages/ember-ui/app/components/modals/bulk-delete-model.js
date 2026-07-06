@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/modals/bulk-delete-model';
+export { default } from '@fleetbase/ember-ui/components/modals/bulk-delete-model';

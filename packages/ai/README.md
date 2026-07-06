@@ -28,7 +28,7 @@ flb install gridx/ai --path /path/to/gridx
 
 The `--path` value should point to the GridX instance directory containing both `console/` and `api/`.
 
-For local development inside a GridX workspace, ensure the console workspace includes `@gridx/ai-engine`, then rebuild the console assets after frontend changes.
+For local development inside a GridX workspace, ensure the console workspace includes `@fleetbase/ai-engine`, then rebuild the console assets after frontend changes.
 
 ## Admin Configuration
 

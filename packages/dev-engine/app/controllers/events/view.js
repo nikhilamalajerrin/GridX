@@ -1,1 +1,1 @@
-export { default } from '@gridx/dev-engine/controllers/events/view';
+export { default } from '@fleetbase/dev-engine/controllers/events/view';

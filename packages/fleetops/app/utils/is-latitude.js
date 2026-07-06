@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/utils/is-latitude';
+export { default } from '@fleetbase/fleetops-engine/utils/is-latitude';

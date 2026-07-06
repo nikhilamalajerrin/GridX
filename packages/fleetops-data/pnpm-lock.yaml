@@ -11,7 +11,7 @@ importers:
       '@babel/core':
         specifier: ^7.23.2
         version: 7.29.0
-      '@gridx/ember-core':
+      '@fleetbase/ember-core':
         specifier: ^0.3.19
         version: 0.3.19(@ember/string@3.1.1)(ember-resolver@11.0.1(ember-source@5.4.1(@babel/core@7.29.0)(@glimmer/component@1.1.2(@babel/core@7.29.0))(rsvp@4.8.5)(webpack@5.106.2(postcss@8.5.14))))(ember-source@5.4.1(@babel/core@7.29.0)(@glimmer/component@1.1.2(@babel/core@7.29.0))(rsvp@4.8.5)(webpack@5.106.2(postcss@8.5.14)))(eslint@8.57.1)(webpack@5.106.2(postcss@8.5.14))
       date-fns:
@@ -954,7 +954,7 @@ packages:
     resolution: {integrity: sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
-  '@gridx/ember-core@0.3.19':
+  '@fleetbase/ember-core@0.3.19':
     resolution: {integrity: sha512-5phquVcfcpRtoxBvyAYDS9bmdPx5c46mXLrcvjmTFSdGElw9CZv44dRkuE8UTgpapMFfPc7vkA9/KwKFAgQ9JA==}
     engines: {node: '>= 18'}
 
@@ -7543,7 +7543,7 @@ snapshots:
 
   '@eslint/js@8.57.1': {}
 
-  '@gridx/ember-core@0.3.19(@ember/string@3.1.1)(ember-resolver@11.0.1(ember-source@5.4.1(@babel/core@7.29.0)(@glimmer/component@1.1.2(@babel/core@7.29.0))(rsvp@4.8.5)(webpack@5.106.2(postcss@8.5.14))))(ember-source@5.4.1(@babel/core@7.29.0)(@glimmer/component@1.1.2(@babel/core@7.29.0))(rsvp@4.8.5)(webpack@5.106.2(postcss@8.5.14)))(eslint@8.57.1)(webpack@5.106.2(postcss@8.5.14))':
+  '@fleetbase/ember-core@0.3.19(@ember/string@3.1.1)(ember-resolver@11.0.1(ember-source@5.4.1(@babel/core@7.29.0)(@glimmer/component@1.1.2(@babel/core@7.29.0))(rsvp@4.8.5)(webpack@5.106.2(postcss@8.5.14))))(ember-source@5.4.1(@babel/core@7.29.0)(@glimmer/component@1.1.2(@babel/core@7.29.0))(rsvp@4.8.5)(webpack@5.106.2(postcss@8.5.14)))(eslint@8.57.1)(webpack@5.106.2(postcss@8.5.14))':
     dependencies:
       '@babel/core': 7.29.0
       compress-json: 3.4.0

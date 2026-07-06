@@ -1,4 +1,4 @@
-import ApplicationAdapter from '@gridx/ember-core/adapters/application';
+import ApplicationAdapter from '@fleetbase/ember-core/adapters/application';
 import { pluralize } from 'ember-inflector';
 import { dasherize } from '@ember/string';
 

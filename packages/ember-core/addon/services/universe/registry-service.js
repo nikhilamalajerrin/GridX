@@ -258,7 +258,7 @@ export default class RegistryService extends Service {
      * // ExtensionComponent definition with path (lazy loading)
      * registryService.registerRenderableComponent(
      *     'fleet-ops:component:order:details',
-     *     new ExtensionComponent('@gridx/storefront-engine', 'storefront-order-summary')
+     *     new ExtensionComponent('@fleetbase/storefront-engine', 'storefront-order-summary')
      * );
      *
      * @example
@@ -266,7 +266,7 @@ export default class RegistryService extends Service {
      * import MyComponent from './components/my-component';
      * registryService.registerRenderableComponent(
      *     'fleet-ops:component:order:details',
-     *     new ExtensionComponent('@gridx/fleetops-engine', MyComponent)
+     *     new ExtensionComponent('@fleetbase/fleetops-engine', MyComponent)
      * );
      *
      * @example
@@ -274,7 +274,7 @@ export default class RegistryService extends Service {
      * registryService.registerRenderableComponent(
      *     'fleet-ops:component:order:details',
      *     MyComponent,
-     *     { engineName: '@gridx/fleetops-engine' }
+     *     { engineName: '@fleetbase/fleetops-engine' }
      * );
      */
     registerRenderableComponent(registryName, component, options = {}) {
@@ -481,7 +481,7 @@ export default class RegistryService extends Service {
      * // Lazy loading from engine (ensures engine is loaded first)
      * await registryService.registerHelper(
      *     'calculate-delivery-fee',
-     *     new TemplateHelper('@gridx/storefront-engine', 'helpers/calculate-delivery-fee')
+     *     new TemplateHelper('@fleetbase/storefront-engine', 'helpers/calculate-delivery-fee')
      * );
      */
     async registerHelper(helperName, helperClassOrTemplateHelper, options = {}) {

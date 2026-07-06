@@ -3,8 +3,8 @@ import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { pluralize } from 'ember-inflector';
-import getModelName from '@gridx/ember-core/utils/get-model-name';
-import isUuid from '@gridx/ember-core/utils/is-uuid';
+import getModelName from '@fleetbase/ember-core/utils/get-model-name';
+import isUuid from '@fleetbase/ember-core/utils/is-uuid';
 
 export default class AvatarPickerComponent extends Component {
     @service store;

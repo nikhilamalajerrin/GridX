@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-data/utils/geojson/geometry-collection';
+export { default } from '@fleetbase/fleetops-data/utils/geojson/geometry-collection';

@@ -1,4 +1,4 @@
-import getModelName from '@gridx/ember-core/utils/get-model-name';
+import getModelName from '@fleetbase/ember-core/utils/get-model-name';
 import { isArray } from '@ember/array';
 import { get } from '@ember/object';
 

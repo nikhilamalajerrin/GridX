@@ -1,1 +1,1 @@
-export { default } from '@gridx/iam-engine/components/widget/user-type-creation-trend';
+export { default } from '@fleetbase/iam-engine/components/widget/user-type-creation-trend';

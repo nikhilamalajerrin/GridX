@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/modifiers/fallback-img-src';
+export { default } from '@fleetbase/ember-ui/modifiers/fallback-img-src';

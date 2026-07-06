@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/components/widget/kpi-low-stock';
+export { default } from '@fleetbase/pallet-engine/components/widget/kpi-low-stock';

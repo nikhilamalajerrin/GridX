@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/click-to-copy';
+export { default } from '@fleetbase/ember-ui/components/click-to-copy';

@@ -5,7 +5,7 @@
  * @class TemplateHelper
  * @example
  * // Lazy loading from engine
- * new TemplateHelper('@gridx/storefront-engine', 'helpers/calculate-delivery-fee')
+ * new TemplateHelper('@fleetbase/storefront-engine', 'helpers/calculate-delivery-fee')
  *
  * // Direct class registration
  * new TemplateHelper(null, CalculateDeliveryFeeHelper)
@@ -44,7 +44,7 @@ export default class TemplateHelper {
     /**
      * Creates a new TemplateHelper instance
      *
-     * @param {string|null} engineName - The engine name (e.g., '@gridx/storefront-engine') or null for direct class
+     * @param {string|null} engineName - The engine name (e.g., '@fleetbase/storefront-engine') or null for direct class
      * @param {string|Function} pathOrClass - Either a path string for lazy loading or a helper class/function
      */
     constructor(engineName, pathOrClass) {

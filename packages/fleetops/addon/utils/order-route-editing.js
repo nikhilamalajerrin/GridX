@@ -1,5 +1,5 @@
 import { isArray } from '@ember/array';
-import { Point } from '@gridx/fleetops-data/utils/geojson';
+import { Point } from '@fleetbase/fleetops-data/utils/geojson';
 import { buildRoutePointsFromPayload, waypointToPlace } from './route-visualization';
 
 export function routePointsToCoordinates(routePoints = []) {

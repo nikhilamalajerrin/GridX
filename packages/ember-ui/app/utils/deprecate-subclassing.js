@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/utils/deprecate-subclassing';
+export { default } from '@fleetbase/ember-ui/utils/deprecate-subclassing';

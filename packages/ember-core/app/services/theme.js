@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/services/theme';
+export { default } from '@fleetbase/ember-core/services/theme';

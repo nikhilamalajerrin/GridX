@@ -1,4 +1,4 @@
-# gridx-extensions-indexer
+# fleetbase-extensions-indexer
 
 Broccoli plugin which indexes gridx extensions installed using npm for the GridX Console
 
@@ -11,7 +11,7 @@ Broccoli plugin which indexes gridx extensions installed using npm for the GridX
 ## Installation
 
 ```
-yarn add gridx-extensions-indexer
+yarn add fleetbase-extensions-indexer
 ```
 
 

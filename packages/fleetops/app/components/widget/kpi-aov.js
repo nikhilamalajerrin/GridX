@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/widget/kpi-aov';
+export { default } from '@fleetbase/fleetops-engine/components/widget/kpi-aov';

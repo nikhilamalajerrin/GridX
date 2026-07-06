@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/ai/create-order-preview';
+export { default } from '@fleetbase/fleetops-engine/components/ai/create-order-preview';

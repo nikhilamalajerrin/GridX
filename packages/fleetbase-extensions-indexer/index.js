@@ -36,7 +36,7 @@ const IndexExtensionsToJson = function () {
                         continue;
                     }
 
-                    if (!packageData || !packageData.keywords || !packageData.keywords.includes('gridx-extension')) {
+                    if (!packageData || !packageData.keywords || !packageData.keywords.includes('fleetbase-extension')) {
                         continue;
                     }
 
@@ -46,7 +46,7 @@ const IndexExtensionsToJson = function () {
                     }
 
                     seenPackages.add(packageData.name);
-                    extensions.push(only(packageData, ['name', 'description', 'version', 'gridx', 'keywords', 'license', 'repository']));
+                    extensions.push(only(packageData, ['name', 'description', 'version', 'fleetbase', 'keywords', 'license', 'repository']));
                 }
 
                 resolve(extensions);

@@ -1,5 +1,5 @@
 import Transform from '@ember-data/serializer/transform';
-import isObject from '@gridx/ember-core/utils/is-object';
+import isObject from '@fleetbase/ember-core/utils/is-object';
 
 export default class ObjectTransform extends Transform {
     deserialize(serialized) {

@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/controllers/operations/pick-lists';
+export { default } from '@fleetbase/pallet-engine/controllers/operations/pick-lists';

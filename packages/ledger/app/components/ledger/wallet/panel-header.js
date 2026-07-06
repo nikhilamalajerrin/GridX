@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/components/wallet/panel-header';
+export { default } from '@fleetbase/ledger-engine/components/wallet/panel-header';

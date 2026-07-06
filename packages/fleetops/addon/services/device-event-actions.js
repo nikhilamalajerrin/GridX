@@ -1,5 +1,5 @@
 import { inject as service } from '@ember/service';
-import ResourceActionService from '@gridx/ember-core/services/resource-action';
+import ResourceActionService from '@fleetbase/ember-core/services/resource-action';
 
 export default class DeviceEventActionsService extends ResourceActionService {
     @service fetch;

@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/components/storefront/order/details/tracking';
+export { default } from '@fleetbase/storefront-engine/components/storefront/order/details/tracking';

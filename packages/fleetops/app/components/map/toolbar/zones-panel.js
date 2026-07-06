@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/map/toolbar/zones-panel';
+export { default } from '@fleetbase/fleetops-engine/components/map/toolbar/zones-panel';

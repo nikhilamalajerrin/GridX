@@ -1,4 +1,4 @@
-import getPermissionAction from '@gridx/console/utils/get-permission-action';
+import getPermissionAction from '@fleetbase/console/utils/get-permission-action';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | get-permission-action', function () {

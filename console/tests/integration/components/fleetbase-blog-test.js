@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { setupRenderingTest } from '@gridx/console/tests/helpers';
+import { setupRenderingTest } from '@fleetbase/console/tests/helpers';
 import Service from '@ember/service';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';

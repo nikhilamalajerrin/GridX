@@ -11,11 +11,11 @@ import BaseContract from './base-contract';
  *
  * @example
  * // Simple usage
- * new ExtensionComponent('@gridx/fleetops-engine', 'components/admin/navigator-app')
+ * new ExtensionComponent('@fleetbase/fleetops-engine', 'components/admin/navigator-app')
  *
  * @example
  * // With options
- * new ExtensionComponent('@gridx/fleetops-engine', {
+ * new ExtensionComponent('@fleetbase/fleetops-engine', {
  *   path: 'components/admin/navigator-app',
  *   loadingComponent: 'loading-spinner',
  *   errorComponent: 'error-display'
@@ -23,7 +23,7 @@ import BaseContract from './base-contract';
  *
  * @example
  * // With method chaining
- * new ExtensionComponent('@gridx/fleetops-engine', 'components/widget/metrics')
+ * new ExtensionComponent('@fleetbase/fleetops-engine', 'components/widget/metrics')
  *   .withLoadingComponent('skeletons/widget')
  *   .withErrorComponent('error-boundary')
  *   .withData({ refreshInterval: 5000 })
@@ -33,7 +33,7 @@ export default class ExtensionComponent extends BaseContract {
      * Create a new ExtensionComponent
      *
      * @constructor
-     * @param {String} engineName The name of the engine (e.g., '@gridx/fleetops-engine')
+     * @param {String} engineName The name of the engine (e.g., '@fleetbase/fleetops-engine')
      * @param {String|Function|Object} pathClassOrOptions Component path, component class, or options object
      */
     constructor(engineName, pathClassOrOptions = {}) {

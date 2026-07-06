@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/widget/top-drivers';
+export { default } from '@fleetbase/fleetops-engine/components/widget/top-drivers';

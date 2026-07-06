@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/components/display-place';
+export { default } from '@fleetbase/storefront-engine/components/display-place';

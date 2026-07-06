@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/templates/settings/routing';
+export { default } from '@fleetbase/fleetops-engine/templates/settings/routing';

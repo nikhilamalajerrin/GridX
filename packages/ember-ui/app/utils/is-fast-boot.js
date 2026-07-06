@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/utils/is-fast-boot';
+export { default } from '@fleetbase/ember-ui/utils/is-fast-boot';

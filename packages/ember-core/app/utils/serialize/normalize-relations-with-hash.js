@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/serialize/normalize-relations-with-hash';
+export { default } from '@fleetbase/ember-core/utils/serialize/normalize-relations-with-hash';

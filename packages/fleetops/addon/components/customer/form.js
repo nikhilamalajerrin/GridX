@@ -20,7 +20,7 @@ export default class CustomerFormComponent extends Component {
             permission: 'iam create user',
             onClick: async () => {
                 // Load IAM engine for user-form modal component
-                await this.extensionManager.ensureEngineLoaded('@gridx/iam-engine');
+                await this.extensionManager.ensureEngineLoaded('@fleetbase/iam-engine');
 
                 const user = this.store.createRecord('user', {
                     status: 'pending',
@@ -67,7 +67,7 @@ export default class CustomerFormComponent extends Component {
     ];
 
     get showWelcomeEmailOption() {
-        return this.args.resource?.isNew && this.extensionManager.isInstalled('@gridx/customer-portal-engine');
+        return this.args.resource?.isNew && this.extensionManager.isInstalled('@fleetbase/customer-portal-engine');
     }
 
     get sendWelcomeEmail() {

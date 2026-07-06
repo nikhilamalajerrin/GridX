@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/templates/maintenance/work-orders/index/details';
+export { default } from '@fleetbase/fleetops-engine/templates/maintenance/work-orders/index/details';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/orchestrator/plan-viewer';
+export { default } from '@fleetbase/fleetops-engine/components/orchestrator/plan-viewer';

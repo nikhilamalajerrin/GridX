@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { task } from 'ember-concurrency';
 import { later } from '@ember/runloop';
-import formatCurrency from '@gridx/ember-ui/utils/format-currency';
+import formatCurrency from '@fleetbase/ember-ui/utils/format-currency';
 
 export default class ExtensionFormComponent extends Component {
     @service store;

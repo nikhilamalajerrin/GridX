@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/vehicle/panel-header';
+export { default } from '@fleetbase/fleetops-engine/components/vehicle/panel-header';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/iam-engine/components/widget/iam-metrics';
+export { default } from '@fleetbase/iam-engine/components/widget/iam-metrics';

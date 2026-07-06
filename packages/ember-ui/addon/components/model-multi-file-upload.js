@@ -5,7 +5,7 @@ import { isArray } from '@ember/array';
 import { dasherize, underscore } from '@ember/string';
 import { debug } from '@ember/debug';
 import { task } from 'ember-concurrency';
-import getModelName from '@gridx/ember-core/utils/get-model-name';
+import getModelName from '@fleetbase/ember-core/utils/get-model-name';
 
 const defaultAcceptedFileTypes = [
     'application/vnd.ms-excel',

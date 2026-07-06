@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/templates/networks/index/network/customers';
+export { default } from '@fleetbase/storefront-engine/templates/networks/index/network/customers';

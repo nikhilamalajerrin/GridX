@@ -1,6 +1,6 @@
-import getRoutingHost from '@gridx/ember-core/utils/get-routing-host';
+import getRoutingHost from '@fleetbase/ember-core/utils/get-routing-host';
 import { RoutingControl } from '../services/leaflet-routing-control';
-import { OSRMv1 } from '@gridx/leaflet-routing-machine';
+import { OSRMv1 } from '@fleetbase/leaflet-routing-machine';
 
 export function initialize(owner) {
     // Register OSRM as route optimization service

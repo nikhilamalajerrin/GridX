@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/same-ids';
+export { default } from '@fleetbase/ember-core/utils/same-ids';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/utils/leaflet-to-geojson';
+export { default } from '@fleetbase/fleetops-engine/utils/leaflet-to-geojson';

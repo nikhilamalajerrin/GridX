@@ -1,6 +1,6 @@
 import Service from '@ember/service';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from '@gridx/console/tests/helpers';
+import { setupRenderingTest } from '@fleetbase/console/tests/helpers';
 import { click, fillIn, render, select, waitFor } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 

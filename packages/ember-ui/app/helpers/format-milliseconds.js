@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/format-milliseconds';
+export { default } from '@fleetbase/ember-ui/helpers/format-milliseconds';

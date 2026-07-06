@@ -7,7 +7,7 @@ const { version } = require('../package');
 
 module.exports = function (environment) {
     const ENV = {
-        modulePrefix: 'gridx-console',
+        modulePrefix: '@fleetbase/console',
         version,
         environment,
         rootURL: '/',

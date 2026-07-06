@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/join-column-list';
+export { default } from '@fleetbase/ember-ui/helpers/join-column-list';

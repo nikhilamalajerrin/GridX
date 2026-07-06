@@ -1,4 +1,4 @@
-import ResourceActionService from '@gridx/ember-core/services/resource-action';
+import ResourceActionService from '@fleetbase/ember-core/services/resource-action';
 import { action } from '@ember/object';
 
 export default class InvoiceActionsService extends ResourceActionService {

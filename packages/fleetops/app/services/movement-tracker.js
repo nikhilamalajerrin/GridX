@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/services/movement-tracker';
+export { default } from '@fleetbase/fleetops-engine/services/movement-tracker';

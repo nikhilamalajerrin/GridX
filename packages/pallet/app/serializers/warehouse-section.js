@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/serializers/warehouse-section';
+export { default } from '@fleetbase/pallet-engine/serializers/warehouse-section';

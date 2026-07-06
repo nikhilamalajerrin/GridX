@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/portal/footer';
+export { default } from '@fleetbase/ember-ui/components/portal/footer';

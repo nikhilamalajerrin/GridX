@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { setupTest } from '@gridx/console/tests/helpers';
+import { setupTest } from '@fleetbase/console/tests/helpers';
 
 module('Unit | Route | onboard/verify-email', function (hooks) {
     setupTest(hooks);

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/utils/numbers-only';
+export { default } from '@fleetbase/ember-ui/utils/numbers-only';

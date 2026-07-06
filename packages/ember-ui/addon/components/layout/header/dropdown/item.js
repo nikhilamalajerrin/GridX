@@ -3,7 +3,7 @@ import { inject as service } from '@ember/service';
 import { computed, action } from '@ember/object';
 import { isBlank } from '@ember/utils';
 import { bool } from '@ember/object/computed';
-import { ExtensionComponent } from '@gridx/ember-core/contracts';
+import { ExtensionComponent } from '@fleetbase/ember-core/contracts';
 import isMenuItemActive from '../../../../utils/is-menu-item-active';
 import isEmptyObject from '../../../../utils/is-empty-object';
 

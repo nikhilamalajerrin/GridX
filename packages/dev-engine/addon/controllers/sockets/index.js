@@ -2,7 +2,7 @@ import BaseController from '../base-controller';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { action, computed } from '@ember/object';
-import fromStore from '@gridx/ember-core/decorators/legacy-from-store';
+import fromStore from '@fleetbase/ember-core/decorators/legacy-from-store';
 
 export default class SocketsIndexController extends BaseController {
     @service modalsManager;

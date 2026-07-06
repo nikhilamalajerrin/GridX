@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/services/scheduling';
+export { default } from '@fleetbase/fleetops-engine/services/scheduling';

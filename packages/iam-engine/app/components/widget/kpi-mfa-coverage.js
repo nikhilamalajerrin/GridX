@@ -1,1 +1,1 @@
-export { default } from '@gridx/iam-engine/components/widget/kpi-mfa-coverage';
+export { default } from '@fleetbase/iam-engine/components/widget/kpi-mfa-coverage';

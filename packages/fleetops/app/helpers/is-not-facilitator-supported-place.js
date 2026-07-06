@@ -1,1 +1,1 @@
-export { default, isNotFacilitatorSupportedPlace } from '@gridx/fleetops-engine/helpers/is-not-facilitator-supported-place';
+export { default, isNotFacilitatorSupportedPlace } from '@fleetbase/fleetops-engine/helpers/is-not-facilitator-supported-place';

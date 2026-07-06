@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/models/bin-location';
+export { default } from '@fleetbase/pallet-engine/models/bin-location';

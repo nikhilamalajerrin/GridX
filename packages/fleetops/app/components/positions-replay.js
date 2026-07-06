@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/positions-replay';
+export { default } from '@fleetbase/fleetops-engine/components/positions-replay';

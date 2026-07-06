@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/controllers/facilities/warehouses/index/edit';
+export { default } from '@fleetbase/pallet-engine/controllers/facilities/warehouses/index/edit';

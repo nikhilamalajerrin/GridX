@@ -1,3 +1,3 @@
-import ApplicationSerializer from '@gridx/ember-core/serializers/application';
+import ApplicationSerializer from '@fleetbase/ember-core/serializers/application';
 
 export default class ChatParticipantSerializer extends ApplicationSerializer {}

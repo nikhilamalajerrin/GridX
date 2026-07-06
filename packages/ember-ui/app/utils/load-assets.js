@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/utils/load-assets';
+export { default } from '@fleetbase/ember-ui/utils/load-assets';

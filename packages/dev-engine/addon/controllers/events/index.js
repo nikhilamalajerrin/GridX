@@ -5,7 +5,7 @@ import { action } from '@ember/object';
 import { isBlank } from '@ember/utils';
 import { timeout } from 'ember-concurrency';
 import { task } from 'ember-concurrency-decorators';
-import fetchFrom from '@gridx/ember-core/decorators/legacy-fetch-from';
+import fetchFrom from '@fleetbase/ember-core/decorators/legacy-fetch-from';
 
 export default class EventsIndexController extends BaseController {
     @service filters;

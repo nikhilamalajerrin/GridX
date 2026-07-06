@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/services/leaflet';
+export { default } from '@fleetbase/ember-ui/services/leaflet';

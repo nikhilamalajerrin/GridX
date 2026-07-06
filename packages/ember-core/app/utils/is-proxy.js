@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/is-proxy';
+export { default } from '@fleetbase/ember-core/utils/is-proxy';

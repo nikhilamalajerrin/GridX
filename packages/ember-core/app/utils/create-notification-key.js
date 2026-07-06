@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/create-notification-key';
+export { default } from '@fleetbase/ember-core/utils/create-notification-key';

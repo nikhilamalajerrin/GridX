@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/components/add-product-as-entity-button';
+export { default } from '@fleetbase/storefront-engine/components/add-product-as-entity-button';

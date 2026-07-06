@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/orchestrator/card-fields-settings';
+export { default } from '@fleetbase/fleetops-engine/components/orchestrator/card-fields-settings';

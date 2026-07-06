@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/safe-has';
+export { default } from '@fleetbase/ember-ui/helpers/safe-has';

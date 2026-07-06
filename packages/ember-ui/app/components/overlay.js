@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/overlay';
+export { default } from '@fleetbase/ember-ui/components/overlay';

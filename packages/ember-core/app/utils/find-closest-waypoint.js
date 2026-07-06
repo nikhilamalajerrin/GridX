@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/find-closest-waypoint';
+export { default } from '@fleetbase/ember-core/utils/find-closest-waypoint';

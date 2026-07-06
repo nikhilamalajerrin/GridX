@@ -1,1 +1,1 @@
-export { default } from '@gridx/dev-engine/components/widget/endpoint-health';
+export { default } from '@fleetbase/dev-engine/components/widget/endpoint-health';

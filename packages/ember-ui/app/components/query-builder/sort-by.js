@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/query-builder/sort-by';
+export { default } from '@fleetbase/ember-ui/components/query-builder/sort-by';

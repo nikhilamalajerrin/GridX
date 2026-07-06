@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/place/rules';
+export { default } from '@fleetbase/fleetops-engine/components/place/rules';

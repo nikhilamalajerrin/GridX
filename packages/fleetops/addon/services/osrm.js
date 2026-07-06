@@ -1,7 +1,7 @@
 import RouteOptimizationInterfaceService from './route-optimization-interface';
 import { isArray } from '@ember/array';
-import getRoutingHost from '@gridx/ember-core/utils/get-routing-host';
-import polyline from '@gridx/ember-core/utils/polyline';
+import getRoutingHost from '@fleetbase/ember-core/utils/get-routing-host';
+import polyline from '@fleetbase/ember-core/utils/polyline';
 import { debug } from '@ember/debug';
 
 export default class OsrmService extends RouteOptimizationInterfaceService {

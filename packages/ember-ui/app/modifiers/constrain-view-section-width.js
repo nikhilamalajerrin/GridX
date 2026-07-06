@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/modifiers/constrain-view-section-width';
+export { default } from '@fleetbase/ember-ui/modifiers/constrain-view-section-width';

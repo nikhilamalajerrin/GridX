@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/modifiers/set-z-index';
+export { default } from '@fleetbase/ember-ui/modifiers/set-z-index';

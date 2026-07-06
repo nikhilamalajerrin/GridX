@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/table/cell/resource-identity';
+export { default } from '@fleetbase/ember-ui/components/table/cell/resource-identity';

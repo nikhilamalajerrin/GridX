@@ -1,5 +1,5 @@
 import consoleUrl from './console-url';
-import config from '@gridx/console/config/environment';
+import config from '@fleetbase/console/config/environment';
 import { get } from '@ember/object';
 
 export default function apiUrl(path, queryParams = {}, subdomain = null, host = null) {

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ai-engine/services/ai-events';
+export { default } from '@fleetbase/ai-engine/services/ai-events';

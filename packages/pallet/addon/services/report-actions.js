@@ -1,4 +1,4 @@
-import ReportActionsBaseService from '@gridx/ember-core/services/report-actions';
+import ReportActionsBaseService from '@fleetbase/ember-core/services/report-actions';
 
 export default class ReportActionsService extends ReportActionsBaseService {
     defaultAttributes = { type: 'pallet' };

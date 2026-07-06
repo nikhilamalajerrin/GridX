@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/adapters/user';
+export { default } from '@fleetbase/ember-core/adapters/user';

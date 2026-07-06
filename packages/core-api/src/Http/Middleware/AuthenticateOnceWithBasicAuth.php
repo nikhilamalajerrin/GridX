@@ -63,8 +63,8 @@ class AuthenticateOnceWithBasicAuth
             ->with(['company.owner'])
             ->withoutGlobalScopes();
 
-        // Only if User-Agent = "'@gridx/sdk;node" allow secret key to authenticate
-        if ($request->userAgent() === '@gridx/sdk;node') {
+        // Only if User-Agent = "'@fleetbase/sdk;node" allow secret key to authenticate
+        if ($request->userAgent() === '@fleetbase/sdk;node') {
             $findApKey = $findApKey->orWhere('secret', $token);
         }
 

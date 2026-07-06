@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/templates/connectivity/telematics';
+export { default } from '@fleetbase/fleetops-engine/templates/connectivity/telematics';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/dev-engine/models/api-event';
+export { default } from '@fleetbase/dev-engine/models/api-event';

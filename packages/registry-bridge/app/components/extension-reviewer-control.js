@@ -1,1 +1,1 @@
-export { default } from '@gridx/registry-bridge-engine/components/extension-reviewer-control';
+export { default } from '@fleetbase/registry-bridge-engine/components/extension-reviewer-control';

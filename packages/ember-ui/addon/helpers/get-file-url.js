@@ -1,7 +1,7 @@
 import Helper from '@ember/component/helper';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import isUuid from '@gridx/ember-core/utils/is-uuid';
+import isUuid from '@fleetbase/ember-core/utils/is-uuid';
 
 export default class GetFileUrlHelper extends Helper {
     @service store;

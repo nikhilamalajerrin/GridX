@@ -1,5 +1,5 @@
-import getModelName from '@gridx/ember-core/utils/get-model-name';
-import isModel from '@gridx/ember-core/utils/is-model';
+import getModelName from '@fleetbase/ember-core/utils/get-model-name';
+import isModel from '@fleetbase/ember-core/utils/is-model';
 import { camelize } from '@ember/string';
 
 /**

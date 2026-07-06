@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/customer/leaflet-map';
+export { default } from '@fleetbase/fleetops-engine/components/customer/leaflet-map';

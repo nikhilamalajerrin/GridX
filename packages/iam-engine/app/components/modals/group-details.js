@@ -1,1 +1,1 @@
-export { default } from '@gridx/iam-engine/components/modals/group-details';
+export { default } from '@fleetbase/iam-engine/components/modals/group-details';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/leaflet-icon';
+export { default } from '@fleetbase/ember-core/utils/leaflet-icon';

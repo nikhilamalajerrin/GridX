@@ -1,1 +1,1 @@
-export { default, hasLeafletPluginsReady, resetLeafletPluginLoaderForTesting } from '@gridx/fleetops-engine/utils/leaflet-plugin-loader';
+export { default, hasLeafletPluginsReady, resetLeafletPluginLoaderForTesting } from '@fleetbase/fleetops-engine/utils/leaflet-plugin-loader';

@@ -5,8 +5,8 @@ import { action, computed } from '@ember/object';
 import { isBlank } from '@ember/utils';
 import { timeout } from 'ember-concurrency';
 import { task } from 'ember-concurrency-decorators';
-import fromStore from '@gridx/ember-core/decorators/legacy-from-store';
-import fetchFrom from '@gridx/ember-core/decorators/legacy-fetch-from';
+import fromStore from '@fleetbase/ember-core/decorators/legacy-from-store';
+import fetchFrom from '@fleetbase/ember-core/decorators/legacy-fetch-from';
 
 export default class LogsIndexController extends BaseController {
     @service filters;

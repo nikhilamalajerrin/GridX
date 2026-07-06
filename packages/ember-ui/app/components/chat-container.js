@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/chat-container';
+export { default } from '@fleetbase/ember-ui/components/chat-container';

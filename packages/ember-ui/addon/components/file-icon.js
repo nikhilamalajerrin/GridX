@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import getWithDefault from '@gridx/ember-core/utils/get-with-default';
-import isModel from '@gridx/ember-core/utils/is-model';
+import getWithDefault from '@fleetbase/ember-core/utils/get-with-default';
+import isModel from '@fleetbase/ember-core/utils/is-model';
 import isUploadFile from '../utils/is-upload-file';
 
 export default class FileIconComponent extends Component {

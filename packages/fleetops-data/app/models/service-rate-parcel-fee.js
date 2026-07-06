@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-data/models/service-rate-parcel-fee';
+export { default } from '@fleetbase/fleetops-data/models/service-rate-parcel-fee';

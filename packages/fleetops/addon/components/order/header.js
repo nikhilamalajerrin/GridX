@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { classify } from '@ember/string';
-import isFunction from '@gridx/ember-core/utils/is-function';
+import isFunction from '@fleetbase/ember-core/utils/is-function';
 
 export default class OrderHeaderComponent extends Component {
     /**

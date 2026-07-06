@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/telematic/settings';
+export { default } from '@fleetbase/fleetops-engine/components/telematic/settings';

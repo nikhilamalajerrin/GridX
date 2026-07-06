@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/tab-navigation';
+export { default } from '@fleetbase/ember-ui/components/tab-navigation';

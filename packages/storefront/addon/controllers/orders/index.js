@@ -1,4 +1,4 @@
-import BaseController from '@gridx/storefront-engine/controllers/base-controller';
+import BaseController from '@fleetbase/storefront-engine/controllers/base-controller';
 import { tracked } from '@glimmer/tracking';
 import { action, get } from '@ember/object';
 import { inject as service } from '@ember/service';

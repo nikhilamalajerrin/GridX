@@ -1,1 +1,1 @@
-export { default } from '@gridx/dev-engine/controllers/base-controller';
+export { default } from '@fleetbase/dev-engine/controllers/base-controller';

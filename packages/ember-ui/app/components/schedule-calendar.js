@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/schedule-calendar';
+export { default } from '@fleetbase/ember-ui/components/schedule-calendar';

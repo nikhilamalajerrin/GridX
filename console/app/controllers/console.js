@@ -5,7 +5,7 @@ import { later } from '@ember/runloop';
 import { action } from '@ember/object';
 import { isArray } from '@ember/array';
 import { dasherize } from '@ember/string';
-import first from '@gridx/ember-core/utils/first';
+import first from '@fleetbase/ember-core/utils/first';
 
 export default class ConsoleController extends Controller {
     @service currentUser;

@@ -4,7 +4,7 @@
     "description": "Accounting & Invoicing Extension for GridX",
     "keywords": [
         "gridx",
-        "gridx-extension",
+        "fleetbase-extension",
         "accounting",
         "invoicing",
         "settlements",
@@ -58,7 +58,7 @@
                 "GridX\\Ledger\\Providers\\LedgerServiceProvider"
             ]
         },
-        "gridx": {
+        "fleetbase": {
             "sandbox-migrations": false
         }
     },

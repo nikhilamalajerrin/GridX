@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/query-builder/limit';
+export { default } from '@fleetbase/ember-ui/components/query-builder/limit';

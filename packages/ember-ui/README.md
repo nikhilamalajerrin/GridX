@@ -6,7 +6,7 @@ This library contains a collection of reusable UI components that you can use in
 
 To install the GridX Ember UI library, simply run the following command:
 
-<code>npm install @gridx/ember-ui</code>
+<code>npm install @fleetbase/ember-ui</code>
 
 ## Usage
 

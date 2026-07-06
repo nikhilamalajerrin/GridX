@@ -6,11 +6,11 @@ import { isArray } from '@ember/array';
 import { later } from '@ember/runloop';
 import { task } from 'ember-concurrency';
 import lowercase from 'ember-cli-string-helpers/utils/lowercase';
-import getWithDefault from '@gridx/ember-core/utils/get-with-default';
-import inlineTask from '@gridx/ember-core/utils/inline-task';
+import getWithDefault from '@fleetbase/ember-core/utils/get-with-default';
+import inlineTask from '@fleetbase/ember-core/utils/inline-task';
 import ObjectProxy from '@ember/object/proxy';
 import createCustomEntity from '../../utils/create-custom-entity';
-import contextComponentCallback from '@gridx/ember-core/utils/context-component-callback';
+import contextComponentCallback from '@fleetbase/ember-core/utils/context-component-callback';
 
 /**
  * Component class for managing order configuration entities.

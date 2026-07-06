@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/hason-structure';
+export { default } from '@fleetbase/ember-core/utils/hason-structure';

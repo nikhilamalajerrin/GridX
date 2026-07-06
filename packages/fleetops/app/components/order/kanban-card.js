@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/order/kanban-card';
+export { default } from '@fleetbase/fleetops-engine/components/order/kanban-card';

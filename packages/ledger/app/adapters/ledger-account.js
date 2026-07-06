@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/adapters/ledger-account';
+export { default } from '@fleetbase/ledger-engine/adapters/ledger-account';

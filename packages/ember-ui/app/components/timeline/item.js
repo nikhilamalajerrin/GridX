@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/timeline/item';
+export { default } from '@fleetbase/ember-ui/components/timeline/item';

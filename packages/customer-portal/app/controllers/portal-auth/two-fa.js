@@ -1,1 +1,1 @@
-export { default } from '@gridx/customer-portal-engine/controllers/portal-auth/two-fa';
+export { default } from '@fleetbase/customer-portal-engine/controllers/portal-auth/two-fa';

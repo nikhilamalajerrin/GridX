@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
-import removeBootLoader from '@gridx/console/utils/remove-boot-loader';
+import removeBootLoader from '@fleetbase/console/utils/remove-boot-loader';
 
 export default class ApplicationRoute extends Route {
     @service('universe/hook-service') hookService;

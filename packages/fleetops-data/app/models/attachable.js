@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-data/models/attachable';
+export { default } from '@fleetbase/fleetops-data/models/attachable';

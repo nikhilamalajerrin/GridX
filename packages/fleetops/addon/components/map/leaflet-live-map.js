@@ -10,7 +10,7 @@ import { singularize, pluralize } from 'ember-inflector';
 import { all } from 'rsvp';
 import { task, timeout } from 'ember-concurrency';
 import { next } from '@ember/runloop';
-import getModelName from '@gridx/ember-core/utils/get-model-name';
+import getModelName from '@fleetbase/ember-core/utils/get-model-name';
 import ensureLeafletPluginsReady, { hasLeafletPluginsReady } from '../../utils/leaflet-plugin-loader';
 
 export default class MapLeafletLiveMapComponent extends Component {

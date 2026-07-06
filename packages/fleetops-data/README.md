@@ -1,4 +1,4 @@
-# @gridx/fleetops-data
+# @fleetbase/fleetops-data
 
 [Short description of the addon.]
 
@@ -13,7 +13,7 @@
 ## Installation
 
 ```
-ember install @gridx/fleetops-data
+ember install @fleetbase/fleetops-data
 ```
 
 

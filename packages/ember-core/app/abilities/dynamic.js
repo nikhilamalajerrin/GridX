@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/abilities/dynamic';
+export { default } from '@fleetbase/ember-core/abilities/dynamic';

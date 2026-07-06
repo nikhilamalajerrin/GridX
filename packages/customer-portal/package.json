@@ -1,9 +1,9 @@
 {
-    "name": "@gridx/customer-portal-engine",
+    "name": "@fleetbase/customer-portal-engine",
     "version": "0.0.12",
     "description": "Extendable Customer Portal for GridX",
     "keywords": [
-        "gridx-extension",
+        "fleetbase-extension",
         "gridx",
         "ember-addon",
         "ember-engine",
@@ -13,7 +13,7 @@
         "customer tracking",
         "customer support"
     ],
-    "gridx": {
+    "fleetbase": {
         "route": "customer-portal",
         "mount": "root"
     },
@@ -40,14 +40,14 @@
         "test:ember": "ember test",
         "test:ember-compatibility": "ember try:each",
         "publish:npm": "npm config set registry https://registry.npmjs.org/ && npm publish",
-        "publish:github": "npm config set '@gridx:registry' https://npm.pkg.github.com/ && npm publish"
+        "publish:github": "npm config set '@fleetbase:registry' https://npm.pkg.github.com/ && npm publish"
     },
     "dependencies": {
         "@babel/core": "^7.25.2",
-        "@gridx/ember-core": "^0.3.24",
-        "@gridx/ember-ui": "^0.3.39",
-        "@gridx/fleetops-data": "^0.1.36",
-        "@gridx/leaflet-routing-machine": "^3.2.17",
+        "@fleetbase/ember-core": "^0.3.24",
+        "@fleetbase/ember-ui": "^0.3.39",
+        "@fleetbase/fleetops-data": "^0.1.36",
+        "@fleetbase/leaflet-routing-machine": "^3.2.17",
         "@fortawesome/ember-fontawesome": "^2.0.0",
         "@fortawesome/fontawesome-svg-core": "6.4.0",
         "@fortawesome/free-brands-svg-icons": "6.4.0",

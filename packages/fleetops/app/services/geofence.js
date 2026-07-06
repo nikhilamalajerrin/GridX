@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/services/geofence';
+export { default } from '@fleetbase/fleetops-engine/services/geofence';

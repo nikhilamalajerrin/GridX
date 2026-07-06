@@ -1,1 +1,1 @@
-export { default } from '@gridx/registry-bridge-engine/controllers/application';
+export { default } from '@fleetbase/registry-bridge-engine/controllers/application';

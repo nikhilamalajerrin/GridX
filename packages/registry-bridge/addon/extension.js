@@ -1,4 +1,4 @@
-import { MenuItem, ExtensionComponent } from '@gridx/ember-core/contracts';
+import { MenuItem, ExtensionComponent } from '@fleetbase/ember-core/contracts';
 
 export default {
     setupExtension(app, universe) {
@@ -40,17 +40,17 @@ export default {
                 new MenuItem({
                     title: 'Registry Config',
                     icon: 'gear',
-                    component: new ExtensionComponent('@gridx/registry-bridge-engine', 'registry-admin-config'),
+                    component: new ExtensionComponent('@fleetbase/registry-bridge-engine', 'registry-admin-config'),
                 }),
                 new MenuItem({
                     title: 'Awaiting Review',
                     icon: 'gavel',
-                    component: new ExtensionComponent('@gridx/registry-bridge-engine', 'extension-reviewer-control'),
+                    component: new ExtensionComponent('@fleetbase/registry-bridge-engine', 'extension-reviewer-control'),
                 }),
                 new MenuItem({
                     title: 'Pending Publish',
                     icon: 'rocket',
-                    component: new ExtensionComponent('@gridx/registry-bridge-engine', 'extension-pending-publish-viewer'),
+                    component: new ExtensionComponent('@fleetbase/registry-bridge-engine', 'extension-pending-publish-viewer'),
                 }),
             ],
             {

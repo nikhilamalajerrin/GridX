@@ -1,4 +1,4 @@
-import ApplicationSerializer from '@gridx/ember-core/serializers/application';
+import ApplicationSerializer from '@fleetbase/ember-core/serializers/application';
 import { EmbeddedRecordsMixin } from '@ember-data/serializer/rest';
 
 export default class CompanySerializer extends ApplicationSerializer.extend(EmbeddedRecordsMixin) {

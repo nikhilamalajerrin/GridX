@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/controllers/connectivity/events/index';
+export { default } from '@fleetbase/fleetops-engine/controllers/connectivity/events/index';

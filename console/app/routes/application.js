@@ -1,8 +1,8 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
-import isElectron from '@gridx/ember-core/utils/is-electron';
-import pathToRoute from '@gridx/ember-core/utils/path-to-route';
+import isElectron from '@fleetbase/ember-core/utils/is-electron';
+import pathToRoute from '@fleetbase/ember-core/utils/path-to-route';
 import removeBootLoader from '../utils/remove-boot-loader';
 
 export default class ApplicationRoute extends Route {

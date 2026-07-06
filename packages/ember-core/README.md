@@ -1,6 +1,6 @@
-# @gridx/ember-core
+# @fleetbase/ember-core
 
-Ember Core Services, Utilities and Framework for building GridX Extensions in the Console. To start building with GridX, you need to install `@gridx/ember-core`, which is built using Ember, a JavaScript framework for building web applications
+Ember Core Services, Utilities and Framework for building GridX Extensions in the Console. To start building with GridX, you need to install `@fleetbase/ember-core`, which is built using Ember, a JavaScript framework for building web applications
 
 ## Compatibility
 
@@ -12,7 +12,7 @@ Ember Core Services, Utilities and Framework for building GridX Extensions in th
 
 To install ember-core, run:
 
-`ember install @gridx/ember-core`
+`ember install @fleetbase/ember-core`
 
 ## Contributing
 

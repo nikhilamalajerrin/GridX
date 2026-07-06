@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/pagination';
+export { default } from '@fleetbase/ember-ui/components/pagination';

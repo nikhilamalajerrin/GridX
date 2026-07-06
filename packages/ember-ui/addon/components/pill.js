@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { action, get } from '@ember/object';
-import getModelName from '@gridx/ember-core/utils/get-model-name';
+import getModelName from '@fleetbase/ember-core/utils/get-model-name';
 
 export default class PillComponent extends Component {
     /* eslint-disable ember/no-get */

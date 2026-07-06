@@ -1,1 +1,1 @@
-export { default } from '@gridx/registry-bridge-engine/routes/developers/credentials';
+export { default } from '@fleetbase/registry-bridge-engine/routes/developers/credentials';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/templates/operations/orders/index/details/virtual';
+export { default } from '@fleetbase/fleetops-engine/templates/operations/orders/index/details/virtual';

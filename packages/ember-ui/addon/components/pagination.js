@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action, computed, defineProperty } from '@ember/object';
 import { alias, gt, not } from '@ember/object/computed';
-import getWithDefault from '@gridx/ember-core/utils/get-with-default';
+import getWithDefault from '@fleetbase/ember-core/utils/get-with-default';
 import PaginationItems from '../utils/pagination/items';
 import arrayRange from '../utils/array-range';
 

@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/place/performance';
+export { default } from '@fleetbase/fleetops-engine/components/place/performance';

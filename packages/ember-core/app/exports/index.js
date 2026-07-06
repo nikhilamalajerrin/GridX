@@ -1,1 +1,1 @@
-export { services, externalRoutes, hostServices } from '@gridx/ember-core/addon/exports/index';
+export { services, externalRoutes, hostServices } from '@fleetbase/ember-core/addon/exports/index';

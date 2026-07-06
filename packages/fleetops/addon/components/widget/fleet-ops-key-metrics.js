@@ -2,8 +2,8 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { task } from 'ember-concurrency';
-import formatCurrency from '@gridx/ember-ui/utils/format-currency';
-import formatMeters from '@gridx/ember-ui/utils/format-meters';
+import formatCurrency from '@fleetbase/ember-ui/utils/format-currency';
+import formatMeters from '@fleetbase/ember-ui/utils/format-meters';
 
 /** Subset shown in the compact legacy widget. Full 13 metrics still come back from
  *  the API; users who want the rest should adopt the per-tile KPI widgets. */

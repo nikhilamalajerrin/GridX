@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/utils/commerce-date-ranges';
+export { default } from '@fleetbase/storefront-engine/utils/commerce-date-ranges';

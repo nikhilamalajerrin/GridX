@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/file-icon';
+export { default } from '@fleetbase/ember-ui/components/file-icon';

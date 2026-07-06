@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/serializers/bin-location';
+export { default } from '@fleetbase/pallet-engine/serializers/bin-location';

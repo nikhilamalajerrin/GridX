@@ -17,7 +17,7 @@ return [
         ],
     ],
     'registry' => [
-        'host' => env('REGISTRY_HOST', 'https://registry.gridx.io'),
+        'host' => env('REGISTRY_HOST', 'https://registry.fleetbase.io'),
         'token' => env('REGISTRY_TOKEN', env('REGISTRY_AUTH_TOKEN'))
     ],
     'stripe' => [
@@ -27,7 +27,7 @@ return [
     ],
     'extensions' => [
         'preinstalled' => Utils::castBoolean(env('REGISTRY_PREINSTALLED_EXTENSIONS', false)),
-        'protected_prefixes' => explode(',', env('REGISTRY_PROTECTED_PREFIXES', '@gridx,gridx,@flb,@gridx-extension,@flb-extension'))
+        'protected_prefixes' => explode(',', env('REGISTRY_PROTECTED_PREFIXES', '@gridx,gridx,@flb,@fleetbase-extension,@flb-extension'))
     ],
     'facilitator_fee' => env('REGISTRY_FACILITATOR_FEE', 10)
 ];

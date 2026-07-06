@@ -2,8 +2,8 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { task } from 'ember-concurrency';
-import getWithDefault from '@gridx/ember-core/utils/get-with-default';
-import getModelName from '@gridx/ember-core/utils/get-model-name';
+import getWithDefault from '@fleetbase/ember-core/utils/get-with-default';
+import getModelName from '@fleetbase/ember-core/utils/get-model-name';
 
 /**
  * Component to handle a thread of comments.

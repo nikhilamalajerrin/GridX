@@ -1,2 +1,2 @@
-export { default } from '@gridx/ember-core/addon/exports/host-services';
-export { hostServices } from '@gridx/ember-core/addon/exports/host-services';
+export { default } from '@fleetbase/ember-core/addon/exports/host-services';
+export { hostServices } from '@fleetbase/ember-core/addon/exports/host-services';

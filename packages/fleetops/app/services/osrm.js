@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/services/osrm';
+export { default } from '@fleetbase/fleetops-engine/services/osrm';

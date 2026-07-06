@@ -1,4 +1,4 @@
-import ResourceActionService from '@gridx/ember-core/services/resource-action';
+import ResourceActionService from '@fleetbase/ember-core/services/resource-action';
 import { task } from 'ember-concurrency';
 import { isNone } from '@ember/utils';
 import serializePayload from '../utils/serialize-payload';

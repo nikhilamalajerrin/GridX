@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/services/device-actions';
+export { default } from '@fleetbase/fleetops-engine/services/device-actions';

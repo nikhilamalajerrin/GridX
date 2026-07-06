@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import removeBootLoader from '../utils/remove-boot-loader';
-import '@gridx/leaflet-routing-machine';
+import '@fleetbase/leaflet-routing-machine';
 
 export default class ConsoleRoute extends Route {
     @service('universe/hook-service') hookService;

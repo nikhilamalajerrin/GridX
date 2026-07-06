@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/first-char';
+export { default } from '@fleetbase/ember-ui/helpers/first-char';

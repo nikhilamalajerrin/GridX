@@ -1,7 +1,7 @@
 import Application from '@ember/application';
 import Resolver from 'ember-resolver';
 import loadInitializers from 'ember-load-initializers';
-import config from '@gridx/console/config/environment';
+import config from '@fleetbase/console/config/environment';
 import './deprecation-workflow';
 
 export default class App extends Application {

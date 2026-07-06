@@ -5,8 +5,8 @@ import { action } from '@ember/object';
 import { isArray } from '@ember/array';
 import SalesOrderPanelDetailsComponent from './sales-order-panel/details';
 import SalesOrderPanelItemsComponent from './sales-order-panel/items';
-import contextComponentCallback from '@gridx/ember-core/utils/context-component-callback';
-import applyContextComponentArguments from '@gridx/ember-core/utils/apply-context-component-arguments';
+import contextComponentCallback from '@fleetbase/ember-core/utils/context-component-callback';
+import applyContextComponentArguments from '@fleetbase/ember-core/utils/apply-context-component-arguments';
 
 export default class SalesOrderPanelComponent extends Component {
     /**

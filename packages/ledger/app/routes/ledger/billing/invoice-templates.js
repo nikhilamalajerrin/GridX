@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/routes/billing/invoice-templates';
+export { default } from '@fleetbase/ledger-engine/routes/billing/invoice-templates';

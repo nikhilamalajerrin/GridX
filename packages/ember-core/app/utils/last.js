@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/last';
+export { default } from '@fleetbase/ember-core/utils/last';

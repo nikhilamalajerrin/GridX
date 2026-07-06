@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 import { capitalize } from '@ember/string';
 import { pluralize } from 'ember-inflector';
 import { format, formatDistanceToNow } from 'date-fns';
-import humanize from '@gridx/ember-core/utils/humanize';
+import humanize from '@fleetbase/ember-core/utils/humanize';
 
 export const parserPermissionName = function (permissionName, index = 0) {
     const parts = permissionName.split(' ');

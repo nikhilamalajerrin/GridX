@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/kanban/column';
+export { default } from '@fleetbase/ember-ui/components/kanban/column';

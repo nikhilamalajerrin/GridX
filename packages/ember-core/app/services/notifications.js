@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/services/notifications';
+export { default } from '@fleetbase/ember-core/services/notifications';

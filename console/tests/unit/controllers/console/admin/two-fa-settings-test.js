@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { setupTest } from '@gridx/console/tests/helpers';
+import { setupTest } from '@fleetbase/console/tests/helpers';
 
 module('Unit | Controller | console/admin/two-fa-settings', function (hooks) {
     setupTest(hooks);

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/avatar-url';
+export { default } from '@fleetbase/ember-ui/helpers/avatar-url';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/services/universe/extension-manager';
+export { default } from '@fleetbase/ember-core/services/universe/extension-manager';

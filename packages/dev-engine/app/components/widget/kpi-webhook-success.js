@@ -1,1 +1,1 @@
-export { default } from '@gridx/dev-engine/components/widget/kpi-webhook-success';
+export { default } from '@fleetbase/dev-engine/components/widget/kpi-webhook-success';

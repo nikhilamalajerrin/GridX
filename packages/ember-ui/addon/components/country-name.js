@@ -2,14 +2,14 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { later } from '@ember/runloop';
-import getWithDefault from '@gridx/ember-core/utils/get-with-default';
+import getWithDefault from '@fleetbase/ember-core/utils/get-with-default';
 
 /**
  * Represents the `CountryName` component which fetches and sets the name of a country.
  *
  * @class CountryNameComponent
  * @extends {Component}
- * @memberof @gridx/ember-ui
+ * @memberof @fleetbase/ember-ui
  *
  * @property {Service} fetch - Service for fetching data.
  * @property {string} countryName - The name of the country.

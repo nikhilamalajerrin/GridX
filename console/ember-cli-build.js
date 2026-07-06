@@ -12,7 +12,7 @@ module.exports = function (defaults) {
         storeConfigInMeta: false,
 
         fingerprint: {
-            exclude: ['leaflet/', 'leaflet-images/', 'socketcluster-client.min.js', 'gridx.config.json', 'extensions.json'],
+            exclude: ['leaflet/', 'leaflet-images/', 'socketcluster-client.min.js', 'fleetbase.config.json', 'extensions.json'],
         },
 
         liveReload: {
@@ -36,10 +36,10 @@ module.exports = function (defaults) {
 
     let runtimeConfigTree;
     if (toBoolean(process.env.DISABLE_RUNTIME_CONFIG)) {
-        runtimeConfigTree = writeFile('gridx.config.json', '{}');
+        runtimeConfigTree = writeFile('fleetbase.config.json', '{}');
     } else {
         runtimeConfigTree = new Funnel('.', {
-            files: ['gridx.config.json'],
+            files: ['fleetbase.config.json'],
             destDir: '/',
         });
     }

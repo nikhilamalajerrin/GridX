@@ -1,1 +1,1 @@
-export { default, initialize } from '@gridx/ember-ui/instance-initializers/register-report-widget';
+export { default, initialize } from '@fleetbase/ember-ui/instance-initializers/register-report-widget';

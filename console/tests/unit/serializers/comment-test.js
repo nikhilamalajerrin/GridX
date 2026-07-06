@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 
-import { setupTest } from '@gridx/console/tests/helpers';
+import { setupTest } from '@fleetbase/console/tests/helpers';
 
 module('Unit | Serializer | comment', function (hooks) {
     setupTest(hooks);

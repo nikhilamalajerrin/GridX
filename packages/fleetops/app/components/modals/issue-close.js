@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/modals/issue-close';
+export { default } from '@fleetbase/fleetops-engine/components/modals/issue-close';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/services/vroom-allocation-engine';
+export { default } from '@fleetbase/fleetops-engine/services/vroom-allocation-engine';

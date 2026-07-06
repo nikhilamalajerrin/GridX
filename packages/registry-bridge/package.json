@@ -1,12 +1,12 @@
 {
-    "name": "@gridx/registry-bridge-engine",
+    "name": "@fleetbase/registry-bridge-engine",
     "version": "0.1.9",
     "description": "Internal Bridge between GridX API and Extensions Registry",
-    "gridx": {
+    "fleetbase": {
         "route": "extensions"
     },
     "keywords": [
-        "gridx-extension",
+        "fleetbase-extension",
         "gridx-registry-bridge",
         "gridx",
         "ember-addon",
@@ -35,12 +35,12 @@
         "test:ember": "ember test",
         "test:ember-compatibility": "ember try:each",
         "publish:npm": "npm config set registry https://registry.npmjs.org/ && npm publish --access restricted",
-        "publish:github": "npm config set '@gridx:registry' https://npm.pkg.github.com/ && npm publish --access restricted"
+        "publish:github": "npm config set '@fleetbase:registry' https://npm.pkg.github.com/ && npm publish --access restricted"
     },
     "dependencies": {
         "@babel/core": "^7.23.2",
-        "@gridx/ember-core": "^0.3.17",
-        "@gridx/ember-ui": "^0.3.25",
+        "@fleetbase/ember-core": "^0.3.17",
+        "@fleetbase/ember-ui": "^0.3.25",
         "@fortawesome/ember-fontawesome": "^2.0.0",
         "@fortawesome/fontawesome-svg-core": "6.4.0",
         "@fortawesome/free-brands-svg-icons": "6.4.0",

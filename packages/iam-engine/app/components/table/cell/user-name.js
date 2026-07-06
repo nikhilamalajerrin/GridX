@@ -1,1 +1,1 @@
-export { default } from '@gridx/iam-engine/components/table/cell/user-name';
+export { default } from '@fleetbase/iam-engine/components/table/cell/user-name';

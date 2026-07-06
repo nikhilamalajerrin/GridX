@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/components/customer-panel';
+export { default } from '@fleetbase/storefront-engine/components/customer-panel';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/serialize-model-array';
+export { default } from '@fleetbase/ember-core/utils/serialize-model-array';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/components/modals/invoice-preview/footer';
+export { default } from '@fleetbase/ledger-engine/components/modals/invoice-preview/footer';

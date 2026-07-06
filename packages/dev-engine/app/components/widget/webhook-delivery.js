@@ -1,1 +1,1 @@
-export { default } from '@gridx/dev-engine/components/widget/webhook-delivery';
+export { default } from '@fleetbase/dev-engine/components/widget/webhook-delivery';

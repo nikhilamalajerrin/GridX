@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-data/models/facilitator-vendor';
+export { default } from '@fleetbase/fleetops-data/models/facilitator-vendor';

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { MultiPolygon, Polygon, Circle, Feature, FeatureCollection } from '@gridx/fleetops-data/utils/geojson';
+import { MultiPolygon, Polygon, Circle, Feature, FeatureCollection } from '@fleetbase/fleetops-data/utils/geojson';
 import { isArray } from '@ember/array';
 import wrapCoordinates from './leaflet-wrap-coordinates';
 

@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/components/widget/stock-value';
+export { default } from '@fleetbase/pallet-engine/components/widget/stock-value';

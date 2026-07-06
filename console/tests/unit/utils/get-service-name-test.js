@@ -1,4 +1,4 @@
-import getServiceName from '@gridx/console/utils/get-service-name';
+import getServiceName from '@fleetbase/console/utils/get-service-name';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | get-service-name', function () {

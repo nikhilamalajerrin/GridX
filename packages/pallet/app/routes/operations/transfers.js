@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/routes/operations/transfers';
+export { default } from '@fleetbase/pallet-engine/routes/operations/transfers';

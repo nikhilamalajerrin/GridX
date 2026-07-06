@@ -13,7 +13,7 @@
     <a href="https://github.com/gridx/fleetops/blob/master/LICENSE.md">
         <img src="https://img.shields.io/badge/license-AGPL--3.0--or--later-blue?style=flat-square" alt="License: AGPL-3.0-or-later">
     </a>
-    <a href="https://www.npmjs.com/package/@gridx/fleetops-engine">
+    <a href="https://www.npmjs.com/package/@fleetbase/fleetops-engine">
         <img src="https://img.shields.io/badge/npm-%40gridx%2Ffleetops--engine-CB3837?style=flat-square" alt="NPM package">
     </a>
     <a href="https://packagist.org/packages/gridx/fleetops-api">
@@ -38,7 +38,7 @@ Fleet-Ops ships as two packages:
 
 | Package | Purpose |
 | --- | --- |
-| `@gridx/fleetops-engine` | Ember Engine/Add-on that powers the Fleet-Ops console UI. |
+| `@fleetbase/fleetops-engine` | Ember Engine/Add-on that powers the Fleet-Ops console UI. |
 | `gridx/fleetops-api` | Laravel/PHP package that provides the Fleet-Ops API, models, jobs, events, and integrations. |
 
 Fleet-Ops is included with GridX Cloud and self-hosted GridX installations. For product concepts, workflows, and setup guides, start with the [Fleet-Ops documentation](https://www.gridx.io/docs/fleet-ops).
@@ -145,7 +145,7 @@ This links the local Fleet-Ops Ember engine and Laravel package so Console and A
 
 ### Link Fleet-Ops Data
 
-Fleet-Ops also depends on the shared `@gridx/fleetops-data` package. That package contains Fleet-Ops Ember Data models, adapters, and serializers, and can be reused by other GridX modules that need to read or write Fleet-Ops resources without duplicating data-layer definitions.
+Fleet-Ops also depends on the shared `@fleetbase/fleetops-data` package. That package contains Fleet-Ops Ember Data models, adapters, and serializers, and can be reused by other GridX modules that need to read or write Fleet-Ops resources without duplicating data-layer definitions.
 
 If you are changing shared Fleet-Ops data models or consuming them from another extension, link `fleetops-data` through the root Console workspace:
 

@@ -1,1 +1,1 @@
-export * from '@gridx/fleetops-engine/utils/route-visualization';
+export * from '@fleetbase/fleetops-engine/utils/route-visualization';

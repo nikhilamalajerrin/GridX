@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/to-leaflet-bounds';
+export { default } from '@fleetbase/ember-core/utils/to-leaflet-bounds';

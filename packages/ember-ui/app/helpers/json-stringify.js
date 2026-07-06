@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/json-stringify';
+export { default } from '@fleetbase/ember-ui/helpers/json-stringify';

@@ -1,4 +1,4 @@
-import ResourceActionService, { inject as service } from '@gridx/ember-core/services/resource-action';
+import ResourceActionService, { inject as service } from '@fleetbase/ember-core/services/resource-action';
 import { action } from '@ember/object';
 import { isArray } from '@ember/array';
 

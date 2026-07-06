@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/issue/form';
+export { default } from '@fleetbase/fleetops-engine/components/issue/form';

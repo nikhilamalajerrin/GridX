@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/components/purchase-order/pill';
+export { default } from '@fleetbase/pallet-engine/components/purchase-order/pill';

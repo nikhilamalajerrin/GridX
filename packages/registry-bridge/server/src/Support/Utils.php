@@ -32,10 +32,10 @@ class Utils extends SupportUtils
     public static function setConsoleNpmrcConfig(bool $reset = false): bool
     {
         $npmrcPath             = static::consolePath('.npmrc');
-        $registryHost          = config('registry-bridge.registry.host', env('REGISTRY_HOST', 'https://registry.gridx.io'));
+        $registryHost          = config('registry-bridge.registry.host', env('REGISTRY_HOST', 'https://registry.fleetbase.io'));
         $config                = implode(PHP_EOL, [
             'registry=https://registry.npmjs.org/',
-            '@gridx:registry=' . rtrim($registryHost, '/') . '/',
+            '@fleetbase:registry=' . rtrim($registryHost, '/') . '/',
         ]) . PHP_EOL;
 
         if (!file_exists($npmrcPath) || $reset === true) {
@@ -61,7 +61,7 @@ class Utils extends SupportUtils
     {
         $homePath               = rtrim(getenv('HOME'), DIRECTORY_SEPARATOR);
         $npmrcPath              = $homePath . DIRECTORY_SEPARATOR . '.npmrc';
-        $registryHost           = config('registry-bridge.registry.host', env('REGISTRY_HOST', 'https://registry.gridx.io'));
+        $registryHost           = config('registry-bridge.registry.host', env('REGISTRY_HOST', 'https://registry.fleetbase.io'));
         $registryToken          = config('registry-bridge.registry.token', env('REGISTRY_TOKEN'));
         $authString             = '//' . str_replace(['http://', 'https://'], '', rtrim($registryHost, '/')) . '/:_authToken="' . $registryToken . '"' . PHP_EOL;
 
@@ -87,7 +87,7 @@ class Utils extends SupportUtils
     public static function setComposerAuthConfig(): bool
     {
         $composerAuthPath = base_path('auth.json');
-        $registryHost     = static::getDomainFromUrl(config('registry-bridge.registry.host', env('REGISTRY_HOST', 'https://registry.gridx.io')), true);
+        $registryHost     = static::getDomainFromUrl(config('registry-bridge.registry.host', env('REGISTRY_HOST', 'https://registry.fleetbase.io')), true);
         $registryToken    = config('registry-bridge.registry.token', env('REGISTRY_TOKEN'));
 
         // Ensure the registry token is not null or empty

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/config';
+export { default } from '@fleetbase/ember-ui/helpers/config';

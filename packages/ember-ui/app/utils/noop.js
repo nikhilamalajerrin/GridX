@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/utils/noop';
+export { default } from '@fleetbase/ember-ui/utils/noop';

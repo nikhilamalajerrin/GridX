@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/adapters/store-hour';
+export { default } from '@fleetbase/storefront-engine/adapters/store-hour';

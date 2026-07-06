@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/components/schedule-manager';
+export { default } from '@fleetbase/storefront-engine/components/schedule-manager';

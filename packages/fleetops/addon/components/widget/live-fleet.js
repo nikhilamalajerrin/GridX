@@ -5,7 +5,7 @@ import { inject as service } from '@ember/service';
 import { getOwner } from '@ember/application';
 import { debug } from '@ember/debug';
 import { task } from 'ember-concurrency';
-import { renderCompleted, waitForInsertedAndSized } from '@gridx/ember-ui/utils/dom';
+import { renderCompleted, waitForInsertedAndSized } from '@fleetbase/ember-ui/utils/dom';
 import LeafletTrackingMarkerComponent from '../leaflet-tracking-marker';
 import ensureLeafletDrawEditNamespace from '../../utils/leaflet-draw-namespace-guard';
 

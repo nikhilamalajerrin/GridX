@@ -1,1 +1,1 @@
-export { default } from '@gridx/customer-portal-engine/controllers/portal/address-book';
+export { default } from '@fleetbase/customer-portal-engine/controllers/portal/address-book';

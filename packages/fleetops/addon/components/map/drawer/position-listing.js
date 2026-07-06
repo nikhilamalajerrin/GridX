@@ -6,7 +6,7 @@ import { task } from 'ember-concurrency';
 import { isArray } from '@ember/array';
 import { htmlSafe } from '@ember/template';
 import { startOfWeek, endOfWeek, format } from 'date-fns';
-import getModelName from '@gridx/ember-core/utils/get-model-name';
+import getModelName from '@fleetbase/ember-core/utils/get-model-name';
 import ensureLeafletDrawEditNamespace from '../../../utils/leaflet-draw-namespace-guard';
 import { buildTrackableOption } from '../../../utils/trackable-option';
 

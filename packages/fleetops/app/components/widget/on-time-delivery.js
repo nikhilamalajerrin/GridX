@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/widget/on-time-delivery';
+export { default } from '@fleetbase/fleetops-engine/components/widget/on-time-delivery';

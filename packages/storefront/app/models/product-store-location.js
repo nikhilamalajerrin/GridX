@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/models/product-store-location';
+export { default } from '@fleetbase/storefront-engine/models/product-store-location';

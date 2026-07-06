@@ -1,5 +1,5 @@
 import { action } from '@ember/object';
-import ResourceActionService from '@gridx/ember-core/services/resource-action';
+import ResourceActionService from '@fleetbase/ember-core/services/resource-action';
 
 export default class GatewayActionsService extends ResourceActionService {
     constructor() {

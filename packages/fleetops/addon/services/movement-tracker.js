@@ -18,7 +18,7 @@ import { inject as service } from '@ember/service';
 import { getOwner } from '@ember/application';
 import { task, timeout } from 'ember-concurrency';
 import { debug } from '@ember/debug';
-import getModelName from '@gridx/ember-core/utils/get-model-name';
+import getModelName from '@fleetbase/ember-core/utils/get-model-name';
 import LeafletTrackingMarkerComponent from '../components/leaflet-tracking-marker';
 
 export class EventBuffer {

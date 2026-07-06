@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/utils/find-active-tab';
+export { default } from '@fleetbase/fleetops-engine/utils/find-active-tab';

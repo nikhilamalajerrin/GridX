@@ -1,1 +1,1 @@
-export { default } from '@gridx/iam-engine/components/widget/policy-surface';
+export { default } from '@fleetbase/iam-engine/components/widget/policy-surface';

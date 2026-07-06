@@ -1,1 +1,1 @@
-export { default } from '@gridx/iam-engine/components/modals/view-policy-permissions';
+export { default } from '@fleetbase/iam-engine/components/modals/view-policy-permissions';

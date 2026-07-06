@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/utils/permission-check';
+export { default } from '@fleetbase/ember-ui/utils/permission-check';

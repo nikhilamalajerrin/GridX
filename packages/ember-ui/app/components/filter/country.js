@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/filter/country';
+export { default } from '@fleetbase/ember-ui/components/filter/country';

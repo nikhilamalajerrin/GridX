@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/cell/part-identity';
+export { default } from '@fleetbase/fleetops-engine/components/cell/part-identity';

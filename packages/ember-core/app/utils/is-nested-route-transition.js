@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/is-nested-route-transition';
+export { default } from '@fleetbase/ember-core/utils/is-nested-route-transition';

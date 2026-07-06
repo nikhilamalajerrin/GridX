@@ -1,4 +1,4 @@
-# @gridx/dev-engine
+# @fleetbase/dev-engine
 
 GridX Console extension for managing developer API Keys, Webhooks, Sockets, and viewing logs and API events.
 
@@ -13,7 +13,7 @@ GridX Console extension for managing developer API Keys, Webhooks, Sockets, and 
 ## Installation
 
 ```
-ember install @gridx/dev-engine
+ember install @fleetbase/dev-engine
 ```
 
 

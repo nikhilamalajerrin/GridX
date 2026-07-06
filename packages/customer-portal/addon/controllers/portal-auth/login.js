@@ -2,7 +2,7 @@ import Controller, { inject as controller } from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import pathToRoute from '@gridx/ember-core/utils/path-to-route';
+import pathToRoute from '@fleetbase/ember-core/utils/path-to-route';
 
 const CUSTOMER_PORTAL_NAMESPACE = 'customer-portal/int/v1';
 

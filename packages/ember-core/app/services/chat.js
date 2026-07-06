@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/services/chat';
+export { default } from '@fleetbase/ember-core/services/chat';

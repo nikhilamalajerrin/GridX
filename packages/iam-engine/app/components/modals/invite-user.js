@@ -1,1 +1,1 @@
-export { default } from '@gridx/iam-engine/components/modals/invite-user';
+export { default } from '@fleetbase/iam-engine/components/modals/invite-user';

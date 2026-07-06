@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/download';
+export { default } from '@fleetbase/ember-core/utils/download';

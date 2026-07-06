@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/components/widget/kpi-reserved-units';
+export { default } from '@fleetbase/pallet-engine/components/widget/kpi-reserved-units';

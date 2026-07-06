@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/modals/find-select-report';
+export { default } from '@fleetbase/ember-ui/components/modals/find-select-report';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/services/global-search';
+export { default } from '@fleetbase/fleetops-engine/services/global-search';

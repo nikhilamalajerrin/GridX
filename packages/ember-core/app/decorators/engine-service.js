@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/decorators/engine-service';
+export { default } from '@fleetbase/ember-core/decorators/engine-service';

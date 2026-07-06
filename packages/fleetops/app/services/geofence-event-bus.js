@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/services/geofence-event-bus';
+export { default } from '@fleetbase/fleetops-engine/services/geofence-event-bus';

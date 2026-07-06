@@ -17,7 +17,7 @@ import isObject from '../utils/is-object';
  *   .withName('Fleet-Ops Metrics')
  *   .withDescription('Key metrics from Fleet-Ops')
  *   .withIcon('truck')
- *   .withComponent(new ExtensionComponent('@gridx/fleetops-engine', 'components/widget/metrics'))
+ *   .withComponent(new ExtensionComponent('@fleetbase/fleetops-engine', 'components/widget/metrics'))
  *   .withGridOptions({ w: 12, h: 12, minW: 8, minH: 12 })
  *   .asDefault()
  *
@@ -28,7 +28,7 @@ import isObject from '../utils/is-object';
  *   name: 'Fleet-Ops Metrics',
  *   description: 'Key metrics from Fleet-Ops',
  *   icon: 'truck',
- *   component: new ExtensionComponent('@gridx/fleetops-engine', 'components/widget/metrics'),
+ *   component: new ExtensionComponent('@fleetbase/fleetops-engine', 'components/widget/metrics'),
  *   grid_options: { w: 12, h: 12, minW: 8, minH: 12 },
  *   default: true
  * })

@@ -6,7 +6,7 @@ import { isArray } from '@ember/array';
 import { next } from '@ember/runloop';
 import { underscore } from '@ember/string';
 import { task } from 'ember-concurrency';
-import isObject from '@gridx/ember-core/utils/is-object';
+import isObject from '@fleetbase/ember-core/utils/is-object';
 
 export default class CustomFieldsManagerComponent extends Component {
     @service store;

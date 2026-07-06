@@ -1,4 +1,4 @@
-import ResourceActionService from '@gridx/ember-core/services/resource-action';
+import ResourceActionService from '@fleetbase/ember-core/services/resource-action';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { format } from 'date-fns';

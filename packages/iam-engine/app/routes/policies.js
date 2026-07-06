@@ -1,1 +1,1 @@
-export { default } from '@gridx/iam-engine/routes/policies';
+export { default } from '@fleetbase/iam-engine/routes/policies';

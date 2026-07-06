@@ -1,1 +1,1 @@
-export { default } from '@gridx/ai-engine/components/ai-usage-group-table';
+export { default } from '@fleetbase/ai-engine/components/ai-usage-group-table';

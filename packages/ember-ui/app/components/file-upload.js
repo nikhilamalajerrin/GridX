@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/file-upload';
+export { default } from '@fleetbase/ember-ui/components/file-upload';

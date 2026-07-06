@@ -5,7 +5,7 @@ import { action } from '@ember/object';
 import { isArray } from '@ember/array';
 import { isBlank } from '@ember/utils';
 import { task } from 'ember-concurrency';
-import humanize from '@gridx/ember-core/utils/humanize';
+import humanize from '@fleetbase/ember-core/utils/humanize';
 
 export default class DevelopersExtensionsEditController extends Controller {
     @service notifications;

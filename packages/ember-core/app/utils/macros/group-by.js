@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/macros/group-by';
+export { default } from '@fleetbase/ember-core/utils/macros/group-by';

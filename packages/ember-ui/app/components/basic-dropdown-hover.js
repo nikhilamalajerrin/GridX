@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/basic-dropdown-hover';
+export { default } from '@fleetbase/ember-ui/components/basic-dropdown-hover';

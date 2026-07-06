@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { debug } from '@ember/debug';
 import { task } from 'ember-concurrency';
-import isModel from '@gridx/ember-core/utils/is-model';
+import isModel from '@fleetbase/ember-core/utils/is-model';
 
 export default class NetworkCategoryPickerComponent extends Component {
     @service fetch;

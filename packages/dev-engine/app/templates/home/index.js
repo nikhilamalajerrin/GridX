@@ -1,1 +1,1 @@
-export { default } from '@gridx/dev-engine/templates/home/index';
+export { default } from '@fleetbase/dev-engine/templates/home/index';

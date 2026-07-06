@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 import { alias } from '@ember/object/computed';
 import { action } from '@ember/object';
 import { isArray } from '@ember/array';
-import getPodMethods from '@gridx/console/utils/get-pod-methods';
+import getPodMethods from '@fleetbase/console/utils/get-pod-methods';
 
 export default class SettingsIndexController extends Controller {
     @service notifications;

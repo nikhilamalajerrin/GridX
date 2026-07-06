@@ -4,7 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { assert } from '@ember/debug';
 import { task } from 'ember-concurrency';
-import { ExtensionComponent } from '@gridx/ember-core/contracts';
+import { ExtensionComponent } from '@fleetbase/ember-core/contracts';
 
 /**
  * LazyEngineComponent

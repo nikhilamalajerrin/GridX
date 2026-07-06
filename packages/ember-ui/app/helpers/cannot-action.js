@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/cannot-action';
+export { default } from '@fleetbase/ember-ui/helpers/cannot-action';

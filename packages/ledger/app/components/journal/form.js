@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/components/journal/form';
+export { default } from '@fleetbase/ledger-engine/components/journal/form';

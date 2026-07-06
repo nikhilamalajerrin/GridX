@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/model-tag-input';
+export { default } from '@fleetbase/ember-ui/components/model-tag-input';

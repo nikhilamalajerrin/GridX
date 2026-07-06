@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/resource-context-panel-save-disabled';
+export { default } from '@fleetbase/ember-ui/helpers/resource-context-panel-save-disabled';

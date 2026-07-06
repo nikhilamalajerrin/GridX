@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/calculate-percentage';
+export { default } from '@fleetbase/ember-core/utils/calculate-percentage';

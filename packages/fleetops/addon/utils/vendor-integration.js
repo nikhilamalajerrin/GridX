@@ -1,4 +1,4 @@
-import apiUrl from '@gridx/ember-core/utils/api-url';
+import apiUrl from '@fleetbase/ember-core/utils/api-url';
 import { isArray } from '@ember/array';
 
 /**

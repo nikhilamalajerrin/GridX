@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/unit-input';
+export { default } from '@fleetbase/ember-ui/components/unit-input';

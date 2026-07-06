@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/services/app-cache';
+export { default } from '@fleetbase/ember-core/services/app-cache';

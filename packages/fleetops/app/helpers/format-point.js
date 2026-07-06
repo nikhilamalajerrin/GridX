@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/helpers/format-point';
+export { default } from '@fleetbase/fleetops-engine/helpers/format-point';

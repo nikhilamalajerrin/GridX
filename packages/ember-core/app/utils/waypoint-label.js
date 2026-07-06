@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/waypoint-label';
+export { default } from '@fleetbase/ember-core/utils/waypoint-label';

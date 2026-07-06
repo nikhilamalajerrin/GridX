@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/templates/inventory/index/new-stock-adjustment';
+export { default } from '@fleetbase/pallet-engine/templates/inventory/index/new-stock-adjustment';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/group-api-events';
+export { default } from '@fleetbase/ember-core/utils/group-api-events';

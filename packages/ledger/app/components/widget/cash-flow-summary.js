@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/components/widget/cash-flow-summary';
+export { default } from '@fleetbase/ledger-engine/components/widget/cash-flow-summary';

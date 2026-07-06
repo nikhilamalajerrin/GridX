@@ -1,7 +1,7 @@
 import { helper } from '@ember/component/helper';
-import formatCurrency from '@gridx/ember-ui/utils/format-currency';
-import numbersOnly from '@gridx/ember-ui/utils/numbers-only';
-import calculatePercentage from '@gridx/ember-core/utils/calculate-percentage';
+import formatCurrency from '@fleetbase/ember-ui/utils/format-currency';
+import numbersOnly from '@fleetbase/ember-ui/utils/numbers-only';
+import calculatePercentage from '@fleetbase/ember-core/utils/calculate-percentage';
 
 export default helper(function getTipAmount([tip, subtotal, currency]) {
     let amount = tip;

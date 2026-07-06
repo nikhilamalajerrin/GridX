@@ -1,1 +1,1 @@
-export { default } from '@gridx/customer-portal-engine/components/portal/order/form/details';
+export { default } from '@fleetbase/customer-portal-engine/components/portal/order/form/details';

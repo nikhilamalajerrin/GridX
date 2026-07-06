@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/serializers/network';
+export { default } from '@fleetbase/storefront-engine/serializers/network';

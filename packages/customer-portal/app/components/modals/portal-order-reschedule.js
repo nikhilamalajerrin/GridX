@@ -1,1 +1,1 @@
-export { default } from '@gridx/customer-portal-engine/components/modals/portal-order-reschedule';
+export { default } from '@fleetbase/customer-portal-engine/components/modals/portal-order-reschedule';

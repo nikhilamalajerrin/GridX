@@ -5,10 +5,10 @@ import { action } from '@ember/object';
 import { isArray } from '@ember/array';
 import { dasherize } from '@ember/string';
 import { later } from '@ember/runloop';
-import GeoJson from '@gridx/fleetops-data/utils/geojson/geo-json';
-import MultiPolygon from '@gridx/fleetops-data/utils/geojson/multi-polygon';
-import Polygon from '@gridx/fleetops-data/utils/geojson/polygon';
-import FeatureCollection from '@gridx/fleetops-data/utils/geojson/feature-collection';
+import GeoJson from '@fleetbase/fleetops-data/utils/geojson/geo-json';
+import MultiPolygon from '@fleetbase/fleetops-data/utils/geojson/multi-polygon';
+import Polygon from '@fleetbase/fleetops-data/utils/geojson/polygon';
+import FeatureCollection from '@fleetbase/fleetops-data/utils/geojson/feature-collection';
 import wrapCoordinates from '../utils/leaflet-wrap-coordinates';
 import ensureLeafletDrawEditNamespace from '../utils/leaflet-draw-namespace-guard';
 

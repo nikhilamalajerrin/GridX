@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/order/pill';
+export { default } from '@fleetbase/fleetops-engine/components/order/pill';

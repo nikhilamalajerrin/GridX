@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-data/models/fuel-provider-transaction';
+export { default } from '@fleetbase/fleetops-data/models/fuel-provider-transaction';

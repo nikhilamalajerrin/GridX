@@ -3,7 +3,7 @@ import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { task } from 'ember-concurrency';
-import copyToClipboard from '@gridx/ember-core/utils/copy-to-clipboard';
+import copyToClipboard from '@fleetbase/ember-core/utils/copy-to-clipboard';
 
 function filterParams(obj) {
     // eslint-disable-next-line no-unused-vars

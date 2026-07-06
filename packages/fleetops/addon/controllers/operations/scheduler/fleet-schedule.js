@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 import { action, computed } from '@ember/object';
 import { task } from 'ember-concurrency';
 import { format, startOfWeek, endOfWeek, addWeeks, formatISO } from 'date-fns';
-import { Tooltip } from '@gridx/ember-ui/utils/floating';
+import { Tooltip } from '@fleetbase/ember-ui/utils/floating';
 
 /**
  * OperationsSchedulerFleetScheduleController

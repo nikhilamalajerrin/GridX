@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/utils/array-range';
+export { default } from '@fleetbase/ember-ui/utils/array-range';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/iam-engine/components/modals/user-form';
+export { default } from '@fleetbase/iam-engine/components/modals/user-form';

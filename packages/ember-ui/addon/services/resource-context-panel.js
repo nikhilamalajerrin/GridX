@@ -9,7 +9,7 @@ import { guidFor } from '@ember/object/internals';
  * that renders contextual panels for any GridX model/resource across the app.
  *
  * @class ResourceContextPanelService
- * @memberof @gridx/ember-ui
+ * @memberof @fleetbase/ember-ui
  * @extends Service
  */
 export default class ResourceContextPanelService extends Service {

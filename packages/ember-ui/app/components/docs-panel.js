@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/docs-panel';
+export { default } from '@fleetbase/ember-ui/components/docs-panel';

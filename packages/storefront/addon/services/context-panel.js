@@ -2,15 +2,15 @@ import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { camelize } from '@ember/string';
-import getModelName from '@gridx/ember-core/utils/get-model-name';
-import getWithDefault from '@gridx/ember-core/utils/get-with-default';
-import isObject from '@gridx/ember-core/utils/is-object';
+import getModelName from '@fleetbase/ember-core/utils/get-model-name';
+import getWithDefault from '@fleetbase/ember-core/utils/get-with-default';
+import isObject from '@fleetbase/ember-core/utils/is-object';
 
 /**
  * Service for managing the state and interactions of the context panel.
  *
  * @class ContextPanelService
- * @memberof @gridx/storefront
+ * @memberof @fleetbase/storefront
  * @extends Service
  */
 export default class ContextPanelService extends Service {

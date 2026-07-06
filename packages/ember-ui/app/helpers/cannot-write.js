@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/cannot-write';
+export { default } from '@fleetbase/ember-ui/helpers/cannot-write';

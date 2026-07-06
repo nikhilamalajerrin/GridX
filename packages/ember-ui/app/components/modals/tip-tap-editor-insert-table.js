@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/modals/tip-tap-editor-insert-table';
+export { default } from '@fleetbase/ember-ui/components/modals/tip-tap-editor-insert-table';

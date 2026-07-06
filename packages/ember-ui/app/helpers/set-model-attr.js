@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/set-model-attr';
+export { default } from '@fleetbase/ember-ui/helpers/set-model-attr';

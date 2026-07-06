@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/helpers/string-starts-with';
+export { default } from '@fleetbase/ember-ui/helpers/string-starts-with';

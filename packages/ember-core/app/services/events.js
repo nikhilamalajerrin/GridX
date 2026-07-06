@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/services/events';
+export { default } from '@fleetbase/ember-core/services/events';

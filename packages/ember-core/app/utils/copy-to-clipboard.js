@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/copy-to-clipboard';
+export { default } from '@fleetbase/ember-core/utils/copy-to-clipboard';

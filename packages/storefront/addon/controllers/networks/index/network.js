@@ -1,4 +1,4 @@
-import BaseController from '@gridx/storefront-engine/controllers/base-controller';
+import BaseController from '@fleetbase/storefront-engine/controllers/base-controller';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 

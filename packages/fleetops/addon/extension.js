@@ -1,4 +1,4 @@
-import { MenuItem, Widget, ExtensionComponent } from '@gridx/ember-core/contracts';
+import { MenuItem, Widget, ExtensionComponent } from '@fleetbase/ember-core/contracts';
 
 export default {
     setupExtension(app, universe) {
@@ -76,17 +76,17 @@ export default {
                 new MenuItem({
                     title: 'Routing',
                     icon: 'route',
-                    component: new ExtensionComponent('@gridx/fleetops-engine', 'admin/routing-settings'),
+                    component: new ExtensionComponent('@fleetbase/fleetops-engine', 'admin/routing-settings'),
                 }),
                 new MenuItem({
                     title: 'Map',
                     icon: 'map',
-                    component: new ExtensionComponent('@gridx/fleetops-engine', 'admin/map-settings'),
+                    component: new ExtensionComponent('@fleetbase/fleetops-engine', 'admin/map-settings'),
                 }),
                 new MenuItem({
                     title: 'Navigator App',
                     icon: 'location-arrow',
-                    component: new ExtensionComponent('@gridx/fleetops-engine', 'admin/navigator-app'),
+                    component: new ExtensionComponent('@fleetbase/fleetops-engine', 'admin/navigator-app'),
                 }),
             ],
             {
@@ -104,7 +104,7 @@ export default {
                 icon: 'barcode',
                 type: 'link',
                 wrapperClass: 'btn-block py-1 border dark:border-gray-700 border-gray-200 hover:opacity-50',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'order-tracking-lookup'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'order-tracking-lookup'),
                 onClick: (menuItem) => {
                     universe.transitionMenuItem('virtual', menuItem);
                 },
@@ -116,16 +116,16 @@ export default {
 
         // Create registries
         this.createRegistries(registryService);
-        registryService.registerRenderableComponent('ai:action-preview:fleet-ops.create_order', new ExtensionComponent('@gridx/fleetops-engine', 'ai/create-order-preview'));
+        registryService.registerRenderableComponent('ai:action-preview:fleet-ops.create_order', new ExtensionComponent('@fleetbase/fleetops-engine', 'ai/create-order-preview'));
 
         // // Register console home guidance
         // this.registerHomeComponents(registryService);
 
         // Setup customer portal
-        const isCustomerPortalInstalled = universe.extensionManager.isInstalled('@gridx/customer-portal-engine');
+        const isCustomerPortalInstalled = universe.extensionManager.isInstalled('@fleetbase/customer-portal-engine');
         if (isCustomerPortalInstalled) {
-            universe.whenEngineLoaded('@gridx/customer-portal-engine', () => {
-                universe.extensionManager.ensureEngineLoaded('@gridx/fleetops-engine');
+            universe.whenEngineLoaded('@fleetbase/customer-portal-engine', () => {
+                universe.extensionManager.ensureEngineLoaded('@fleetbase/fleetops-engine');
             });
         }
     },
@@ -140,7 +140,7 @@ export default {
                 name: 'Fleet-Ops Metrics (Legacy)',
                 description: 'DEPRECATED — replaced by individual KPI tile widgets. Will be removed in the next major release.',
                 icon: 'truck',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/fleet-ops-key-metrics'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/fleet-ops-key-metrics'),
                 grid_options: { w: 12, h: 8, minW: 8, minH: 6 },
                 category: 'Legacy',
                 default: false,
@@ -153,7 +153,7 @@ export default {
                 name: 'Earnings (30d)',
                 description: 'Total earnings over the last 30 days with trend.',
                 icon: 'sack-dollar',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/kpi-earnings'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/kpi-earnings'),
                 grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
                 category: 'KPI Tiles',
                 default: true,
@@ -163,7 +163,7 @@ export default {
                 name: 'Avg Order Value (30d)',
                 description: 'Average revenue per completed order with trend.',
                 icon: 'receipt',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/kpi-aov'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/kpi-aov'),
                 grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
                 category: 'KPI Tiles',
                 default: true,
@@ -173,7 +173,7 @@ export default {
                 name: 'Distance Travelled (30d)',
                 description: 'Total kilometres delivered over the last 30 days.',
                 icon: 'route',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/kpi-distance'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/kpi-distance'),
                 grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
                 category: 'KPI Tiles',
                 default: false,
@@ -183,7 +183,7 @@ export default {
                 name: 'Active Orders',
                 description: 'Live count of orders currently in flight.',
                 icon: 'bolt',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/kpi-active-orders'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/kpi-active-orders'),
                 grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
                 category: 'KPI Tiles',
                 default: true,
@@ -193,7 +193,7 @@ export default {
                 name: 'Drivers Online',
                 description: 'Live count of drivers currently active on a job.',
                 icon: 'id-card',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/kpi-drivers-online'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/kpi-drivers-online'),
                 grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
                 category: 'KPI Tiles',
                 default: true,
@@ -203,7 +203,7 @@ export default {
                 name: 'Open Issues',
                 description: 'Pending issues across the fleet (lower is better).',
                 icon: 'triangle-exclamation',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/kpi-open-issues'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/kpi-open-issues'),
                 grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
                 category: 'KPI Tiles',
                 default: false,
@@ -215,7 +215,7 @@ export default {
                 name: 'Operations Pulse',
                 description: 'Live operational snapshot with day-over-day deltas.',
                 icon: 'wave-pulse',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/operations-pulse'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/operations-pulse'),
                 grid_options: { w: 6, h: 6, minW: 5, minH: 5 },
                 category: 'Analytics',
                 default: false,
@@ -225,7 +225,7 @@ export default {
                 name: 'Live Fleet Map',
                 description: 'Real-time driver positions and active routes.',
                 icon: 'map-location-dot',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/live-fleet'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/live-fleet'),
                 grid_options: { w: 8, h: 11, minW: 8, minH: 8 },
                 category: 'Maps',
                 default: true,
@@ -235,7 +235,7 @@ export default {
                 name: 'Revenue Trend',
                 description: 'Revenue over time with period comparison.',
                 icon: 'chart-line',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/revenue-trend'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/revenue-trend'),
                 grid_options: { w: 4, h: 11, minW: 4, minH: 8 },
                 category: 'Analytics',
                 default: true,
@@ -245,7 +245,7 @@ export default {
                 name: 'Order Volume by Status',
                 description: 'Daily stacked bars of order counts by status.',
                 icon: 'chart-column',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/orders-by-status'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/orders-by-status'),
                 grid_options: { w: 6, h: 6, minW: 5, minH: 5 },
                 category: 'Analytics',
                 default: false,
@@ -255,7 +255,7 @@ export default {
                 name: 'On-Time Delivery',
                 description: 'Percentage of deliveries completed within the SLA window.',
                 icon: 'clock',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/on-time-delivery'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/on-time-delivery'),
                 grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
                 category: 'Analytics',
                 default: false,
@@ -265,7 +265,7 @@ export default {
                 name: 'Top Drivers',
                 description: 'Driver leaderboard sortable by orders, on-time %, or distance.',
                 icon: 'medal',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/top-drivers'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/top-drivers'),
                 grid_options: { w: 6, h: 6, minW: 5, minH: 5 },
                 category: 'Analytics',
                 default: true,
@@ -275,7 +275,7 @@ export default {
                 name: 'Fuel Cost & Efficiency',
                 description: 'Weekly fuel cost and cost-per-km trend.',
                 icon: 'gas-pump',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/fuel-efficiency'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/fuel-efficiency'),
                 grid_options: { w: 6, h: 6, minW: 5, minH: 5 },
                 category: 'Analytics',
                 default: false,
@@ -285,7 +285,7 @@ export default {
                 name: 'Fuel Integrations',
                 description: 'Provider spend, unmatched transactions, and sync health.',
                 icon: 'gas-pump',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/fuel-providers'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/fuel-providers'),
                 grid_options: { w: 4, h: 5, minW: 4, minH: 5 },
                 category: 'Analytics',
                 default: false,
@@ -295,7 +295,7 @@ export default {
                 name: 'Issues Insights',
                 description: 'Open/resolved issues, category breakdown, and average resolution time.',
                 icon: 'triangle-exclamation',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/issues-insights'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/issues-insights'),
                 grid_options: { w: 6, h: 6, minW: 5, minH: 5 },
                 category: 'Analytics',
                 default: false,
@@ -305,7 +305,7 @@ export default {
                 name: 'Maintenance Overview',
                 description: 'Overdue, scheduled, and YTD maintenance spend.',
                 icon: 'wrench',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/maintenance-overview'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/maintenance-overview'),
                 grid_options: { w: 6, h: 6, minW: 5, minH: 5 },
                 category: 'Analytics',
                 default: true,
@@ -315,7 +315,7 @@ export default {
                 name: 'Geofence Violations',
                 description: 'Dwell-time outliers and geofence event hotspots.',
                 icon: 'location-crosshairs',
-                component: new ExtensionComponent('@gridx/fleetops-engine', 'widget/geofence-violations'),
+                component: new ExtensionComponent('@fleetbase/fleetops-engine', 'widget/geofence-violations'),
                 grid_options: { w: 6, h: 6, minW: 5, minH: 5 },
                 category: 'Analytics',
                 default: false,
@@ -347,7 +347,7 @@ export default {
     },
 
     registerHomeComponents(registryService) {
-        registryService.registerRenderableComponent('console:home:before-dashboard', new ExtensionComponent('@gridx/fleetops-engine', 'home/getting-started-guidance'));
+        registryService.registerRenderableComponent('console:home:before-dashboard', new ExtensionComponent('@fleetbase/fleetops-engine', 'home/getting-started-guidance'));
     },
 
     createRegistries(registryService) {

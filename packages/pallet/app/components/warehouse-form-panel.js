@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/components/warehouse-form-panel';
+export { default } from '@fleetbase/pallet-engine/components/warehouse-form-panel';

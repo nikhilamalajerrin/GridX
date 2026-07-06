@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
-import isMenuItemActive from '@gridx/ember-ui/utils/is-menu-item-active';
+import isMenuItemActive from '@fleetbase/ember-ui/utils/is-menu-item-active';
 
 const SECTION_REGISTRY_KEYS = {
     operations: 'universeOperationsMenuItems',

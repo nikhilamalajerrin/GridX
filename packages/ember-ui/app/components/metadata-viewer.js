@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/metadata-viewer';
+export { default } from '@fleetbase/ember-ui/components/metadata-viewer';

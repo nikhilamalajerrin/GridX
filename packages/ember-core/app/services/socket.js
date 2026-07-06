@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/services/socket';
+export { default } from '@fleetbase/ember-core/services/socket';

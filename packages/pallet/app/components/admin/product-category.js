@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/components/admin/product-category';
+export { default } from '@fleetbase/pallet-engine/components/admin/product-category';

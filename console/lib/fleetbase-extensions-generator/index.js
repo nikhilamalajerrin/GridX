@@ -73,7 +73,7 @@ module.exports = {
         }
 
         // Always generate loaders, router, and manifest so that
-        // @gridx/console/extensions (app/extensions/index.js) always exists
+        // @fleetbase/console/extensions (app/extensions/index.js) always exists
         // and the build does not fail when zero extensions are installed.
         this.generateExtensionLoaders(extensions);
         this.generateRouter(extensions);
@@ -100,7 +100,7 @@ module.exports = {
                             continue;
                         }
 
-                        if (!packageData || !packageData.keywords || !packageData.keywords.includes('gridx-extension') || !packageData.keywords.includes('ember-engine')) {
+                        if (!packageData || !packageData.keywords || !packageData.keywords.includes('fleetbase-extension') || !packageData.keywords.includes('ember-engine')) {
                             continue;
                         }
 
@@ -110,7 +110,7 @@ module.exports = {
                         }
 
                         seenPackages.add(packageData.name);
-                        extensions.push(this.only(packageData, ['name', 'description', 'version', 'gridx', 'keywords', 'license', 'repository']));
+                        extensions.push(this.only(packageData, ['name', 'description', 'version', 'fleetbase', 'keywords', 'license', 'repository']));
                     }
 
                     resolve(extensions);
@@ -160,7 +160,7 @@ module.exports = {
             }
 
             const extensionContent = fs.readFileSync(extensionPath, 'utf8');
-            const mountPath = extension.gridx?.route || this.getExtensionMountPath(extension.name);
+            const mountPath = extension.fleetbase?.route || this.getExtensionMountPath(extension.name);
             const shimFile = path.join(extensionsDir, `${mountPath}.js`);
             const fileContent = this.getGeneratedFileHeader() + extensionContent;
 
@@ -186,7 +186,7 @@ module.exports = {
                 return;
             }
 
-            const mountPath = extension.gridx?.route || this.getExtensionMountPath(extension.name);
+            const mountPath = extension.fleetbase?.route || this.getExtensionMountPath(extension.name);
             const camelCaseName = mountPath.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 
             imports.push(`import ${camelCaseName} from './${mountPath}';`);
@@ -216,8 +216,8 @@ export default getExtensionLoader;
     },
 
     generateRouter(extensions) {
-        const consoleExtensions = extensions.filter((extension) => !extension.gridx || extension.gridx.mount !== 'root');
-        const rootExtensions = extensions.filter((extension) => extension.gridx && extension.gridx.mount === 'root');
+        const consoleExtensions = extensions.filter((extension) => !extension.fleetbase || extension.fleetbase.mount !== 'root');
+        const rootExtensions = extensions.filter((extension) => extension.fleetbase && extension.fleetbase.mount === 'root');
         const routerMapPath = path.join(this.project.root, 'router.map.js');
         const routerFileContents = fs.readFileSync(routerMapPath, 'utf-8');
         const ast = recast.parse(routerFileContents, { parser: babelParser });
@@ -246,8 +246,8 @@ export default getExtensionLoader;
                             const mountPath = module.exports.getExtensionMountPath(extension.name);
                             let route = mountPath;
 
-                            if (extension.gridx && extension.gridx.route) {
-                                route = extension.gridx.route;
+                            if (extension.fleetbase && extension.fleetbase.route) {
+                                route = extension.fleetbase.route;
                             }
 
                             // Check if engine is already mounted
@@ -287,8 +287,8 @@ export default getExtensionLoader;
                             const mountPath = module.exports.getExtensionMountPath(extension.name);
                             let route = mountPath;
 
-                            if (extension.gridx && extension.gridx.route) {
-                                route = extension.gridx.route;
+                            if (extension.fleetbase && extension.fleetbase.route) {
+                                route = extension.fleetbase.route;
                             }
 
                             const isMounted = functionExpression.body.body.some((expressionStatement) => {
@@ -350,7 +350,7 @@ export default getExtensionLoader;
         const manifest = extensions.map((ext) => ({
             name: ext.name,
             version: ext.version,
-            route: ext.gridx?.route,
+            route: ext.fleetbase?.route,
         }));
 
         const manifestFile = path.join(publicDir, 'extensions.json');

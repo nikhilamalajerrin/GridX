@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import extension from '@gridx/ledger-engine/extension';
+import extension from '@fleetbase/ledger-engine/extension';
 
 module('Unit | extension', function () {
     test('it registers invoice tabs for FleetOps and Storefront order details', function (assert) {

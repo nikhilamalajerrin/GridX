@@ -1,4 +1,4 @@
-# @gridx/iam-engine
+# @fleetbase/iam-engine
 
 [Short description of the addon.]
 
@@ -13,7 +13,7 @@
 ## Installation
 
 ```
-ember install @gridx/iam-engine
+ember install @fleetbase/iam-engine
 ```
 
 

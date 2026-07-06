@@ -15,7 +15,7 @@
     <a href="https://github.com/gridx/ledger/actions/workflows/server.yml"><img src="https://github.com/gridx/ledger/actions/workflows/server.yml/badge.svg" alt="PHP CI" /></a>
     <a href="https://github.com/gridx/ledger/actions/workflows/ember.yml"><img src="https://github.com/gridx/ledger/actions/workflows/ember.yml/badge.svg" alt="Ember CI" /></a>
     <a href="https://packagist.org/packages/gridx/ledger-api"><img src="https://img.shields.io/packagist/v/gridx/ledger-api.svg" alt="Packagist version" /></a>
-    <a href="https://www.npmjs.com/package/@gridx/ledger-engine"><img src="https://img.shields.io/npm/v/@gridx/ledger-engine.svg" alt="npm version" /></a>
+    <a href="https://www.npmjs.com/package/@fleetbase/ledger-engine"><img src="https://img.shields.io/npm/v/@fleetbase/ledger-engine.svg" alt="npm version" /></a>
     <a href="https://www.gridx.io/docs/ledger"><img src="https://img.shields.io/badge/docs-ledger-111827.svg" alt="Ledger documentation" /></a>
 </p>
 
@@ -102,7 +102,7 @@ Ledger is split into two distributable packages:
 | Package | Runtime | Description |
 | --- | --- | --- |
 | [`gridx/ledger-api`](https://packagist.org/packages/gridx/ledger-api) | Laravel / PHP | Backend models, routes, services, migrations, gateway drivers, observers, events, resources, reports, and console commands. |
-| [`@gridx/ledger-engine`](https://www.npmjs.com/package/@gridx/ledger-engine) | Ember | GridX console engine for the Ledger dashboard, billing, payments, accounting, reports, and settings screens. |
+| [`@fleetbase/ledger-engine`](https://www.npmjs.com/package/@fleetbase/ledger-engine) | Ember | GridX console engine for the Ledger dashboard, billing, payments, accounting, reports, and settings screens. |
 
 Backend routes are mounted under the configured Ledger API prefix, which defaults to `ledger`.
 
@@ -136,7 +136,7 @@ composer require gridx/ledger-api
 ```
 
 ```bash
-pnpm install @gridx/ledger-engine
+pnpm install @fleetbase/ledger-engine
 ```
 
 If you are adding Ledger to an existing GridX installation, run migrations through your normal GridX deployment flow, then provision defaults for existing records:

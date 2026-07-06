@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/routes/settings/payments/index';
+export { default } from '@fleetbase/fleetops-engine/routes/settings/payments/index';

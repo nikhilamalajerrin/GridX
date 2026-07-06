@@ -1,4 +1,4 @@
-import ResourceActionService from '@gridx/ember-core/services/resource-action';
+import ResourceActionService from '@fleetbase/ember-core/services/resource-action';
 import { tracked } from '@glimmer/tracking';
 import { debug } from '@ember/debug';
 import { task } from 'ember-concurrency';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/utils/get-int';
+export { default } from '@fleetbase/ember-ui/utils/get-int';

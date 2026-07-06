@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/device/manager';
+export { default } from '@fleetbase/fleetops-engine/components/device/manager';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/widget/fleet-ops-key-metrics';
+export { default } from '@fleetbase/fleetops-engine/components/widget/fleet-ops-key-metrics';

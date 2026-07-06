@@ -64,7 +64,7 @@ composer require gridx/registry-bridge
 Install the Ember.js Engine/Addon:
 
 ```bash
-pnpm install @gridx/registry-bridge-engine
+pnpm install @fleetbase/registry-bridge-engine
 ```
 
 ## Usage

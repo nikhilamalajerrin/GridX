@@ -14,14 +14,14 @@ import { task } from 'ember-concurrency';
  * @extends Component
  *
  * @example Basic usage
- * <LoadEngine @engineName="@gridx/fleetops-engine" as |engine|>
+ * <LoadEngine @engineName="@fleetbase/fleetops-engine" as |engine|>
  *   {{#if engine}}
  *     {{component "admin/navigator-app" engineInstance=engine}}
  *   {{/if}}
  * </LoadEngine>
  *
  * @example With loading and error states
- * <LoadEngine @engineName="@gridx/fleetops-engine" as |engine isLoading error|>
+ * <LoadEngine @engineName="@fleetbase/fleetops-engine" as |engine isLoading error|>
  *   {{#if isLoading}}
  *     <LoadingSpinner />
  *   {{else if error}}

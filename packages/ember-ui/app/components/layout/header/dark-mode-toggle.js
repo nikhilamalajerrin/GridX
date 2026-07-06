@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/layout/header/dark-mode-toggle';
+export { default } from '@fleetbase/ember-ui/components/layout/header/dark-mode-toggle';

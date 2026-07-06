@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'dummy/tests/helpers';
 import Service from '@ember/service';
 import { click, render, waitUntil } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import OrderFormServiceRateComponent from '@gridx/fleetops-engine/components/order/form/service-rate';
+import OrderFormServiceRateComponent from '@fleetbase/fleetops-engine/components/order/form/service-rate';
 
 module('Integration | Component | order/form/service-rate', function (hooks) {
     setupRenderingTest(hooks);

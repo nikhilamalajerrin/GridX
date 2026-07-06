@@ -6,8 +6,8 @@ import { isArray } from '@ember/array';
 import { debug } from '@ember/debug';
 import { task } from 'ember-concurrency';
 import titleize from 'ember-cli-string-helpers/utils/titleize';
-import smartHumanize from '@gridx/ember-ui/utils/smart-humanize';
-import isUuid from '@gridx/ember-core/utils/is-uuid';
+import smartHumanize from '@fleetbase/ember-ui/utils/smart-humanize';
+import isUuid from '@fleetbase/ember-core/utils/is-uuid';
 
 export default class OrderKanbanComponent extends Component {
     @service fetch;

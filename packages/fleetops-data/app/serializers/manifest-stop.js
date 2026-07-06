@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-data/serializers/manifest-stop';
+export { default } from '@fleetbase/fleetops-data/serializers/manifest-stop';

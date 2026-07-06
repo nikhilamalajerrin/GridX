@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'dummy/tests/helpers';
-import { SERVICE_QUOTE_REFRESH_REQUESTED } from '@gridx/fleetops-engine/services/order-creation';
+import { SERVICE_QUOTE_REFRESH_REQUESTED } from '@fleetbase/fleetops-engine/services/order-creation';
 
 module('Unit | Service | order-creation', function (hooks) {
     setupTest(hooks);

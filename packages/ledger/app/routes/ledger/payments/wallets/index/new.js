@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/routes/payments/wallets/index/new';
+export { default } from '@fleetbase/ledger-engine/routes/payments/wallets/index/new';

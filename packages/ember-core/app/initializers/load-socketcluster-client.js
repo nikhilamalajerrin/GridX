@@ -1,1 +1,1 @@
-export { default, initialize } from '@gridx/ember-core/initializers/load-socketcluster-client';
+export { default, initialize } from '@fleetbase/ember-core/initializers/load-socketcluster-client';

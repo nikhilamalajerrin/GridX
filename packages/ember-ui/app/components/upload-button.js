@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/upload-button';
+export { default } from '@fleetbase/ember-ui/components/upload-button';

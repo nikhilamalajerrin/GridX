@@ -8,7 +8,7 @@
  * @throws Will not throw an error, even if JSON parsing fails. Errors are silently caught and ignored.
  */
 export default function getUserOptions() {
-    const USER_OPTIONS_STORAGE_KEY = '@gridx/storage:user-options';
+    const USER_OPTIONS_STORAGE_KEY = '@fleetbase/storage:user-options';
 
     try {
         const storedValue = window.localStorage.getItem(USER_OPTIONS_STORAGE_KEY);

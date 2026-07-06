@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-data/models/maintenance-subject-equipment';
+export { default } from '@fleetbase/fleetops-data/models/maintenance-subject-equipment';

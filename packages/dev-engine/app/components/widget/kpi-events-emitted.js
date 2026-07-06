@@ -1,1 +1,1 @@
-export { default } from '@gridx/dev-engine/components/widget/kpi-events-emitted';
+export { default } from '@fleetbase/dev-engine/components/widget/kpi-events-emitted';

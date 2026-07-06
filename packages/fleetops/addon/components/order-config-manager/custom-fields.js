@@ -5,8 +5,8 @@ import { action } from '@ember/object';
 import { isArray } from '@ember/array';
 import { later } from '@ember/runloop';
 import { task } from 'ember-concurrency';
-import isObject from '@gridx/ember-core/utils/is-object';
-import contextComponentCallback from '@gridx/ember-core/utils/context-component-callback';
+import isObject from '@fleetbase/ember-core/utils/is-object';
+import contextComponentCallback from '@fleetbase/ember-core/utils/context-component-callback';
 
 /**
  * Component class for managing custom fields within an order configuration.

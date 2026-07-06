@@ -7,19 +7,19 @@ import { isBlank } from '@ember/utils';
 import { later } from '@ember/runloop';
 import { debug } from '@ember/debug';
 import { task, timeout } from 'ember-concurrency';
-import { OSRMv1, Control as RoutingControl } from '@gridx/leaflet-routing-machine';
-import getRoutingHost from '@gridx/ember-core/utils/get-routing-host';
-import engineService from '@gridx/ember-core/decorators/engine-service';
-import registerHelper from '@gridx/ember-core/utils/register-helper';
+import { OSRMv1, Control as RoutingControl } from '@fleetbase/leaflet-routing-machine';
+import getRoutingHost from '@fleetbase/ember-core/utils/get-routing-host';
+import engineService from '@fleetbase/ember-core/decorators/engine-service';
+import registerHelper from '@fleetbase/ember-core/utils/register-helper';
 import WaypointLabelHelper from '../../helpers/waypoint-label';
-import isModel from '@gridx/ember-core/utils/is-model';
-import isNotEmpty from '@gridx/ember-core/utils/is-not-empty';
+import isModel from '@fleetbase/ember-core/utils/is-model';
+import isNotEmpty from '@fleetbase/ember-core/utils/is-not-empty';
 import config from 'ember-get-config';
 
 const MAP_TARGET_FOCUS_PADDING_BOTTOM_RIGHT = [200, 0];
 const MAP_TARGET_FOCUS_REFOCUS_PANBY = [150, 0];
 export default class CustomerCreateOrderFormComponent extends Component {
-    @engineService('@gridx/fleetops-engine') contextPanel;
+    @engineService('@fleetbase/fleetops-engine') contextPanel;
     @service store;
     @service currentUser;
     @service notifications;

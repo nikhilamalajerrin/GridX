@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/components/fleet/hierarchy-tree';
+export { default } from '@fleetbase/fleetops-engine/components/fleet/hierarchy-tree';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/serializers/addon-category';
+export { default } from '@fleetbase/storefront-engine/serializers/addon-category';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/registry-bridge-engine/components/modals/extension-uninstall';
+export { default } from '@fleetbase/registry-bridge-engine/components/modals/extension-uninstall';

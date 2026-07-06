@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/adapters/network';
+export { default } from '@fleetbase/storefront-engine/adapters/network';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/components/widget/revenue-trend';
+export { default } from '@fleetbase/storefront-engine/components/widget/revenue-trend';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/lazy-load-script';
+export { default } from '@fleetbase/ember-core/utils/lazy-load-script';

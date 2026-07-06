@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/utils/format-currency';
+export { default } from '@fleetbase/ember-ui/utils/format-currency';

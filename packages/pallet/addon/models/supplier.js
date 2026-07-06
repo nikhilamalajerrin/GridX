@@ -1,3 +1,3 @@
-import VendorModel from '@gridx/fleetops-data/models/vendor';
+import VendorModel from '@fleetbase/fleetops-data/models/vendor';
 
 export default class SupplierModel extends VendorModel {}

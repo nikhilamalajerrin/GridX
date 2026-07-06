@@ -1,4 +1,4 @@
-import { MenuItem, ExtensionComponent, Hook, Widget } from '@gridx/ember-core/contracts';
+import { MenuItem, ExtensionComponent, Hook, Widget } from '@fleetbase/ember-core/contracts';
 
 export default {
     setupExtension(app, universe) {
@@ -62,7 +62,7 @@ export default {
                 slug: 'customer-portal',
                 index: 3,
                 view: 'index',
-                component: new ExtensionComponent('@gridx/customer-portal-engine', 'customer-portal-admin-settings'),
+                component: new ExtensionComponent('@fleetbase/customer-portal-engine', 'customer-portal-admin-settings'),
                 onClick: (menuItem) => {
                     const router = app.lookup('service:router');
                     if (router) {
@@ -80,7 +80,7 @@ export default {
                 name: 'Active Orders',
                 description: 'Customer-visible orders that are not yet completed or canceled.',
                 icon: 'boxes-packing',
-                component: new ExtensionComponent('@gridx/customer-portal-engine', 'widget/active-orders'),
+                component: new ExtensionComponent('@fleetbase/customer-portal-engine', 'widget/active-orders'),
                 grid_options: { x: 0, y: 0, w: 3, h: 3, minW: 3, minH: 3 },
                 category: 'Operations',
                 default: true,
@@ -90,7 +90,7 @@ export default {
                 name: 'Completed Orders',
                 description: 'Orders completed for the active portal customer account.',
                 icon: 'circle-check',
-                component: new ExtensionComponent('@gridx/customer-portal-engine', 'widget/completed-orders'),
+                component: new ExtensionComponent('@fleetbase/customer-portal-engine', 'widget/completed-orders'),
                 grid_options: { x: 3, y: 0, w: 3, h: 3, minW: 3, minH: 3 },
                 category: 'Operations',
                 default: true,
@@ -100,7 +100,7 @@ export default {
                 name: 'Unpaid Invoices',
                 description: 'Outstanding customer invoices when Ledger is installed.',
                 icon: 'file-invoice-dollar',
-                component: new ExtensionComponent('@gridx/customer-portal-engine', 'widget/unpaid-invoices'),
+                component: new ExtensionComponent('@fleetbase/customer-portal-engine', 'widget/unpaid-invoices'),
                 grid_options: { x: 6, y: 0, w: 3, h: 3, minW: 3, minH: 3 },
                 category: 'Billing',
                 default: true,
@@ -110,7 +110,7 @@ export default {
                 name: 'Open Support Tickets',
                 description: 'Open customer support issues backed by FleetOps Issues.',
                 icon: 'headset',
-                component: new ExtensionComponent('@gridx/customer-portal-engine', 'widget/open-tickets'),
+                component: new ExtensionComponent('@fleetbase/customer-portal-engine', 'widget/open-tickets'),
                 grid_options: { x: 9, y: 0, w: 3, h: 3, minW: 3, minH: 3 },
                 category: 'Support',
                 default: true,
@@ -120,7 +120,7 @@ export default {
                 name: 'Recent Orders',
                 description: 'Most recent orders for the active portal customer account.',
                 icon: 'clock-rotate-left',
-                component: new ExtensionComponent('@gridx/customer-portal-engine', 'widget/recent-orders'),
+                component: new ExtensionComponent('@fleetbase/customer-portal-engine', 'widget/recent-orders'),
                 grid_options: { x: 0, y: 3, w: 6, h: 14, minW: 5, minH: 10 },
                 category: 'Operations',
                 default: true,
@@ -130,7 +130,7 @@ export default {
                 name: 'Pending Actions',
                 description: 'Invoices, tickets, and orders that need customer attention.',
                 icon: 'bell',
-                component: new ExtensionComponent('@gridx/customer-portal-engine', 'widget/pending-actions'),
+                component: new ExtensionComponent('@fleetbase/customer-portal-engine', 'widget/pending-actions'),
                 grid_options: { x: 6, y: 3, w: 6, h: 14, minW: 5, minH: 10 },
                 category: 'Overview',
                 default: true,

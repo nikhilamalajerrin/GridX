@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/services/map-adapter-interface';
+export { default } from '@fleetbase/fleetops-engine/services/map-adapter-interface';

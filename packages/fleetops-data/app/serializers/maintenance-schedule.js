@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-data/serializers/maintenance-schedule';
+export { default } from '@fleetbase/fleetops-data/serializers/maintenance-schedule';

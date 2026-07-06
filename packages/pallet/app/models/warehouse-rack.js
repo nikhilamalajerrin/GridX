@@ -1,1 +1,1 @@
-export { default } from '@gridx/pallet-engine/models/warehouse-rack';
+export { default } from '@fleetbase/pallet-engine/models/warehouse-rack';

@@ -15,7 +15,7 @@ import { task } from 'ember-concurrency';
  *     new MenuItem({
  *       title: 'Invoice',
  *       route: 'operations.orders.index.details.virtual',
- *       component: new ExtensionComponent('@gridx/ledger-engine', 'order-invoice'),
+ *       component: new ExtensionComponent('@fleetbase/ledger-engine', 'order-invoice'),
  *       icon: 'file-alt',
  *       slug: 'invoice',
  *     })

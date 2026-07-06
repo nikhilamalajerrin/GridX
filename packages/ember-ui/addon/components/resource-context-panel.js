@@ -3,8 +3,8 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { task } from 'ember-concurrency';
 import { dasherize } from '@ember/string';
-import isModel from '@gridx/ember-core/utils/is-model';
-import getModelName from '@gridx/ember-core/utils/get-model-name';
+import isModel from '@fleetbase/ember-core/utils/is-model';
+import getModelName from '@fleetbase/ember-core/utils/get-model-name';
 import titleize from 'ember-cli-string-helpers/utils/titleize';
 
 /**

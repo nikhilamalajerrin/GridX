@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { isArray } from '@ember/array';
-import isObject from '@gridx/ember-core/utils/is-object';
+import isObject from '@fleetbase/ember-core/utils/is-object';
 
 export default class CustomFieldOptionsInputComponent extends Component {
     @tracked options = {};

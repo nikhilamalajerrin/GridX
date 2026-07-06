@@ -1,1 +1,1 @@
-export { default } from '@gridx/customer-portal-engine/templates/portal-auth/verification';
+export { default } from '@fleetbase/customer-portal-engine/templates/portal-auth/verification';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/decorators/is-equal';
+export { default } from '@fleetbase/ember-core/decorators/is-equal';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/services/table-context';
+export { default } from '@fleetbase/ember-ui/services/table-context';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-data/utils/geojson/line-string';
+export { default } from '@fleetbase/fleetops-data/utils/geojson/line-string';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/get-weight-units';
+export { default } from '@fleetbase/ember-core/utils/get-weight-units';

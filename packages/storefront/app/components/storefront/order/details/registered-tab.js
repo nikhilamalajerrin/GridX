@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/components/storefront/order/details/registered-tab';
+export { default } from '@fleetbase/storefront-engine/components/storefront/order/details/registered-tab';

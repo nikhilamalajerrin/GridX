@@ -1,1 +1,1 @@
-export { default } from '@gridx/fleetops-engine/services/contact-actions';
+export { default } from '@fleetbase/fleetops-engine/services/contact-actions';

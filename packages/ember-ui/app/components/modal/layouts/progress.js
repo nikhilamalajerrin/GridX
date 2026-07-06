@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/components/modal/layouts/progress';
+export { default } from '@fleetbase/ember-ui/components/modal/layouts/progress';

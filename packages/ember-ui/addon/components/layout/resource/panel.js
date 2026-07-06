@@ -4,9 +4,9 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { capitalize } from '@ember/string';
 import { task } from 'ember-concurrency';
-import contextComponentCallback from '@gridx/ember-core/utils/context-component-callback';
-import applyContextComponentArguments from '@gridx/ember-core/utils/apply-context-component-arguments';
-import getModelName from '@gridx/ember-core/utils/get-model-name';
+import contextComponentCallback from '@fleetbase/ember-core/utils/context-component-callback';
+import applyContextComponentArguments from '@fleetbase/ember-core/utils/apply-context-component-arguments';
+import getModelName from '@fleetbase/ember-core/utils/get-model-name';
 import titleize from 'ember-cli-string-helpers/utils/titleize';
 
 export default class LayoutResourcePanelComponent extends Component {

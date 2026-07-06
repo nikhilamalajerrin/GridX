@@ -1,1 +1,1 @@
-export { default } from '@gridx/dev-engine/serializers/webhook-request-log';
+export { default } from '@fleetbase/dev-engine/serializers/webhook-request-log';

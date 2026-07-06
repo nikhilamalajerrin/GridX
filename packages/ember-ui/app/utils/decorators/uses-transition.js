@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/utils/decorators/uses-transition';
+export { default } from '@fleetbase/ember-ui/utils/decorators/uses-transition';

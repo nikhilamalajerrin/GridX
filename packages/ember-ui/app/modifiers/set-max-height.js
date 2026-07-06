@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-ui/modifiers/set-max-height';
+export { default } from '@fleetbase/ember-ui/modifiers/set-max-height';

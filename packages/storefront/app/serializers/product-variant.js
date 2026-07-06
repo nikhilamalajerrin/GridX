@@ -1,1 +1,1 @@
-export { default } from '@gridx/storefront-engine/serializers/product-variant';
+export { default } from '@fleetbase/storefront-engine/serializers/product-variant';

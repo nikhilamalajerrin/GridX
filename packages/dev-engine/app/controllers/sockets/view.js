@@ -1,1 +1,1 @@
-export { default } from '@gridx/dev-engine/controllers/sockets/view';
+export { default } from '@fleetbase/dev-engine/controllers/sockets/view';

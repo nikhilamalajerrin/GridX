@@ -1,1 +1,1 @@
-export { default } from '@gridx/ledger-engine/components/modals/record-payment';
+export { default } from '@fleetbase/ledger-engine/components/modals/record-payment';

@@ -1,1 +1,1 @@
-export { default } from '@gridx/ember-core/utils/refresh-route';
+export { default } from '@fleetbase/ember-core/utils/refresh-route';
