@@ -3,6 +3,7 @@
 @import 'tailwindcss/utilities';
 @import 'inter-ui/inter.css';
 @import 'console.css';
+@import 'gridx-mono.css';
 
 :root {
     --primary: #1b4f8a;

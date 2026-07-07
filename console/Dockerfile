@@ -46,6 +46,10 @@ COPY . .
 # Build the application
 RUN pnpm build --environment $ENVIRONMENT
 
+# GridX monochrome theme: recolor blue palettes to neutral greys
+COPY monochrome.sh /console/monochrome.sh
+RUN sh /console/monochrome.sh /console/dist
+
 # ---- Serve Stage ----
 FROM nginx:alpine
 
