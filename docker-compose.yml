@@ -90,6 +90,7 @@ services:
       dockerfile: Dockerfile
       args:
         ENVIRONMENT: development
+        EXTENSIONS: "fleetops,iam" 
     ports:
       - "4200:4200"
     volumes:

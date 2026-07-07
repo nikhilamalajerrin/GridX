@@ -109,6 +109,17 @@ module.exports = {
                             continue;
                         }
 
+                        // Optional whitelist: EXTENSIONS="fleetops,iam" only builds
+                        // matching engines — keeps the console lean for focused installs.
+                        const whitelist = (process.env.EXTENSIONS || '')
+                            .split(',')
+                            .map((s) => s.trim().toLowerCase())
+                            .filter(Boolean);
+                        if (whitelist.length && !whitelist.some((w) => packageData.name.toLowerCase().includes(w))) {
+                            console.log(`[GridX] Skipping extension ${packageData.name} (not in EXTENSIONS whitelist)`);
+                            continue;
+                        }
+
                         seenPackages.add(packageData.name);
                         extensions.push(this.only(packageData, ['name', 'description', 'version', 'fleetbase', 'keywords', 'license', 'repository']));
                     }

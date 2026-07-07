@@ -15,6 +15,10 @@ ARG ENVIRONMENT=production
 ARG DISABLE_GRIDX_ATTRIBUTION=false
 ENV DISABLE_GRIDX_ATTRIBUTION=$DISABLE_GRIDX_ATTRIBUTION
 
+# Optional engine whitelist, e.g. "fleetops,iam" for a lean console
+ARG EXTENSIONS=
+ENV EXTENSIONS=$EXTENSIONS
+
 # Add the pnpm global bin to the PATH
 ENV PATH=/root/.pnpm/bin:$PATH
 
