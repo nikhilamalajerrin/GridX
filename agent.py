@@ -61,6 +61,11 @@ Rules:
   language they wrote in (Arabic in → Arabic out), including the tracking
   number if an order was created.
 
+Locations:
+- For any pickup/dropoff that is not a known GridX place, use the geocode
+  tool to resolve real coordinates. Never invent coordinates for specific
+  addresses. If geocoding finds nothing, ask the customer to clarify.
+
 Quoting and planning:
 - When a customer asks for a price, use get_quote (get coordinates from
   list_places, or your own knowledge for well-known GCC cities) and present
@@ -111,6 +116,21 @@ TOOLS = [
                     "pickup_lng": {"type": "number", "description": "Longitude of the pickup location"},
                 },
                 "required": ["pickup_lat", "pickup_lng"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "geocode",
+            "description": "Resolve a free-form address or place name (Arabic or English) to coordinates via OpenStreetMap. Use this for any location that is not a known GridX place, instead of guessing coordinates.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {"type": "string", "description": "Address or place name, e.g. 'Al Kharj industrial city' or 'حي الروضة الرياض'"},
+                    "country": {"type": "string", "description": "ISO country code filter: sa, ae, or sa,ae (default sa)"}
+                },
+                "required": ["query"]
             },
         },
     },
@@ -276,6 +296,22 @@ def _osrm(service: str, coords: list[tuple[float, float]], params: str = "") -> 
     return r.json()
 
 
+def _tool_geocode(query: str, country: str = "sa") -> str:
+    """Geocode a free-form address via Nominatim (OpenStreetMap)."""
+    r = httpx.get(
+        "https://nominatim.openstreetmap.org/search",
+        params={"q": query, "format": "json", "limit": 3, "countrycodes": country or "sa,ae"},
+        headers={"User-Agent": "GridX-Agent/1.0 (support@gridx.io)"},
+        timeout=15,
+    )
+    r.raise_for_status()
+    results = [
+        {"name": x.get("display_name"), "lat": float(x["lat"]), "lng": float(x["lon"])}
+        for x in r.json()
+    ]
+    return json.dumps(results or {"error": "no matches — ask the customer to clarify the address"}, ensure_ascii=False)
+
+
 def _tool_get_quote(
     pickup_lat: float,
     pickup_lng: float,
@@ -335,10 +371,34 @@ TOOL_IMPLS = {
     "find_best_driver": _tool_find_best_driver,
     "create_order": _tool_create_order,
     "get_quote": _tool_get_quote,
+    "geocode": _tool_geocode,
     "optimize_route": _tool_optimize_route,
 }
 
 MAX_TURNS = 12
+
+# --- Conversation memory ---------------------------------------------------
+# Per-sender chat history so follow-ups work ("yes book it" after a quote).
+# In-memory with TTL; move to redis/db when running multiple workers.
+SESSION_TTL_SECONDS = 24 * 3600
+SESSION_MAX_TURNS = 16  # user+assistant text turns kept per sender
+
+_sessions: dict[str, dict] = {}
+
+
+def _session_history(sender: str) -> list[dict]:
+    s = _sessions.get(sender)
+    if not s or time.time() - s["ts"] > SESSION_TTL_SECONDS:
+        return []
+    return s["messages"]
+
+
+def _session_append(sender: str, user_text: str, assistant_text: str) -> None:
+    s = _sessions.setdefault(sender, {"messages": [], "ts": time.time()})
+    s["messages"].append({"role": "user", "content": user_text})
+    s["messages"].append({"role": "assistant", "content": assistant_text})
+    s["messages"] = s["messages"][-SESSION_MAX_TURNS:]
+    s["ts"] = time.time()
 
 # Free-tier providers hit capacity limits; try these in order.
 MODEL_CHAIN = [
@@ -373,15 +433,14 @@ def dispatch_message(message: str, channel: str, sender: str) -> dict:
     _current_sender = sender
     now = datetime.now(timezone(timedelta(hours=3)))  # Asia/Riyadh
     system = SYSTEM_PROMPT + (HITL_NOTE if config.HUMAN_IN_THE_LOOP else "")
+    user_content = (
+        f"Current date/time (Asia/Riyadh): {now.strftime('%A %Y-%m-%d %H:%M')}\n"
+        f"Channel: {channel}\nSender: {sender}\nMessage:\n{message}"
+    )
     messages = [
         {"role": "system", "content": system},
-        {
-            "role": "user",
-            "content": (
-                f"Current date/time (Asia/Riyadh): {now.strftime('%A %Y-%m-%d %H:%M')}\n"
-                f"Channel: {channel}\nSender: {sender}\nMessage:\n{message}"
-            ),
-        },
+        *_session_history(sender),
+        {"role": "user", "content": user_content},
     ]
 
     final_text = ""
@@ -440,5 +499,7 @@ def dispatch_message(message: str, channel: str, sender: str) -> dict:
         for line in final_text.splitlines()
         if not line.strip().upper().startswith("STATUS:")
     ).strip()
+
+    _session_append(sender, user_content, final_text)
 
     return {"reply": reply, "status": status, "model": config.AGENT_MODEL}
