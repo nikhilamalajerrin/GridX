@@ -124,6 +124,18 @@ services:
       - cache
       - queue
 
+  traccar:
+    image: traccar/traccar:6-alpine
+    container_name: gridx-traccar
+    restart: unless-stopped
+    ports:
+      - "8082:8082"    # Traccar web UI / REST API
+      - "5055:5055"    # osmAnd protocol — Traccar Client app reports here
+    volumes:
+      - ./docker/traccar/traccar.xml:/opt/traccar/conf/traccar.xml:ro
+      - ./docker/traccar/logs:/opt/traccar/logs
+      - ./docker/traccar/data:/opt/traccar/data
+
   httpd:
     container_name: gridx-httpd
     restart: unless-stopped
