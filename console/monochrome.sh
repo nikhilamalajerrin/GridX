@@ -7,7 +7,7 @@ DIST="${1:-dist}"
 recolor() {  # $1 = from-hex, $2 = from-rgb-triplet, $3 = to-hex, $4 = to-rgb-triplet
   cs_from="$(echo $2 | sed 's/ /, /g')"
   cs_to="$(echo $4 | sed 's/ /, /g')"
-  find "$DIST" -name '*.css' -exec sed -i \
+  find "$DIST" \( -name '*.css' -o -name '*.js' \) -exec sed -i \
     -e "s/$1/$3/gI" \
     -e "s/rgb($2/rgb($4/g" \
     -e "s/$cs_from/$cs_to/g" {} +
