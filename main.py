@@ -146,6 +146,37 @@ async def gridx_events(request: Request, background: BackgroundTasks):
     return {"ok": True, "notified": sender}
 
 
+@app.post("/track/traccar")
+async def traccar_position(request: Request):
+    """Receives forwarded positions from the Traccar server and relays them
+    to GridX driver tracking. Convention: the Traccar device's uniqueId is
+    the GridX driver public_id (driver_xxx)."""
+    body = await request.json()
+    position = body.get("position") or {}
+    device = body.get("device") or {}
+    driver_id = device.get("uniqueId", "")
+    lat, lng = position.get("latitude"), position.get("longitude")
+    if not (driver_id.startswith("driver_") and lat and lng):
+        return {"ok": True, "ignored": True}
+    from agent import api
+
+    try:
+        api._client.post(
+            f"drivers/{driver_id}/track",
+            json={
+                "latitude": lat,
+                "longitude": lng,
+                "speed": position.get("speed"),
+                "heading": position.get("course"),
+                "altitude": position.get("altitude"),
+            },
+        ).raise_for_status()
+        log.info("position %s -> %.5f,%.5f", driver_id, lat, lng)
+    except Exception as exc:
+        log.error("track relay failed for %s: %s", driver_id, exc)
+    return {"ok": True}
+
+
 @app.post("/webhook/email")
 async def email(body: dict):
     sender = body.get("from", "")
