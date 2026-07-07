@@ -5,6 +5,8 @@ assigned order in GridX. Runs on any OpenRouter model with tool calling."""
 import json
 import logging
 import time
+
+import httpx
 from datetime import datetime, timedelta, timezone
 
 from openai import OpenAI
@@ -59,7 +61,16 @@ Rules:
   language they wrote in (Arabic in → Arabic out), including the tracking
   number if an order was created.
 
-End your final message with a line: STATUS: created | needs_clarification | not_a_request
+Quoting and planning:
+- When a customer asks for a price, use get_quote (get coordinates from
+  list_places, or your own knowledge for well-known GCC cities) and present
+  a clean quote: distance, truck type, subtotal, 15% VAT, total in SAR,
+  valid 48 hours. Do NOT create an order for a price inquiry.
+- If they confirm a quoted job (yes/book it/ok), then create the order.
+- For multi-stop requests, use optimize_route and present the best stop
+  order with total distance and drive time.
+
+End your final message with a line: STATUS: created | quoted | needs_clarification | not_a_request
 """
 
 HITL_NOTE = """
@@ -100,6 +111,39 @@ TOOLS = [
                     "pickup_lng": {"type": "number", "description": "Longitude of the pickup location"},
                 },
                 "required": ["pickup_lat", "pickup_lng"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_quote",
+            "description": "Calculate a spot freight quote in SAR using real road distance. Use place coordinates from list_places, or geocode well-known cities from your knowledge.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "pickup_lat": {"type": "number"},
+                    "pickup_lng": {"type": "number"},
+                    "dropoff_lat": {"type": "number"},
+                    "dropoff_lng": {"type": "number"},
+                    "truck_type": {"type": "string", "description": "flatbed, curtainside, box, reefer, tanker, or lowbed"},
+                    "cross_border": {"type": "boolean", "description": "true if the route crosses KSA/UAE border"}
+                },
+                "required": ["pickup_lat", "pickup_lng", "dropoff_lat", "dropoff_lng"]
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "optimize_route",
+            "description": "Find the optimal visiting order for a multi-stop route (3+ stops, round trip from the first stop). Returns best order, total km and drive time.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "stops_json": {"type": "string", "description": "JSON array of stops: [{\"name\": ..., \"lat\": ..., \"lng\": ...}, ...] — first stop is the depot/start"}
+                },
+                "required": ["stops_json"]
             },
         },
     },
@@ -223,11 +267,75 @@ def _tool_create_order(
     return json.dumps(slim, ensure_ascii=False)
 
 
+def _osrm(service: str, coords: list[tuple[float, float]], params: str = "") -> dict:
+    """Call OSRM. coords are (lat, lng) pairs; OSRM wants lng,lat."""
+    path = ";".join(f"{lng},{lat}" for lat, lng in coords)
+    url = f"{config.OSRM_HOST}/{service}/v1/driving/{path}?{params}"
+    r = httpx.get(url, timeout=20)
+    r.raise_for_status()
+    return r.json()
+
+
+def _tool_get_quote(
+    pickup_lat: float,
+    pickup_lng: float,
+    dropoff_lat: float,
+    dropoff_lng: float,
+    truck_type: str = "flatbed",
+    cross_border: bool = False,
+) -> str:
+    rc = config.RATE_CARD
+    route = _osrm("route", [(pickup_lat, pickup_lng), (dropoff_lat, dropoff_lng)])
+    leg = route["routes"][0]
+    distance_km = round(leg["distance"] / 1000, 1)
+    duration_h = round(leg["duration"] / 3600, 1)
+    rate = rc["per_km"].get(truck_type.lower(), rc["per_km"]["default"])
+    subtotal = max(rc["base_fee"] + distance_km * rate, rc["min_charge"])
+    if cross_border:
+        subtotal += rc["cross_border_surcharge"]
+    vat = round(subtotal * rc["vat_rate"], 2)
+    return json.dumps(
+        {
+            "distance_km": distance_km,
+            "drive_time_hours": duration_h,
+            "truck_type": truck_type,
+            "rate_per_km_sar": rate,
+            "subtotal_sar": round(subtotal, 2),
+            "vat_15pct_sar": vat,
+            "total_sar": round(subtotal + vat, 2),
+            "valid_for": "48 hours",
+        },
+        ensure_ascii=False,
+    )
+
+
+def _tool_optimize_route(stops_json: str) -> str:
+    """stops_json: JSON array of {name, lat, lng}. Returns optimal visiting
+    order (round trip from the first stop) with total distance/time."""
+    stops = json.loads(stops_json)
+    if len(stops) < 3:
+        return json.dumps({"error": "Need at least 3 stops to optimize."})
+    coords = [(s["lat"], s["lng"]) for s in stops]
+    trip = _osrm("trip", coords, "source=first&roundtrip=true")
+    t = trip["trips"][0]
+    order = sorted(range(len(stops)), key=lambda i: trip["waypoints"][i]["waypoint_index"])
+    return json.dumps(
+        {
+            "optimal_order": [stops[i]["name"] for i in order],
+            "total_distance_km": round(t["distance"] / 1000, 1),
+            "total_drive_time_hours": round(t["duration"] / 3600, 1),
+        },
+        ensure_ascii=False,
+    )
+
+
 TOOL_IMPLS = {
     "list_places": _tool_list_places,
     "list_customers": _tool_list_customers,
     "find_best_driver": _tool_find_best_driver,
     "create_order": _tool_create_order,
+    "get_quote": _tool_get_quote,
+    "optimize_route": _tool_optimize_route,
 }
 
 MAX_TURNS = 12

@@ -26,3 +26,24 @@ TWILIO_WHATSAPP_FROM = os.getenv("TWILIO_WHATSAPP_FROM", "whatsapp:+14155238886"
 # When true, /webhook/* endpoints only log and reply — no order is created
 # until a dispatcher approves via /approve/{draft_id}.
 HUMAN_IN_THE_LOOP = os.getenv("HUMAN_IN_THE_LOOP", "true").lower() == "true"
+
+# Routing engine for real road distances (public OSRM demo server; swap for
+# a self-hosted OSRM when volume grows).
+OSRM_HOST = os.getenv("OSRM_HOST", "https://router.project-osrm.org")
+
+# Spot-quote rate card (SAR). Tune per lane/market as the business learns.
+RATE_CARD = {
+    "base_fee": 250.0,           # callout/handling per job
+    "min_charge": 550.0,         # floor price per job
+    "per_km": {                  # SAR per km by truck type
+        "flatbed": 3.5,
+        "curtainside": 3.8,
+        "box": 3.2,
+        "reefer": 4.6,
+        "tanker": 5.0,
+        "lowbed": 6.0,
+        "default": 3.5,
+    },
+    "cross_border_surcharge": 800.0,  # KSA <-> UAE customs/permits
+    "vat_rate": 0.15,                 # Saudi VAT
+}
