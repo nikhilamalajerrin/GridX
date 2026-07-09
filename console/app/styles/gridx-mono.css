@@ -289,3 +289,76 @@ a.text-blue-400:hover, a.text-blue-500:hover, a.text-blue-600:hover {
 [data-theme='dark'] .widget {
     background-color: #14161a !important;
 }
+
+/* ================= GridX light theme — airy modern SaaS ================= */
+
+/* Soft off-white canvas, white cards, hairline borders, gentle shadows */
+[data-theme='light'] body,
+[data-theme='light'] .fleetbase-next-container {
+    background-color: #f7f8fa !important;
+}
+[data-theme='light'] .next-content-panel,
+[data-theme='light'] .widget,
+[data-theme='light'] .next-table-wrapper {
+    background-color: #ffffff !important;
+    border-color: #eceef2 !important;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.05) !important;
+}
+
+/* Light sidebar — the reference look: white rail, dark text, pastel icons */
+[data-theme='light'] .next-sidebar,
+[data-theme='light'] .next-sidebar-navigator {
+    background-color: #ffffff !important;
+    border-right: 1px solid #eceef2;
+}
+[data-theme='light'] .next-sidebar-navigator-item,
+[data-theme='light'] .next-sidebar-navigator-item-label {
+    color: #344054 !important;
+}
+[data-theme='light'] .next-sidebar-navigator-item:hover {
+    background-color: #f3f4f6 !important;
+}
+[data-theme='light'] .next-sidebar-navigator-item.is-active,
+[data-theme='light'] .next-sidebar-navigator-item.is-parent-active {
+    background-color: var(--gridx-accent-soft) !important;
+    box-shadow: inset 3px 0 0 var(--gridx-accent);
+}
+[data-theme='light'] .next-sidebar-navigator-item.is-active .next-sidebar-navigator-item-label {
+    color: #1f2430 !important;
+    font-weight: 600;
+}
+[data-theme='light'] .next-sidebar .next-sidebar-navigator-search-wrap input,
+[data-theme='light'] .next-sidebar input {
+    background-color: #f3f4f6 !important;
+    border-color: #e5e7eb !important;
+    color: #344054 !important;
+}
+
+/* Headings darker + larger presence on light */
+[data-theme='light'] h1,
+[data-theme='light'] .next-view-header-title,
+[data-theme='light'] .next-content-panel-title,
+[data-theme='light'] .widget-title {
+    color: #101828 !important;
+}
+
+/* Top navbar light */
+[data-theme='light'] .next-navbar,
+[data-theme='light'] nav.navbar {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #eceef2 !important;
+}
+[data-theme='light'] .next-navbar a,
+[data-theme='light'] .next-navbar span {
+    color: #344054;
+}
+
+/* Tables: airy rows */
+[data-theme='light'] .next-table tr td,
+[data-theme='light'] .next-table tr th {
+    border-color: #f0f1f4 !important;
+}
+[data-theme='light'] .next-table thead th {
+    background-color: #fafbfc !important;
+    color: #667085 !important;
+}
