@@ -27,6 +27,15 @@ export function initialize(appInstance) {
         // Create widget definitions
         const widgets = [
             new Widget({
+                id: 'gridx-pending-dispatch',
+                name: 'AI Dispatch Approvals',
+                description: 'Orders created by the GridX AI agent awaiting dispatcher approval.',
+                icon: 'robot',
+                component: 'gridx/pending-dispatch',
+                grid_options: { w: 5, h: 9, minW: 4, minH: 6 },
+                default: true,
+            }),
+            new Widget({
                 id: 'gridx-blog',
                 name: 'GridX Blog',
                 description: 'Lists latest news and events from the GridX official team.',

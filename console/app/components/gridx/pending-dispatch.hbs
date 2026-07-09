@@ -1,0 +1,53 @@
+<div class="gridx-pending-dispatch flex h-full min-h-0 w-full flex-col" ...attributes>
+    <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+        <div class="flex items-center">
+            <FaIcon @icon="robot" class="mr-2 text-gray-500 dark:text-gray-400" />
+            <span class="font-semibold text-sm text-gray-900 dark:text-white">AI Dispatch Approvals</span>
+        </div>
+        <Button @type="default" @size="xs" @icon="arrows-rotate" @onClick={{this.refresh}} />
+    </div>
+
+    <div class="flex-1 overflow-y-auto px-3 py-2">
+        {{#if this.loadPending.isRunning}}
+            <div class="flex items-center justify-center py-8 text-sm text-gray-500">
+                <Spinner class="mr-2" /> Loading pending orders…
+            </div>
+        {{else if this.orders.length}}
+            {{#each this.orders as |order|}}
+                <div class="mb-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2">
+                    <div class="flex items-center justify-between">
+                        <div class="min-w-0">
+                            <div class="flex items-center text-sm font-medium text-gray-900 dark:text-white truncate">
+                                {{#if (eq order.meta.source "gridx-agent")}}
+                                    <FaIcon @icon="robot" @size="xs" class="mr-1.5 text-gray-400" title="Created by AI agent" />
+                                {{/if}}
+                                {{or order.tracking_number.tracking_number order.public_id}}
+                            </div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400 truncate">
+                                {{or order.notes "No notes"}}
+                            </div>
+                            {{#if order.driver_assigned.name}}
+                                <div class="text-xs text-gray-500 dark:text-gray-400">
+                                    Driver: {{order.driver_assigned.name}}
+                                </div>
+                            {{/if}}
+                        </div>
+                        <Button
+                            @type="primary"
+                            @size="sm"
+                            @icon="paper-plane"
+                            @text="Dispatch"
+                            @onClick={{fn this.dispatchOrder order}}
+                            class="ml-3 flex-shrink-0"
+                        />
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <div class="flex flex-col items-center justify-center py-8 text-sm text-gray-500 dark:text-gray-400">
+                <FaIcon @icon="circle-check" @size="lg" class="mb-2 text-green-500" />
+                Nothing waiting for approval
+            </div>
+        {{/if}}
+    </div>
+</div>
