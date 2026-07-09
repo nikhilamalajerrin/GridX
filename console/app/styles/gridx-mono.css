@@ -174,6 +174,14 @@ select.form-select,
 
 /* ================= GridX design system v2 — accent & character ================= */
 
+@font-face {
+    font-family: 'Space Grotesk';
+    src: url('/fonts/space-grotesk.woff2') format('woff2');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --gridx-accent: #f5a623;
     --gridx-accent-strong: #e08c00;
@@ -234,23 +242,37 @@ a.text-blue-400:hover, a.text-blue-500:hover, a.text-blue-600:hover {
     color: var(--gridx-accent) !important;
 }
 
+/* Primary sidebar action ("Create new order"): brand amber */
+.next-sidebar-navigator-primary-action {
+    background-color: var(--gridx-accent) !important;
+    border-color: var(--gridx-accent) !important;
+    color: #1a1408 !important;
+    font-weight: 600;
+}
+.next-sidebar-navigator-primary-action:hover {
+    background-color: var(--gridx-accent-strong) !important;
+}
+.next-sidebar-navigator-primary-action .svg-inline--fa {
+    color: #1a1408 !important;
+}
+
 /* Active nav item: amber indicator bar + tinted bg */
-.next-sidebar .next-nav-item.active {
+.next-sidebar-navigator-item.is-active,
+.next-sidebar-navigator-item.is-parent-active {
     background-color: var(--gridx-accent-soft) !important;
     box-shadow: inset 3px 0 0 var(--gridx-accent);
 }
-.next-sidebar .next-nav-item.active svg,
-.next-sidebar .next-nav-item.active .svg-inline--fa {
+.next-sidebar-navigator-item.is-active .next-sidebar-navigator-item-icon .svg-inline--fa {
     color: var(--gridx-accent) !important;
 }
 
 /* Color-coded section icons (wayfinding, Linear-style) */
-.next-sidebar nav > .next-nav-item:nth-of-type(1) .svg-inline--fa { color: #f5a623 !important; }
-.next-sidebar nav > .next-nav-item:nth-of-type(2) .svg-inline--fa { color: #34d399 !important; }
-.next-sidebar nav > .next-nav-item:nth-of-type(3) .svg-inline--fa { color: #a78bfa !important; }
-.next-sidebar nav > .next-nav-item:nth-of-type(4) .svg-inline--fa { color: #fb7185 !important; }
-.next-sidebar nav > .next-nav-item:nth-of-type(5) .svg-inline--fa { color: #2dd4bf !important; }
-.next-sidebar nav > .next-nav-item:nth-of-type(6) .svg-inline--fa { color: #9ca3af !important; }
+.next-sidebar-navigator-item:nth-of-type(1) .next-sidebar-navigator-item-icon .svg-inline--fa { color: #f5a623 !important; }
+.next-sidebar-navigator-item:nth-of-type(2) .next-sidebar-navigator-item-icon .svg-inline--fa { color: #34d399 !important; }
+.next-sidebar-navigator-item:nth-of-type(3) .next-sidebar-navigator-item-icon .svg-inline--fa { color: #a78bfa !important; }
+.next-sidebar-navigator-item:nth-of-type(4) .next-sidebar-navigator-item-icon .svg-inline--fa { color: #fb7185 !important; }
+.next-sidebar-navigator-item:nth-of-type(5) .next-sidebar-navigator-item-icon .svg-inline--fa { color: #2dd4bf !important; }
+.next-sidebar-navigator-item:nth-of-type(6) .next-sidebar-navigator-item-icon .svg-inline--fa { color: #9ca3af !important; }
 
 /* Widget & KPI header icons pick up the accent */
 .widget-header .svg-inline--fa,

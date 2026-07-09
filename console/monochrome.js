@@ -103,7 +103,11 @@ function walk(dir, out = []) {
 // the dark CARTO basemap in all embedded maps (engine bundles come from npm
 // and can't read our local source patches).
 function darkMapTiles(src) {
-    return src.split('basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').join('basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png');
+    return src
+        .split('basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png')
+        .join('basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png')
+        .split('basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png')
+        .join('basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png');
 }
 
 const dist = process.argv[2] || 'dist';
