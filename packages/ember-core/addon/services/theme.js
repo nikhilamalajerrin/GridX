@@ -66,7 +66,7 @@ export default class ThemeService extends Service.extend(Evented) {
      *
      * @var {String}
      */
-    @tracked currentTheme = this.currentUser.getOption('theme', 'dark');
+    @tracked currentTheme = this.currentUser.getOption('theme', 'light');
 
     /**
      * The initially set theme

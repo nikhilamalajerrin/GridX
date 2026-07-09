@@ -86,11 +86,11 @@ services:
     container_name: gridx-console
     restart: unless-stopped
     build:
-      context: ./console
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: console/Dockerfile.local
       args:
         ENVIRONMENT: development
-        EXTENSIONS: "fleetops,iam" 
+        EXTENSIONS: "fleetops,iam"
     ports:
       - "4200:4200"
     volumes:

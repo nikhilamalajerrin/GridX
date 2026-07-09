@@ -1,5 +1,5 @@
 import loadExtensions from './load-extensions';
-import gridxApiFetch from './gridx-api-fetch';
+import fleetbaseApiFetch from './fleetbase-api-fetch';
 import isAuthenticated from './is-authenticated';
 
 export default async function loadInstalledExtensions(additionalCoreEngines = []) {
@@ -18,11 +18,11 @@ export default async function loadInstalledExtensions(additionalCoreEngines = []
         ...additionalCoreEngines,
     ];
     const INDEXED_ENGINES = await loadExtensions();
-    // const INSTALLED_ENGINES = await gridxApiFetch('get', 'engines', {}, { namespace: '~registry/v1', fallbackResponse: [] });
+    // const INSTALLED_ENGINES = await fleetbaseApiFetch('get', 'engines', {}, { namespace: '~registry/v1', fallbackResponse: [] });
 
     let INSTALLED_ENGINES = [];
     if (isAuthenticated()) {
-        INSTALLED_ENGINES = await gridxApiFetch('GET', 'engines', {}, { namespace: '~registry/v1', fallbackResponse: [] });
+        INSTALLED_ENGINES = await fleetbaseApiFetch('GET', 'engines', {}, { namespace: '~registry/v1', fallbackResponse: [] });
     }
 
     const isInstalledEngine = (engineName) => {
