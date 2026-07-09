@@ -99,11 +99,23 @@ function walk(dir, out = []) {
     return out;
 }
 
+// Dark-first: the console ships with the dark theme as default, so serve
+// the dark CARTO basemap in all embedded maps (engine bundles come from npm
+// and can't read our local source patches).
+function darkMapTiles(src) {
+    return src.split('basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').join('basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png');
+}
+
 const dist = process.argv[2] || 'dist';
 let total = 0;
 for (const file of walk(dist)) {
     const src = fs.readFileSync(file, 'utf8');
-    const [next, changed] = recolorContent(src);
+    let [next, changed] = recolorContent(src);
+    const darkened = darkMapTiles(next);
+    if (darkened !== next) {
+        next = darkened;
+        changed += 1;
+    }
     if (changed > 0) {
         fs.writeFileSync(file, next);
         total += changed;
