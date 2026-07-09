@@ -171,3 +171,99 @@ select.form-select,
 .next-table tr th {
     border-color: rgba(127, 127, 127, 0.14) !important;
 }
+
+/* ================= GridX design system v2 — accent & character ================= */
+
+:root {
+    --gridx-accent: #f5a623;
+    --gridx-accent-strong: #e08c00;
+    --gridx-accent-soft: rgba(245, 166, 35, 0.14);
+}
+
+/* Headings get typographic character */
+h1, h2, h3,
+.next-view-header-title,
+.widget-title,
+.next-content-panel-title,
+.dashboard-title {
+    font-family: 'Space Grotesk', 'Inter', sans-serif !important;
+    letter-spacing: -0.01em;
+}
+
+/* Primary actions: brand amber (overrides the earlier graphite rules) */
+.btn-primary,
+button[type='submit'].btn-primary,
+[data-theme='dark'] .btn-primary,
+[data-theme='dark'] button[type='submit'].btn-primary {
+    background-color: var(--gridx-accent) !important;
+    border-color: var(--gridx-accent) !important;
+    color: #1a1408 !important;
+}
+.btn-primary:hover:not(:disabled),
+[data-theme='dark'] .btn-primary:hover:not(:disabled) {
+    background-color: var(--gridx-accent-strong) !important;
+    border-color: var(--gridx-accent-strong) !important;
+}
+
+/* Former primary-blue utility classes → amber accent */
+.bg-blue-500, .bg-blue-600, .bg-blue-700,
+[data-theme='dark'] .bg-blue-500,
+[data-theme='dark'] .bg-blue-600,
+[data-theme='dark'] .bg-blue-700 {
+    background-color: var(--gridx-accent) !important;
+    color: #1a1408 !important;
+}
+.hover\:bg-blue-600:hover, .hover\:bg-blue-700:hover {
+    background-color: var(--gridx-accent-strong) !important;
+}
+
+/* Focus & selection: amber ring */
+.focus\:ring-blue-500:focus,
+.focus\:border-blue-500:focus,
+input:focus, select:focus, textarea:focus {
+    --tw-ring-color: var(--gridx-accent) !important;
+    border-color: var(--gridx-accent) !important;
+    outline-color: var(--gridx-accent) !important;
+}
+
+/* Links: quiet until hovered */
+a.text-blue-400, a.text-blue-500, a.text-blue-600 {
+    color: inherit !important;
+}
+a.text-blue-400:hover, a.text-blue-500:hover, a.text-blue-600:hover {
+    color: var(--gridx-accent) !important;
+}
+
+/* Active nav item: amber indicator bar + tinted bg */
+.next-sidebar .next-nav-item.active {
+    background-color: var(--gridx-accent-soft) !important;
+    box-shadow: inset 3px 0 0 var(--gridx-accent);
+}
+.next-sidebar .next-nav-item.active svg,
+.next-sidebar .next-nav-item.active .svg-inline--fa {
+    color: var(--gridx-accent) !important;
+}
+
+/* Color-coded section icons (wayfinding, Linear-style) */
+.next-sidebar nav > .next-nav-item:nth-of-type(1) .svg-inline--fa { color: #f5a623 !important; }
+.next-sidebar nav > .next-nav-item:nth-of-type(2) .svg-inline--fa { color: #34d399 !important; }
+.next-sidebar nav > .next-nav-item:nth-of-type(3) .svg-inline--fa { color: #a78bfa !important; }
+.next-sidebar nav > .next-nav-item:nth-of-type(4) .svg-inline--fa { color: #fb7185 !important; }
+.next-sidebar nav > .next-nav-item:nth-of-type(5) .svg-inline--fa { color: #2dd4bf !important; }
+.next-sidebar nav > .next-nav-item:nth-of-type(6) .svg-inline--fa { color: #9ca3af !important; }
+
+/* Widget & KPI header icons pick up the accent */
+.widget-header .svg-inline--fa,
+.next-content-panel-header .svg-inline--fa {
+    color: var(--gridx-accent) !important;
+}
+
+/* Richer dark surfaces */
+[data-theme='dark'] body,
+[data-theme='dark'] .fleetbase-next-container {
+    background-color: #0b0d10;
+}
+[data-theme='dark'] .next-content-panel,
+[data-theme='dark'] .widget {
+    background-color: #14161a !important;
+}
