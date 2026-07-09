@@ -37,7 +37,7 @@ export default class WidgetLiveFleetComponent extends Component {
     tileAttribution = TILE_ATTRIBUTION;
 
     get tileUrl() {
-        const isDark = typeof document !== 'undefined' && document.documentElement?.dataset?.theme === 'dark';
+        const isDark = typeof document !== 'undefined' && (document.documentElement?.dataset?.theme === 'dark' || document.body?.dataset?.theme === 'dark');
         return isDark ? TILE_URL_DARK : TILE_URL;
     }
 

@@ -60,6 +60,15 @@ export default class MapLeafletLiveMapComponent extends Component {
     constructor() {
         super(...arguments);
 
+        // Match the console theme on load (dark console -> dark basemap)
+        const isDark =
+            typeof document !== 'undefined' &&
+            (document.documentElement?.dataset?.theme === 'dark' || document.body?.dataset?.theme === 'dark');
+        if (isDark) {
+            this.theme = 'dark';
+            this.tileUrl = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+        }
+
         // Store bound function reference for proper cleanup
         this._locationUpdateHandler = this.#handleLocationUpdate.bind(this);
 

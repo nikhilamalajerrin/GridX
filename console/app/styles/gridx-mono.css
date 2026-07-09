@@ -109,3 +109,65 @@ a.text-blue-600 {
     color: #e5e5e5 !important;
     border-color: #525252 !important;
 }
+
+/* ================= Modern-minimal polish ================= */
+
+/* Softer, larger radii on panels, cards, widgets */
+.next-content-panel,
+.widget,
+.fleet-listing-panel,
+.leaflet-popup-content-wrapper,
+.next-table-wrapper,
+.ui-input-info-block {
+    border-radius: 12px !important;
+}
+.btn,
+input.form-input,
+select.form-select,
+.ember-power-select-trigger {
+    border-radius: 8px !important;
+}
+
+/* Quieter borders and shadows */
+.next-content-panel,
+.widget {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06) !important;
+}
+[data-theme='dark'] .next-content-panel,
+[data-theme='dark'] .widget {
+    border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Floating map toolbar: pill shape + blur */
+.fleet-ops-floating-map-controls,
+.map-toolbar,
+.leaflet-control-zoom {
+    border-radius: 14px !important;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+}
+
+/* Slim, unobtrusive scrollbars */
+*::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+*::-webkit-scrollbar-thumb {
+    background: rgba(127, 127, 127, 0.35);
+    border-radius: 3px;
+}
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* More breathing room in the ops sidebar */
+.next-sidebar .next-nav-item {
+    border-radius: 8px !important;
+    margin: 1px 6px;
+}
+
+/* Table rows: lighter separators */
+.next-table tr td,
+.next-table tr th {
+    border-color: rgba(127, 127, 127, 0.14) !important;
+}
