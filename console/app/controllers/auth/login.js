@@ -128,7 +128,7 @@ export default class AuthLoginController extends Controller {
         }
 
         try {
-            await this.session.authenticate('authenticator:gridx', { identity, password }, rememberMe);
+            await this.session.authenticate('authenticator:fleetbase', { identity, password }, rememberMe);
         } catch (error) {
             this.failedAttempts++;
 

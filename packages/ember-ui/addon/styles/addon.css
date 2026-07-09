@@ -58,7 +58,7 @@
 @import 'components/activity-log.css';
 @import 'components/smart-nav-menu.css';
 @import 'components/template-builder.css';
-@import 'components/gridx-attribution.css';
+@import 'components/fleetbase-attribution.css';
 
 .gridx-docs-panel-body {
     position: relative;

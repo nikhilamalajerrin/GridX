@@ -53,7 +53,9 @@ RUN printf '%s\n' \
     '  "@fleetbase/iam-engine": "workspace:*"' \
     > pnpm-workspace.yaml
 
-RUN pnpm install --no-frozen-lockfile
+# pnpm 9+ blocks postinstall scripts from unreviewed deps by default
+# (fontawesome/core-js icon-font build steps) — safe to skip for our build.
+RUN pnpm install --no-frozen-lockfile --config.ignore-scripts=true
 
 WORKDIR /build/console
 RUN pnpm build --environment $ENVIRONMENT

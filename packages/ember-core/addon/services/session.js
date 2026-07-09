@@ -79,7 +79,7 @@ export default class SessionService extends SimpleAuthSessionService {
      * Manually authenticate user
      */
     manuallyAuthenticate(authToken) {
-        return this.session._setup('authenticator:gridx', { token: authToken }, true);
+        return this.session._setup('authenticator:fleetbase', { token: authToken }, true);
     }
 
     /**

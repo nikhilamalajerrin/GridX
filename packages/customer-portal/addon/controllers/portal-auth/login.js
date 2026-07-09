@@ -132,7 +132,7 @@ export default class PortalAuthLoginController extends Controller {
 
         try {
             this.session.setRedirect('customer-portal.portal');
-            await this.session.authenticate('authenticator:gridx', { identity, password }, rememberMe, 'auth/login', { namespace: CUSTOMER_PORTAL_NAMESPACE });
+            await this.session.authenticate('authenticator:fleetbase', { identity, password }, rememberMe, 'auth/login', { namespace: CUSTOMER_PORTAL_NAMESPACE });
         } catch (error) {
             this.failedAttempts++;
 
