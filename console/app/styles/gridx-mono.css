@@ -172,20 +172,34 @@ select.form-select,
     border-color: rgba(127, 127, 127, 0.14) !important;
 }
 
-/* ================= GridX design system v2 — accent & character ================= */
+/* ================= GridX design system v3 — accent & character ================= */
 
 @font-face {
-    font-family: 'Space Grotesk';
-    src: url('/fonts/space-grotesk.woff2') format('woff2');
+    font-family: 'Inter Tight';
+    src: url('/fonts/inter-tight.woff2') format('woff2');
     font-weight: 400 700;
     font-style: normal;
     font-display: swap;
 }
 
 :root {
-    --gridx-accent: #f5a623;
-    --gridx-accent-strong: #e08c00;
-    --gridx-accent-soft: rgba(245, 166, 35, 0.14);
+    /* #2 Modern grotesk, tighter than Space Grotesk, used app-wide */
+    --gridx-font: 'Inter Tight', 'Inter', ui-sans-serif, sans-serif;
+
+    /* #1 Indigo/violet accent replaces amber */
+    --gridx-accent: #4f46e5;
+    --gridx-accent-strong: #4338ca;
+    --gridx-accent-soft: rgba(79, 70, 229, 0.12);
+
+    /* #3 Neutral ink used for non-primary highlights (links, quiet icons) */
+    --gridx-ink: #1f2430;
+    --gridx-ink-soft: #667085;
+}
+
+/* App-wide type family swap (was Space Grotesk on headings only) */
+body,
+.fleetbase-next-container {
+    font-family: var(--gridx-font) !important;
 }
 
 /* Headings get typographic character */
@@ -194,18 +208,38 @@ h1, h2, h3,
 .widget-title,
 .next-content-panel-title,
 .dashboard-title {
-    font-family: 'Space Grotesk', 'Inter', sans-serif !important;
-    letter-spacing: -0.01em;
+    font-family: var(--gridx-font) !important;
+    letter-spacing: -0.015em;
+    font-weight: 600;
 }
 
-/* Primary actions: brand amber (overrides the earlier graphite rules) */
+/* #5 Data-dense scale: quieter labels, bolder numbers, tighter tracking */
+.next-table thead th,
+.widget-title,
+.next-content-panel-title {
+    letter-spacing: -0.005em;
+    font-weight: 500;
+    text-transform: none;
+}
+.next-table tr td {
+    font-weight: 400;
+    letter-spacing: -0.005em;
+}
+.widget .kpi-value,
+.widget .stat-value,
+.dashboard-title {
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+}
+
+/* #3 Two-tier accent: bold indigo reserved for primary actions only */
 .btn-primary,
 button[type='submit'].btn-primary,
 [data-theme='dark'] .btn-primary,
 [data-theme='dark'] button[type='submit'].btn-primary {
     background-color: var(--gridx-accent) !important;
     border-color: var(--gridx-accent) !important;
-    color: #1a1408 !important;
+    color: #ffffff !important;
 }
 .btn-primary:hover:not(:disabled),
 [data-theme='dark'] .btn-primary:hover:not(:disabled) {
@@ -213,19 +247,20 @@ button[type='submit'].btn-primary,
     border-color: var(--gridx-accent-strong) !important;
 }
 
-/* Former primary-blue utility classes → amber accent */
+/* Everywhere else, former "blue" utility classes go to neutral ink, not accent —
+   keeps the indigo meaningful (reserved for primary actions / active state) */
 .bg-blue-500, .bg-blue-600, .bg-blue-700,
 [data-theme='dark'] .bg-blue-500,
 [data-theme='dark'] .bg-blue-600,
 [data-theme='dark'] .bg-blue-700 {
-    background-color: var(--gridx-accent) !important;
-    color: #1a1408 !important;
+    background-color: var(--gridx-ink) !important;
+    color: #ffffff !important;
 }
 .hover\:bg-blue-600:hover, .hover\:bg-blue-700:hover {
-    background-color: var(--gridx-accent-strong) !important;
+    background-color: #000000 !important;
 }
 
-/* Focus & selection: amber ring */
+/* Focus & selection: indigo ring */
 .focus\:ring-blue-500:focus,
 .focus\:border-blue-500:focus,
 input:focus, select:focus, textarea:focus {
@@ -242,21 +277,21 @@ a.text-blue-400:hover, a.text-blue-500:hover, a.text-blue-600:hover {
     color: var(--gridx-accent) !important;
 }
 
-/* Primary sidebar action ("Create new order"): brand amber */
+/* Primary sidebar action ("Create new order"): brand indigo */
 .next-sidebar-navigator-primary-action {
     background-color: var(--gridx-accent) !important;
     border-color: var(--gridx-accent) !important;
-    color: #1a1408 !important;
+    color: #ffffff !important;
     font-weight: 600;
 }
 .next-sidebar-navigator-primary-action:hover {
     background-color: var(--gridx-accent-strong) !important;
 }
 .next-sidebar-navigator-primary-action .svg-inline--fa {
-    color: #1a1408 !important;
+    color: #ffffff !important;
 }
 
-/* Active nav item: amber indicator bar + tinted bg */
+/* Active nav item: indigo indicator bar + tinted bg */
 .next-sidebar-navigator-item.is-active,
 .next-sidebar-navigator-item.is-parent-active {
     background-color: var(--gridx-accent-soft) !important;
@@ -266,18 +301,20 @@ a.text-blue-400:hover, a.text-blue-500:hover, a.text-blue-600:hover {
     color: var(--gridx-accent) !important;
 }
 
-/* Color-coded section icons (wayfinding, Linear-style) */
-.next-sidebar-navigator-item:nth-of-type(1) .next-sidebar-navigator-item-icon .svg-inline--fa { color: #f5a623 !important; }
+/* Color-coded section icons (wayfinding, Linear-style) — cooled palette to sit
+   alongside the indigo accent instead of competing with it */
+.next-sidebar-navigator-item:nth-of-type(1) .next-sidebar-navigator-item-icon .svg-inline--fa { color: #6366f1 !important; }
 .next-sidebar-navigator-item:nth-of-type(2) .next-sidebar-navigator-item-icon .svg-inline--fa { color: #34d399 !important; }
 .next-sidebar-navigator-item:nth-of-type(3) .next-sidebar-navigator-item-icon .svg-inline--fa { color: #a78bfa !important; }
 .next-sidebar-navigator-item:nth-of-type(4) .next-sidebar-navigator-item-icon .svg-inline--fa { color: #fb7185 !important; }
 .next-sidebar-navigator-item:nth-of-type(5) .next-sidebar-navigator-item-icon .svg-inline--fa { color: #2dd4bf !important; }
 .next-sidebar-navigator-item:nth-of-type(6) .next-sidebar-navigator-item-icon .svg-inline--fa { color: #9ca3af !important; }
 
-/* Widget & KPI header icons pick up the accent */
+/* Widget & KPI header icons: quiet neutral, not accent (accent stays reserved
+   for primary actions and active nav — see two-tier accent system above) */
 .widget-header .svg-inline--fa,
 .next-content-panel-header .svg-inline--fa {
-    color: var(--gridx-accent) !important;
+    color: var(--gridx-ink-soft) !important;
 }
 
 /* Richer dark surfaces */
@@ -305,11 +342,13 @@ a.text-blue-400:hover, a.text-blue-500:hover, a.text-blue-600:hover {
     box-shadow: 0 1px 3px rgba(16, 24, 40, 0.05) !important;
 }
 
-/* Light sidebar — the reference look: white rail, dark text, pastel icons */
+/* #4 Light sidebar — subtly tinted (not pure white) so it separates from the
+   canvas via depth rather than a heavier border; cards stay pure white on top */
 [data-theme='light'] .next-sidebar,
 [data-theme='light'] .next-sidebar-navigator {
-    background-color: #ffffff !important;
+    background-color: #fbfbfd !important;
     border-right: 1px solid #eceef2;
+    box-shadow: 1px 0 0 rgba(16, 24, 40, 0.02);
 }
 [data-theme='light'] .next-sidebar-navigator-item,
 [data-theme='light'] .next-sidebar-navigator-item-label {
@@ -361,4 +400,958 @@ a.text-blue-400:hover, a.text-blue-500:hover, a.text-blue-600:hover {
 [data-theme='light'] .next-table thead th {
     background-color: #fafbfc !important;
     color: #667085 !important;
+}
+
+/* ================= GridX design system v4 — minimalist polish pass ================= */
+/* Real class names confirmed from packages/fleetops/addon/templates/management/index.hbs
+   and maintenance/index.hbs (both hub pages share the same fleet-ops-control-hub-* markup). */
+
+/* #1 KPI stat cards: flatten the pastel per-tone gradients to plain white
+   cards with a slim colored left accent bar — matches the flat-card language
+   used by the panels below them instead of a separate gradient language. */
+[data-theme='light'] .fleet-ops-control-hub-kpi {
+    background: #ffffff !important;
+    background-image: none !important;
+    border: 1px solid #eceef2 !important;
+    border-left-width: 3px !important;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04) !important;
+}
+[data-theme='light'] .fleet-ops-control-hub-tone-blue,
+[data-theme='light'] .fleet-ops-control-hub-tone-indigo { border-left-color: #6366f1 !important; }
+[data-theme='light'] .fleet-ops-control-hub-tone-green,
+[data-theme='light'] .fleet-ops-control-hub-tone-emerald { border-left-color: #059669 !important; }
+[data-theme='light'] .fleet-ops-control-hub-tone-amber,
+[data-theme='light'] .fleet-ops-control-hub-tone-orange { border-left-color: #d97706 !important; }
+[data-theme='light'] .fleet-ops-control-hub-tone-red,
+[data-theme='light'] .fleet-ops-control-hub-tone-rose { border-left-color: #e11d48 !important; }
+[data-theme='light'] .fleet-ops-control-hub-kpi-icon {
+    background-color: #f7f8fa !important;
+    color: var(--gridx-ink-soft) !important;
+}
+
+/* #2 Guides callout: quieter than Action Queue, thin left border instead of
+   a filled tinted card competing for attention with actionable items */
+[data-theme='light'] .fleet-ops-control-hub-doc-note {
+    background-color: #fafbfc !important;
+    border: 1px solid #eceef2 !important;
+    border-left: 3px solid #f0b429 !important;
+    box-shadow: none !important;
+}
+
+/* #3 Count badges: accent-tinted so they read as data, not decoration */
+.fleet-ops-control-hub-link-count {
+    background-color: var(--gridx-accent-soft) !important;
+    color: var(--gridx-accent) !important;
+    font-weight: 600;
+}
+
+/* #4 Resource-type icon chips: category-tinted instead of uniform blue */
+.fleet-ops-control-hub-link-icon {
+    background-color: rgba(99, 102, 241, 0.12) !important;
+    color: #6366f1 !important;
+}
+
+/* #5 Consistent section rhythm around the KPI row */
+.fleet-ops-control-hub-kpis {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+/* ================= GridX Copilot ================= */
+
+.gridx-copilot-launcher {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--gridx-accent);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+    z-index: 9998;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+.gridx-copilot-launcher:hover {
+    background: var(--gridx-accent-strong);
+    transform: scale(1.05);
+}
+.gridx-copilot-launcher-icon {
+    font-size: 22px;
+    line-height: 1;
+}
+
+.gridx-copilot-panel {
+    position: fixed;
+    bottom: 88px;
+    right: 24px;
+    width: 360px;
+    max-height: 520px;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid #eceef2;
+    border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(16, 24, 40, 0.16);
+    z-index: 9999;
+    font-family: var(--gridx-font);
+    overflow: hidden;
+}
+.gridx-copilot-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: var(--gridx-accent);
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+.gridx-copilot-close {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.85;
+}
+.gridx-copilot-close:hover {
+    opacity: 1;
+}
+.gridx-copilot-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 120px;
+    max-height: 360px;
+}
+.gridx-copilot-empty {
+    color: #98a2b3;
+    font-size: 13px;
+    line-height: 1.5;
+}
+.gridx-copilot-message {
+    font-size: 13.5px;
+    line-height: 1.5;
+    padding: 8px 12px;
+    border-radius: 10px;
+    max-width: 90%;
+}
+.gridx-copilot-message-user {
+    align-self: flex-end;
+    background: var(--gridx-accent-soft);
+    color: var(--gridx-ink);
+}
+.gridx-copilot-message-assistant {
+    align-self: flex-start;
+    background: #f7f8fa;
+    color: #344054;
+}
+.gridx-copilot-thinking {
+    color: #98a2b3;
+    font-style: italic;
+}
+.gridx-copilot-input-row {
+    display: flex;
+    border-top: 1px solid #eceef2;
+    padding: 10px;
+    gap: 8px;
+}
+.gridx-copilot-input-row input {
+    flex: 1;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 13.5px;
+    font-family: var(--gridx-font);
+}
+.gridx-copilot-input-row input:focus {
+    outline: none;
+    border-color: var(--gridx-accent);
+}
+.gridx-copilot-input-row button {
+    background: var(--gridx-accent);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-weight: 600;
+    font-size: 13.5px;
+    cursor: pointer;
+}
+.gridx-copilot-input-row button:hover:not(:disabled) {
+    background: var(--gridx-accent-strong);
+}
+.gridx-copilot-input-row button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.gridx-quotes-launcher {
+    position: fixed;
+    bottom: 32px;
+    right: 88px;
+    height: 44px;
+    padding: 0 18px;
+    border-radius: 22px;
+    background: #ffffff;
+    color: var(--gridx-ink);
+    border: 1px solid #eceef2;
+    box-shadow: 0 4px 14px rgba(16, 24, 40, 0.1);
+    display: flex;
+    align-items: center;
+    font-family: var(--gridx-font);
+    font-weight: 600;
+    font-size: 13.5px;
+    cursor: pointer;
+    z-index: 9998;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    text-decoration: none !important;
+}
+.gridx-quotes-launcher:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.14);
+    color: var(--gridx-accent);
+}
+.gridx-route-planning-launcher {
+    right: 190px;
+}
+
+/* ================= GridX Quotes page ================= */
+
+.gridx-quotes-page {
+    padding: 28px 32px;
+    font-family: var(--gridx-font);
+}
+.gridx-quotes-header {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+}
+.gridx-quotes-plan-routes-btn {
+    flex-shrink: 0;
+    background: var(--gridx-accent);
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+.gridx-quotes-plan-routes-btn:hover {
+    background: var(--gridx-accent-strong);
+}
+.gridx-quotes-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--gridx-accent);
+    margin-bottom: 4px;
+}
+.gridx-quotes-page h1 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #101828;
+    margin: 0 0 6px 0;
+}
+.gridx-quotes-subtitle {
+    color: #667085;
+    font-size: 13.5px;
+    max-width: 640px;
+    line-height: 1.5;
+    margin: 0;
+}
+.gridx-quotes-table-wrap {
+    background: #ffffff;
+    border: 1px solid #eceef2;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.05);
+}
+.gridx-quotes-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+}
+.gridx-quotes-table thead th {
+    text-align: left;
+    padding: 10px 16px;
+    background: #fafbfc;
+    color: #667085;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: -0.005em;
+    border-bottom: 1px solid #eceef2;
+}
+.gridx-quotes-table tbody td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f1f4;
+    color: #344054;
+}
+.gridx-quotes-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.gridx-quotes-id {
+    font-weight: 600;
+    color: #101828;
+}
+.gridx-quotes-total {
+    font-weight: 700;
+    color: #101828;
+}
+.gridx-quote-status {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 600;
+    text-transform: capitalize;
+    background: #f3f4f6;
+    color: #667085;
+}
+.gridx-quote-status-quote_pending { background: rgba(79, 70, 229, 0.12); color: var(--gridx-accent); }
+.gridx-quote-status-sales_order { background: rgba(217, 119, 6, 0.12); color: #b45309; }
+.gridx-quote-status-paid { background: rgba(5, 150, 105, 0.12); color: #047857; }
+.gridx-quote-status-dispatched { background: rgba(5, 150, 105, 0.16); color: #047857; }
+.gridx-quote-status-rejected { background: rgba(225, 29, 72, 0.12); color: #be123c; }
+
+.gridx-quotes-actions {
+    white-space: nowrap;
+}
+.gridx-quotes-actions button {
+    background: var(--gridx-accent);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 6px;
+}
+.gridx-quotes-actions button:hover:not(:disabled) {
+    background: var(--gridx-accent-strong);
+}
+.gridx-quotes-actions button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.gridx-quotes-btn-ghost {
+    background: transparent !important;
+    color: #667085 !important;
+    border: 1px solid #e5e7eb !important;
+}
+.gridx-quotes-done {
+    color: #047857;
+    font-weight: 600;
+    font-size: 12.5px;
+}
+.gridx-quotes-muted {
+    color: #98a2b3;
+}
+.gridx-quotes-empty {
+    padding: 48px;
+    text-align: center;
+    color: #98a2b3;
+    background: #ffffff;
+    border: 1px solid #eceef2;
+    border-radius: 12px;
+}
+
+/* ================================================================
+   GridX design system v5 — modern SaaS polish pass
+   Target: Linear / Stripe / Vercel / Raycast tier — crisp, quiet,
+   confident. CSS-only (no template changes) against the real class
+   names ember-ui renders: btn/btn-{type}/btn-{size}, form-input/
+   form-select/form-textarea, flb--modal-*, tab-item(--active),
+   status-badge, ember-power-select-*, next-dd-menu/next-dd-item,
+   next-table-empty-state-*.
+   ================================================================ */
+
+:root {
+    --gridx-radius-sm: 6px;
+    --gridx-radius-md: 8px;
+    --gridx-radius-lg: 12px;
+    --gridx-border: #e5e7eb;
+    --gridx-border-soft: #eceef2;
+    --gridx-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.04);
+    --gridx-shadow-md: 0 4px 12px rgba(16, 24, 40, 0.08);
+    --gridx-shadow-lg: 0 12px 32px rgba(16, 24, 40, 0.14);
+}
+
+/* ---------- Buttons: crisp, minimal, confident ---------- */
+[data-theme='light'] .btn {
+    border-radius: var(--gridx-radius-sm) !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.005em;
+    transition: background-color 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease, transform 0.05s ease;
+    box-shadow: none !important;
+}
+[data-theme='light'] .btn:active:not(:disabled) {
+    transform: translateY(0.5px);
+}
+[data-theme='light'] .btn-default,
+[data-theme='light'] .btn-secondary {
+    background-color: #ffffff !important;
+    border: 1px solid var(--gridx-border) !important;
+    color: #344054 !important;
+}
+[data-theme='light'] .btn-default:hover:not(:disabled),
+[data-theme='light'] .btn-secondary:hover:not(:disabled) {
+    background-color: #f9fafb !important;
+    border-color: #d0d5dd !important;
+}
+[data-theme='light'] .btn-primary {
+    box-shadow: 0 1px 2px rgba(79, 70, 229, 0.15) !important;
+}
+[data-theme='light'] .btn-link {
+    color: var(--gridx-accent) !important;
+    font-weight: 600 !important;
+}
+
+/* ---------- Form controls: quiet borders, crisp focus ---------- */
+[data-theme='light'] .form-input,
+[data-theme='light'] .form-select,
+[data-theme='light'] .form-textarea,
+[data-theme='light'] .form-multiselect,
+[data-theme='light'] .ember-power-select-trigger {
+    background-color: #ffffff !important;
+    border: 1px solid var(--gridx-border) !important;
+    border-radius: var(--gridx-radius-sm) !important;
+    color: #101828 !important;
+    box-shadow: none !important;
+    transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+[data-theme='light'] .form-input::placeholder,
+[data-theme='light'] .form-textarea::placeholder {
+    color: #98a2b3 !important;
+}
+[data-theme='light'] .form-input:focus,
+[data-theme='light'] .form-select:focus,
+[data-theme='light'] .form-textarea:focus,
+[data-theme='light'] .ember-power-select-trigger--active {
+    border-color: var(--gridx-accent) !important;
+    box-shadow: 0 0 0 3px var(--gridx-accent-soft) !important;
+}
+[data-theme='light'] .form-checkbox:checked,
+[data-theme='light'] .form-radio:checked {
+    background-color: var(--gridx-accent) !important;
+    border-color: var(--gridx-accent) !important;
+}
+
+/* ---------- Modals: softer, larger radius, quieter chrome ---------- */
+[data-theme='light'] .flb--modal-dialog {
+    border-radius: var(--gridx-radius-lg) !important;
+    box-shadow: var(--gridx-shadow-lg) !important;
+    border: 1px solid var(--gridx-border-soft) !important;
+    overflow: hidden;
+}
+[data-theme='light'] .flb--modal-header {
+    border-bottom: 1px solid var(--gridx-border-soft) !important;
+    background-color: #ffffff !important;
+}
+[data-theme='light'] .flb--modal-title {
+    font-weight: 600 !important;
+    letter-spacing: -0.01em;
+    color: #101828 !important;
+}
+[data-theme='light'] .flb--modal-footer {
+    border-top: 1px solid var(--gridx-border-soft) !important;
+    background-color: #fafbfc !important;
+}
+[data-theme='light'] .flb--modal-backdrop {
+    background-color: rgba(16, 24, 40, 0.45) !important;
+    backdrop-filter: blur(2px);
+}
+
+/* ---------- Dropdowns / menus: crisp shadow, tight radius ---------- */
+[data-theme='light'] .ember-basic-dropdown-content,
+[data-theme='light'] .next-dd-menu,
+[data-theme='light'] .dropdown-menu-content {
+    border-radius: var(--gridx-radius-md) !important;
+    border: 1px solid var(--gridx-border-soft) !important;
+    box-shadow: var(--gridx-shadow-md) !important;
+    background-color: #ffffff !important;
+    overflow: hidden;
+}
+[data-theme='light'] .next-dd-item,
+[data-theme='light'] .dropdown-menu-item,
+[data-theme='light'] .ember-power-select-option {
+    font-size: 13.5px;
+    transition: background-color 0.1s ease;
+}
+[data-theme='light'] .next-dd-item:hover,
+[data-theme='light'] .dropdown-menu-item:hover,
+[data-theme='light'] .ember-power-select-option[aria-current='true'] {
+    background-color: #f9fafb !important;
+}
+[data-theme='light'] .next-dd-menu-seperator {
+    border-color: var(--gridx-border-soft) !important;
+}
+
+/* ---------- Tabs: Linear-style underline, not filled pills ---------- */
+[data-theme='light'] .tab-navigation {
+    border-bottom: 1px solid var(--gridx-border-soft) !important;
+}
+[data-theme='light'] .tab-item {
+    color: #667085 !important;
+    font-weight: 500 !important;
+    font-size: 13.5px;
+    border-bottom: 2px solid transparent !important;
+    transition: color 0.12s ease, border-color 0.12s ease;
+}
+[data-theme='light'] .tab-item:hover {
+    color: #344054 !important;
+}
+[data-theme='light'] .tab-item--active {
+    color: var(--gridx-accent) !important;
+    border-bottom-color: var(--gridx-accent) !important;
+    font-weight: 600 !important;
+}
+
+/* ---------- Badges: quieter, consistent weight ---------- */
+[data-theme='light'] .status-badge {
+    font-weight: 600 !important;
+    font-size: 11px !important;
+    letter-spacing: 0.01em;
+    border-radius: 20px !important;
+    border: none !important;
+}
+
+/* ---------- Empty states: centered, quiet, generous spacing ---------- */
+[data-theme='light'] .next-table-empty-state {
+    padding: 56px 24px !important;
+}
+[data-theme='light'] .next-table-empty-state-icon {
+    color: #d0d5dd !important;
+}
+[data-theme='light'] .next-table-empty-state-title {
+    color: #344054 !important;
+    font-weight: 600 !important;
+}
+[data-theme='light'] .next-table-empty-state-description {
+    color: #98a2b3 !important;
+    font-size: 13px;
+}
+
+/* ---------- Content panels: more breathing room, quieter chrome ---------- */
+[data-theme='light'] .next-content-panel-header {
+    padding: 16px 20px !important;
+    border-bottom: 1px solid var(--gridx-border-soft) !important;
+}
+[data-theme='light'] .next-content-panel-body {
+    padding: 20px !important;
+}
+[data-theme='light'] .next-content-panel-title {
+    font-weight: 600 !important;
+    color: #101828 !important;
+}
+
+/* ---------- Top navbar: extra quiet, more presence for actions ---------- */
+[data-theme='light'] .next-navbar {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+/* ---------- Global focus-visible: consistent accent ring everywhere ---------- */
+[data-theme='light'] *:focus-visible {
+    outline: 2px solid var(--gridx-accent) !important;
+    outline-offset: 1px;
+}
+
+.gridx-pending-quotes-view-all {
+    color: var(--gridx-accent) !important;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none !important;
+}
+.gridx-pending-quotes-view-all:hover {
+    text-decoration: underline !important;
+}
+
+/* ================= GridX Route Planning page ================= */
+
+.gridx-route-planning-page {
+    padding: 28px 32px;
+    font-family: var(--gridx-font);
+    height: calc(100vh - 56px);
+    display: flex;
+    flex-direction: column;
+}
+.gridx-route-planning-header {
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+.gridx-route-planning-page h1 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #101828;
+    margin: 0 0 6px 0;
+}
+.gridx-route-planning-body {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    min-height: 0;
+}
+.gridx-route-planning-sidebar {
+    width: 340px;
+    flex-shrink: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.gridx-route-planning-section {
+    background: #ffffff;
+    border: 1px solid #eceef2;
+    border-radius: 12px;
+    padding: 14px;
+}
+.gridx-route-planning-section-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #344054;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.gridx-route-planning-checkrow {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 4px;
+    border-bottom: 1px solid #f5f6f8;
+    cursor: pointer;
+}
+.gridx-route-planning-checkrow:last-child {
+    border-bottom: none;
+}
+.gridx-route-planning-checkrow input {
+    margin-top: 3px;
+    accent-color: var(--gridx-accent);
+}
+.gridx-route-planning-checkrow-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #101828;
+}
+.gridx-route-planning-checkrow-sub {
+    font-size: 12px;
+    color: #667085;
+}
+.gridx-route-planning-empty-note {
+    color: #98a2b3;
+    font-size: 12.5px;
+    padding: 8px 4px;
+}
+.gridx-route-planning-plan-btn,
+.gridx-route-planning-commit-btn {
+    width: 100%;
+    background: var(--gridx-accent);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 13.5px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.gridx-route-planning-plan-btn:hover:not(:disabled),
+.gridx-route-planning-commit-btn:hover:not(:disabled) {
+    background: var(--gridx-accent-strong);
+}
+.gridx-route-planning-plan-btn:disabled,
+.gridx-route-planning-commit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.gridx-route-planning-commit-btn {
+    background: #047857;
+    margin-top: 10px;
+}
+.gridx-route-planning-commit-btn:hover:not(:disabled) {
+    background: #036c4f;
+}
+.gridx-route-planning-engine-badge {
+    background: rgba(79, 70, 229, 0.12);
+    color: var(--gridx-accent);
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+.gridx-route-planning-assignment-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    padding: 6px 4px;
+    border-bottom: 1px solid #f5f6f8;
+}
+.gridx-route-planning-seq {
+    background: var(--gridx-accent-soft);
+    color: var(--gridx-accent);
+    font-weight: 700;
+    font-size: 11px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.gridx-route-planning-muted {
+    color: #98a2b3;
+    margin-left: auto;
+}
+.gridx-route-planning-unassigned-note {
+    color: #b45309;
+    font-size: 12px;
+    margin-top: 8px;
+}
+.gridx-route-planning-map {
+    flex: 1;
+    min-width: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #eceef2;
+}
+.gridx-route-plan-map-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.gridx-route-plan-map-empty {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #98a2b3;
+    font-size: 13.5px;
+    background: #fafbfc;
+}
+
+/* ================= GridX Quote edit ================= */
+
+.gridx-quotes-edit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    margin-left: 6px;
+    opacity: 0.55;
+    vertical-align: middle;
+}
+.gridx-quotes-edit-btn:hover {
+    opacity: 1;
+    color: var(--gridx-accent);
+}
+
+.gridx-quote-edit-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(16, 24, 40, 0.45);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+.gridx-quote-edit-modal {
+    width: 480px;
+    max-height: 86vh;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(16, 24, 40, 0.2);
+    font-family: var(--gridx-font);
+}
+.gridx-quote-edit-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #eceef2;
+    font-weight: 700;
+    font-size: 14.5px;
+    color: #101828;
+}
+.gridx-quote-edit-body {
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.gridx-quote-edit-body label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #667085;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+.gridx-quote-edit-body input,
+.gridx-quote-edit-body select,
+.gridx-quote-edit-body textarea {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-family: var(--gridx-font);
+    width: 100%;
+    box-sizing: border-box;
+}
+.gridx-quote-edit-body input:focus,
+.gridx-quote-edit-body select:focus,
+.gridx-quote-edit-body textarea:focus {
+    outline: none;
+    border-color: var(--gridx-accent);
+    box-shadow: 0 0 0 3px var(--gridx-accent-soft);
+}
+.gridx-quote-edit-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+.gridx-quote-edit-hint {
+    font-size: 11.5px;
+    color: #98a2b3;
+    margin-top: 12px;
+}
+.gridx-quote-edit-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 14px 20px;
+    border-top: 1px solid #eceef2;
+    background: #fafbfc;
+}
+.gridx-quote-edit-footer button {
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    background: var(--gridx-accent);
+    color: #ffffff;
+}
+.gridx-quote-edit-footer button:hover:not(:disabled) {
+    background: var(--gridx-accent-strong);
+}
+.gridx-quote-edit-footer button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.gridx-quote-edit-footer .gridx-quotes-btn-ghost {
+    background: transparent;
+    color: #667085;
+    border: 1px solid #e5e7eb;
+}
+
+/* ================= GridX Trip Documents ================= */
+
+.gridx-route-planning-docs-btn {
+    margin-left: auto;
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    color: var(--gridx-accent);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.gridx-route-planning-docs-btn:hover {
+    background: var(--gridx-accent-soft);
+}
+
+.gridx-trip-docs-modal {
+    width: 440px;
+}
+.gridx-trip-docs-section {
+    margin-bottom: 16px;
+}
+.gridx-trip-docs-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #98a2b3;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+}
+.gridx-trip-docs-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    background: #fafbfc;
+    border: 1px solid #eceef2;
+    border-radius: 10px;
+}
+.gridx-trip-docs-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #eceef2;
+    flex-shrink: 0;
+}
+.gridx-trip-docs-name {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #101828;
+}
+.gridx-trip-docs-detail {
+    font-size: 12px;
+    color: #667085;
+    margin-top: 2px;
+}
+
+.gridx-route-plan-legend {
+    position: absolute;
+    z-index: 1000;
+    top: 12px;
+    right: 12px;
+    background: #ffffff;
+    border: 1px solid #eceef2;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(16, 24, 40, 0.1);
+    padding: 10px 12px;
+    font-family: var(--gridx-font);
+    max-width: 220px;
+}
+.gridx-route-plan-legend-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #98a2b3;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 6px;
+}
+.gridx-route-plan-legend-row {
+    font-size: 11.5px;
+    color: #344054;
+    line-height: 1.5;
+}
+.gridx-route-plan-legend-row strong {
+    color: #101828;
 }

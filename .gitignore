@@ -30,6 +30,9 @@ verdaccio/minio
 verdaccio/config/htpasswd
 verdaccio/storage
 docker/vroom
+docker/osrm/data
+docker/traccar/data
+docker/traccar/logs
 # private packages
 packages/billing
 packages/flespi

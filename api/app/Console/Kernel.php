@@ -16,6 +16,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        // GridX AI feature: auto-creates work orders from overdue/soon-due
+        // scheduled maintenance, instead of waiting for a human to notice.
+        $schedule->command('gridx:maintenance-auto-triage')->everyFiveMinutes();
     }
 
     /**

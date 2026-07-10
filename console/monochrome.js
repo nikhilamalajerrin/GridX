@@ -114,7 +114,11 @@ const dist = process.argv[2] || 'dist';
 let total = 0;
 for (const file of walk(dist)) {
     const src = fs.readFileSync(file, 'utf8');
-    let [next, changed] = recolorContent(src);
+    // Blue-hue desaturation pass disabled: the design direction moved from
+    // monochrome black & white to a colorful modern-SaaS theme (indigo accent,
+    // multi-color nav icons), and this pass was silently greying those out.
+    // darkMapTiles() still runs — that's an unrelated basemap-URL swap.
+    let next = src, changed = 0;
     const darkened = darkMapTiles(next);
     if (darkened !== next) {
         next = darkened;

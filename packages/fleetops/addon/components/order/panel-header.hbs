@@ -7,7 +7,10 @@
                 </div>
             </div>
             <div class="flex flex-col">
-                <div class="font-semibold">{{@resource.tracking}}</div>
+                <div class="flex flex-row items-center space-x-1.5">
+                    <div class="font-semibold">{{@resource.tracking}}</div>
+                    <Button @icon="edit" @size="xs" @type="default" @title="Edit order details" @onClick={{this.editOrder}} />
+                </div>
                 <div class="flex flex-row space-x-1">
                     <Badge @status={{@resource.status}} />
                     {{#if @resource.dispatched_at}}

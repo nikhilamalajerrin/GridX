@@ -1,0 +1,132 @@
+{{page-title "Route Planning"}}
+<div class="gridx-route-planning-page">
+    <div class="gridx-route-planning-header">
+        <div class="gridx-quotes-eyebrow">MULTI-WAREHOUSE CONSOLIDATION</div>
+        <h1>Route Planning</h1>
+        <p class="gridx-quotes-subtitle">Select paid quotes from different pickup warehouses and the trucks available to run them &mdash; the planner consolidates them into optimized multi-stop routes.</p>
+    </div>
+
+    <div class="gridx-route-planning-body">
+        <div class="gridx-route-planning-sidebar">
+            <div class="gridx-route-planning-section">
+                <div class="gridx-route-planning-section-title">Paid quotes ready to plan ({{this.quotes.length}})</div>
+                {{#if this.quotes.length}}
+                    {{#each this.quotes as |quote|}}
+                        <label class="gridx-route-planning-checkrow">
+                            <input type="checkbox" checked={{includes quote.public_id this.selectedQuoteIds}} {{on "change" (fn this.toggleQuote quote.public_id)}} />
+                            <div class="gridx-route-planning-checkrow-body">
+                                <div class="gridx-route-planning-checkrow-title">{{quote.public_id}}</div>
+                                <div class="gridx-route-planning-checkrow-sub">{{quote.pickup_address}} &rarr; {{quote.dropoff_address}}</div>
+                            </div>
+                        </label>
+                    {{/each}}
+                {{else}}
+                    <div class="gridx-route-planning-empty-note">No paid quotes waiting. Approve and mark quotes as paid on the Quotes page first.</div>
+                {{/if}}
+            </div>
+
+            <div class="gridx-route-planning-section">
+                <div class="gridx-route-planning-section-title">Available trucks ({{this.vehicles.length}})</div>
+                {{#each this.vehicles as |vehicle|}}
+                    <label class="gridx-route-planning-checkrow">
+                        <input type="checkbox" checked={{includes vehicle.public_id this.selectedVehicleIds}} {{on "change" (fn this.toggleVehicle vehicle.public_id)}} />
+                        <div class="gridx-route-planning-checkrow-body">
+                            <div class="gridx-route-planning-checkrow-title">{{or vehicle.display_name vehicle.name}}</div>
+                        </div>
+                    </label>
+                {{/each}}
+            </div>
+
+            <button type="button" class="gridx-route-planning-plan-btn" disabled={{not this.canPlan}} {{on "click" this.runPlan}}>
+                {{if this.isPlanning "Planning..." "Plan Route"}}
+            </button>
+
+            {{#if this.plan}}
+                <div class="gridx-route-planning-section">
+                    <div class="gridx-route-planning-section-title">
+                        Proposed plan
+                        {{#if this.planEngine}}
+                            <span class="gridx-route-planning-engine-badge">{{this.planEngine}}</span>
+                        {{/if}}
+                    </div>
+                    {{#if this.plan.assignments.length}}
+                        {{#each this.plan.assignments as |a|}}
+                            <div class="gridx-route-planning-assignment-row">
+                                <span class="gridx-route-planning-seq">{{a.sequence}}</span>
+                                <span>{{a.order_id}}</span>
+                                <span class="gridx-route-planning-muted">{{a.vehicle_id}}</span>
+                                <button type="button" class="gridx-route-planning-docs-btn" {{on "click" (fn this.viewTripDocuments a)}}>Docs</button>
+                            </div>
+                        {{/each}}
+                        <button type="button" class="gridx-route-planning-commit-btn" disabled={{or this.isCommitting this.committed}} {{on "click" this.commitPlan}}>
+                            {{if this.committed "Committed" (if this.isCommitting "Committing..." "Commit & Assign Drivers")}}
+                        </button>
+                    {{else}}
+                        <div class="gridx-route-planning-empty-note">No assignments — try selecting more vehicles.</div>
+                    {{/if}}
+                    {{#if this.plan.unassigned.length}}
+                        <div class="gridx-route-planning-unassigned-note">{{this.plan.unassigned.length}} order(s) could not be assigned.</div>
+                    {{/if}}
+                </div>
+            {{/if}}
+        </div>
+
+        <div class="gridx-route-planning-map">
+            <Gridx::RoutePlanMap @stops={{this.mapStops}} @lines={{this.mapLines}} />
+        </div>
+    </div>
+</div>
+
+{{#if this.tripDocsFor}}
+    <div class="gridx-quote-edit-backdrop">
+        <div class="gridx-quote-edit-modal gridx-trip-docs-modal">
+            <div class="gridx-quote-edit-header">
+                <span>Trip Documents &middot; {{this.tripDocsFor}}</span>
+                <button type="button" class="gridx-copilot-close" {{on "click" this.closeTripDocuments}}>&times;</button>
+            </div>
+            <div class="gridx-quote-edit-body">
+                {{#if this.isLoadingTripDocs}}
+                    <div class="gridx-route-planning-empty-note">Loading&hellip;</div>
+                {{else if this.tripDocs}}
+                    <div class="gridx-trip-docs-section">
+                        <div class="gridx-trip-docs-title">Driver</div>
+                        {{#if this.tripDocs.driver}}
+                            <div class="gridx-trip-docs-card">
+                                <img src={{this.tripDocs.driver.avatar_url}} alt={{this.tripDocs.driver.name}} class="gridx-trip-docs-avatar" />
+                                <div>
+                                    <div class="gridx-trip-docs-name">{{this.tripDocs.driver.name}}</div>
+                                    <div class="gridx-trip-docs-detail">Phone: {{or this.tripDocs.driver.phone "—"}}</div>
+                                    <div class="gridx-trip-docs-detail">Email: {{or this.tripDocs.driver.email "—"}}</div>
+                                    <div class="gridx-trip-docs-detail">License #: {{or this.tripDocs.driver.drivers_license_number "Not on file"}}</div>
+                                </div>
+                            </div>
+                        {{else}}
+                            <div class="gridx-route-planning-empty-note">No driver assigned.</div>
+                        {{/if}}
+                    </div>
+
+                    <div class="gridx-trip-docs-section">
+                        <div class="gridx-trip-docs-title">Vehicle</div>
+                        {{#if this.tripDocs.vehicle}}
+                            <div class="gridx-trip-docs-card">
+                                <img src={{or this.tripDocs.vehicle.photo_url this.tripDocs.vehicle.avatar_url}} alt="Vehicle" class="gridx-trip-docs-avatar" />
+                                <div>
+                                    <div class="gridx-trip-docs-name">{{this.tripDocs.vehicle.year}} {{this.tripDocs.vehicle.make}} {{this.tripDocs.vehicle.model}}</div>
+                                    <div class="gridx-trip-docs-detail">Plate #: {{or this.tripDocs.vehicle.plate_number "Not on file"}}</div>
+                                    <div class="gridx-trip-docs-detail">VIN: {{or this.tripDocs.vehicle.vin "Not on file"}}</div>
+                                </div>
+                            </div>
+                        {{else}}
+                            <div class="gridx-route-planning-empty-note">No vehicle assigned.</div>
+                        {{/if}}
+                    </div>
+
+                    <p class="gridx-quote-edit-hint">Showing data already on file for this driver/vehicle. Document upload (license scans, insurance) isn't wired up yet.</p>
+                {{/if}}
+            </div>
+            <div class="gridx-quote-edit-footer">
+                <button type="button" class="gridx-quotes-btn-ghost" {{on "click" this.closeTripDocuments}}>Close</button>
+            </div>
+        </div>
+    </div>
+{{/if}}

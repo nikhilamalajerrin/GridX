@@ -1,5 +1,4 @@
 import { Widget } from '@fleetbase/ember-core/contracts';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { debug } from '@ember/debug';
 
 /**
@@ -28,29 +27,20 @@ export function initialize(appInstance) {
         const widgets = [
             new Widget({
                 id: 'gridx-pending-dispatch',
-                name: 'AI Dispatch Approvals',
-                description: 'Orders created by the GridX AI agent awaiting dispatcher approval.',
+                name: 'AI Dispatch Approvals (legacy)',
+                description: 'Orders with a driver already assigned, awaiting one-click dispatch. Superseded by the quote pipeline — the AI agent no longer creates orders directly, only priced quotes. Kept available for any pre-existing orders created before that change.',
                 icon: 'robot',
                 component: 'gridx/pending-dispatch',
                 grid_options: { w: 5, h: 9, minW: 4, minH: 6 },
-                default: true,
+                default: false,
             }),
             new Widget({
-                id: 'gridx-blog',
-                name: 'GridX Blog',
-                description: 'Lists latest news and events from the GridX official team.',
-                icon: 'newspaper',
-                component: 'fleetbase-blog',
-                grid_options: { w: 7, h: 9, minW: 7, minH: 9 },
-                default: true,
-            }),
-            new Widget({
-                id: 'gridx-github-card',
-                name: 'Github Card',
-                description: 'Displays current Github stats from the official GridX repo.',
-                icon: faGithub,
-                component: 'github-card',
-                grid_options: { w: 5, h: 9, minW: 5, minH: 9 },
+                id: 'gridx-pending-quotes',
+                name: 'Pending Quotes',
+                description: 'Booking quotes from the GridX AI agent awaiting approval, payment, or dispatch.',
+                icon: 'file-invoice-dollar',
+                component: 'gridx/pending-quotes',
+                grid_options: { w: 5, h: 9, minW: 4, minH: 6 },
                 default: true,
             }),
         ];

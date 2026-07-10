@@ -17,7 +17,7 @@ export default class GridXAttributionComponent extends Component {
     }
 
     @action openLegalNotice() {
-        this.modalsManager.show('modals/gridx-legal-notice', {
+        this.modalsManager.show('modals/fleetbase-legal-notice', {
             title: 'GridX Legal Notices',
             acceptButtonText: 'Done',
             acceptButtonIcon: 'check',

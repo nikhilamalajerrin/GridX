@@ -1,0 +1,74 @@
+<div class="gridx-pending-dispatch flex h-full min-h-0 w-full flex-col" ...attributes>
+    <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+        <div class="flex items-center">
+            <FaIcon @icon="file-invoice-dollar" class="mr-2 text-gray-500 dark:text-gray-400" />
+            <span class="font-semibold text-sm text-gray-900 dark:text-white">Pending Quotes</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <a href="/quotes" class="gridx-pending-quotes-view-all">View all</a>
+            <Button @type="default" @size="xs" @icon="arrows-rotate" @onClick={{this.refresh}} />
+        </div>
+    </div>
+
+    <div class="flex-1 overflow-y-auto px-3 py-2">
+        {{#if this.loadPending.isRunning}}
+            <div class="flex items-center justify-center py-8 text-sm text-gray-500">
+                <Spinner class="mr-2" /> Loading quotes&hellip;
+            </div>
+        {{else if this.quotes.length}}
+            {{#each this.quotes as |quote|}}
+                <div class="mb-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2">
+                    <div class="flex items-center justify-between">
+                        <div class="min-w-0">
+                            <div class="flex items-center text-sm font-medium text-gray-900 dark:text-white truncate">
+                                {{quote.public_id}}
+                            </div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400 truncate">
+                                {{quote.pickup_address}} &rarr; {{quote.dropoff_address}}
+                            </div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400">
+                                {{quote.total}} {{quote.currency}} &middot; {{quote.status}}
+                            </div>
+                        </div>
+                        {{#if (eq quote.status "quote_pending")}}
+                            <Button
+                                @type="primary"
+                                @size="sm"
+                                @icon="check"
+                                @text="Approve"
+                                @onClick={{fn this.approve quote}}
+                                @disabled={{eq this.busyId quote.public_id}}
+                                class="ml-3 flex-shrink-0"
+                            />
+                        {{else if (eq quote.status "sales_order")}}
+                            <Button
+                                @type="primary"
+                                @size="sm"
+                                @icon="dollar-sign"
+                                @text="Mark Paid"
+                                @onClick={{fn this.markPaid quote}}
+                                @disabled={{eq this.busyId quote.public_id}}
+                                class="ml-3 flex-shrink-0"
+                            />
+                        {{else if (eq quote.status "paid")}}
+                            <Button
+                                @type="primary"
+                                @size="sm"
+                                @icon="paper-plane"
+                                @text="Dispatch"
+                                @onClick={{fn this.dispatch quote}}
+                                @disabled={{eq this.busyId quote.public_id}}
+                                class="ml-3 flex-shrink-0"
+                            />
+                        {{/if}}
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <div class="flex flex-col items-center justify-center py-8 text-sm text-gray-500 dark:text-gray-400">
+                <FaIcon @icon="circle-check" @size="lg" class="mb-2 text-green-500" />
+                No quotes waiting on you
+            </div>
+        {{/if}}
+    </div>
+</div>

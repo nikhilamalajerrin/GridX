@@ -1,0 +1,46 @@
+<div class="gridx-route-plan-map-container">
+    {{#if this.stops.length}}
+        <div class="gridx-route-plan-legend">
+            <div class="gridx-route-plan-legend-title">Reading the map</div>
+            <div class="gridx-route-plan-legend-row"><strong>Number</strong> &nbsp;= stop order (1st, 2nd, 3rd...)</div>
+            <div class="gridx-route-plan-legend-row"><strong>P</strong> / <strong>D</strong> &nbsp;= Pickup / Dropoff</div>
+            <div class="gridx-route-plan-legend-row"><strong>Line color</strong> &nbsp;= which leg of the trip (green first, then amber, orange, red...)</div>
+        </div>
+        <LeafletMap
+            @lat={{this.mapCenter.lat}}
+            @lng={{this.mapCenter.lng}}
+            @zoom={{this.mapZoom}}
+            @onLoad={{this.onMapLoad}}
+            class="w-full h-full"
+            as |layers|
+        >
+            <layers.tile @url={{this.tileSourceUrl}} />
+            {{#each this.lines as |line|}}
+                <layers.polyline @locations={{line.points}} @color={{this.lineColor line}} @weight={{4}} @opacity={{0.75}} />
+            {{/each}}
+            {{#each this.stops as |stop|}}
+                <layers.marker
+                    @lat={{stop.lat}}
+                    @lng={{stop.lng}}
+                    @icon={{div-icon
+                        html=(this.waypointIconHtml stop)
+                        className="gridx-route-plan-marker"
+                        iconSize=(array 36 36)
+                        iconAnchor=(array 18 18)
+                        popupAnchor=(array 0 -20)
+                    }}
+                    @riseOnHover={{true}}
+                    as |marker|
+                >
+                    <marker.tooltip @permanent={{false}} @sticky={{true}} @direction="top">
+                        Stop {{stop.stopIndex}} &middot; {{stop.type}} &middot; {{stop.name}}
+                    </marker.tooltip>
+                </layers.marker>
+            {{/each}}
+        </LeafletMap>
+    {{else}}
+        <div class="gridx-route-plan-map-empty">
+            Select quotes and vehicles, then click "Plan Route" to see the map.
+        </div>
+    {{/if}}
+</div>

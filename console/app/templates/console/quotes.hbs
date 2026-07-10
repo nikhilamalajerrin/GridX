@@ -1,0 +1,132 @@
+{{page-title "Quotes"}}
+<div class="gridx-quotes-page">
+    <div class="gridx-quotes-header">
+        <div>
+            <div class="gridx-quotes-eyebrow">BOOKING PIPELINE</div>
+            <h1>Quotes</h1>
+            <p class="gridx-quotes-subtitle">Booking requests move from quote &rarr; approval &rarr; sales order &rarr; payment &rarr; dispatch. Nothing is dispatched until payment is confirmed.</p>
+        </div>
+        <a href="/route-planning" class="gridx-quotes-plan-routes-btn">Plan Multi-Warehouse Routes &rarr;</a>
+    </div>
+
+    {{#if this.model.length}}
+        <div class="gridx-quotes-table-wrap">
+            <table class="gridx-quotes-table">
+                <thead>
+                    <tr>
+                        <th>Quote</th>
+                        <th>Route</th>
+                        <th>Truck</th>
+                        <th>Distance</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each this.model as |quote|}}
+                        <tr>
+                            <td class="gridx-quotes-id">
+                                {{quote.public_id}}
+                                {{#if (eq quote.status "quote_pending")}}
+                                    <button type="button" class="gridx-quotes-edit-btn" title="Edit quote" {{on "click" (fn this.openEdit quote)}}>&#9998;</button>
+                                {{/if}}
+                            </td>
+                            <td>{{quote.pickup_address}} &rarr; {{quote.dropoff_address}}</td>
+                            <td>{{quote.truck_type}}</td>
+                            <td>{{quote.distance_km}} km</td>
+                            <td class="gridx-quotes-total">{{quote.total}} {{quote.currency}}</td>
+                            <td>
+                                <span class="gridx-quote-status gridx-quote-status-{{quote.status}}">{{quote.status}}</span>
+                            </td>
+                            <td class="gridx-quotes-actions">
+                                {{#if (eq quote.status "quote_pending")}}
+                                    <button type="button" disabled={{eq this.busyId quote.public_id}} {{on "click" (fn this.approve quote.public_id)}}>Approve</button>
+                                    <button type="button" class="gridx-quotes-btn-ghost" disabled={{eq this.busyId quote.public_id}} {{on "click" (fn this.reject quote.public_id)}}>Reject</button>
+                                {{else if (eq quote.status "sales_order")}}
+                                    <button type="button" disabled={{eq this.busyId quote.public_id}} {{on "click" (fn this.markPaid quote.public_id)}}>Mark Paid</button>
+                                    <button type="button" class="gridx-quotes-btn-ghost" {{on "click" (fn this.viewPdf quote.public_id)}}>View PDF</button>
+                                {{else if (eq quote.status "paid")}}
+                                    <button type="button" disabled={{eq this.busyId quote.public_id}} {{on "click" (fn this.dispatch quote.public_id)}}>Dispatch</button>
+                                    <button type="button" class="gridx-quotes-btn-ghost" {{on "click" (fn this.viewPdf quote.public_id)}}>View PDF</button>
+                                {{else if (eq quote.status "dispatched")}}
+                                    <span class="gridx-quotes-done">Order created</span>
+                                {{else}}
+                                    <span class="gridx-quotes-muted">&mdash;</span>
+                                {{/if}}
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    {{else}}
+        <div class="gridx-quotes-empty">No quotes yet — bookings from the WhatsApp agent will show up here.</div>
+    {{/if}}
+</div>
+
+{{#if this.editingQuote}}
+    <div class="gridx-quote-edit-backdrop">
+        <div class="gridx-quote-edit-modal">
+            <div class="gridx-quote-edit-header">
+                <span>Edit {{this.editingQuote.public_id}}</span>
+                <button type="button" class="gridx-copilot-close" {{on "click" this.closeEdit}}>&times;</button>
+            </div>
+            <div class="gridx-quote-edit-body">
+                <label>Pickup address</label>
+                <input type="text" value={{this.editForm.pickup_address}} {{on "input" (fn this.updateEditField "pickup_address")}} />
+
+                <div class="gridx-quote-edit-row">
+                    <div>
+                        <label>Pickup lat</label>
+                        <input type="number" step="0.0001" value={{this.editForm.pickup_lat}} {{on "input" (fn this.updateEditField "pickup_lat")}} />
+                    </div>
+                    <div>
+                        <label>Pickup lng</label>
+                        <input type="number" step="0.0001" value={{this.editForm.pickup_lng}} {{on "input" (fn this.updateEditField "pickup_lng")}} />
+                    </div>
+                </div>
+
+                <label>Dropoff address</label>
+                <input type="text" value={{this.editForm.dropoff_address}} {{on "input" (fn this.updateEditField "dropoff_address")}} />
+
+                <div class="gridx-quote-edit-row">
+                    <div>
+                        <label>Dropoff lat</label>
+                        <input type="number" step="0.0001" value={{this.editForm.dropoff_lat}} {{on "input" (fn this.updateEditField "dropoff_lat")}} />
+                    </div>
+                    <div>
+                        <label>Dropoff lng</label>
+                        <input type="number" step="0.0001" value={{this.editForm.dropoff_lng}} {{on "input" (fn this.updateEditField "dropoff_lng")}} />
+                    </div>
+                </div>
+
+                <div class="gridx-quote-edit-row">
+                    <div>
+                        <label>Truck type</label>
+                        <select {{on "change" (fn this.updateEditField "truck_type")}}>
+                            {{#each (array "default" "flatbed" "curtainside" "box" "reefer" "tanker" "lowbed") as |t|}}
+                                <option value={{t}} selected={{eq this.editForm.truck_type t}}>{{t}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div>
+                        <label>Cargo weight (kg)</label>
+                        <input type="number" value={{this.editForm.cargo_weight_kg}} {{on "input" (fn this.updateEditField "cargo_weight_kg")}} />
+                    </div>
+                </div>
+
+                <label>Notes</label>
+                <textarea rows="2" {{on "input" (fn this.updateEditField "notes")}}>{{this.editForm.notes}}</textarea>
+
+                <p class="gridx-quote-edit-hint">Saving recalculates distance and price from the new route.</p>
+            </div>
+            <div class="gridx-quote-edit-footer">
+                <button type="button" class="gridx-quotes-btn-ghost" {{on "click" this.closeEdit}}>Cancel</button>
+                <button type="button" disabled={{this.isSavingEdit}} {{on "click" this.saveEdit}}>
+                    {{if this.isSavingEdit "Saving..." "Save & Recalculate"}}
+                </button>
+            </div>
+        </div>
+    </div>
+{{/if}}

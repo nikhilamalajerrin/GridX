@@ -1,0 +1,53 @@
+{{! Plain <a href>, not <LinkTo>: this component renders at the top-level
+    application template, and Ember's router (routes are dynamically
+    registered at runtime by the Fleet-Ops engine) doesn't reliably resolve
+    "console.quotes" by route-helper name from here — it throws and takes
+    down the ENTIRE app's render tree since this component is global. A
+    plain href always works and can never crash the app this way. }}
+{{#unless this.isOnQuotesPage}}
+    <a href="/quotes" class="gridx-quotes-launcher" title="View booking quotes">Quotes</a>
+{{/unless}}
+{{#unless this.isOnRoutePlanningPage}}
+    <a href="/route-planning" class="gridx-quotes-launcher gridx-route-planning-launcher" title="Plan multi-warehouse routes">Plan Routes</a>
+{{/unless}}
+
+<div class="gridx-copilot-launcher" {{on "click" this.toggle}} title="Ask GridX Copilot">
+    <span class="gridx-copilot-launcher-icon">✦</span>
+</div>
+
+{{#if this.copilot.isOpen}}
+    <div class="gridx-copilot-panel">
+        <div class="gridx-copilot-panel-header">
+            <span>GridX Copilot</span>
+            <button type="button" class="gridx-copilot-close" {{on "click" this.toggle}}>&times;</button>
+        </div>
+
+        <div class="gridx-copilot-messages">
+            {{#if this.copilot.messages.length}}
+                {{#each this.copilot.messages as |message|}}
+                    <div class="gridx-copilot-message gridx-copilot-message-{{message.role}}">
+                        {{message.content}}
+                    </div>
+                {{/each}}
+            {{else}}
+                <div class="gridx-copilot-empty">
+                    Ask about drivers, vehicles, fuel, maintenance, or open work orders — I can only answer from your live fleet data.
+                </div>
+            {{/if}}
+            {{#if this.copilot.isLoading}}
+                <div class="gridx-copilot-message gridx-copilot-message-assistant gridx-copilot-thinking">Thinking&hellip;</div>
+            {{/if}}
+        </div>
+
+        <form class="gridx-copilot-input-row" {{on "submit" this.submit}}>
+            <input
+                type="text"
+                placeholder="Ask a question about your fleet..."
+                value={{this.draft}}
+                disabled={{this.copilot.isLoading}}
+                {{on "input" this.updateDraft}}
+            />
+            <button type="submit" disabled={{this.copilot.isLoading}}>Ask</button>
+        </form>
+    </div>
+{{/if}}

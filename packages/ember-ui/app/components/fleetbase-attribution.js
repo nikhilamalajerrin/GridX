@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-ui/components/gridx-attribution';
+export { default } from '@fleetbase/ember-ui/components/fleetbase-attribution';

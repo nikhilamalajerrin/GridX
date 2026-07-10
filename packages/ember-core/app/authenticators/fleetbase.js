@@ -1,1 +1,1 @@
-export { default } from '@fleetbase/ember-core/authenticators/gridx';
+export { default } from '@fleetbase/ember-core/authenticators/fleetbase';
