@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GridX — إدارة أسطولك بالذكاء الاصطناعي | AI-Powered Fleet Management for GCC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1B4F8A;
+    --primary-dark: #153D6E;
+    --primary-light: #2E6BC4;
+    --accent: #F39C12;
+    --sidebar-bg: #0F2D52;
+    --text-dark: #1A1A1A;
+    --text-muted: #5A6B7B;
+    --bg-light: #F7F9FC;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Cairo', 'Segoe UI', sans-serif;
+    color: var(--text-dark);
+    background: #FFFFFF;
+    line-height: 1.7;
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header */
+  header {
+    background: var(--sidebar-bg);
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 1.4rem;
+  }
+
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--primary-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: var(--sidebar-bg);
+    font-size: 1.1rem;
+  }
+
+  .nav-lang {
+    font-size: 0.9rem;
+    opacity: 0.85;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(160deg, var(--primary) 0%, var(--sidebar-bg) 100%);
+    color: #fff;
+    padding: 80px 24px 100px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .hero .subtitle-en {
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #E7EEF6;
+    direction: ltr;
+    margin-bottom: 32px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #1A1A1A;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 16px 40px;
+    border-radius: 50px;
+    box-shadow: 0 8px 24px rgba(243, 156, 18, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(243, 156, 18, 0.45);
+  }
+
+  /* Sections */
+  section {
+    padding: 72px 24px;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    direction: ltr;
+    margin-bottom: 48px;
+  }
+
+  /* Features */
+  .features {
+    background: var(--bg-light);
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .feature-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 36px 28px;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(15, 45, 82, 0.08);
+    border-top: 4px solid var(--accent);
+  }
+
+  .feature-icon {
+    font-size: 2.6rem;
+    margin-bottom: 16px;
+  }
+
+  .feature-card h3 {
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+
+  .feature-card .en {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    direction: ltr;
+    margin-bottom: 12px;
+  }
+
+  .feature-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  /* Pricing */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .price-card {
+    border: 2px solid #E5EAF1;
+    border-radius: 16px;
+    padding: 36px 28px;
+    text-align: center;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .price-card:hover {
+    border-color: var(--primary-light);
+    transform: translateY(-4px);
+  }
+
+  .price-card.featured {
+    border-color: var(--accent);
+    position: relative;
+  }
+
+  .price-card.featured::before {
+    content: "الأكثر شيوعاً";
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #1A1A1A;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 16px;
+    border-radius: 20px;
+  }
+
+  .price-card h3 {
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin-bottom: 16px;
+  }
+
+  .price-card .price {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  .price-card .price span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+
+  .price-card .range {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    direction: ltr;
+  }
+
+  .price-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .price-card.featured .price-btn {
+    background: var(--accent);
+    color: #1A1A1A;
+  }
+
+  /* Final CTA */
+  .final-cta {
+    background: var(--sidebar-bg);
+    color: #fff;
+    text-align: center;
+  }
+
+  .final-cta h2 {
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+  }
+
+  /* Footer */
+  footer {
+    background: #0B2340;
+    color: #A9BBD0;
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 0.9rem;
+  }
+
+  footer a {
+    color: #fff;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 1.9rem; }
+    .hero { padding: 56px 20px 72px; }
+    .feature-grid, .pricing-grid {
+      grid-template-columns: 1fr;
+    }
+    .section-title { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">
+      <span class="logo-mark">G</span>
+      <span>GridX</span>
+    </div>
+    <div class="nav-lang">العربية / English</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>إدارة أسطولك بالذكاء الاصطناعي</h1>
+    <p class="subtitle-en">AI-Powered Fleet Management for GCC</p>
+    <a href="#pricing" class="cta-btn">ابدأ مجاناً / Start Free Trial</a>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <h2 class="section-title">مميزات GridX</h2>
+    <p class="section-subtitle">Everything your fleet needs, powered by AI</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>وكيل واتساب الذكي</h3>
+        <div class="en">WhatsApp AI Agent</div>
+        <p>تواصل مع سائقيك وعملائك عبر واتساب بمساعدة الذكاء الاصطناعي على مدار الساعة.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📍</div>
+        <h3>التتبع المباشر</h3>
+        <div class="en">Live Tracking</div>
+        <p>راقب مواقع شاحناتك وسائقيك لحظة بلحظة على خريطة تفاعلية واحدة.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📄</div>
+        <h3>فواتير ضريبية تلقائية</h3>
+        <div class="en">VAT Invoicing</div>
+        <p>إصدار فواتير متوافقة مع ضريبة القيمة المضافة تلقائياً لكل رحلة وعميل.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="container">
+    <h2 class="section-title">الأسعار</h2>
+    <p class="section-subtitle">Simple pricing that scales with your fleet</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Basic</h3>
+        <div class="price">299 <span>ريال / شهر</span></div>
+        <div class="range">1–10 trucks</div>
+        <a href="#" class="price-btn">ابدأ الآن</a>
+      </div>
+      <div class="price-card featured">
+        <h3>Growth</h3>
+        <div class="price">799 <span>ريال / شهر</span></div>
+        <div class="range">10–50 trucks</div>
+        <a href="#" class="price-btn">ابدأ الآن</a>
+      </div>
+      <div class="price-card">
+        <h3>Pro</h3>
+        <div class="price">1,999 <span>ريال / شهر</span></div>
+        <div class="range">50+ trucks</div>
+        <a href="#" class="price-btn">ابدأ الآن</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container">
+    <h2>جاهز لإدارة أسطولك بذكاء؟</h2>
+    <a href="#pricing" class="cta-btn">ابدأ مجاناً / Start Free Trial</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 GridX — AI-Powered Fleet Management for GCC</p>
+    <p><a href="mailto:support@gridx.io">support@gridx.io</a> · gridx.io</p>
+  </div>
+</footer>
+
+</body>
+</html>

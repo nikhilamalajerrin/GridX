@@ -1,0 +1,108 @@
+<p align="center">
+  <img src="https://flb-assets.s3.ap-southeast-1.amazonaws.com/static/fleetbase-logo-svg.svg" width="380" height="100" />
+</p>
+<p align="center">
+Order management, geolocation tracking & navigation app for GridX drivers & agents.
+</p>
+
+<p align="center">
+  <a href="https://gridx.io">gridx.io</a>
+</p>
+
+<p align="center">
+	<img src="https://github.com/user-attachments/assets/05c81b07-cd52-43e9-b0ac-91e0683ab5f9" width="220" height="416" />
+	<img src="https://github.com/user-attachments/assets/cfa08ce8-bf13-4bb3-96ef-f73045ee157a" width="220" height="416" />
+	<img src="https://github.com/user-attachments/assets/893b58f4-b1ce-4ff5-a78e-530a2035c84b" width="220" height="416" />
+	<img src="https://github.com/user-attachments/assets/770582ef-11c3-4d25-bc68-9df72b41c452" width="220" height="416" />
+</p>
+<p align="center">
+	<img src="https://github.com/user-attachments/assets/bfe5ca18-07c1-4188-be8e-277e5ebf7abc" width="220" height="416" />
+	<img src="https://github.com/user-attachments/assets/93e3ee4a-6add-4b82-ae93-ae6f5a217400" width="220" height="416" />
+	<img src="https://github.com/user-attachments/assets/f21c7514-9cfb-4c3e-bdc4-5254565c1b26" width="220" height="416" />>
+</p>
+
+## Table of Contents
+
+- [About](#about)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+    - [Configure Environment](#configure-environment)
+- [Running in Simulator](#running-in-simulator)
+    - [Run the app in iOS Simulator](#run-the-app-in-ios-simulator)
+    - [Run the app in Android Simulator](#run-the-app-in-android-simulator)
+- [Navigation using Mapbox](#navigation-using-mapbox)
+- [Documentation](#documentation)
+- [Roadmap](#roadmap)
+
+### About
+
+GridX Driver is a navigation and order management app for drivers and agents using GridX. This app is fully customizable and supports QR code scanning, digital signatures, photos, and routing and navigation for agents. Drivers will be able to update activity to orders on the run as they complete job. GridX Driver includes fuel report and issue management and creation. Enable seamless communication with built in chat with operations personnel and customers.
+
+### Prerequisites
+
+- [Yarn](https://yarnpkg.com/) or [NPM](https://nodejs.org/en/)
+- [React Native CLI](https://reactnative.dev/docs/environment-setup)
+- Xcode 12+
+- Android Studio
+
+### Installation
+
+Installation and setup is fairly quick, all you need is your GridX API Key, and a few commands and your app will be up and running in minutes. Follow the directions below to get started.
+
+Run the commands below; first clone the project, use npm or yarn to install the dependencies, then run `npx pod-install` to install the iOS dependencies. Lastly, create a `.env` file to configure the app.
+
+```
+git clone git@github.com:gridx/driver-app.git
+cd driver-app
+yarn
+yarn pod:install
+touch .env
+```
+
+### Configure Environment
+
+Below is the steps needed to configure the environment. The first part covers collecting your required API keys.
+
+1.  Get your API Keys;
+2.  **If you don't have a GridX account already** proceed to the GridX Console and click "Create an account", complete the registration form and you will be taken to the console.
+3.  Once you're in the GridX console select the "Developers" button in the top navigation. Next, select API Keys from the menu in the Developers section, and create a new API key. Copy your secret key generated, you'll need it later.
+4.  Once you have both required API keys open your `.env` file.
+
+In your `.env` file supply your GridX API secret key, and additionally you will need a Google Maps API Key. Lastly, you'll also need to supply your app/bundle identifier, and an `APP_NAME` key.
+
+Your `.env` file should look something like this once you're done.
+
+```
+# .env
+APP_NAME=GridX Driver
+APP_IDENTIFIER=io.gridx.driver
+APP_LINK_PREFIX=gridxdriver://
+FLEETBASE_HOST=https://api.gridx.io
+FLEETBASE_KEY=
+```
+
+### Running in Simulator
+
+Once you have completed the installation and environment configuration, you're all set to give your app a test-drive in the simulator so you can play around.
+
+#### Run the App in iOS Simulator
+
+```
+yarn ios
+```
+
+#### Run the App in Android Simulator
+
+```
+yarn android
+```
+
+### Documentation
+
+See the GridX documentation webpage.
+
+This app uses the Fleetbase-compatible SDK (`@fleetbase/sdk`) to communicate with the GridX API backend.
+
+### Roadmap
+
+- COMING SOON
