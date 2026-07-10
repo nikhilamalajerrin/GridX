@@ -23,10 +23,6 @@ TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID", "")
 TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN", "")
 TWILIO_WHATSAPP_FROM = os.getenv("TWILIO_WHATSAPP_FROM", "whatsapp:+14155238886")
 
-# When true, /webhook/* endpoints only log and reply — no order is created
-# until a dispatcher approves via /approve/{draft_id}.
-HUMAN_IN_THE_LOOP = os.getenv("HUMAN_IN_THE_LOOP", "true").lower() == "true"
-
 # Routing engine for real road distances (public OSRM demo server; swap for
 # a self-hosted OSRM when volume grows).
 OSRM_HOST = os.getenv("OSRM_HOST", "https://router.project-osrm.org")

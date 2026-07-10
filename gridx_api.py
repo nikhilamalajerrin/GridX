@@ -30,7 +30,9 @@ class GridXAPI:
     # -- resources -------------------------------------------------------
 
     def list_drivers(self, online_only: bool = True) -> list[dict]:
-        drivers = self._get("drivers")
+        # with[]=vehicle embeds vehicle type/payload capacity so the dispatch
+        # agent can rank by fitness-for-cargo, not just distance.
+        drivers = self._get("drivers", **{"with[]": "vehicle"})
         if isinstance(drivers, dict):
             drivers = drivers.get("data", drivers.get("drivers", []))
         if online_only:
@@ -49,35 +51,44 @@ class GridXAPI:
             contacts = contacts.get("data", contacts.get("contacts", []))
         return contacts
 
-    def create_order(
+    def create_quote(
         self,
-        pickup: str,
-        dropoff: str,
-        driver: str | None = None,
-        customer: str | None = None,
+        pickup_lat: float,
+        pickup_lng: float,
+        dropoff_lat: float,
+        dropoff_lng: float,
+        pickup_address: str | None = None,
+        dropoff_address: str | None = None,
+        truck_type: str | None = None,
+        cargo_weight_kg: float | None = None,
+        cross_border: bool = False,
+        customer_contact_uuid: str | None = None,
         notes: str | None = None,
-        scheduled_at: str | None = None,
-        meta: dict | None = None,
     ) -> dict:
-        """Create a transport order. pickup/dropoff accept a place public_id
-        (place_xxx) or a free-form address string; driver takes driver_xxx."""
+        """Create a booking quote (dynamic pricing: distance + fuel surcharge).
+        This does NOT create a dispatchable order or assign a driver — a human
+        dispatcher must approve, confirm payment, then dispatch it via the
+        console. Use this instead of creating an order directly."""
         payload: dict = {
-            "pickup": pickup,
-            "dropoff": dropoff,
-            "type": "transport",
-            "adhoc": driver is None,
+            "pickup_lat": pickup_lat,
+            "pickup_lng": pickup_lng,
+            "dropoff_lat": dropoff_lat,
+            "dropoff_lng": dropoff_lng,
+            "cross_border": cross_border,
         }
-        if driver:
-            payload["driver"] = driver
-        if customer:
-            payload["customer"] = customer
+        if pickup_address:
+            payload["pickup_address"] = pickup_address
+        if dropoff_address:
+            payload["dropoff_address"] = dropoff_address
+        if truck_type:
+            payload["truck_type"] = truck_type
+        if cargo_weight_kg:
+            payload["cargo_weight_kg"] = cargo_weight_kg
+        if customer_contact_uuid:
+            payload["customer_contact_uuid"] = customer_contact_uuid
         if notes:
             payload["notes"] = notes
-        if scheduled_at:
-            payload["scheduled_at"] = scheduled_at
-        if meta:
-            payload["meta"] = meta
-        return self._post("orders", payload)
+        return self._post("quotes", payload)
 
 
 def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:

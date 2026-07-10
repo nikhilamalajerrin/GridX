@@ -1,6 +1,9 @@
-"""Auto-dispatch agent: parses an inbound WhatsApp/email message, matches
-places and customers, picks the nearest online driver, and creates the
-assigned order in GridX. Runs on any OpenRouter model with tool calling."""
+"""Auto-quote agent: parses an inbound WhatsApp/email message, matches
+places and customers, and creates a priced booking QUOTE in GridX — it never
+creates a live order or assigns a driver directly. A human dispatcher reviews
+the quote, sends it for customer approval, confirms payment, and only then
+dispatches it (which is what actually creates the order). Runs on any
+OpenRouter model with tool calling."""
 
 import json
 import logging
@@ -45,21 +48,28 @@ Your job, using the tools available:
 2. Match pickup/dropoff to known GridX places when they clearly refer to
    the same location; otherwise pass the address as free text.
 3. Match the sender to a known customer contact when possible.
-4. Pick the best driver: online, nearest to the pickup point.
-5. Create the order with the driver assigned, putting the cargo
-   description and any special instructions in the notes.
+4. Create a QUOTE with create_quote (pass truck_type if the cargo implies
+   one, e.g. "reefer" for refrigerated goods, "flatbed" for machinery) —
+   this only records the priced request, it does NOT assign a driver or
+   create a dispatchable order. find_best_driver is informational only,
+   for you to mention a likely driver/vehicle fit to the dispatcher if
+   asked — it does not assign anyone.
+5. Never create an order directly. Booking requests always become a quote
+   first; a human dispatcher handles approval, payment confirmation, and
+   dispatch afterward in the GridX console.
 
 Rules:
 - If the message is not a transport request (greeting, invoice question,
-  spam), do NOT create an order — reply with a short helpful message and
+  spam), do NOT create a quote — reply with a short helpful message and
   say what you can help with.
 - If pickup or dropoff is genuinely ambiguous or missing, do NOT guess —
   create nothing and draft a short clarifying question to send back.
 - Never invent places, drivers, or customers; only use what the tools
   return.
 - After acting, reply with a short confirmation for the customer in the
-  language they wrote in (Arabic in → Arabic out), including the tracking
-  number if an order was created.
+  language they wrote in (Arabic in → Arabic out). State the quoted price
+  and that a dispatcher will follow up — never state a tracking number or
+  imply the shipment is confirmed/dispatched, since it isn't yet.
 
 Locations:
 - For any pickup/dropoff that is not a known GridX place, use the geocode
@@ -67,24 +77,17 @@ Locations:
   addresses. If geocoding finds nothing, ask the customer to clarify.
 
 Quoting and planning:
-- When a customer asks for a price, use get_quote (get coordinates from
-  list_places, or your own knowledge for well-known GCC cities) and present
-  a clean quote: distance, truck type, subtotal, 15% VAT, total in SAR,
-  valid 48 hours. Do NOT create an order for a price inquiry.
-- If they confirm a quoted job (yes/book it/ok), then create the order.
+- When a customer just asks "how much would this cost" (a rough price
+  inquiry, not a booking), use get_quote for a quick estimate — this does
+  NOT create any record. Do not use create_quote for a casual price ask.
+- Once the customer wants to actually book (confirms with "yes/book it/ok",
+  or the message is clearly a booking request rather than a price check),
+  use create_quote — this records a real booking quote for the dispatcher
+  to review, send, and (after approval + payment) dispatch.
 - For multi-stop requests, use optimize_route and present the best stop
   order with total distance and drive time.
 
-End your final message with a line: STATUS: created | quoted | needs_clarification | not_a_request
-"""
-
-HITL_NOTE = """
-NOTE: Dispatcher approval mode is ON. The create_order tool only submits a
-draft for human review — no order exists until a dispatcher approves it.
-When the tool returns pending_dispatcher_approval, confirm receipt to the
-customer, summarize the job, and say a dispatcher will confirm shortly with
-the tracking details. Do not state or invent a tracking number. Use
-STATUS: created for successfully submitted drafts as well.
+End your final message with a line: STATUS: quote_created | quoted | needs_clarification | not_a_request
 """
 
 TOOLS = [
@@ -108,12 +111,14 @@ TOOLS = [
         "type": "function",
         "function": {
             "name": "find_best_driver",
-            "description": "Find online drivers ranked by distance to the pickup coordinates. Returns each driver's public_id, name, vehicle, and distance in km.",
+            "description": "Find online drivers ranked by fitness for the cargo, then distance to pickup. Returns each driver's public_id, name, vehicle, vehicle_type, payload_capacity_kg, distance_km, and a fitness_match flag.",
             "parameters": {
                 "type": "object",
                 "properties": {
                     "pickup_lat": {"type": "number", "description": "Latitude of the pickup location"},
                     "pickup_lng": {"type": "number", "description": "Longitude of the pickup location"},
+                    "required_truck_type": {"type": "string", "description": "Truck type the cargo needs, e.g. flatbed, curtainside, box, reefer, tanker, lowbed. Omit if unspecified."},
+                    "cargo_weight_kg": {"type": "number", "description": "Approximate cargo weight in kg, if known. Used to filter out vehicles without enough payload capacity."},
                 },
                 "required": ["pickup_lat", "pickup_lng"],
             },
@@ -170,19 +175,30 @@ TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "create_order",
-            "description": "Create a transport order in GridX with a driver assigned.",
+            "name": "create_quote",
+            "description": (
+                "Create a priced booking quote in GridX. This does NOT create a dispatchable order or "
+                "assign a driver — it only records the request with dynamic pricing (distance + fuel "
+                "surcharge). A human dispatcher reviews it, sends it to the customer, and only after the "
+                "customer agrees, a sales order is confirmed, an approval PDF is generated, and payment is "
+                "marked received, will the dispatcher dispatch it — creating the real order at that point."
+            ),
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "pickup": {"type": "string", "description": "Place public_id (place_xxx) or free-form pickup address"},
-                    "dropoff": {"type": "string", "description": "Place public_id (place_xxx) or free-form dropoff address"},
-                    "driver": {"type": "string", "description": "Driver public_id (driver_xxx) to assign"},
+                    "pickup_lat": {"type": "number", "description": "Pickup latitude (from list_places or geocode)"},
+                    "pickup_lng": {"type": "number", "description": "Pickup longitude"},
+                    "dropoff_lat": {"type": "number", "description": "Dropoff latitude"},
+                    "dropoff_lng": {"type": "number", "description": "Dropoff longitude"},
+                    "pickup_address": {"type": "string", "description": "Human-readable pickup location name"},
+                    "dropoff_address": {"type": "string", "description": "Human-readable dropoff location name"},
+                    "truck_type": {"type": "string", "description": "flatbed, curtainside, box, reefer, tanker, or lowbed"},
+                    "cargo_weight_kg": {"type": "number", "description": "Approximate cargo weight in kg, if known"},
+                    "cross_border": {"type": "boolean", "description": "true if the route crosses the KSA/UAE border"},
                     "customer": {"type": "string", "description": "Optional customer contact public_id (contact_xxx)"},
                     "notes": {"type": "string", "description": "Cargo description and special instructions"},
-                    "scheduled_at": {"type": "string", "description": "Optional ISO 8601 datetime for scheduled pickup"},
                 },
-                "required": ["pickup", "dropoff", "driver"],
+                "required": ["pickup_lat", "pickup_lng", "dropoff_lat", "dropoff_lng"],
             },
         },
     },
@@ -217,7 +233,21 @@ def _tool_list_customers() -> str:
     return json.dumps(slim, ensure_ascii=False)
 
 
-def _tool_find_best_driver(pickup_lat: float, pickup_lng: float) -> str:
+def _tool_find_best_driver(
+    pickup_lat: float,
+    pickup_lng: float,
+    required_truck_type: str | None = None,
+    cargo_weight_kg: float | None = None,
+) -> str:
+    """Rank online drivers by fitness for the cargo, then proximity.
+
+    Fitness signal available today: vehicle type match (if the customer
+    named one) and payload capacity vs. stated cargo weight (if known) —
+    both pulled straight from the vehicle record. NOT included: driver
+    hours-of-service / fatigue, because GridX doesn't currently capture
+    drive-time logs anywhere in the system — this ranks on fitness +
+    proximity only, not fatigue, until that data exists.
+    """
     drivers = api.list_drivers(online_only=True)
     ranked = []
     for d in drivers:
@@ -227,62 +257,83 @@ def _tool_find_best_driver(pickup_lat: float, pickup_lng: float) -> str:
             continue
         # GeoJSON order: [lng, lat]
         dist = haversine_km(pickup_lat, pickup_lng, coords[1], coords[0])
+
+        vehicle = d.get("vehicle") if isinstance(d.get("vehicle"), dict) else {}
+        vehicle_type = vehicle.get("type") or vehicle.get("class")
+        payload_capacity = vehicle.get("payload_capacity")
+        vehicle_label = vehicle.get("display_name") or vehicle.get("name") or " ".join(
+            filter(None, [vehicle.get("year"), vehicle.get("make"), vehicle.get("model")])
+        ) or None
+
+        fits_type = required_truck_type is None or (
+            vehicle_type and required_truck_type.lower() in str(vehicle_type).lower()
+        )
+        fits_capacity = cargo_weight_kg is None or (
+            payload_capacity is not None and float(payload_capacity) >= cargo_weight_kg
+        )
+        # Vehicles with unknown type/capacity aren't excluded (missing data
+        # shouldn't block dispatch) but they rank behind confirmed fits.
+        fitness_match = bool(fits_type and fits_capacity)
+
         ranked.append(
             {
                 "id": d.get("id") or d.get("public_id"),
                 "name": d.get("name"),
-                "vehicle": (d.get("vehicle") or {}).get("display_name")
-                if isinstance(d.get("vehicle"), dict)
-                else d.get("vehicle_name"),
+                "vehicle": vehicle_label or d.get("vehicle_name"),
+                "vehicle_type": vehicle_type,
+                "payload_capacity_kg": payload_capacity,
                 "distance_km": round(dist, 1),
+                "fitness_match": fitness_match,
             }
         )
-    ranked.sort(key=lambda x: x["distance_km"])
+
+    # Confirmed fitness match first, then nearest within each group.
+    ranked.sort(key=lambda x: (not x["fitness_match"], x["distance_km"]))
     return json.dumps(ranked[:5], ensure_ascii=False)
 
 
 _current_sender = "unknown"  # set per-request by dispatch_message
 
 
-def _tool_create_order(
-    pickup: str,
-    dropoff: str,
-    driver: str,
+def _tool_create_quote(
+    pickup_lat: float,
+    pickup_lng: float,
+    dropoff_lat: float,
+    dropoff_lng: float,
+    pickup_address: str = "",
+    dropoff_address: str = "",
+    truck_type: str = "",
+    cargo_weight_kg: float = 0,
+    cross_border: bool = False,
     customer: str = "",
     notes: str = "",
-    scheduled_at: str = "",
 ) -> str:
-    order = api.create_order(
-        pickup=pickup,
-        dropoff=dropoff,
-        driver=driver,
-        customer=customer or None,
+    quote = api.create_quote(
+        pickup_lat=pickup_lat,
+        pickup_lng=pickup_lng,
+        dropoff_lat=dropoff_lat,
+        dropoff_lng=dropoff_lng,
+        pickup_address=pickup_address or None,
+        dropoff_address=dropoff_address or None,
+        truck_type=truck_type or None,
+        cargo_weight_kg=cargo_weight_kg or None,
+        cross_border=cross_border,
+        customer_contact_uuid=customer or None,
         notes=notes or None,
-        scheduled_at=scheduled_at or None,
-        # Tag the order with the requester so the dispatch webhook can
-        # notify them on WhatsApp when a dispatcher confirms.
-        meta={"whatsapp_sender": _current_sender, "source": "gridx-agent"},
     )
-    if config.HUMAN_IN_THE_LOOP:
-        slim = {
-            "id": order.get("id") or order.get("public_id"),
-            "status": "pending_dispatcher_confirmation",
-            "note": (
-                "Order recorded but NOT yet confirmed — a dispatcher must "
-                "review and dispatch it in Fleet-Ops. Tell the customer the "
-                "request is received and a dispatcher will confirm shortly "
-                "with tracking details. Do not state a tracking number."
-            ),
-        }
-        return json.dumps(slim, ensure_ascii=False)
-    tracking = order.get("tracking_number")
     slim = {
-        "id": order.get("id") or order.get("public_id"),
-        "tracking_number": tracking.get("tracking_number")
-        if isinstance(tracking, dict)
-        else order.get("tracking"),
-        "status": order.get("status"),
-        "driver": driver,
+        "quote_id": quote.get("public_id"),
+        "distance_km": quote.get("distance_km"),
+        "total": quote.get("total"),
+        "currency": quote.get("currency"),
+        "status": "quote_pending",
+        "note": (
+            "This is a QUOTE only — no order exists and no driver is assigned yet. "
+            "A dispatcher will review it in GridX, send it to the customer for approval, "
+            "and only after approval + payment confirmation will it be dispatched. "
+            "Tell the customer their request was received with the quoted price, and that "
+            "a dispatcher will follow up to confirm. Do not state a tracking number."
+        ),
     }
     return json.dumps(slim, ensure_ascii=False)
 
@@ -369,7 +420,7 @@ TOOL_IMPLS = {
     "list_places": _tool_list_places,
     "list_customers": _tool_list_customers,
     "find_best_driver": _tool_find_best_driver,
-    "create_order": _tool_create_order,
+    "create_quote": _tool_create_quote,
     "get_quote": _tool_get_quote,
     "geocode": _tool_geocode,
     "optimize_route": _tool_optimize_route,
@@ -432,7 +483,7 @@ def dispatch_message(message: str, channel: str, sender: str) -> dict:
     global _current_sender
     _current_sender = sender
     now = datetime.now(timezone(timedelta(hours=3)))  # Asia/Riyadh
-    system = SYSTEM_PROMPT + (HITL_NOTE if config.HUMAN_IN_THE_LOOP else "")
+    system = SYSTEM_PROMPT
     user_content = (
         f"Current date/time (Asia/Riyadh): {now.strftime('%A %Y-%m-%d %H:%M')}\n"
         f"Channel: {channel}\nSender: {sender}\nMessage:\n{message}"
