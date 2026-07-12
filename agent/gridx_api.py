@@ -64,6 +64,8 @@ class GridXAPI:
         cross_border: bool = False,
         customer_contact_uuid: str | None = None,
         notes: str | None = None,
+        agent_session_id: str | None = None,
+        reasoning: str | None = None,
     ) -> dict:
         """Create a booking quote (dynamic pricing: distance + fuel surcharge).
         This does NOT create a dispatchable order or assign a driver — a human
@@ -88,7 +90,29 @@ class GridXAPI:
             payload["customer_contact_uuid"] = customer_contact_uuid
         if notes:
             payload["notes"] = notes
+        if agent_session_id:
+            payload["agent_session_id"] = agent_session_id
+        if reasoning:
+            payload["agent_reasoning"] = reasoning
         return self._post("quotes", payload)
+
+    def create_agent_session(self, mode: str = "suggestions", channel: str | None = None, sender: str | None = None) -> dict:
+        """Open a session for one agent run, so a dispatcher can review the
+        agent's reasoning and outcome even when no quote was created."""
+        payload: dict = {"mode": mode}
+        if channel:
+            payload["channel"] = channel
+        if sender:
+            payload["sender"] = sender
+        result = self._post("agent-sessions", payload)
+        return result.get("session", result)
+
+    def complete_agent_session(self, session_id: str, status: str, summary: str | None = None) -> dict:
+        payload: dict = {"status": status}
+        if summary:
+            payload["summary"] = summary
+        result = self._post(f"agent-sessions/{session_id}/complete", payload)
+        return result.get("session", result)
 
 
 def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:

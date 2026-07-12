@@ -1,0 +1,179 @@
+<div class="gridx-ai-dispatch flex h-full min-h-0 w-full flex-col overflow-y-auto p-4">
+    <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center">
+            <FaIcon @icon="robot" class="mr-2 text-gray-500 dark:text-gray-400" @size="lg" />
+            <h1 class="text-lg font-semibold text-gray-900 dark:text-white">AI Dispatch</h1>
+        </div>
+        <Button @type="default" @size="sm" @icon="arrows-rotate" @text="Refresh" @onClick={{this.refresh}} />
+    </div>
+
+    <div class="flex items-center mb-3">
+        <h2 class="text-sm font-semibold text-gray-900 dark:text-white">Pending Decisions</h2>
+        {{#if this.pendingDecisions.length}}
+            <span class="gridx-ai-dispatch-count-badge">{{this.pendingDecisions.length}}</span>
+        {{/if}}
+    </div>
+
+    {{#if this.pendingDecisions.length}}
+        <div class="gridx-ai-dispatch-decisions mb-6">
+            {{#each this.pendingDecisions as |quote|}}
+                <div class="gridx-ai-dispatch-decision-card">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center gap-2">
+                            <span class="gridx-ai-dispatch-mode-badge">suggested</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">{{format-date quote.created_at}}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="text-sm font-semibold text-gray-900 dark:text-white">{{quote.total}} {{quote.currency}}</div>
+                            <button type="button" class="gridx-ai-dispatch-edit-btn" title="Edit before approving" {{on "click" (fn this.openEdit quote)}}>&#9998;</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 mb-2 text-sm">
+                        <div>
+                            <div class="text-xs text-gray-400 uppercase tracking-wide">Quote</div>
+                            <div class="font-medium text-gray-900 dark:text-white">{{quote.public_id}}</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-400 uppercase tracking-wide">Truck</div>
+                            <div class="font-medium text-gray-900 dark:text-white">{{quote.truck_type}}</div>
+                        </div>
+                    </div>
+
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                        {{quote.pickup_address}} &rarr; {{quote.dropoff_address}}
+                    </div>
+
+                    {{#if quote.agent_reasoning}}
+                        <div class="gridx-ai-dispatch-reasoning">
+                            "{{quote.agent_reasoning}}"
+                        </div>
+                    {{/if}}
+
+                    <div class="flex items-center gap-2 mt-3">
+                        <Button
+                            @type="primary"
+                            @size="sm"
+                            @icon="check"
+                            @text="Approve"
+                            @onClick={{fn this.approve quote}}
+                            @disabled={{eq this.busyId quote.public_id}}
+                        />
+                        <Button
+                            @type="danger"
+                            @size="sm"
+                            @icon="xmark"
+                            @text="Reject"
+                            @onClick={{fn this.reject quote}}
+                            @disabled={{eq this.busyId quote.public_id}}
+                        />
+                        <a href="/quotes" class="gridx-ai-dispatch-view-link">View in Quotes</a>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <div class="gridx-ai-dispatch-empty mb-6">
+            <FaIcon @icon="circle-check" @size="lg" class="mb-2 text-green-500" />
+            No decisions waiting on you
+        </div>
+    {{/if}}
+
+    <h2 class="text-sm font-semibold text-gray-900 dark:text-white mb-3">Session History</h2>
+    <div class="gridx-ai-dispatch-sessions-table">
+        <table class="w-full text-sm">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Mode</th>
+                    <th>Status</th>
+                    <th>Started</th>
+                    <th>Decisions</th>
+                    <th>Summary</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each this.sessions as |session index|}}
+                    <tr>
+                        <td>{{index}}</td>
+                        <td><span class="gridx-ai-dispatch-mode-badge">{{session.mode}}</span></td>
+                        <td><span class="gridx-ai-dispatch-status-badge gridx-ai-dispatch-status-{{session.status}}">{{session.status}}</span></td>
+                        <td>{{format-date session.started_at}}</td>
+                        <td>{{session.decision_count}}</td>
+                        <td class="gridx-ai-dispatch-summary-cell">{{session.summary}}</td>
+                    </tr>
+                {{else}}
+                    <tr>
+                        <td colspan="6" class="text-center text-gray-500 dark:text-gray-400 py-6">No agent sessions yet.</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    {{#if this.editingQuote}}
+        <div class="gridx-quote-edit-backdrop">
+            <div class="gridx-quote-edit-modal">
+                <div class="gridx-quote-edit-header">
+                    <span>Edit {{this.editingQuote.public_id}}</span>
+                    <button type="button" class="gridx-copilot-close" {{on "click" this.closeEdit}}>&times;</button>
+                </div>
+                <div class="gridx-quote-edit-body">
+                    <label>Pickup address</label>
+                    <input type="text" value={{this.editForm.pickup_address}} {{on "input" (fn this.updateEditField "pickup_address")}} />
+
+                    <div class="gridx-quote-edit-row">
+                        <div>
+                            <label>Pickup lat</label>
+                            <input type="number" step="0.0001" value={{this.editForm.pickup_lat}} {{on "input" (fn this.updateEditField "pickup_lat")}} />
+                        </div>
+                        <div>
+                            <label>Pickup lng</label>
+                            <input type="number" step="0.0001" value={{this.editForm.pickup_lng}} {{on "input" (fn this.updateEditField "pickup_lng")}} />
+                        </div>
+                    </div>
+
+                    <label>Dropoff address</label>
+                    <input type="text" value={{this.editForm.dropoff_address}} {{on "input" (fn this.updateEditField "dropoff_address")}} />
+
+                    <div class="gridx-quote-edit-row">
+                        <div>
+                            <label>Dropoff lat</label>
+                            <input type="number" step="0.0001" value={{this.editForm.dropoff_lat}} {{on "input" (fn this.updateEditField "dropoff_lat")}} />
+                        </div>
+                        <div>
+                            <label>Dropoff lng</label>
+                            <input type="number" step="0.0001" value={{this.editForm.dropoff_lng}} {{on "input" (fn this.updateEditField "dropoff_lng")}} />
+                        </div>
+                    </div>
+
+                    <div class="gridx-quote-edit-row">
+                        <div>
+                            <label>Truck type</label>
+                            <select {{on "change" (fn this.updateEditField "truck_type")}}>
+                                {{#each (array "default" "flatbed" "curtainside" "box" "reefer" "tanker" "lowbed") as |t|}}
+                                    <option value={{t}} selected={{eq this.editForm.truck_type t}}>{{t}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div>
+                            <label>Cargo weight (kg)</label>
+                            <input type="number" value={{this.editForm.cargo_weight_kg}} {{on "input" (fn this.updateEditField "cargo_weight_kg")}} />
+                        </div>
+                    </div>
+
+                    <label>Notes</label>
+                    <textarea rows="2" {{on "input" (fn this.updateEditField "notes")}}>{{this.editForm.notes}}</textarea>
+
+                    <p class="gridx-quote-edit-hint">Saving recalculates distance and price from the new route.</p>
+                </div>
+                <div class="gridx-quote-edit-footer">
+                    <button type="button" class="gridx-quotes-btn-ghost" {{on "click" this.closeEdit}}>Cancel</button>
+                    <button type="button" disabled={{this.isSavingEdit}} {{on "click" this.saveEdit}}>
+                        {{if this.isSavingEdit "Saving..." "Save & Recalculate"}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+</div>

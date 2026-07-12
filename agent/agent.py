@@ -197,8 +197,16 @@ TOOLS = [
                     "cross_border": {"type": "boolean", "description": "true if the route crosses the KSA/UAE border"},
                     "customer": {"type": "string", "description": "Optional customer contact public_id (contact_xxx)"},
                     "notes": {"type": "string", "description": "Cargo description and special instructions"},
+                    "reasoning": {
+                        "type": "string",
+                        "description": (
+                            "1-2 sentences explaining why this price/truck_type/route was chosen — "
+                            "shown to the dispatcher reviewing this quote, e.g. 'Chose flatbed for the "
+                            "steel coils; distance 412km KSA-only so no cross-border surcharge.'"
+                        ),
+                    },
                 },
-                "required": ["pickup_lat", "pickup_lng", "dropoff_lat", "dropoff_lng"],
+                "required": ["pickup_lat", "pickup_lng", "dropoff_lat", "dropoff_lng", "reasoning"],
             },
         },
     },
@@ -293,6 +301,7 @@ def _tool_find_best_driver(
 
 
 _current_sender = "unknown"  # set per-request by dispatch_message
+_current_session_id: str | None = None  # set per-request by dispatch_message
 
 
 def _tool_create_quote(
@@ -307,6 +316,7 @@ def _tool_create_quote(
     cross_border: bool = False,
     customer: str = "",
     notes: str = "",
+    reasoning: str = "",
 ) -> str:
     quote = api.create_quote(
         pickup_lat=pickup_lat,
@@ -320,6 +330,8 @@ def _tool_create_quote(
         cross_border=cross_border,
         customer_contact_uuid=customer or None,
         notes=notes or None,
+        agent_session_id=_current_session_id,
+        reasoning=reasoning or None,
     )
     slim = {
         "quote_id": quote.get("public_id"),
@@ -480,8 +492,15 @@ def _chat_with_fallback(messages: list, tools: list):
 
 def dispatch_message(message: str, channel: str, sender: str) -> dict:
     """Run the agent on one inbound message. Returns the reply text and status."""
-    global _current_sender
+    global _current_sender, _current_session_id
     _current_sender = sender
+    _current_session_id = None
+    try:
+        session = api.create_agent_session(mode="suggestions", channel=channel, sender=sender)
+        _current_session_id = session.get("public_id")
+    except Exception as exc:  # a logging failure shouldn't block the actual dispatch
+        log.warning("could not open agent session: %s", exc)
+
     now = datetime.now(timezone(timedelta(hours=3)))  # Asia/Riyadh
     system = SYSTEM_PROMPT
     user_content = (
@@ -495,51 +514,59 @@ def dispatch_message(message: str, channel: str, sender: str) -> dict:
     ]
 
     final_text = ""
-    for _ in range(MAX_TURNS):
-        response = _chat_with_fallback(messages, TOOLS)
-        msg = response.choices[0].message
-        # Echo back only standard fields — OpenRouter models attach extras
-        # like `reasoning` that break the next request if resent.
-        assistant_msg: dict = {"role": "assistant", "content": msg.content or ""}
-        if msg.tool_calls:
-            assistant_msg["tool_calls"] = [
-                {
-                    "id": c.id,
-                    "type": "function",
-                    "function": {
-                        "name": c.function.name,
-                        "arguments": c.function.arguments,
-                    },
-                }
-                for c in msg.tool_calls
-            ]
-        messages.append(assistant_msg)
+    try:
+        for _ in range(MAX_TURNS):
+            response = _chat_with_fallback(messages, TOOLS)
+            msg = response.choices[0].message
+            # Echo back only standard fields — OpenRouter models attach extras
+            # like `reasoning` that break the next request if resent.
+            assistant_msg: dict = {"role": "assistant", "content": msg.content or ""}
+            if msg.tool_calls:
+                assistant_msg["tool_calls"] = [
+                    {
+                        "id": c.id,
+                        "type": "function",
+                        "function": {
+                            "name": c.function.name,
+                            "arguments": c.function.arguments,
+                        },
+                    }
+                    for c in msg.tool_calls
+                ]
+            messages.append(assistant_msg)
 
-        if not msg.tool_calls:
-            final_text = msg.content or ""
-            break
+            if not msg.tool_calls:
+                final_text = msg.content or ""
+                break
 
-        for call in msg.tool_calls:
-            name = call.function.name
+            for call in msg.tool_calls:
+                name = call.function.name
+                try:
+                    args = json.loads(call.function.arguments or "{}")
+                except json.JSONDecodeError:
+                    args = {}
+                impl = TOOL_IMPLS.get(name)
+                log.info("tool call: %s(%s)", name, args)
+                try:
+                    result = impl(**args) if impl else f"Unknown tool: {name}"
+                except Exception as exc:  # surface API errors to the model
+                    result = json.dumps({"error": str(exc)})
+                messages.append(
+                    {
+                        "role": "tool",
+                        "tool_call_id": call.id,
+                        "content": result,
+                    }
+                )
+        else:
+            final_text = "The agent hit its step limit without finishing."
+    except Exception:
+        if _current_session_id:
             try:
-                args = json.loads(call.function.arguments or "{}")
-            except json.JSONDecodeError:
-                args = {}
-            impl = TOOL_IMPLS.get(name)
-            log.info("tool call: %s(%s)", name, args)
-            try:
-                result = impl(**args) if impl else f"Unknown tool: {name}"
-            except Exception as exc:  # surface API errors to the model
-                result = json.dumps({"error": str(exc)})
-            messages.append(
-                {
-                    "role": "tool",
-                    "tool_call_id": call.id,
-                    "content": result,
-                }
-            )
-    else:
-        final_text = "The agent hit its step limit without finishing."
+                api.complete_agent_session(_current_session_id, status="failed", summary="Agent run failed before producing a reply.")
+            except Exception as exc:
+                log.warning("could not close failed agent session: %s", exc)
+        raise
 
     status = "unknown"
     for line in final_text.splitlines():
@@ -552,5 +579,11 @@ def dispatch_message(message: str, channel: str, sender: str) -> dict:
     ).strip()
 
     _session_append(sender, user_content, final_text)
+
+    if _current_session_id:
+        try:
+            api.complete_agent_session(_current_session_id, status="completed", summary=final_text)
+        except Exception as exc:
+            log.warning("could not close agent session: %s", exc)
 
     return {"reply": reply, "status": status, "model": config.AGENT_MODEL}

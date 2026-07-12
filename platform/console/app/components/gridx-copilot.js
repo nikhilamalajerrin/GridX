@@ -19,6 +19,10 @@ export default class GridxCopilotComponent extends Component {
         return window.location.pathname === '/route-planning';
     }
 
+    get isOnAiDispatchPage() {
+        return window.location.pathname === '/ai-dispatch';
+    }
+
     @action
     updateDraft(event) {
         this.draft = event.target.value;

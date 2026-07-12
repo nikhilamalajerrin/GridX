@@ -1355,3 +1355,386 @@ a.text-blue-400:hover, a.text-blue-500:hover, a.text-blue-600:hover {
 .gridx-route-plan-legend-row strong {
     color: #101828;
 }
+
+/* AI Dispatch — Pending Decisions + Session History */
+.gridx-ai-dispatch-count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    margin-left: 8px;
+    background: #ea580c;
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 700;
+    border-radius: 999px;
+}
+.gridx-ai-dispatch-decisions {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 12px;
+}
+.gridx-ai-dispatch-decision-card {
+    background: #fff;
+    border: 1px solid #eceef2;
+    border-radius: 12px;
+    padding: 14px;
+    font-family: var(--gridx-font);
+}
+.gridx-ai-dispatch-mode-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-radius: 999px;
+}
+.gridx-ai-dispatch-edit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #667085;
+    padding: 2px 4px;
+    border-radius: 6px;
+}
+.gridx-ai-dispatch-edit-btn:hover {
+    background: #f2f4f7;
+    color: #101828;
+}
+.gridx-ai-dispatch-reasoning {
+    font-size: 12.5px;
+    color: #475467;
+    font-style: italic;
+    background: #f9fafb;
+    border-left: 3px solid #d0d5dd;
+    padding: 8px 10px;
+    border-radius: 6px;
+    line-height: 1.5;
+}
+.gridx-ai-dispatch-view-link {
+    margin-left: auto;
+    font-size: 12px;
+    color: #475467;
+    text-decoration: underline;
+}
+.gridx-ai-dispatch-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 0;
+    font-size: 13.5px;
+    color: #667085;
+    background: #fafbfc;
+    border: 1px solid #eceef2;
+    border-radius: 12px;
+}
+.gridx-ai-dispatch-sessions-table {
+    background: #fff;
+    border: 1px solid #eceef2;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.gridx-ai-dispatch-sessions-table table {
+    border-collapse: collapse;
+}
+.gridx-ai-dispatch-sessions-table th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    color: #98a2b3;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 10px 14px;
+    border-bottom: 1px solid #eceef2;
+}
+.gridx-ai-dispatch-sessions-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #f2f4f7;
+    color: #344054;
+    font-size: 13px;
+    vertical-align: top;
+}
+.gridx-ai-dispatch-sessions-table tr:last-child td {
+    border-bottom: none;
+}
+.gridx-ai-dispatch-summary-cell {
+    max-width: 420px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.gridx-ai-dispatch-status-badge {
+    display: inline-flex;
+    padding: 2px 8px;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-radius: 999px;
+}
+.gridx-ai-dispatch-status-completed {
+    background: #ecfdf3;
+    color: #067647;
+}
+.gridx-ai-dispatch-status-running {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+.gridx-ai-dispatch-status-failed {
+    background: #fef3f2;
+    color: #b42318;
+}
+
+/* Fleet Overview — Home dashboard card grid + charts */
+.gridx-fleet-overview {
+    font-family: var(--gridx-font);
+    padding: 16px 20px 4px;
+}
+.gridx-fleet-overview-loading {
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    color: #667085;
+    font-size: 13.5px;
+}
+.gridx-fleet-overview-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.gridx-fleet-overview-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid #eceef2;
+    border-radius: 12px;
+    padding: 14px 16px;
+}
+.gridx-fleet-overview-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+.gridx-fleet-overview-card-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #101828;
+    line-height: 1.2;
+}
+.gridx-fleet-overview-card-label {
+    font-size: 11.5px;
+    color: #667085;
+    margin-top: 2px;
+}
+.gridx-fleet-overview-layout {
+    display: grid;
+    grid-template-columns: 2.2fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+    align-items: start;
+}
+.gridx-fleet-overview-main {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+}
+.gridx-fleet-overview-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+}
+.gridx-fleet-overview-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+@media (max-width: 1024px) {
+    .gridx-fleet-overview-layout,
+    .gridx-fleet-overview-row {
+        grid-template-columns: 1fr;
+    }
+}
+.gridx-fleet-overview-panel {
+    background: #fff;
+    border: 1px solid #eceef2;
+    border-radius: 12px;
+    padding: 14px 16px;
+}
+.gridx-fleet-overview-panel-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #475467;
+    margin-bottom: 10px;
+}
+.gridx-fleet-overview-chart {
+    width: 100%;
+    height: 60px;
+}
+.gridx-fleet-overview-chart-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #98a2b3;
+    margin-top: 4px;
+}
+.gridx-fleet-overview-donut-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.gridx-fleet-overview-donut {
+    width: 84px;
+    height: 84px;
+    flex-shrink: 0;
+    transform: rotate(-90deg);
+}
+.gridx-fleet-overview-donut-total {
+    font-size: 8px;
+    font-weight: 700;
+    fill: #101828;
+    transform: rotate(90deg);
+    transform-origin: center;
+}
+.gridx-fleet-overview-donut-legend {
+    font-size: 11.5px;
+    color: #344054;
+    line-height: 1.9;
+}
+.gridx-fleet-overview-donut-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+.gridx-fleet-overview-alert-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #344054;
+    padding: 6px 0;
+    border-bottom: 1px solid #f2f4f7;
+}
+.gridx-fleet-overview-alert-row:last-child {
+    border-bottom: none;
+}
+.gridx-fleet-overview-alert-high {
+    color: #b42318;
+}
+.gridx-fleet-overview-empty {
+    font-size: 12.5px;
+    color: #98a2b3;
+    padding: 12px 0;
+}
+.gridx-fleet-overview-top-drivers-panel,
+.gridx-fleet-overview-donut-panel {
+    display: flex;
+    flex-direction: column;
+}
+.gridx-fleet-overview-driver-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    color: #344054;
+    padding: 6px 0;
+    border-bottom: 1px solid #f2f4f7;
+}
+.gridx-fleet-overview-driver-row:last-child {
+    border-bottom: none;
+}
+.gridx-fleet-overview-driver-rank {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-size: 10.5px;
+    font-weight: 700;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.gridx-fleet-overview-driver-name {
+    flex: 1;
+    font-weight: 500;
+}
+.gridx-fleet-overview-driver-count {
+    font-weight: 700;
+    color: #101828;
+}
+.gridx-fleet-overview-activity-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid #f2f4f7;
+}
+.gridx-fleet-overview-activity-row:last-child {
+    border-bottom: none;
+}
+.gridx-fleet-overview-activity-label {
+    color: #344054;
+    font-weight: 500;
+}
+.gridx-fleet-overview-activity-detail {
+    color: #98a2b3;
+    text-transform: capitalize;
+}
+
+/* Home sidebar nav — populates the shared sidebar wormhole on the Home
+   route, which otherwise has no engine to supply sidebar content. */
+.gridx-home-sidebar-nav {
+    padding: 12px 8px;
+    font-family: var(--gridx-font);
+}
+.gridx-home-sidebar-nav-section {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #98a2b3;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 12px 10px 6px;
+}
+.gridx-home-sidebar-nav-section:first-child {
+    padding-top: 4px;
+}
+.gridx-home-sidebar-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #344054;
+    text-decoration: none;
+}
+.gridx-home-sidebar-nav-link:hover {
+    background: #f2f4f7;
+    color: #101828;
+}
+.gridx-home-sidebar-nav-link svg {
+    width: 14px;
+    color: #667085;
+}

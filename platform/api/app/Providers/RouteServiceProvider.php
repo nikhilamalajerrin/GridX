@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\AgentSessionController;
 use App\Http\Controllers\CopilotController;
+use App\Http\Controllers\FleetOverviewController;
 use App\Http\Controllers\QuoteController;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -36,6 +38,7 @@ class RouteServiceProvider extends ServiceProvider
                 // every other internal console-facing request.
                 Route::prefix('int/v1')->middleware(['fleetbase.protected'])->group(function () {
                     Route::post('copilot/ask', [CopilotController::class, 'ask']);
+                    Route::get('fleet-overview', [FleetOverviewController::class, 'index']);
 
                     // Booking -> quote -> approval -> payment -> dispatch pipeline.
                     // Orders are never created directly from a booking request —
@@ -60,6 +63,13 @@ class RouteServiceProvider extends ServiceProvider
                     // Real road-following polyline for the Route Planning map,
                     // via self-hosted OSRM — separate from quote pricing distance.
                     Route::post('route-geometry', [QuoteController::class, 'routeGeometry']);
+
+                    // AI Dispatch: read-only for the console — sessions are opened/
+                    // closed by the agent itself via the API-key group below.
+                    Route::prefix('agent-sessions')->group(function () {
+                        Route::get('/', [AgentSessionController::class, 'index']);
+                        Route::get('{id}/decisions', [AgentSessionController::class, 'decisions']);
+                    });
                 });
 
                 // Same quote endpoints, reachable via company API-key auth (fleetbase.api)
@@ -71,6 +81,15 @@ class RouteServiceProvider extends ServiceProvider
                         Route::post('/', [QuoteController::class, 'create']);
                         Route::get('{id}', [QuoteController::class, 'show']);
                         Route::get('{id}/pdf', [QuoteController::class, 'pdf']);
+                    });
+
+                    // Agent opens a session at the start of handling a message and
+                    // closes it with a summary once it's done, so the dispatcher can
+                    // see what happened even when no quote was created (e.g. a
+                    // clarifying question, or a request the agent declined).
+                    Route::prefix('agent-sessions')->group(function () {
+                        Route::post('/', [AgentSessionController::class, 'create']);
+                        Route::post('{id}/complete', [AgentSessionController::class, 'complete']);
                     });
                 });
             }

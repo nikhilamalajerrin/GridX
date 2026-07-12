@@ -1,0 +1,112 @@
+<div class="gridx-fleet-overview" ...attributes>
+    {{#if this.load.isRunning}}
+        <div class="gridx-fleet-overview-loading"><Spinner class="mr-2" /> Loading fleet overview&hellip;</div>
+    {{else if this.data}}
+        <div class="gridx-fleet-overview-cards">
+            {{#each this.cards as |card|}}
+                <div class="gridx-fleet-overview-card">
+                    <div class="gridx-fleet-overview-card-icon" style={{html-safe (concat "background:" card.color "1a; color:" card.color)}}>
+                        <FaIcon @icon={{card.icon}} />
+                    </div>
+                    <div>
+                        <div class="gridx-fleet-overview-card-value">{{card.value}}</div>
+                        <div class="gridx-fleet-overview-card-label">{{card.label}}</div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+
+        <div class="gridx-fleet-overview-layout">
+            <div class="gridx-fleet-overview-main">
+                <div class="gridx-fleet-overview-panel gridx-fleet-overview-activity">
+                    <div class="gridx-fleet-overview-panel-title">Fleet Activity &middot; Orders, last 7 days</div>
+                    <svg viewBox="0 0 100 40" preserveAspectRatio="none" class="gridx-fleet-overview-chart">
+                        <polyline points={{this.activityPolyline}} fill="none" stroke="#2563EB" stroke-width="1.5" vector-effect="non-scaling-stroke" />
+                    </svg>
+                    <div class="gridx-fleet-overview-chart-labels">
+                        {{#each this.activityPoints as |p|}}
+                            <span title="{{p.orders}} orders">{{p.label}}</span>
+                        {{/each}}
+                    </div>
+                </div>
+
+                <div class="gridx-fleet-overview-row">
+                    <div class="gridx-fleet-overview-panel gridx-fleet-overview-donut-panel">
+                        <div class="gridx-fleet-overview-panel-title">Work Orders by Status</div>
+                        {{#if this.workOrderTotal}}
+                            <div class="gridx-fleet-overview-donut-row">
+                                <svg viewBox="0 0 42 42" class="gridx-fleet-overview-donut">
+                                    <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#eceef2" stroke-width="6" />
+                                    {{#each this.workOrderSlices as |slice|}}
+                                        <circle
+                                            cx="21" cy="21" r="15.9" fill="transparent"
+                                            stroke={{slice.color}} stroke-width="6"
+                                            stroke-dasharray={{slice.dashArray}}
+                                            stroke-dashoffset={{slice.dashOffset}}
+                                        />
+                                    {{/each}}
+                                    <text x="21" y="24" text-anchor="middle" class="gridx-fleet-overview-donut-total">{{this.workOrderTotal}}</text>
+                                </svg>
+                                <div class="gridx-fleet-overview-donut-legend">
+                                    {{#each this.workOrderSlices as |slice|}}
+                                        <div class="gridx-fleet-overview-donut-legend-row">
+                                            <span class="gridx-fleet-overview-donut-dot" style={{html-safe (concat "background:" slice.color)}}></span>
+                                            {{slice.status}} &middot; {{slice.count}} ({{slice.percent}}%)
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        {{else}}
+                            <div class="gridx-fleet-overview-empty">No work orders yet</div>
+                        {{/if}}
+                    </div>
+
+                    <div class="gridx-fleet-overview-panel gridx-fleet-overview-top-drivers-panel">
+                        <div class="gridx-fleet-overview-panel-title">Top Drivers &middot; completed orders</div>
+                        {{#if this.topDrivers.length}}
+                            {{#each this.topDrivers as |driver|}}
+                                <div class="gridx-fleet-overview-driver-row">
+                                    <span class="gridx-fleet-overview-driver-rank">{{driver.rank}}</span>
+                                    <span class="gridx-fleet-overview-driver-name">{{driver.name}}</span>
+                                    <span class="gridx-fleet-overview-driver-count">{{driver.completed_orders}}</span>
+                                </div>
+                            {{/each}}
+                        {{else}}
+                            <div class="gridx-fleet-overview-empty">No completed orders yet</div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="gridx-fleet-overview-sidebar">
+                <div class="gridx-fleet-overview-panel gridx-fleet-overview-alerts-panel">
+                    <div class="gridx-fleet-overview-panel-title">Alerts &amp; Notifications</div>
+                    {{#if this.alerts.length}}
+                        {{#each this.alerts as |alert|}}
+                            <div class="gridx-fleet-overview-alert-row gridx-fleet-overview-alert-{{alert.severity}}">
+                                <FaIcon @icon={{if (eq alert.type "maintenance_overdue") "wrench" "triangle-exclamation"}} />
+                                <span>{{alert.title}}</span>
+                            </div>
+                        {{/each}}
+                    {{else}}
+                        <div class="gridx-fleet-overview-empty">No active alerts</div>
+                    {{/if}}
+                </div>
+
+                <div class="gridx-fleet-overview-panel gridx-fleet-overview-activity-panel">
+                    <div class="gridx-fleet-overview-panel-title">Recent Activity</div>
+                    {{#if this.recentActivity.length}}
+                        {{#each this.recentActivity as |item|}}
+                            <div class="gridx-fleet-overview-activity-row">
+                                <span class="gridx-fleet-overview-activity-label">{{item.label}}</span>
+                                <span class="gridx-fleet-overview-activity-detail">{{item.detail}}</span>
+                            </div>
+                        {{/each}}
+                    {{else}}
+                        <div class="gridx-fleet-overview-empty">No recent orders</div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    {{/if}}
+</div>

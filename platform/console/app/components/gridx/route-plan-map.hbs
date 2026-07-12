@@ -37,6 +37,19 @@
                     </marker.tooltip>
                 </layers.marker>
             {{/each}}
+            {{#each this.truckPositions as |truck|}}
+                <layers.marker
+                    @lat={{truck.lat}}
+                    @lng={{truck.lng}}
+                    @icon={{div-icon
+                        html=(this.truckIconHtml truck)
+                        className="gridx-route-plan-truck"
+                        iconSize=(array 26 26)
+                        iconAnchor=(array 13 13)
+                    }}
+                    @zIndexOffset={{1000}}
+                />
+            {{/each}}
         </LeafletMap>
     {{else}}
         <div class="gridx-route-plan-map-empty">

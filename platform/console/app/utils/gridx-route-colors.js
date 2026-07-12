@@ -38,3 +38,36 @@ export function waypointIconHtml(label, bgColor) {
         font-family:ui-sans-serif,system-ui,sans-serif;
     ">${label}</div>`;
 }
+
+// Great-circle distance in km — used to pace the truck animation and to
+// pick which segment of a route a given point along it falls on.
+export function haversineKm([lat1, lng1], [lat2, lng2]) {
+    const R = 6371;
+    const dLat = ((lat2 - lat1) * Math.PI) / 180;
+    const dLng = ((lng2 - lng1) * Math.PI) / 180;
+    const a = Math.sin(dLat / 2) ** 2 + Math.cos((lat1 * Math.PI) / 180) * Math.cos((lat2 * Math.PI) / 180) * Math.sin(dLng / 2) ** 2;
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+// Compass bearing (degrees, 0 = north) from point A to point B, for
+// rotating the truck icon to face its direction of travel.
+export function bearingDeg([lat1, lng1], [lat2, lng2]) {
+    const toRad = (d) => (d * Math.PI) / 180;
+    const toDeg = (r) => (r * 180) / Math.PI;
+    const y = Math.sin(toRad(lng2 - lng1)) * Math.cos(toRad(lat2));
+    const x = Math.cos(toRad(lat1)) * Math.sin(toRad(lat2)) - Math.sin(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.cos(toRad(lng2 - lng1));
+    return (toDeg(Math.atan2(y, x)) + 360) % 360;
+}
+
+export function truckIconHtml(bearing, color) {
+    return `<div style="
+        width:26px;height:26px;
+        display:flex;align-items:center;justify-content:center;
+        transform:rotate(${bearing}deg);
+        filter:drop-shadow(0 2px 3px rgba(0,0,0,0.5));
+    ">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="${color}" stroke="#fff" stroke-width="0.75">
+            <path d="M12 2 L20 20 L12 16 L4 20 Z" />
+        </svg>
+    </div>`;
+}

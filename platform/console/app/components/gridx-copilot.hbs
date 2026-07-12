@@ -10,6 +10,9 @@
 {{#unless this.isOnRoutePlanningPage}}
     <a href="/route-planning" class="gridx-quotes-launcher gridx-route-planning-launcher" title="Plan multi-warehouse routes">Plan Routes</a>
 {{/unless}}
+{{#unless this.isOnAiDispatchPage}}
+    <a href="/ai-dispatch" class="gridx-quotes-launcher gridx-ai-dispatch-launcher" title="Review AI agent decisions">AI Dispatch</a>
+{{/unless}}
 
 <div class="gridx-copilot-launcher" {{on "click" this.toggle}} title="Ask GridX Copilot">
     <span class="gridx-copilot-launcher-icon">✦</span>

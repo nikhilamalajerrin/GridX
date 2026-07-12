@@ -1,0 +1,18 @@
+{{! Plain <a href>, not <LinkTo>: engine routes ("operations.*") aren't
+    reliably resolvable by name from outside their engine, and a failed
+    LinkTo resolution here would crash the sidebar on every page — see the
+    same note in gridx-copilot.hbs. }}
+<Layout::YieldSidebar>
+    <div class="gridx-home-sidebar-nav">
+        <div class="gridx-home-sidebar-nav-section">Fleet</div>
+        <a href="/" class="gridx-home-sidebar-nav-link"><FaIcon @icon="house" /> Home</a>
+        <a href="/fleet-ops" class="gridx-home-sidebar-nav-link"><FaIcon @icon="truck-fast" /> Fleet Operations</a>
+        <a href="/quotes" class="gridx-home-sidebar-nav-link"><FaIcon @icon="file-invoice-dollar" /> Quotes</a>
+        <a href="/route-planning" class="gridx-home-sidebar-nav-link"><FaIcon @icon="route" /> Route Planning</a>
+        <a href="/ai-dispatch" class="gridx-home-sidebar-nav-link"><FaIcon @icon="robot" /> AI Dispatch</a>
+
+        <div class="gridx-home-sidebar-nav-section">System</div>
+        <a href="/admin" class="gridx-home-sidebar-nav-link"><FaIcon @icon="user-shield" /> Admin</a>
+        <a href="/settings" class="gridx-home-sidebar-nav-link"><FaIcon @icon="gear" /> Settings</a>
+    </div>
+</Layout::YieldSidebar>

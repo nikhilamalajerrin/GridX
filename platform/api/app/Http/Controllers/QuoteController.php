@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GridxAgentSession;
 use App\Models\GridxQuote;
 use Dompdf\Dompdf;
 use Fleetbase\FleetOps\Casts\Point;
@@ -72,6 +73,8 @@ class QuoteController extends Controller
             'cross_border'        => 'nullable|boolean',
             'customer_contact_uuid' => 'nullable|string',
             'notes'               => 'nullable|string',
+            'agent_session_id'    => 'nullable|string',
+            'agent_reasoning'     => 'nullable|string',
         ]);
 
         $companyUuid = Auth::user()?->company_uuid ?? session('company');
@@ -88,11 +91,20 @@ class QuoteController extends Controller
 
         $pricing = $this->calculatePricing($distanceKm, $data['truck_type'] ?? 'default', $data['cross_border'] ?? false);
 
+        $agentSessionUuid = null;
+        if (!empty($data['agent_session_id'])) {
+            $agentSessionUuid = GridxAgentSession::where('public_id', $data['agent_session_id'])
+                ->orWhere('uuid', $data['agent_session_id'])
+                ->value('uuid');
+        }
+
         $quote = new GridxQuote();
         $quote->forceFill([
             'uuid'                  => (string) Str::uuid(),
             'company_uuid'          => $companyUuid,
             'customer_contact_uuid' => $data['customer_contact_uuid'] ?? null,
+            'agent_session_uuid'    => $agentSessionUuid,
+            'agent_reasoning'       => $data['agent_reasoning'] ?? null,
             'pickup_address'        => $data['pickup_address'] ?? null,
             'pickup_lat'            => $data['pickup_lat'],
             'pickup_lng'            => $data['pickup_lng'],

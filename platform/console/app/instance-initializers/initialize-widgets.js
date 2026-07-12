@@ -152,6 +152,32 @@ export function initialize(appInstance) {
         // Register widgets
         widgetService.registerWidgets('dashboard', widgets);
         widgetService.registerWidgets('admin', adminWidgets);
+
+        // Turn off the vendor Fleet-Ops KPI/chart widgets that auto-load by
+        // default (Earnings, Avg Order Value, Active Orders, Drivers Online,
+        // Live Fleet Map, Revenue Trend, Top Drivers, Maintenance Overview) —
+        // Home now leads with <Gridx::FleetOverview /> (real data, one query,
+        // minimal card/chart layout) instead of that widget grid. Still
+        // available to add back manually from "Add Widget" since only the
+        // default-widget registration is cleared, not the widget itself.
+        const vendorDefaultWidgetIdsToDisable = [
+            'fleet-ops-kpi-earnings-widget',
+            'fleet-ops-kpi-aov-widget',
+            'fleet-ops-kpi-active-orders-widget',
+            'fleet-ops-kpi-drivers-online-widget',
+            'fleet-ops-live-fleet-widget',
+            'fleet-ops-revenue-trend-widget',
+            'fleet-ops-top-drivers-widget',
+            'fleet-ops-maintenance-overview-widget',
+        ];
+        const defaultWidgetList = widgetService.registry.getRegistry('dashboard:widgets', 'default-widget');
+        vendorDefaultWidgetIdsToDisable.forEach((id) => {
+            const key = `dashboard#${id}`;
+            const match = defaultWidgetList.find((w) => w && w._registryKey === key);
+            if (match) {
+                defaultWidgetList.removeObject(match);
+            }
+        });
     });
 }
 

@@ -1,6 +1,8 @@
 {{page-title "Dashboard"}}
 <Layout::Section::Body class="overflow-y-scroll h-full">
     <TwoFaEnforcementAlert />
+    <Gridx::HomeSidebarNav />
+    <Gridx::FleetOverview />
     <RegistryYield @registry="console:home:before-dashboard" as |RegistryComponent|>
         <RegistryComponent @controller={{this}} @position="before-dashboard" />
     </RegistryYield>

@@ -28,6 +28,7 @@ Router.map(function () {
         this.route('home', { path: '/' });
         this.route('quotes');
         this.route('route-planning');
+        this.route('ai-dispatch');
         this.route('notifications');
         this.route('account', function () {
             this.route('virtual', { path: '/:slug' });
